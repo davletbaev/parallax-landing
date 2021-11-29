@@ -1,0 +1,111 @@
+.button {
+  display: inline-block;
+
+  font-size: var(--fs-button);
+  font-weight: 500;
+  font-family: inherit;
+
+  background: none;
+  border: 0;
+  box-shadow: none;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.primary {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 4.5rem;
+  padding: 0 3rem;
+
+  font-size: var(--fs-button);
+  font-family: var(--ff-base);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+
+  color: var(--color-white);
+
+  svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    stroke-dasharray: 180;
+    stroke-dashoffset: 180;
+    paint-order: stroke;
+
+    animation: stroke linear 5s infinite;
+
+    transition: stroke-dasharray linear 0.25s;
+  }
+
+  &:hover svg {
+    stroke-dasharray: 0;
+  }
+}
+
+.secondary {
+  height: 3rem;
+  padding: 0 2rem;
+
+  font-size: var(--fs-button-sm);
+  font-family: var(--ff-base);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+
+  color: var(--color-white);
+
+  border: 2px solid var(--color-white);
+}
+
+.ghost {
+  padding: 0.25rem;
+
+  color: inherit;
+  font-size: var(--fs-button);
+  font-family: var(--ff-base);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  border: 2px solid transparent;
+
+  &:focus-visible {
+    border-bottom-color: var(--color-white);
+  }
+
+  &:hover {
+    border-bottom-color: var(--color-white);
+  }
+
+  &:active {
+    border-bottom-color: var(--color-white);
+  }
+}
+
+.block {
+  width: 100%;
+}
+
+@keyframes stroke {
+  from {
+    stroke-dashoffset: 180;
+  }
+
+  50% {
+    stroke-dashoffset: 300;
+  }
+
+  to {
+    stroke-dashoffset: 180;
+  }
+}

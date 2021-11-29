@@ -1,57 +1,74 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path');
+
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
-    title: "parallax-landing",
+    siteUrl: 'https://www.yourdomain.tld',
+    title: 'parallax-landing',
   },
   plugins: [
-    "gatsby-plugin-sass",
-    "gatsby-plugin-postcss",
-    "gatsby-plugin-image",
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sharp",
-    "gatsby-plugin-svgr",
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-typescript",
     {
-      resolve: "gatsby-plugin-web-font-loader",
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        cssLoaderOptions: {
+          camelCase: false,
+        },
+      },
+    },
+    'gatsby-plugin-postcss',
+    'gatsby-plugin-image',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-plugin-typescript',
+      options: {
+        isTSX: true,
+        jsxPragma: 'React',
+        allExtensions: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
         custom: {
-          families: ["Inter"],
-          urls: ["/fonts/fonts.css"],
+          families: [ 'Ubuntu', 'Orbitron' ],
+          urls: [ '/fonts/fonts.css' ],
         },
       },
     },
     {
-      resolve: "gatsby-plugin-minify-classnames",
+      resolve: 'gatsby-plugin-minify-classnames',
       options: {
-        dictionary: "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ0123456789",
+        dictionary: 'bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ0123456789',
         enableOnDevelopment: false,
       },
     },
     {
-      resolve: "gatsby-plugin-polyfill-io",
+      resolve: 'gatsby-plugin-polyfill-io',
       options: {
-        features: ["smoothscroll"],
+        features: [ 'smoothscroll' ],
       },
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: "images",
-        path: "./src/assets/images/",
+        name: 'images',
+        path: './src/assets/images/',
       },
-      __key: "images",
+      __key: 'images',
     },
     {
-      resolve: `gatsby-plugin-alias-imports`,
+      resolve: 'gatsby-plugin-alias-imports',
       options: {
         alias: {
-          "@components": path.resolve(__dirname, "src/components"),
-          "@shared": path.resolve(__dirname, "src/shared"),
-          "@assets": path.resolve(__dirname, "src/assets"),
-          "@layouts": path.resolve(__dirname, "src/layouts"),
+          '@components': path.resolve(__dirname, 'src/components'),
+          '@shared': path.resolve(__dirname, 'src/shared'),
+          '@assets': path.resolve(__dirname, 'src/assets'),
+          '@layouts': path.resolve(__dirname, 'src/layouts'),
+          '@modules': path.resolve(__dirname, 'src/modules')
         },
-        extensions: ["js", "jsx", "ts", "tsx"],
+        extensions: [ 'js', 'jsx', 'ts', 'tsx' ],
       },
     },
   ],

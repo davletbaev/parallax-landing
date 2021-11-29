@@ -13,10 +13,13 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "type-check": "tsc --noEmit",
-    "type-check:watch": "npm run type-check -- --watch"
+    "typecheck": "tsc --noEmit",
+    "typecheck:watch": "npm run type-check -- --watch",
+    "lint": "eslint --fix"
   },
   "dependencies": {
+    "classnames": "^2.3.1",
+    "embla-carousel-react": "^6.0.2",
     "gatsby": "^4.2.0",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-image": "^2.2.0",
@@ -25,14 +28,30 @@
     "gatsby-plugin-postcss": "^5.2.0",
     "gatsby-plugin-react-helmet": "^5.2.0",
     "gatsby-plugin-sass": "^5.2.0",
+    "gatsby-plugin-scss-typescript": "^5.1.0",
     "gatsby-plugin-sharp": "^4.2.0",
     "gatsby-plugin-typescript": "^4.2.0",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-filesystem": "^4.2.0",
     "gatsby-transformer-sharp": "^4.2.0",
+    "gatsby-transformer-typescript-css-modules": "^1.0.14",
+    "lodash": "^4.17.21",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "react-modal": "^3.14.4",
+    "recompose": "^0.30.0",
     "sass": "^1.43.4"
+  },
+  "devDependencies": {
+    "@types/react-modal": "^3.13.1",
+    "@types/recompose": "^0.30.9",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "eslint-plugin-json-format": "^2.0.1",
+    "eslint-plugin-react": "^7.27.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "typescript": "^4.5.2",
+    "typescript-plugin-css-modules": "^3.4.0"
   }
 }

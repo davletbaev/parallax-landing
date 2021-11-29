@@ -1,0 +1,57 @@
+.heading {
+  line-height: 1.05;
+}
+
+.h1 {
+  font-size: var(--fs-h1);
+  line-height: var(--lh-h1);
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: 0.06em;
+}
+
+.h2 {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+
+.h3 {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+
+.h4 {
+  font-size: var(--fs-h4);
+  line-height: var(--lh-h4);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+
+.h5 {
+  font-size: var(--fs-h5);
+  line-height: var(--lh-h5);
+  font-family: var(--ff-secondary);
+  font-weight: 700;
+}
+
+.paragraph {
+  font-weight: 400;
+  line-height: var(--lh-text);
+  font-family: var(--ff-secondary);
+
+  & + .paragraph {
+    margin-top: var(--gap-16);
+  }
+}
+
+.large {
+  font-size: var(--fs-text-lg);
+}
+
+.medium {
+  font-size: var(--fs-text);
+}

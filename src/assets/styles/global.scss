@@ -1,0 +1,127 @@
+@import "variables";
+
+html {
+  font-size: var(--fs-base);
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  font-size: var(--fs-text);
+  line-height: var(--lh-text);
+  font-family: var(--ff-base);
+  font-weight: var(--fw-regular);
+
+  color: var(--color-white);
+  background: var(--color-black);
+
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &--loading {
+    overflow: hidden;
+  }
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+#___gatsby,
+#gatsby-focus-wrapper {
+  height: 100%;
+}
+
+.visually-hidden {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+  clip: rect(1px, 1px, 1px, 1px); /*maybe deprecated but we need to support legacy browsers */
+  clip-path: inset(50%); /*modern browsers, clip-path works inwards from each corner*/
+  white-space: nowrap; /* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
+}
+
+.mt {
+  &--none {
+    margin-top: 0;
+  }
+  
+  &--8 {
+    margin-top: 0.5rem;
+  }
+
+  &--16 {
+    margin-top: 1rem;
+  }
+
+  &--24 {
+    margin-top: 1.5rem;
+  }
+
+  &--32 {
+    margin-top: 2rem;
+  }
+
+  &--auto {
+    margin-top: auto;
+  }
+}
+
+.mb {
+  &--none {
+    margin-bottom: 0;
+  }
+
+  &--8 {
+    margin-bottom: 0.5rem;
+  }
+
+  &--16 {
+    margin-bottom: 1rem;
+  }
+
+  &--24 {
+    margin-bottom: 1.5rem;
+  }
+
+  &--32 {
+    margin-bottom: 2rem;
+  }
+
+  &--auto {
+    margin-bottom: auto;
+  }
+}
+
+.align {
+  &--left {
+    text-align: left;
+    align-self: flex-start;
+  }
+
+  &--center {
+    text-align: center;
+    align-self: center;
+  }
+
+  &--right {
+    text-align: right;
+    align-self: flex-end;
+  }
+}

@@ -1,0 +1,36 @@
+@font-face {
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ubuntu-Regular'), local('Ubuntu Regular'),
+  url('./Ubuntu-Regular.woff2') format('woff2'),
+  url('./Ubuntu-Regular.woff') format('woff');
+
+}
+
+@font-face {
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 700;
+  src: local('Ubuntu-Bold'), local('Ubuntu Bold'),
+  url('./Ubuntu-Bold.woff2') format('woff2'),
+  url('./Ubuntu-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: Orbitron;
+  font-style: normal;
+  font-weight: 500;
+  src: local('Orbitron-Medium'), local('Orbitron Medium'),
+  url('./Orbitron-Medium.woff2') format('woff2'),
+  url('./Orbitron-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: Orbitron;
+  font-style: normal;
+  font-weight: 900;
+  src: local('Orbitron-Black'), local('Orbitron Black'),
+  url('./Orbitron-Black.woff2') format('woff2'),
+  url('./Orbitron-Black.woff') format('woff');
+}

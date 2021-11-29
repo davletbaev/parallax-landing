@@ -1,0 +1,50 @@
+import React, { useEffect, useRef } from 'react';
+
+import Icon from '@components/Icon';
+import { Heading, Paragraph } from '@components/Typography';
+
+import * as styles from './Accordion.module.scss';
+
+type AccordionItemProps = {
+  active: boolean;
+  heading: string;
+  text: string;
+  onToggle: () => void;
+}
+
+function AccordionItem({ active, heading, text, onToggle }: AccordionItemProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current || !headlineRef.current || !contentRef.current) return;
+
+    const container = containerRef.current;
+    const headlineHeight = headlineRef.current.clientHeight;
+    const contentHeight = contentRef.current.clientHeight;
+
+    if (active) {
+      container.style.maxHeight = `${headlineHeight + contentHeight}px`;
+    } else {
+      container.style.maxHeight = `${headlineHeight}px`;
+    }
+  }, [ active ]);
+
+  return (
+    <div ref={ containerRef } className={ styles.container }>
+      <div ref={ headlineRef } className={ styles.headline } role="button" onClick={ onToggle }>
+        <Heading type="h3" size="h5">{ heading }</Heading>
+
+        <span className={ styles.icon }>
+          <Icon icon={ active ? 'minus' : 'plus' } animate />
+        </span>
+      </div>
+      <div ref={ contentRef } className={ styles.content }>
+        <Paragraph>{ text }</Paragraph>
+      </div>
+    </div>
+  );
+}
+
+export default AccordionItem;

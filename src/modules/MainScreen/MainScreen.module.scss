@@ -1,0 +1,51 @@
+.wrapper {
+  position: relative;
+}
+
+.section {
+  position: sticky;
+  top: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.heading {
+  margin-top: var(--gap-16);
+}
+
+.subheading {
+  margin: 0;
+
+  font-size: 1.25rem;
+  font-family: var(--ff-secondary);
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.button {
+  margin-top: var(--gap-24);
+}
+
+@media (min-width: 600px) {
+  .heading {
+    margin-top: var(--gap-32);
+  }
+
+  .subheading {
+    font-size: 2rem;
+  }
+
+  .button {
+    margin-top: var(--gap-40);
+  }
+
+  .onlyMobile {
+    display: none;
+  }
+}

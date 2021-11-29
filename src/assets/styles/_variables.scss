@@ -1,0 +1,63 @@
+:root {
+  --ff-base: Orbitron, Arial, sans-serif;
+  --ff-secondary: Ubuntu, Arial, sans-serif;
+
+  --gap-8: 0.5rem;
+  --gap-12: 0.75rem;
+  --gap-16: 1rem;
+  --gap-24: 1.5rem;
+  --gap-32: 2rem;
+  --gap-40: 2.5rem;
+  --gap-56: 3.5rem;
+  --gap-80: 5rem;
+  --gap-120: 7.5rem;
+
+  --app-padding: var(--gap-16);
+
+  --fs-base: 100%;
+
+  --fs-text-sm: 0.8rem;
+  --fs-text: 1rem;
+  --fs-text-lg: 1.125rem;
+
+  --fs-button: var(--fs-text);
+
+  --fs-h1: 2.625rem;
+  --fs-h2: 2rem;
+  --fs-h3: 2rem;
+  --fs-h4: 1.5rem;
+  --fs-h5: var(--fs-text-lg);
+
+  --fs-nav: 1.25rem;
+  --fs-button: var(--fs-text-lg);
+  --fs-button-sm: 0.75rem;
+
+  --lh-h1: 3rem;
+  --lh-h2: 2.5rem;
+  --lh-h3: 2.5rem;
+  --lh-h4: 2rem;
+  --lh-h5: 1.25rem;
+  --lh-text: 1.5;
+
+  --color-black: #000;
+  --color-white: #fff;
+  --color-danger: #D85454;
+
+  @media (min-width: 600px) {
+    --app-padding: var(--gap-24);
+
+    --fs-nav: var(--fs-text);
+
+    --fs-h1: 4.5rem;
+    --fs-h2: 3.5rem;
+
+    --lh-h1: 5rem;
+    --lh-h2: 4rem;
+  }
+
+  @media (min-width: 1600px) {
+    --app-padding: var(--gap-32);
+
+    --fs-nav: var(--fs-text-lg);
+  }
+}
