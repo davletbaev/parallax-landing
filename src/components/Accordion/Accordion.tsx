@@ -32,7 +32,7 @@ function Accordion({ items }: AccordionProps) {
   };
 
   const renderItems = () => items.map(({ heading, text }, index) => (
-    <li key={ heading } className={ styles.item }>
+    <li key={ index } className={ styles.item }>
       <AccordionItem 
         active={ active === index }
         heading={ heading }

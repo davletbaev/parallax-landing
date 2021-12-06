@@ -7,45 +7,41 @@ import { Heading, Paragraph } from '@components/Typography';
 
 import * as styles from './ContactsSection.module.scss';
 
-type ContactsSectionProps = {
-  scrollHeight: number,
-}
+import { SectionProps } from '@shared/types/modules';
 
 function ContactsSection({ 
-  scrollHeight,
-}: ContactsSectionProps) {
+  id,
+}: SectionProps) {
   return (
-    <div style={ { height: `${scrollHeight}px` } } className={ styles.wrapper }>
-      <Container as="section" className={ styles.section }>
-        <div className={ styles.content }>
-          <Heading type="h3" className={ styles.heading } align="center">
-            SUBSCRIBE ON UPDATES
-          </Heading>
+    <Container id={ id } as="section" className={ styles.section }>
+      <div className={ styles.content }>
+        <Heading type="h3" className={ styles.heading } align="center">
+          SUBSCRIBE ON UPDATES
+        </Heading>
         
-          <Paragraph className={ styles.paragraph } align="center">
-            Subscribe your email to receive most recent news and updates
-          </Paragraph>
+        <Paragraph className={ styles.paragraph } align="center">
+          Subscribe your email to receive most recent news and updates
+        </Paragraph>
 
-          <div className={ styles.form }>
-            <SubscriptionForm />
-          </div>
+        <div className={ styles.form }>
+          <SubscriptionForm />
         </div>
+      </div>
 
-        <div className={ styles.content }>
-          <Heading type="h3" className={ styles.heading } align="center">
-            JOIN THE COMMUNITY
-          </Heading>
+      <div className={ styles.content }>
+        <Heading type="h3" className={ styles.heading } align="center">
+          JOIN THE COMMUNITY
+        </Heading>
         
-          <Paragraph className={ styles.paragraph } align="center">
-            Join our community for game development updates, announcements, and more.
-          </Paragraph>
+        <Paragraph className={ styles.paragraph } align="center">
+          Join our community for game development updates, announcements, and more.
+        </Paragraph>
 
-          <div className={ styles.socials }>
-            <Socials />
-          </div>
+        <div className={ styles.socials }>
+          <Socials />
         </div>
-      </Container>
-    </div>
+      </div>
+    </Container>
   );
 }
 

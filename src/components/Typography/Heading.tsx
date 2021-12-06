@@ -1,11 +1,14 @@
 import React from 'react';
 import classnames from 'classnames/bind';
+import { HTMLMotionProps, motion } from 'framer-motion';
 
 import * as styles from './Typography.module.scss';
 
+import { SLIDE_TOP_WITH_FADE } from '@shared/transitions';
+
 const cn = classnames.bind(styles);
 
-type HeadingProps = {
+type HeadingProps = HTMLMotionProps<any> & {
   children: React.ReactNode,
   size?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5',
   type?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p',
@@ -22,7 +25,7 @@ function Heading({
   marginBottom = 'none',
   align,
   className,
-  children
+  children,
 }: HeadingProps) {
   const classes = cn(
     'heading',
@@ -32,13 +35,30 @@ function Heading({
     align && `align--${ align }`,
     className
   );
+  
+  const renderChildren = React.Children
+    .map(children, (child, idx) => typeof child === 'string' 
+      ? child
+        .split('')
+        .map((letter, index) => letter === ' ' ? letter : (
+          <motion.span
+            className={ styles.letter }
+            key={ `${idx}-${index}` }
+            variants={ SLIDE_TOP_WITH_FADE.variants }
+          >
+            { letter }
+          </motion.span>
+        ))
+      : child);
 
   return React.createElement(
-    type,
+    motion[type],
     {
-      className: classes
+      variants: {},
+      className: classes,
+      transition: SLIDE_TOP_WITH_FADE.options,
     },
-    children
+    renderChildren
   );
 }
 

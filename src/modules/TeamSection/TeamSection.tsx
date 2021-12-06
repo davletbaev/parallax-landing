@@ -6,13 +6,11 @@ import { Heading, Paragraph } from '@components/Typography';
 
 import * as styles from './TeamSection.module.scss';
 
+import { SectionProps } from '@shared/types/modules';
+
 import hypersonicLaboratoriesLogo from './hypersonic-laboratories.svg';
 import mardonpolGamesLogo from './mardonpol-games.svg';
 import thirdKindVentureCapitalLogo from './third-kind-venture-capital.svg';
-
-type TeamSectionProps = {
-  scrollHeight: number,
-}
 
 const PARTNERS = [
   {
@@ -30,8 +28,8 @@ const PARTNERS = [
 ];
 
 function TeamSection({ 
-  scrollHeight,
-}: TeamSectionProps) {
+  id,
+}: SectionProps) {
   const renderPartners = () => PARTNERS.map(({ label, url }) => (
     <div key={ label } className={ styles.partner }>
       <img src={ url } alt={ label } />
@@ -39,30 +37,28 @@ function TeamSection({
   ));
 
   return (
-    <div style={ { height: `${scrollHeight}px` } } className={ styles.wrapper }>
-      <Container as="section" className={ styles.section }>
-        <Heading type="h2" className={ styles.heading }>
-            Team & Partners
-        </Heading>
+    <Container id={ id } as="section" className={ styles.section }>
+      <Heading type="h2" className={ styles.heading }>
+          Team & Partners
+      </Heading>
           
-        <div className={ styles.content }>
-          <Paragraph marginTop="24">
-            Based in LA and all around the world, our team consists of passionate developers and artists who have worked on various AAA studio titles.
-          </Paragraph>
-          <Paragraph marginBottom="24">
-            We’re currently hiring. Come help us bring the future faster.
-          </Paragraph>
+      <div className={ styles.content }>
+        <Paragraph marginTop="24">
+          Based in LA and all around the world, our team consists of passionate developers and artists who have worked on various AAA studio titles.
+        </Paragraph>
+        <Paragraph marginBottom="24">
+          We’re currently hiring. Come help us bring the future faster.
+        </Paragraph>
 
-          <Button href="#">
-            SEE OPEN POSITIONS
-          </Button>
-        </div>
+        <Button href="#">
+          SEE OPEN POSITIONS
+        </Button>
+      </div>
 
-        <div className={ styles.partners }>
-          { renderPartners() }
-        </div>
-      </Container>
-    </div>
+      <div className={ styles.partners }>
+        { renderPartners() }
+      </div>
+    </Container>
   );
 }
 

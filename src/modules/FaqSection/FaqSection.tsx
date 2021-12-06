@@ -7,9 +7,7 @@ import { Heading, Paragraph } from '@components/Typography';
 
 import * as styles from './FaqSection.module.scss';
 
-type FaqSectionProps = {
-  scrollHeight: number,
-}
+import { SectionProps } from '@shared/types/modules';
 
 const QUESTIONS = [
   {
@@ -47,30 +45,28 @@ const QUESTIONS = [
 ];
 
 function FaqSection({ 
-  scrollHeight,
-}: FaqSectionProps) {
+  id
+}: SectionProps) {
   return (
-    <div style={ { height: `${scrollHeight}px` } } className={ styles.wrapper }>
-      <Container as="section" className={ styles.section }>
-        <Heading type="h2" className={ styles.heading }>
-          FREQUENTLY ASKED QUESTIONS
-        </Heading>
+    <Container id={ id } as="section" className={ styles.section } >
+      <Heading type="h2" className={ styles.heading }>
+        FREQUENTLY ASKED QUESTIONS
+      </Heading>
           
-        <div className={ styles.content }>
-          <Paragraph marginTop="24" marginBottom="24">
-            We’ve answered our most asked questions here. Read our whitepaper/wiki for more details and message us on Discord if you have more questions.
-          </Paragraph>
+      <div className={ styles.content }>
+        <Paragraph marginTop="24" marginBottom="24">
+          We’ve answered our most asked questions here. Read our whitepaper/wiki for more details and message us on Discord if you have more questions.
+        </Paragraph>
 
-          <Button href="#">
-            VISIT WHITEPAPER / WIKI
-          </Button>
-        </div>
+        <Button href="#">
+          VISIT WHITEPAPER / WIKI
+        </Button>
+      </div>
 
-        <div className={ styles.questions }>
-          <Accordion items={ QUESTIONS } />
-        </div>
-      </Container>
-    </div>
+      <div className={ styles.questions }>
+        <Accordion items={ QUESTIONS } />
+      </div>
+    </Container>
   );
 }
 

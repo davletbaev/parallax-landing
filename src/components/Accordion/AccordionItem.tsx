@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 
 import Icon from '@components/Icon';
 import { Heading, Paragraph } from '@components/Typography';
@@ -17,7 +17,7 @@ function AccordionItem({ active, heading, text, onToggle }: AccordionItemProps) 
   const headlineRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  const resizeContainer = useCallback(() => {
     if (!containerRef.current || !headlineRef.current || !contentRef.current) return;
 
     const container = containerRef.current;
@@ -29,6 +29,24 @@ function AccordionItem({ active, heading, text, onToggle }: AccordionItemProps) 
     } else {
       container.style.maxHeight = `${headlineHeight}px`;
     }
+  }, [ active ]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    resizeContainer();
+
+    window.addEventListener('resize', resizeContainer);
+    window.addEventListener('orientationchange', resizeContainer);
+    
+    return () => {
+      window.removeEventListener('resize', resizeContainer);
+      window.removeEventListener('orientationchange', resizeContainer);
+    };
+  }, []);
+
+  useEffect(() => {
+    resizeContainer();
   }, [ active ]);
 
   return (

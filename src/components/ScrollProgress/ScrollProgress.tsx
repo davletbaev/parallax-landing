@@ -1,15 +1,16 @@
 import React from 'react';
+import { motion, useTransform, useViewportScroll } from 'framer-motion';
 
 import * as styles from './ScrollProgress.module.scss';
 
-import { useParallax } from '@shared/hocs/withParallax';
-
 function ScrollProgress() {
-  const progress = useParallax();
+  const { scrollYProgress } = useViewportScroll();
+
+  const width = useTransform(scrollYProgress, (value) => `${ value * 100}%`);
 
   return (
     <div className={ styles.container }>
-      <div style={ { width: `${ progress * 100}%` } } className={ styles.indicator } />
+      <motion.div style={ { width } } className={ styles.indicator } />
     </div>
   );
 }

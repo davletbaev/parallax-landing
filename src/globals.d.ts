@@ -3,6 +3,21 @@ declare module '*.scss' {
   export = content;
 }
 
+declare module '*.jpg' {
+  const value: string;
+  export default value;
+}
+
+declare module '*.webp' {
+  const value: string;
+  export default value;
+}
+
+declare module '*.avif' {
+  const value: string;
+  export default value;
+}
+
 declare module '*.webm' {
   const value: string;
   export default value;

@@ -1,7 +1,6 @@
 import React, { ComponentType, createContext, useCallback, useContext, useEffect, useState } from 'react';
 
 type MediaContext = {
-  screenWidth: number,
   isMobile: boolean,
   isTabletOrLess: boolean,
   isTabletOrBigger: boolean,
@@ -9,7 +8,6 @@ type MediaContext = {
 }
 
 const MediaContext = createContext<MediaContext>({
-  screenWidth: 0,
   isMobile: true,
   isTabletOrLess: true,
   isTabletOrBigger: false,
@@ -19,11 +17,21 @@ const MediaContext = createContext<MediaContext>({
 function withMedia(WrappedComponent: ComponentType) {
   function WithMedia(props: any) {
     const [ width, setWidth ] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
+    const [ isMobile, setIsMobile ] = useState(width < 600);
+    const [ isTabletOrLess, setIsTabletOrLess ] = useState(width < 1024);
+    const [ isTabletOrBigger, setIsTabletOrBigger ] = useState(width >= 600);
+    const [ isDesktop, setIsDesktop ] = useState(width >= 1024);
 
     const handleResize = useCallback(() => {
       if (typeof window === 'undefined') return;
 
-      setWidth(window.innerWidth);
+      const windowWidth = window.innerWidth;
+
+      setWidth(windowWidth);
+      setIsMobile(windowWidth < 600);
+      setIsTabletOrLess(windowWidth < 1024);
+      setIsTabletOrBigger(windowWidth >= 600);
+      setIsDesktop(windowWidth >= 1024);
     }, []);
 
     useEffect(() => {
@@ -40,16 +48,15 @@ function withMedia(WrappedComponent: ComponentType) {
       };
     }, []);
 
-    const contextValue = {
-      screenWidth: width,
-      isMobile: width < 600,
-      isTabletOrLess: width < 1024,
-      isTabletOrBigger: width >= 600,
-      isDesktop: width >= 1024,
-    };
+    const getMediaContext = useCallback(() => ({
+      isMobile,
+      isTabletOrLess,
+      isTabletOrBigger,
+      isDesktop
+    }), [ isMobile, isTabletOrLess, isTabletOrBigger, isDesktop ]);
 
     return (
-      <MediaContext.Provider value={ contextValue }>
+      <MediaContext.Provider value={ getMediaContext() }>
         {/* eslint-disable-next-line react/jsx-props-no-spreading */ }
         <WrappedComponent { ...props } />
       </MediaContext.Provider>

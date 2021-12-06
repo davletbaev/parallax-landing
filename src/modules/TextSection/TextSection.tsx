@@ -1,28 +1,32 @@
-import React from 'react';
+import React, { isValidElement } from 'react';
+import { motion } from 'framer-motion';
 
 import Container from '@components/Container';
 
 import * as styles from './TextSection.module.scss';
 
+import { SectionProps } from '@shared/types/modules';
+
 type TextSectionProps = {
-  scrollHeight: number,
   align?: 'left' | 'right',
   children: React.ReactNode
-}
+} & SectionProps
 
 function TextSection({ 
-  scrollHeight, 
+  id,
   align = 'left',
-  children 
-}: TextSectionProps) {
+  children,
+  ...props
+}: TextSectionProps) {  
   return (
-    <div style={ { height: `${scrollHeight}px` } } className={ styles.wrapper }>
-      <Container as="section" className={ styles.section }>
-        <div className={ styles[align] }>
-          { children }
-        </div>
-      </Container>
-    </div>
+    <Container id={ id } as="section" className={ styles.section }>
+      <motion.div
+        className={ styles[align] }
+        { ...props }
+      >
+        { children }
+      </motion.div>
+    </Container>
   );
 }
 

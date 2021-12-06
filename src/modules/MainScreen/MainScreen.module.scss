@@ -1,11 +1,4 @@
-.wrapper {
-  position: relative;
-}
-
 .section {
-  position: sticky;
-  top: 0;
-
   width: 100%;
   height: 100vh;
 
@@ -34,11 +27,11 @@
 
 @media (min-width: 600px) {
   .heading {
-    margin-top: var(--gap-32);
+    margin-top: var(--gap-24);
   }
 
   .subheading {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .button {

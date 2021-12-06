@@ -1,11 +1,14 @@
 import React from 'react';
 import classnames from 'classnames/bind';
+import { HTMLMotionProps, motion } from 'framer-motion';
 
 import * as styles from './Typography.module.scss';
 
+import { SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
+
 const cn = classnames.bind(styles);
 
-type ParagraphProps = {
+type ParagraphProps = HTMLMotionProps<any> & {
   children: React.ReactNode,
   size?: 'small' | 'medium' | 'large',
   marginTop?: 'none' | '8' | '16' | '24' | '32' | 'auto',
@@ -20,7 +23,7 @@ function Paragraph({
   marginBottom = 'none',
   align,
   className,
-  children
+  children,
 }: ParagraphProps) {
   const classes = cn(
     'paragraph',
@@ -32,11 +35,13 @@ function Paragraph({
   );
 
   return (
-    <p
+    <motion.p
       className={ classes }
+      variants={ SLIDE_BOTTOM_WITH_FADE.variants }
+      transition={ SLIDE_BOTTOM_WITH_FADE.options }
     >
       { children }
-    </p>
+    </motion.p>
   );
 }
 

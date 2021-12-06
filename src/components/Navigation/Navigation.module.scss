@@ -43,6 +43,12 @@
   }
 }
 
+.linkActive {
+  composes: link;
+
+  border-bottom: 2px solid var(--color-white);
+}
+
 @media (min-width: 1024px) {
   .nav {
     justify-self: start;

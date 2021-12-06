@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { MouseEventHandler, useRef, useState } from 'react';
 
 import Button from '@components/Button';
 import Container from '@components/Container';
@@ -8,9 +8,9 @@ import { ModalRef } from '@components/Modal/Modal';
 import Navigation from '@components/Navigation';
 import NavModal from '@components/NavModal';
 
-import * as styles from './Header.module.scss';
-
 import { useMedia } from '@shared/hocs/withMedia';
+
+import * as styles from './Header.module.scss';
 
 function Header() {
   const [ isNavOpen, setNavOpen ] = useState(false);
@@ -24,11 +24,17 @@ function Header() {
     setNavOpen(!isNavOpen);
   };
 
+  const handleTrailerButtonClick: MouseEventHandler<HTMLAnchorElement> = (e) => {
+    e.preventDefault();
+
+    document.querySelector('#trailer')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <Container as="header" className={ styles.container }>
       { isDesktop && <Navigation /> }
       
-      <Logo />
+      <Logo to="/" />
 
       {
         !isDesktop && (
@@ -50,6 +56,7 @@ function Header() {
               href="#trailer"
               variant="ghost"
               block
+              onClick={ handleTrailerButtonClick }
             >
             Watch trailer
             </Button>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 
 import Button from '@components/Button';
 import Container from '@components/Container';
@@ -6,45 +6,48 @@ import { Heading } from '@components/Typography';
 
 import * as styles from './MainScreen.module.scss';
 
-type MainScreenProps = {
-  scrollHeight: number
-}
+import { SectionProps } from '@shared/types/modules';
 
-function MainScreen({ scrollHeight }: MainScreenProps) {
+function MainScreen({ id }: SectionProps) {
+  const handleTrailerButtonClick: MouseEventHandler<HTMLAnchorElement> = (e) => {
+    e.preventDefault();
+
+    document.querySelector('#trailer')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <div style={ { height: `${scrollHeight}px` } } className={ styles.wrapper }>
-      <Container as="section" className={ styles.section }>
-        <p className={ styles.subheading }>Welcome to</p>
+    <Container id={ id } as="section" className={ styles.section }>
+      <p className={ styles.subheading }>Welcome to</p>
 
-        <Heading 
-          type="h1"
-          className={ styles.heading }
-        >
+      <Heading 
+        type="h1"
+        className={ styles.heading }
+      >
         THE
-          {' '}
-          <br className={ styles.onlyMobile } />
+        {' '}
+        <br className={ styles.onlyMobile } />
         WORLD’S
-          {' '}
-          <br className={ styles.onlyMobile } />
+        {' '}
+        <br className={ styles.onlyMobile } />
         FIRST
-          {' '}
-          <br className={ styles.onlyMobile } />
+        {' '}
+        <br className={ styles.onlyMobile } />
         TRULY
-          <br />
+        <br />
         IMMERSIVE
-          {' '}
-          <br className={ styles.onlyMobile } />
+        {' '}
+        <br className={ styles.onlyMobile } />
         METAVERSE
-        </Heading>
+      </Heading>
 
-        <Button 
-          href="#trailer"
-          className={ styles.button }
-        >
+      <Button 
+        href="#trailer"
+        className={ styles.button }
+        onClick={ handleTrailerButtonClick }
+      >
         Watch Trailer
-        </Button>
-      </Container>
-    </div>
+      </Button>
+    </Container>
   );
 }
 

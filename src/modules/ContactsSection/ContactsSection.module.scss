@@ -1,11 +1,4 @@
-.wrapper {
-  position: relative;
-}
-
 .section {
-  position: sticky;
-  top: 0;
-
   width: 100%;
   min-height: 100vh;
 
@@ -67,7 +60,7 @@
 
   .socials,
   .form {
-    grid-column: 5 / 9;
+    grid-column: 4 / 10;
     grid-row: 3 / 4;
   }
 }

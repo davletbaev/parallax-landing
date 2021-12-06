@@ -301,7 +301,7 @@
             "^\\./(\\w+).module.scss$"
           ],
           [
-            "^@assets/img",
+            "^@assets/images",
             "^@assets/video"
           ],
           [
