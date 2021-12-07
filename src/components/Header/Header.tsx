@@ -1,5 +1,4 @@
-import React, { MouseEventHandler, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef, useState } from 'react';
 
 import Button from '@components/Button';
 import Container from '@components/Container';
@@ -23,12 +22,6 @@ function Header() {
       
     navModalRef.current.toggleModal();
     setNavOpen(!isNavOpen);
-  };
-
-  const handleTrailerButtonClick: MouseEventHandler<HTMLAnchorElement> = (e) => {
-    e.preventDefault();
-
-    document.querySelector('#trailer')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -57,7 +50,6 @@ function Header() {
               href="#trailer"
               variant="ghost"
               block
-              onClick={ handleTrailerButtonClick }
             >
             Watch trailer
             </Button>

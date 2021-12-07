@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, useViewportScroll } from 'framer-motion';
 
 import { SECTIONS } from '@shared/constants';
@@ -14,6 +14,7 @@ const sections = SECTIONS.map(({ id, component }) => React.createElement(
 
 const IndexPage = () => {
   const sectionsCount = useRef(sections.length);
+  const [ currentIndex, setCurrentIndex ] = useState<number>(0);
 
   const { scrollYProgress } = useViewportScroll();
   const { currentSection, setCurrentSection } = useSections();
@@ -22,19 +23,28 @@ const IndexPage = () => {
     const unsubscribe = scrollYProgress.onChange((value) => {
       const index = Math.floor((sectionsCount.current - 1) * value);
 
-      if (index !== currentSection) {
-        setCurrentSection(index);
+      if (index !== currentIndex) {
+        setCurrentIndex(index);
+        setCurrentSection(SECTIONS[index].id);
       }
     });
 
     return () => {
       unsubscribe();
     };
+  }, [ currentIndex ]);
+
+  useEffect(() => {
+    const index = SECTIONS.findIndex((item) => item.id === currentSection);
+
+    if (!index) return;
+
+    setCurrentIndex(index);
   }, [ currentSection ]);
 
   return (
     <AnimatePresence exitBeforeEnter>
-      { sections[currentSection] }
+      { sections[currentIndex] }
     </AnimatePresence>
   );
 };

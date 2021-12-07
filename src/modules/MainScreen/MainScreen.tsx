@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 import Button from '@components/Button';
@@ -12,12 +12,6 @@ import { SectionProps } from '@shared/types/modules';
 import { SLIDE_BOTTOM_WITH_FADE, SLIDE_TOP_WITH_FADE } from '@shared/transitions';
 
 function MainScreen({ id }: SectionProps) {
-  const handleTrailerButtonClick: MouseEventHandler<HTMLAnchorElement> = (e) => {
-    e.preventDefault();
-
-    document.querySelector('#trailer')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <Container id={ id } as="section" className={ styles.section }>
       <motion.div 
@@ -59,7 +53,6 @@ function MainScreen({ id }: SectionProps) {
         >
           <Button 
             href="#trailer"
-            onClick={ handleTrailerButtonClick }
           >
           Watch Trailer
           </Button>
