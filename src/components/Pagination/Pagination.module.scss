@@ -1,0 +1,17 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+
+.item {
+  display: inline-block;
+  width: 1.8em;
+}
+
+.divider {
+  margin: 0 0.25em;
+}

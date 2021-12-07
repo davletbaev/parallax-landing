@@ -35,30 +35,15 @@ function Heading({
     align && `align--${ align }`,
     className
   );
-  
-  const renderChildren = React.Children
-    .map(children, (child, idx) => typeof child === 'string' 
-      ? child
-        .split('')
-        .map((letter, index) => letter === ' ' ? letter : (
-          <motion.span
-            className={ styles.letter }
-            key={ `${idx}-${index}` }
-            variants={ SLIDE_TOP_WITH_FADE.variants }
-          >
-            { letter }
-          </motion.span>
-        ))
-      : child);
 
   return React.createElement(
     motion[type],
     {
-      variants: {},
+      variants: SLIDE_TOP_WITH_FADE.variants,
       className: classes,
       transition: SLIDE_TOP_WITH_FADE.options,
     },
-    renderChildren
+    children
   );
 }
 

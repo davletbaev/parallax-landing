@@ -32,6 +32,8 @@ export const SLIDE_TOP_WITH_FADE = {
     },
   },
   options: {
+    type: 'spring',
+    duration: 0.3,
     staggerChildren: .05
   }
 };

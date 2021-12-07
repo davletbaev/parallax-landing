@@ -3,6 +3,7 @@ import { motion, useTransform, useViewportScroll } from 'framer-motion';
 
 import Container from '@components/Container';
 import Icon from '@components/Icon';
+import Pagination from '@components/Pagination';
 import Socials from '@components/Socials';
 
 import { useMedia } from '@shared/hocs/withMedia';
@@ -24,7 +25,7 @@ function BottomBar() {
   return (
     <Container as="footer" className={ styles.bottombar }>
       <div className={ styles.pagination }>
-        01 / 05
+        <Pagination />
       </div>
 
       <motion.div animate={ { opacity: Number(isScrollAvailable) } } className={ styles.scroll }>
