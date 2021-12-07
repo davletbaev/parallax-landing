@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { motion } from 'framer-motion';
 
 import Logo from '@components/Logo';
 import ProgressBar from '@components/ProgressBar';
@@ -7,11 +8,19 @@ import { useLoader } from '@shared/hocs/withLoader';
 
 import * as styles from './Loader.module.scss';
 
+import { FADE } from '@shared/transitions';
+
 function Loader() {
   const { progress } = useLoader();
   
   return (
-    <div className={ styles.loader }>
+    <motion.div 
+      variants={ FADE.variants }
+      className={ styles.loader }
+      initial="initial"
+      animate="enter"
+      exit="exit"
+    >
       <div className={ styles.logo }>
         <Logo to={ null } large animate />
       </div>
@@ -20,7 +29,7 @@ function Loader() {
         <ProgressBar progress={ progress } />
         <div className={ styles.description }>Loading experience...</div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
