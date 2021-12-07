@@ -29,6 +29,7 @@ function BackgroundVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const controllerRef = useRef(typeof window !== 'undefined' ? new AbortController() : null);
 
+  const [ videoVisible, setVideoVisible ] = useState(false);
   const [ imageLoaded, setImageLoaded ] = useState(false);
   const [ status, setStatus ] = useState('loading');
   const [ src, setSrc ] = useState('');
@@ -99,8 +100,12 @@ function BackgroundVideo() {
 
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange((value) => {
+      setVideoVisible(value > 0.09);
+
       if (videoRef.current && videoRef.current.duration) {
-        videoRef.current.currentTime = value * videoRef.current.duration;
+        const multiplier = (value - 0.09) / 0.91;
+
+        videoRef.current.currentTime = multiplier * videoRef.current.duration;
       }
     });
 
@@ -132,36 +137,39 @@ function BackgroundVideo() {
     <div className={ styles.container }>
       <AnimatePresence>
         {
-          (status === 'fallback' || status === 'loading')
-            ? (
-              <div className={ styles.background }>
-                <picture>
-                  <source srcSet={ backgroundImageSrcAvif } type="image/avif" />
-                  <source srcSet={ backgroundImageSrcWebp } type="image/webp" />
-                  <motion.img
-                    variants={ fadeVariants }
-                    initial="initial"
-                    animate={ imageLoaded && 'enter' }
-                    exit="exit"
-                    src={ backgroundImageSrc }
-                    onLoad={ handleImageLoad }
-                  />
-                </picture>
-              </div>
-            ) 
-            : (
-              <motion.video 
-                variants={ fadeVariants }
-                initial="initial"
-                animate="enter"
-                exit="exit"
-                ref={ videoRef }
-                className={ styles.video }
-                src={ src }
-                playsInline
-                muted
-              />
-            )
+          (!videoVisible || status === 'fallback') && (
+            <div className={ styles.background } key="image">
+              <picture>
+                <source srcSet={ backgroundImageSrcAvif } type="image/avif" />
+                <source srcSet={ backgroundImageSrcWebp } type="image/webp" />
+                <motion.img
+                  variants={ fadeVariants }
+                  initial="initial"
+                  animate={ imageLoaded && 'enter' }
+                  exit="exit"
+                  src={ backgroundImageSrc }
+                  onLoad={ handleImageLoad }
+                />
+              </picture>
+            </div> 
+          ) 
+        }
+
+        {
+          status === 'idle' && (
+            <motion.video 
+              key="video"
+              variants={ fadeVariants }
+              initial="initial"
+              animate={ videoVisible && 'enter' }
+              exit="exit"
+              ref={ videoRef }
+              className={ styles.video }
+              src={ src }
+              playsInline
+              muted
+            />
+          ) 
         }
       </AnimatePresence>
     </div>

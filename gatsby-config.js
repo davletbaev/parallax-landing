@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = {
   siteMetadata: {
     siteUrl: 'https://www.yourdomain.tld',
-    title: 'parallax-landing',
+    title: 'HELIX',
   },
   plugins: [
     {
@@ -71,5 +71,17 @@ module.exports = {
         extensions: [ 'js', 'jsx', 'ts', 'tsx' ],
       },
     },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'HELIX',
+        short_name: 'HELIX',
+        start_url: '/',
+        background_color: '#000',
+        theme_color: '#fff',
+        display: 'standalone',
+        icon: 'src/assets/images/favicon.png'
+      }
+    }
   ],
 };

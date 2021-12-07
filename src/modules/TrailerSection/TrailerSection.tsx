@@ -7,8 +7,6 @@ import VideoPlayer from '@components/VideoPlayer';
 
 import * as styles from './TrailerSection.module.scss';
 
-import trailerSrc from '@assets/video/trailer.mp4';
-
 import { SectionProps } from '@shared/types/modules';
 
 import { SLIDE_BOTTOM_WITH_FADE, SLIDE_LEFT_WITH_FADE } from '@shared/transitions';
@@ -25,7 +23,7 @@ function TrailerSection({
         exit="exit"
         transition={ SLIDE_LEFT_WITH_FADE.options }
       >
-        <VideoPlayer src={ trailerSrc } />
+        <VideoPlayer videoId="RYdCuw7L1qk" />
       </motion.div>
       <motion.div className={ styles.content }
         variants={ {} }
@@ -35,7 +33,7 @@ function TrailerSection({
         transition={ SLIDE_BOTTOM_WITH_FADE.options }
       >
         <Heading type="h2" align="left">
-          HELIX
+          MEET H.E.L.I.X.
         </Heading>
         <Paragraph marginTop="24">
           Hyper Expansive Lifelike Interoperable eXperience — is a massively multiplayer game built on the concepts of a persistent open world and true digital ownership.

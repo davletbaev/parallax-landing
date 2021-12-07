@@ -11,7 +11,6 @@ function Pagination() {
 
   useEffect(() => {
     if (!currentSection.startsWith('feature')) {
-      console.log(currentSection);
       setCurrentIndex(null);
   
       return;

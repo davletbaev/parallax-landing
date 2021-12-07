@@ -36,7 +36,7 @@ function FaqSection({
           
         <div className={ styles.content }>
           <Paragraph marginTop="24" marginBottom="24">
-          We’ve answered our most asked questions here. Read our whitepaper/wiki for more details and message us on Discord if you have more questions.
+            We’ve answered our most asked questions here. Read our whitepaper/wiki for more details and message us on Discord if you have more questions.
           </Paragraph>
 
           <motion.div
@@ -44,7 +44,7 @@ function FaqSection({
             transition={ SLIDE_BOTTOM_WITH_FADE.options }
           >
             <Button href="#">
-          VISIT WHITEPAPER / WIKI
+            VISIT WHITEPAPER / WIKI
             </Button>
           </motion.div>
         </div>

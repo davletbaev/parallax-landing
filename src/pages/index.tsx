@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { AnimatePresence, useViewportScroll } from 'framer-motion';
 import { throttle } from 'lodash';
 
@@ -82,7 +83,7 @@ const IndexPage = () => {
       setCurrentIndex(index);
       setCurrentSection(SECTIONS[index].id);
     }
-  }, 100), []);
+  }, 100), [ isMobile ]);
 
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange(update);
@@ -100,14 +101,22 @@ const IndexPage = () => {
     setCurrentIndex(index);
 
     if (typeof window !== 'undefined') {
-      window.scrollTo({ top: SCROLL_HEIGHT / sectionsCount.current * (index) });
+      window.scrollTo({ top: SCROLL_HEIGHT / sectionsCount.current * (index + 0.75) });
     }
   }, [ currentSection ]);
 
   return (
-    <AnimatePresence exitBeforeEnter>
-      { sections[currentIndex] }
-    </AnimatePresence>
+    <>
+      <Helmet 
+        title="HELIX"
+        defer={ false }
+      >
+        <meta name="description" content="HELIX is an open-world NFT metaverse built on the foundation of persistent virtual worlds and true digital ownership." />
+      </Helmet>
+      <AnimatePresence exitBeforeEnter>
+        { sections[currentIndex] }
+      </AnimatePresence>
+    </>
   );
 };
 

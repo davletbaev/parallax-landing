@@ -24,19 +24,13 @@ function SecondFeature({
           TRUE ITEM<br /> OWNERSHIP
       </Heading>
       <Paragraph marginTop="24">
-          With traditional games, you buy an item and.. when you stop playing..
+        Collect hundreds of customizable NFT items such as clothes, accessories, skins, vehicles, homes, and more.
       </Paragraph>
       <Paragraph>
-          In HELIX, every item holds real-world value and can be exchanged for money and.. 
+        Every item holds real-world value and can be freely traded on a decentralized open market.
       </Paragraph>
       <Paragraph>
-          every item is a non-fungible token (NFT) stored on the blockchain for everyone to verify.
-      </Paragraph>
-      <Paragraph>
-          Every item written to the blockchain, where..
-      </Paragraph>
-      <Paragraph>
-          Show off your collection, resell them for profit, or do whatever you want..
+        Onced purchased, an item is yours forever.
       </Paragraph>
     </TextSection>
   );

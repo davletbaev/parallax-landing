@@ -1,50 +1,41 @@
-import React, { useEffect, useRef, useState } from 'react';
-
-import Icon from '@components/Icon';
+import React, { useRef, useState } from 'react';
+import YouTube, { Options } from 'react-youtube';
 
 import * as styles from './VideoPlayer.module.scss';
 
 type VideoPlayerProps = {
-  src: string
+  videoId: string
 }
 
-function VideoPlayer({ src }: VideoPlayerProps) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [ playing, setPlaying ] = useState(false);
+function VideoPlayer({ videoId }: VideoPlayerProps) {
+  const videoRef = useRef<any>(null);
 
-  const handlePlayClick = () => {
-    if (!videoRef.current) return;
-
-    videoRef.current.play();
+  const options: Options = {
+    playerVars: {
+      controls: 0,
+      autoplay: 1,
+      mute: 1,
+      disablekb: 0,
+      rel: 0,
+      iv_load_policy: 3,
+      modestbranding: 1,
+      playsinline: 1,
+      showinfo: 0
+    },
   };
 
-  useEffect(() => {
-    if (!videoRef.current) return;
-
-    videoRef.current.addEventListener('play', () => {
-      setPlaying(true);
-    });
-
-    videoRef.current.addEventListener('pause', () => {
-      setPlaying(false);
-    });
-  }, []);
+  const handleVideoReady = (player: any) => {
+    videoRef.current = player;
+  };
 
   return (
     <div className={ styles.container }>
-      {
-        !playing && (
-          <button className={ styles.playButton } onClick={ handlePlayClick }>
-            <Icon icon="play" />
-          </button>
-        ) 
-      }
-      <video
-        ref={ videoRef }
+      <YouTube
+        videoId={ videoId }
         className={ styles.video }
-        src={ src }
-        controls={ playing }
-        preload="auto"
+        containerClassName={ styles.wrapper }
+        opts={ options }   
+        onReady={ handleVideoReady }
       />
     </div>
   );

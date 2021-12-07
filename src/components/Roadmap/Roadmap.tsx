@@ -1,9 +1,12 @@
 import React from 'react';
 import classnames from 'classnames/bind';
+import { motion } from 'framer-motion';
 
 import { Heading, Paragraph } from '@components/Typography';
 
 import * as styles from './Roadmap.module.scss';
+
+import { SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
 
 const cn = classnames.bind(styles);
 
@@ -11,37 +14,31 @@ const ROADMAP_ITEMS = [
   {
     id: 1,
     heading: 'Q4 2021',
-    description: 'Game Announcement Founders NFT Collection',
+    items: [ 'Announcement + Trailer', 'Founders NFT Collection' ],
     active: true
   },
   {
     id: 2,
-    heading: null,
-    description: 'Community Treasury Established',
+    heading: 'Q2 2022',
+    items: [ 'Native Token Release', 'Land Sale' ],
     active: false
   },
   {
     id: 3,
-    heading: null,
-    description: 'Native Token Release Early Access Preview',
+    heading: 'Q3 2022',
+    items: [ 'HELIX Market Release', 'Early Access' ],
     active: false
   },
   {
     id: 4,
-    heading: null,
-    description: 'HELIX Market Release',
-    active: false
-  },
-  {
-    id: 5,
-    heading: null,
-    description: 'HELIX Market Release',
+    heading: 'HELIX Market Release',
+    description: null,
     active: false
   }
 ];
 
 function Roadmap() {
-  const renderItems = () => ROADMAP_ITEMS.map(({ id, heading, description, active }) => {
+  const renderItems = () => ROADMAP_ITEMS.map(({ id, heading, description, items, active }) => {
     const itemContentClassname = cn(
       'itemContent',
       { itemContentActive: active }
@@ -51,7 +48,24 @@ function Roadmap() {
       <li key={ id } className={ styles.item }>
         <div className={ itemContentClassname }>
           { heading && <Heading type="h3" size="h4" className={ styles.heading }>{ heading }</Heading>}
-          <Paragraph>{ description}</Paragraph>
+          { description && <Paragraph>{ description }</Paragraph>}
+          {
+            items && (
+              <ul className={ styles.itemList }>
+                {
+                  items?.map((item, index) => (
+                    <motion.li 
+                      variants={ SLIDE_BOTTOM_WITH_FADE.variants }
+                      key={ index }
+                      className={ styles.itemListItem }
+                      transition={ SLIDE_BOTTOM_WITH_FADE.options }
+                    >
+                      {item}
+                    </motion.li>
+                  ))
+                }
+              </ul>)
+          }
         </div>
       </li>
     );

@@ -25,10 +25,13 @@ function ThirdFeature({
           PLAY TO EARN
       </Heading>
       <Paragraph marginTop="24">
-          Welcome to the era of earning money for playing games.
+        In addition to collecting items and meeting new people, HELIX features competitive PvP game modes and events where you can win tokens
       </Paragraph>
       <Paragraph>
-          HELIX features competitive PvP game modes and events where you can win tokens
+        Welcome to the era of earning money for playing games.
+      </Paragraph>
+      <Paragraph>
+        <b>HELIX</b>
       </Paragraph>
     </TextSection>
   );

@@ -35,10 +35,10 @@ function RoadmapSection({
           
         <div className={ styles.content }>
           <Paragraph marginTop="24">
-          HELIX is in continual development and aiming for an early access build (pre-alpha) by Q2-Q3 of 2022. We’ll be regularly updating on.. 
+            HELIX is currently in development, with an early access pre-alpha release aiming for Q2 2022. We’ll be actively updating our development progress on Discord, Twitter, and YouTube.
           </Paragraph>
           <Paragraph marginBottom="24">
-          For a more detailed.. visit our whitepaper for more info.
+            Read our interactive whitepaper / wiki for more details about game development and the game itself.
           </Paragraph>
 
           <motion.div
