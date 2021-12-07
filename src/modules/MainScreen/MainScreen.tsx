@@ -24,6 +24,7 @@ function MainScreen({ id }: SectionProps) {
         <motion.p 
           className={ styles.subheading }
           variants={ SLIDE_TOP_WITH_FADE.variants }
+          transition={ SLIDE_TOP_WITH_FADE.options }
         >Welcome to</motion.p>
 
         <Heading 
@@ -50,6 +51,7 @@ function MainScreen({ id }: SectionProps) {
         <motion.div
           className={ styles.button }
           variants={ SLIDE_BOTTOM_WITH_FADE.variants }
+          transition={ SLIDE_BOTTOM_WITH_FADE.options }
         >
           <Button 
             href="#trailer"

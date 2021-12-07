@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 import Accordion from '@components/Accordion';
 import Button from '@components/Button';
@@ -8,6 +9,8 @@ import { Heading, Paragraph } from '@components/Typography';
 import * as styles from './FaqSection.module.scss';
 
 import { SectionProps } from '@shared/types/modules';
+
+import { FADE, SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
 
 const QUESTIONS = [
   {
@@ -48,24 +51,42 @@ function FaqSection({
   id
 }: SectionProps) {
   return (
-    <Container id={ id } as="section" className={ styles.section } >
-      <Heading type="h2" className={ styles.heading }>
+    <Container id={ id } as="section">
+      <motion.div 
+        className={ styles.section }
+        variants={ {} }
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        transition={ { staggerChildren: 0.15 } }
+      >
+        <Heading type="h2" className={ styles.heading }>
         FREQUENTLY ASKED QUESTIONS
-      </Heading>
+        </Heading>
           
-      <div className={ styles.content }>
-        <Paragraph marginTop="24" marginBottom="24">
+        <div className={ styles.content }>
+          <Paragraph marginTop="24" marginBottom="24">
           We’ve answered our most asked questions here. Read our whitepaper/wiki for more details and message us on Discord if you have more questions.
-        </Paragraph>
+          </Paragraph>
 
-        <Button href="#">
+          <motion.div
+            variants={ SLIDE_BOTTOM_WITH_FADE.variants }
+            transition={ SLIDE_BOTTOM_WITH_FADE.options }
+          >
+            <Button href="#">
           VISIT WHITEPAPER / WIKI
-        </Button>
-      </div>
+            </Button>
+          </motion.div>
+        </div>
 
-      <div className={ styles.questions }>
-        <Accordion items={ QUESTIONS } />
-      </div>
+        <motion.div 
+          className={ styles.questions }
+          variants={ FADE.variants }
+          transition={ FADE.options }
+        >
+          <Accordion items={ QUESTIONS } />
+        </motion.div>
+      </motion.div>
     </Container>
   );
 }

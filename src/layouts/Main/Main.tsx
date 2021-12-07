@@ -8,6 +8,7 @@ import Header from '@components/Header';
 import Loader from '@components/Loader';
 import ScrollProgress from '@components/ScrollProgress';
 
+import { SCROLL_HEIGHT } from '@shared/constants';
 import withLoader, { useLoader } from '@shared/hocs/withLoader';
 import withMedia from '@shared/hocs/withMedia';
 import withSections from '@shared/hocs/withSections';
@@ -44,7 +45,7 @@ function Main({ children }: MainProps) {
                 <Header />
               </motion.div>
 
-              <main className={ styles.main }>
+              <main className={ styles.main } style={ { height: `${SCROLL_HEIGHT}px` } }>
                 { children }
               </main>
 

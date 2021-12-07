@@ -6,8 +6,11 @@ import GallerySection from '@modules/GallerySection';
 import MainScreen from '@modules/MainScreen';
 import RoadmapSection from '@modules/RoadmapSection';
 import SecondFeature from '@modules/SecondFeature';
+import TeamSection from '@modules/TeamSection';
 import ThirdFeature from '@modules/ThirdFeature';
 import TrailerSection from '@modules/TrailerSection';
+
+export const SCROLL_HEIGHT = 15000;
 
 export const SECTIONS = [
   {
@@ -41,6 +44,10 @@ export const SECTIONS = [
   {
     id: 'founders-nft',
     component: GallerySection
+  },
+  {
+    id: 'team',
+    component: TeamSection
   },
   {
     id: 'faq',
