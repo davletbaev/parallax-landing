@@ -7,6 +7,8 @@ import { useMedia } from '@shared/hocs/withMedia';
 
 import * as styles from './Gallery.module.scss';
 
+import { FADE } from '@shared/transitions';
+
 type GalleryProps = {
   children: React.ReactNode
 }
@@ -34,14 +36,14 @@ function Gallery({ children }: GalleryProps) {
 
   const renderChildren = () => React.Children.map(children, (child, index) => (
     <motion.div 
-      variants={ galleryVariants }
+      variants={ isDesktop ? galleryVariants : FADE.variants }
       custom={ index }
       className={ styles.item }
       transition={
-        { 
+        isDesktop ? { 
           type: 'spring',
           bounce: 0.15 
-        } 
+        } : FADE.options
       }
     >
       { child }
@@ -61,9 +63,14 @@ function Gallery({ children }: GalleryProps) {
   }
 
   return (
-    <Carousel>
-      { renderChildren() }
-    </Carousel>
+    <motion.div
+      variants={ {} }
+      transition={ { staggerChildren: 0 } }
+    >
+      <Carousel>
+        { renderChildren() }
+      </Carousel>
+    </motion.div>
   );
 }
 

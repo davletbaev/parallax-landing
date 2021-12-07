@@ -9,8 +9,8 @@ import * as styles from './BackgroundVideo.module.scss';
 import backgroundImageSrcAvif from '@assets/images/background.avif';
 import backgroundImageSrc from '@assets/images/background.jpg';
 import backgroundImageSrcWebp from '@assets/images/background.webp';
-import bgVideoMP4 from '@assets/video/bg-video.mp4';
-import bgVideoWEBM from '@assets/video/bg-video.webm';
+import bgVideoMP4 from '@assets/video/bg-video-dissolve.mp4';
+import bgVideoWEBM from '@assets/video/bg-video-dissolve.webm';
 
 const fadeVariants = {
   initial: {

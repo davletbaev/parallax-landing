@@ -19,15 +19,6 @@ function Logo({ to = null, large, animate }: LogoProps) {
     { animate: animate }
   );
 
-  const handleClick: MouseEventHandler<HTMLAnchorElement> = (e) => {
-    e.preventDefault();
-    window.scrollTo({ 
-      top: 0,
-      left: 0,
-      behavior: 'smooth' 
-    });
-  };
-
   const logo = (
     <svg
       className={ styles.logo }
@@ -49,7 +40,6 @@ function Logo({ to = null, large, animate }: LogoProps) {
       <Link
         to={ to }
         className={ logoClasses }
-        onClick={ handleClick }
       >
         { logo }
       </Link>

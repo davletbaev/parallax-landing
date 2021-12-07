@@ -1,6 +1,4 @@
 .roadmap {
-  flex: 1 0 auto;
-
   display: flex;
   flex-direction: column;
 }
@@ -105,6 +103,12 @@
 
 .heading {
   margin-top: -0.25rem;
+}
+
+@media (min-width: 600px) {
+  .roadmap {
+    flex: 1 0 auto;
+  }
 }
 
 @media (min-width: 1024px) {

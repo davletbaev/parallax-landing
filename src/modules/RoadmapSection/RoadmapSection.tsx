@@ -6,6 +6,8 @@ import Container from '@components/Container';
 import Roadmap from '@components/Roadmap';
 import { Heading, Paragraph } from '@components/Typography';
 
+import { useMedia } from '@shared/hocs/withMedia';
+
 import * as styles from './RoadmapSection.module.scss';
 
 import { SectionProps } from '@shared/types/modules';
@@ -15,6 +17,8 @@ import { SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
 function RoadmapSection({ 
   id,
 }: SectionProps) {
+  const { isTabletOrBigger } = useMedia();
+  
   return (
     <Container id={ id } as="section">
       <motion.div 
@@ -47,12 +51,16 @@ function RoadmapSection({
           </motion.div>
         </div>
 
-        <motion.div 
-          className={ styles.roadmap }
-          variants={ SLIDE_BOTTOM_WITH_FADE.variants }
-          transition={ SLIDE_BOTTOM_WITH_FADE.options }>
-          <Roadmap />
-        </motion.div>
+        {
+          isTabletOrBigger && (
+            <motion.div 
+              className={ styles.roadmap }
+              variants={ SLIDE_BOTTOM_WITH_FADE.variants }
+              transition={ SLIDE_BOTTOM_WITH_FADE.options }>
+              <Roadmap />
+            </motion.div>
+          )
+        }
       </motion.div>
     </Container>
   );

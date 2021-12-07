@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 import Container from '@components/Container';
 import Gallery from '@components/Gallery';
@@ -7,7 +8,6 @@ import { Heading, Paragraph } from '@components/Typography';
 import * as styles from './GallerySection.module.scss';
 
 import { SectionProps } from '@shared/types/modules';
-import { motion } from 'framer-motion';
 
 const IMAGES = [
   'https://source.unsplash.com/400x400/?cars&sig=1',
@@ -38,6 +38,7 @@ function GallerySection({
             { renderImages() }
           </Gallery>
         </div>
+        
         <div className={ styles.content }>
           <Heading type="h2" align="left">
           FOUNDERS NFT COLLECTION
