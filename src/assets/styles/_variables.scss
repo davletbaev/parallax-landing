@@ -44,8 +44,6 @@
   @media (min-width: 600px) {
     --app-padding: var(--gap-24);
 
-    --fs-nav: var(--fs-text);
-
     --fs-h1: 3rem;
     --fs-h2: 2.5rem;
     --fs-h3: 2rem;
@@ -55,6 +53,14 @@
     --lh-h2: 3rem;
     --lh-h3: 
     --lh-h4:
+  }
+
+  @media (min-width: 1024px) {
+    --fs-nav: var(--fs-text-sm);
+  }
+
+  @media (min-width: 1200px) {
+    --fs-nav: var(--fs-text);
   }
 
   @media (min-width: 1600px) {
