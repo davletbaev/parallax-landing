@@ -6,7 +6,7 @@ import Button from '@components/Button';
 import Container from '@components/Container';
 import { Heading, Paragraph } from '@components/Typography';
 
-import { FAQ_QUESTIONS } from '@shared/constants';
+import { ExternalUrl, FAQ_QUESTIONS } from '@shared/constants';
 import { useMedia } from '@shared/hocs/withMedia';
 
 import * as styles from './FaqSection.module.scss';
@@ -43,7 +43,7 @@ function FaqSection({
             variants={ SLIDE_BOTTOM_WITH_FADE.variants }
             transition={ SLIDE_BOTTOM_WITH_FADE.options }
           >
-            <Button href="#">
+            <Button href={ ExternalUrl.wiki }>
             VISIT WHITEPAPER / WIKI
             </Button>
           </motion.div>

@@ -5,6 +5,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: 'https://www.yourdomain.tld',
     title: 'HELIX',
+    preview: './preview.jpg'
   },
   plugins: [
     {

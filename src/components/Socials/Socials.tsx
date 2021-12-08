@@ -3,6 +3,8 @@ import classnames from 'classnames/bind';
 
 import Icon from '@components/Icon';
 
+import { ExternalUrl } from '@shared/constants';
+
 import * as styles from './Socials.module.scss';
 
 const cn = classnames.bind(styles);
@@ -15,17 +17,17 @@ const SOCIALS = [
   {
     id: 'discord',
     label: 'Discord',
-    url: '#'
+    url: ExternalUrl.discord
   },
   {
     id: 'twitter',
     label: 'Twitter',
-    url: '#'
+    url: ExternalUrl.twitter
   },
   {
     id: 'youtube',
     label: 'YouTube',
-    url: '#'
+    url: ExternalUrl.youtube
   },
   {
     id: 'mail',

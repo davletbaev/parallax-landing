@@ -1,12 +1,13 @@
 import React from 'react';
 
+import { ExternalUrl } from '@shared/constants';
 import { useSections } from '@shared/hocs/withSections';
 
 import * as styles from './Navigation.module.scss';
 
 const NAV_ITEMS = [
   {
-    path: '/whitepaper',
+    path: ExternalUrl.wiki,
     label: 'Whitepaper',
     target: '_blank'
   },

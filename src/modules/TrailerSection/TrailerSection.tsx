@@ -7,6 +7,8 @@ import VideoPlayer from '@components/VideoPlayer';
 
 import * as styles from './TrailerSection.module.scss';
 
+import cover from '@assets/images/cover.jpg';
+
 import { SectionProps } from '@shared/types/modules';
 
 import { SLIDE_BOTTOM_WITH_FADE, SLIDE_LEFT_WITH_FADE } from '@shared/transitions';
@@ -23,7 +25,7 @@ function TrailerSection({
         exit="exit"
         transition={ SLIDE_LEFT_WITH_FADE.options }
       >
-        <VideoPlayer videoId="RYdCuw7L1qk" />
+        <VideoPlayer videoId="RYdCuw7L1qk" cover={ cover } />
       </motion.div>
       <motion.div className={ styles.content }
         variants={ {} }
