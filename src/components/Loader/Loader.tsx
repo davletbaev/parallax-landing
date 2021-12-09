@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 
+import Container from '@components/Container';
 import Logo from '@components/Logo';
 import ProgressBar from '@components/ProgressBar';
 
@@ -21,14 +22,16 @@ function Loader() {
       animate="enter"
       exit="exit"
     >
-      <div className={ styles.logo }>
-        <Logo to={ null } large animate />
-      </div>
+      <Container className={ styles.container }>
+        <div className={ styles.logo }>
+          <Logo to={ null } large animate />
+        </div>
 
-      <div className={ styles.progress }>
-        <ProgressBar progress={ progress } />
-        <div className={ styles.description }>Loading experience...</div>
-      </div>
+        <div className={ styles.progress }>
+          <ProgressBar progress={ progress } />
+          <div className={ styles.description }>Loading experience...</div>
+        </div>
+      </Container>
     </motion.div>
   );
 }
