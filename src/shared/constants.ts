@@ -26,6 +26,29 @@ export enum ExternalUrl {
   twitter = 'https://twitter.com/HELIX_Metaverse'
 }
 
+export const SOCIALS = [
+  {
+    id: 'discord',
+    label: 'Discord',
+    url: ExternalUrl.discord
+  },
+  {
+    id: 'twitter',
+    label: 'Twitter',
+    url: ExternalUrl.twitter
+  },
+  {
+    id: 'youtube',
+    label: 'YouTube',
+    url: ExternalUrl.youtube
+  },
+  {
+    id: 'mail',
+    label: 'Email',
+    url: '#'
+  }
+];
+
 export const SCROLL_HEIGHT = 15000;
 
 export const SECTIONS = [
