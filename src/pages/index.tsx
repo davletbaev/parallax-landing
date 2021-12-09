@@ -28,27 +28,27 @@ const IndexPage = () => {
 
     switch (true) {
       case value > 0.9:
-        index = 12;
-
-        break;
-      case isMobile && value > 0.85:
-        index = 11;
-
-        break;
-      case value > 0.81:
         index = 10;
 
         break;
-      case value > 0.72:
+      case isMobile && value > 0.85:
+        index = 12;
+
+        break;
+      case value > 0.81:
         index = 9;
 
         break;
-      case value > 0.63:
+      case value > 0.72:
         index = 8;
 
         break;
-      case isMobile && value > 0.58:
+      case value > 0.63:
         index = 7;
+
+        break;
+      case isMobile && value > 0.58:
+        index = 11;
 
         break;
       case value > 0.54:
@@ -101,7 +101,7 @@ const IndexPage = () => {
     setCurrentIndex(index);
 
     if (typeof window !== 'undefined') {
-      window.scrollTo({ top: SCROLL_HEIGHT / sectionsCount.current * (index + 0.75) });
+      window.scrollTo({ top: SCROLL_HEIGHT / sectionsCount.current * (index + 1) });
     }
   }, [ currentSection ]);
 

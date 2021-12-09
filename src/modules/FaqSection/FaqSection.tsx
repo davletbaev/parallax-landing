@@ -43,8 +43,8 @@ function FaqSection({
             variants={ SLIDE_BOTTOM_WITH_FADE.variants }
             transition={ SLIDE_BOTTOM_WITH_FADE.options }
           >
-            <Button href={ ExternalUrl.wiki }>
-            VISIT WHITEPAPER / WIKI
+            <Button href={ ExternalUrl.wiki } target="_blank">
+              VISIT WHITEPAPER / WIKI
             </Button>
           </motion.div>
         </div>

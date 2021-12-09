@@ -12,10 +12,12 @@ import TeamSection from '@modules/TeamSection';
 import ThirdFeature from '@modules/ThirdFeature';
 import TrailerSection from '@modules/TrailerSection';
 
+import { FaqQuestion } from './types/components';
+
 export enum Meta {
   title = 'HELIX',
   description = 'HELIX is an open-world NFT metaverse built on the foundation of persistent virtual worlds and true digital ownership.',
-  url = 'https://helix.com',
+  url = 'https://helixmetaverse.com',
   preview = './preview.jpg'
 }
 
@@ -23,7 +25,9 @@ export enum ExternalUrl {
   wiki = 'https://wiki.helixmetaverse.com/',
   youtube = 'https://www.youtube.com/channel/UC5mNY3v-d8-I2Yaks-7W1Mw',
   discord = 'https://discord.gg/xGJEH69sWK',
-  twitter = 'https://twitter.com/HELIX_Metaverse'
+  twitter = 'https://twitter.com/HELIX_Metaverse',
+  email = 'contact@helixmetaverse.com',
+  faq = 'https://rose-taxi-801.notion.site/More-FAQs-3b729206ff1f4c56b0cfa725eff5de6d'
 }
 
 export const SOCIALS = [
@@ -45,7 +49,7 @@ export const SOCIALS = [
   {
     id: 'mail',
     label: 'Email',
-    url: '#'
+    url: `mailto:${ ExternalUrl.email }`
   }
 ];
 
@@ -81,10 +85,6 @@ export const SECTIONS = [
     component: RoadmapSection
   },
   {
-    id: 'roadmap-mobile',
-    component: RoadmapMobile
-  },
-  {
     id: 'founders-nft',
     component: GallerySection
   },
@@ -97,16 +97,20 @@ export const SECTIONS = [
     component: FaqSection
   },
   {
+    id: 'contacts',
+    component: ContactsSection
+  },
+  {
+    id: 'roadmap-mobile',
+    component: RoadmapMobile
+  },
+  {
     id: 'faq-mobile',
     component: FaqMobile
   },
-  {
-    id: 'contacts',
-    component: ContactsSection
-  }
 ];
 
-export const FAQ_QUESTIONS = [
+export const FAQ_QUESTIONS: FaqQuestion[] = [
   {
     heading: 'What is HELIX?',
     text: 'HELIX is an open-world multiplayer online game where you can meet new people, buy and sell virtual items, and play games. '
@@ -136,19 +140,7 @@ export const FAQ_QUESTIONS = [
     text: 'Yes, we’re currently in development and will announce details soon.'
   },
   {
-    heading: 'What platforms or consoles will I be able to play on?',
-    text: 'We plan to release for PC first, and PS4/5 and Xbox Series X/S in the coming months.'
-  },
-  {
-    heading: 'Will there be VR support?',
-    text: 'In the long-term, yes. Currently we’re focused on PC gameplay.'
-  },
-  {
-    heading: 'Can I apply to join the team?',
-    text: 'Absolutely, we’re always looking for exceptional talent. Check our open positions and apply here.'
-  },
-  {
-    heading: 'What’s the point of vehicle ownership if I can just drive any car in the map?',
-    text: 'You can only drive vehicles that you own. No one can come up and steal your car away from you.'
+    heading: 'More FAQ',
+    link: ExternalUrl.faq,
   },
 ];
