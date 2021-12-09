@@ -49,7 +49,7 @@ export const SOCIALS = [
   }
 ];
 
-export const SCROLL_HEIGHT = 15000;
+export const SCROLL_HEIGHT = 10000;
 
 export const SECTIONS = [
   {
