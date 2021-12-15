@@ -73,8 +73,6 @@ const Modal = React.forwardRef<ModalRef, ModalProps>(({
   };
 
   const handleToggle = () => {
-    console.log(isOpen);
-
     return isOpen ? handleClose() : handleOpen();
   };
 

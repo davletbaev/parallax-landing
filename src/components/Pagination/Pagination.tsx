@@ -1,28 +1,25 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { SECTIONS } from '@shared/constants';
 import { useSections } from '@shared/hocs/withSections';
 
 import * as styles from './Pagination.module.scss';
 
 function Pagination() {
   const featuresCount = useRef('04');
-  const [ current, setCurrent ] = useState<string | null>(null);
+  const [ currentIndex, setCurrentIndex ] = useState<string | null>(null);
   const { currentSection } = useSections();
 
-  const section = SECTIONS[currentSection].id;
-
   useEffect(() => {
-    if (!section.startsWith('feature')) {
-      setCurrent(null);
+    if (!currentSection.startsWith('feature')) {
+      setCurrentIndex(null);
   
       return;
     }
 
-    setCurrent(section.slice(-1).padStart(2, '0'));
-  }, [ section ]);
+    setCurrentIndex(currentSection.slice(-1).padStart(2, '0'));
+  }, [ currentSection ]);
 
-  if (!current) {
+  if (!currentIndex) {
     return null;
   }
 

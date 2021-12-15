@@ -7,7 +7,7 @@ import VideoPlayer from '@components/VideoPlayer';
 
 import * as styles from './TrailerSection.module.scss';
 
-import trailerSrc from '@assets/video/trailer.mp4';
+import cover from '@assets/images/cover.jpg';
 
 import { SectionProps } from '@shared/types/modules';
 
@@ -25,14 +25,8 @@ function TrailerSection({
         exit="exit"
         transition={ SLIDE_LEFT_WITH_FADE.options }
       >
-          <div name="layers"
-    data-force={15} data-depth={50}
-    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
-        <VideoPlayer src={ trailerSrc } />
-        </div>
+        <VideoPlayer videoId="RYdCuw7L1qk" cover={ cover } />
       </motion.div>
-
-      
       <motion.div className={ styles.content }
         variants={ {} }
         initial="initial"

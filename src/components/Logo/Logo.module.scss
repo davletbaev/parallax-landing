@@ -15,12 +15,26 @@
 }
 
 .large .logo {
-  width: 36rem;
-  height: 5.75rem;
+  width: 18rem;
+  height: 2.875rem;
 }
 
 .animate .logo {
   animation: glow linear 2s infinite alternate;
+}
+
+@media (min-width: 600px) {
+  .large .logo {
+    width: 24rem;
+    height: 3.83rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .large .logo {
+    width: 36rem;
+    height: 5.75rem;
+  }
 }
 
 @keyframes glow {

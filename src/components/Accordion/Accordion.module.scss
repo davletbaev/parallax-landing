@@ -14,7 +14,7 @@
 }
 
 .item + .item {
-  margin-top: var(--gap-24);
+  margin-top: var(--gap-16);
 }
 
 .container {
@@ -25,15 +25,18 @@
 }
 
 .content {
-  padding: 0.25rem 0 var(--gap-16);
+  padding: 0 0 var(--gap-8);
 }
 
 .headline {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: var(--gap-12);
+  padding-bottom: var(--gap-8);
   cursor: pointer;
+
+  color: var(--color-white);
+  text-decoration: none;
 }
 
 .icon {

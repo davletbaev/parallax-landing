@@ -26,6 +26,8 @@ function Heading({
   align,
   className,
   children,
+  variants,
+  transition
 }: HeadingProps) {
   const classes = cn(
     'heading',
@@ -39,9 +41,9 @@ function Heading({
   return React.createElement(
     motion[type],
     {
-      variants: SLIDE_TOP_WITH_FADE.variants,
+      variants: variants || SLIDE_TOP_WITH_FADE.variants,
       className: classes,
-      transition: SLIDE_TOP_WITH_FADE.options,
+      transition: transition || SLIDE_TOP_WITH_FADE.options,
     },
     children
   );

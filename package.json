@@ -24,6 +24,7 @@
     "gatsby": "^4.2.0",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-image": "^2.2.0",
+    "gatsby-plugin-manifest": "^4.3.0",
     "gatsby-plugin-minify-classnames": "^0.3.1",
     "gatsby-plugin-polyfill-io": "^1.1.0",
     "gatsby-plugin-postcss": "^5.2.0",
@@ -36,7 +37,6 @@
     "gatsby-source-filesystem": "^4.2.0",
     "gatsby-transformer-sharp": "^4.2.0",
     "gatsby-transformer-typescript-css-modules": "^1.0.14",
-    "gsap": "^3.8.0",
     "lodash": "^4.17.21",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -45,10 +45,12 @@
     "react-modal": "^3.14.4",
     "react-scroll-section": "^3.1.0",
     "react-typist": "^2.0.5",
+    "react-youtube": "^7.13.1",
     "recompose": "^0.30.0",
     "sass": "^1.43.4"
   },
   "devDependencies": {
+    "@types/react-helmet": "^6.1.4",
     "@types/react-modal": "^3.13.1",
     "@types/react-typist": "^2.0.3",
     "@types/recompose": "^0.30.9",

@@ -1,4 +1,5 @@
 import React from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { compose } from 'recompose';
 
 import BackgroundVideo from '@components/BackgroundVideo';
@@ -7,6 +8,7 @@ import Header from '@components/Header';
 import Loader from '@components/Loader';
 import ScrollProgress from '@components/ScrollProgress';
 
+import { SCROLL_HEIGHT } from '@shared/constants';
 import withLoader, { useLoader } from '@shared/hocs/withLoader';
 import withMedia from '@shared/hocs/withMedia';
 import withSections from '@shared/hocs/withSections';
@@ -14,6 +16,8 @@ import withSections from '@shared/hocs/withSections';
 import * as styles from './Main.module.scss';
 
 import '@assets/styles/global.scss';
+
+import { FADE } from '@shared/transitions';
 
 type MainProps = {
   children?: React.ReactNode
@@ -24,22 +28,40 @@ function Main({ children }: MainProps) {
 
   return (
     <div className={ styles.layout }>
-      {
-        loading ? (
-          <Loader />
-        ) : (
-          <>
-            <ScrollProgress />
-            <Header />
+      <AnimatePresence>
+        {
+          loading ? (
+            <Loader />
+          ) : (
+            <>
+              <motion.div 
+                variants={ FADE.variants }
+                initial="initial"
+                animate="enter"
+                exit="exit"
+                transition={ { delay: 1 } }
+              >
+                <ScrollProgress />
+                <Header />
+              </motion.div>
 
-            <main className={ styles.main }>
-              { children }
-            </main>
+              <main className={ styles.main } style={ { height: `${SCROLL_HEIGHT}px` } }>
+                { children }
+              </main>
 
-            <BottomBar />
-          </>
-        )
-      }
+              <motion.div 
+                variants={ FADE.variants }
+                initial="initial"
+                animate="enter"
+                exit="exit"
+                transition={ { delay: 1 } }
+              >
+                <BottomBar />
+              </motion.div>
+            </>
+          )
+        }
+      </AnimatePresence>
 
       <BackgroundVideo />
     </div>

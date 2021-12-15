@@ -1,20 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
-
-import { Heading, Paragraph } from '@components/Typography';
+import React, { useState } from 'react';
 
 import { useMedia } from '@shared/hocs/withMedia';
 
 import * as styles from './Accordion.module.scss';
 
-import AccordionItem from './AccordionItem';
+import { FaqQuestion } from '@shared/types/components';
 
-type AccordionItem = {
-  heading: string,
-  text: string
-}
+import AccordionItem from './AccordionItem';
+import AccordionLink from './AccordionLink';
 
 type AccordionProps = {
-  items: AccordionItem[]
+  items: FaqQuestion[]
 }
 
 function Accordion({ items }: AccordionProps) {
@@ -31,14 +27,22 @@ function Accordion({ items }: AccordionProps) {
     setActive(index);
   };
 
-  const renderItems = () => items.map(({ heading, text }, index) => (
+  const renderItems = () => items.map(({ heading, text, link }, index) => (
     <li key={ index } className={ styles.item }>
-      <AccordionItem 
-        active={ active === index }
-        heading={ heading }
-        text={ text }
-        onToggle={ handleItemToggle(index) }
-      />
+      {
+        link
+          ? <AccordionLink
+            heading={ heading }
+            href={ link } />    
+          : (
+            <AccordionItem 
+              active={ active === index }
+              heading={ heading }
+              text={ text || '' }
+              onToggle={ handleItemToggle(index) }
+            />
+          )
+      }
     </li>
   ));
 

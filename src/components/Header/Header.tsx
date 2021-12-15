@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { MouseEventHandler, useRef, useState } from 'react';
+=======
+import React, { useRef, useState } from 'react';
+>>>>>>> 252e79ebfabd8870d1969f34a57126fe34259520
 
 import Button from '@components/Button';
 import Container from '@components/Container';
@@ -56,7 +60,6 @@ function Header() {
               href="#trailer"
               variant="ghost"
               block
-              onClick={ handleTrailerButtonClick }
             >
             Watch trailer
             </Button>

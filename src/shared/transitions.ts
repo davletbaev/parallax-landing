@@ -19,7 +19,7 @@ export const FADE = {
 export const SLIDE_TOP_WITH_FADE = {
   variants: {
     initial: {
-      y: '-50%',
+      y: '-25%',
       opacity: 0,
     },
     enter: {
@@ -27,7 +27,7 @@ export const SLIDE_TOP_WITH_FADE = {
       opacity: 1,
     },
     exit: {
-      y: '-50%',
+      y: '-25%',
       opacity: 0,
     },
   },

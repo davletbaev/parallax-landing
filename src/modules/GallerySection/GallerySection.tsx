@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 import Container from '@components/Container';
 import Gallery from '@components/Gallery';
@@ -8,11 +9,16 @@ import * as styles from './GallerySection.module.scss';
 
 import { SectionProps } from '@shared/types/modules';
 
+import image1 from './image1.jpg';
+import image2 from './image2.jpg';
+import image3 from './image3.jpg';
+import image4 from './image4.jpg';
+
 const IMAGES = [
-  'https://source.unsplash.com/720x720/?cars&sig=1',
-  'https://source.unsplash.com/720x720/?games&sig=2',
-  'https://source.unsplash.com/720x720/?weapons&sig=3',
-  'https://source.unsplash.com/720x720/?market&sig=4',
+  image1,
+  image2,
+  image3,
+  image4,
 ];
 
 function GallerySection({ 

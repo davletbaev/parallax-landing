@@ -1,48 +1,19 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 import Accordion from '@components/Accordion';
 import Button from '@components/Button';
 import Container from '@components/Container';
 import { Heading, Paragraph } from '@components/Typography';
 
+import { ExternalUrl, FAQ_QUESTIONS } from '@shared/constants';
+import { useMedia } from '@shared/hocs/withMedia';
+
 import * as styles from './FaqSection.module.scss';
 
 import { SectionProps } from '@shared/types/modules';
 
-const QUESTIONS = [
-  {
-    heading: 'What is HELIX?',
-    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-  },
-  {
-    heading: 'When can I play?',
-    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-  },
-  {
-    heading: 'What platforms or consoles will HELIX be available on?',
-    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-  },
-  {
-    heading: 'Will there be VR support?',
-    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-  },
-  {
-    heading: 'What is HELIX?',
-    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-  },
-  {
-    heading: 'When can I play?',
-    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-  },
-  {
-    heading: 'What platforms or consoles will HELIX be available on?',
-    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-  },
-  {
-    heading: 'Will there be VR support?',
-    text: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry`s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-  },
-];
+import { FADE, SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
 
 function FaqSection({ 
   id

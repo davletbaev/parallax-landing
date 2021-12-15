@@ -44,8 +44,11 @@
   @media (min-width: 600px) {
     --app-padding: var(--gap-24);
 
+<<<<<<< HEAD
     --fs-nav: var(--fs-text);
 
+=======
+>>>>>>> 252e79ebfabd8870d1969f34a57126fe34259520
     --fs-h1: 3rem;
     --fs-h2: 2.5rem;
     --fs-h3: 2rem;
@@ -57,6 +60,17 @@
     --lh-h4:
   }
 
+<<<<<<< HEAD
+=======
+  @media (min-width: 1024px) {
+    --fs-nav: var(--fs-text-sm);
+  }
+
+  @media (min-width: 1200px) {
+    --fs-nav: var(--fs-text);
+  }
+
+>>>>>>> 252e79ebfabd8870d1969f34a57126fe34259520
   @media (min-width: 1600px) {
     --app-padding: var(--gap-32);
 

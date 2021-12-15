@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 import Container from '@components/Container';
 import Socials from '@components/Socials';
@@ -8,6 +9,8 @@ import { Heading, Paragraph } from '@components/Typography';
 import * as styles from './ContactsSection.module.scss';
 
 import { SectionProps } from '@shared/types/modules';
+
+import { SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
 
 function ContactsSection({ 
   id,

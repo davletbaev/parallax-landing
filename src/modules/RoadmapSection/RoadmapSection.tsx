@@ -1,9 +1,12 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 import Button from '@components/Button';
 import Container from '@components/Container';
 import Roadmap from '@components/Roadmap';
 import { Heading, Paragraph } from '@components/Typography';
+
+import { useMedia } from '@shared/hocs/withMedia';
 
 import * as styles from './RoadmapSection.module.scss';
 

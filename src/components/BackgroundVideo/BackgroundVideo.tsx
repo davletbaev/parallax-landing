@@ -30,6 +30,7 @@ function BackgroundVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const controllerRef = useRef(typeof window !== 'undefined' ? new AbortController() : null);
 
+  const [ videoVisible, setVideoVisible ] = useState(false);
   const [ imageLoaded, setImageLoaded ] = useState(false);
   const [ status, setStatus ] = useState('loading');
   const [ src, setSrc ] = useState('');
@@ -349,8 +350,12 @@ document.addEventListener('mousemove', function (e) {
 
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange((value) => {
+      setVideoVisible(value > 0.09);
+
       if (videoRef.current && videoRef.current.duration) {
-        videoRef.current.currentTime = value * videoRef.current.duration;
+        const multiplier = (value - 0.09) / 0.91;
+
+        videoRef.current.currentTime = multiplier * videoRef.current.duration;
       }
     });
 
@@ -381,9 +386,9 @@ document.addEventListener('mousemove', function (e) {
   return (
     <div className={ styles.container }>
       <AnimatePresence>
-        {/* {
+        {
           (status === 'fallback' || status === 'loading')
-            ? ( */}
+            ? (
               <div className={ styles.background } name="cards">
                 <picture>
                   <source srcSet={ backgroundImageSrcAvif } type="image/avif" />
@@ -415,7 +420,7 @@ document.addEventListener('mousemove', function (e) {
             )
        
            
-        {/* } */}
+        }
         
       </AnimatePresence>
       <div id="cursor" className={styles.cursor}></div>

@@ -1,0 +1,385 @@
+{
+  "env": {
+    "node": true,
+    "browser": true,
+    "es2021": true,
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module",
+  },
+  "globals": {
+    "__PATH_PREFIX__": true,
+  },
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "simple-import-sort",
+  ],
+  "rules": {
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "import/order": "off",
+    "react/jsx-curly-spacing": [
+      "error",
+      {
+        "when": "always",
+      },
+    ],
+    "react/jsx-curly-newline": [
+      "error",
+      {
+        "multiline": "require",
+        "singleline": "forbid",
+      },
+    ],
+    "react/jsx-max-props-per-line": [
+      "error",
+      {
+        "maximum": 1,
+        "when": "multiline",
+      },
+    ],
+    "react/jsx-props-no-spreading": [
+      "off"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "comma-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true,
+      },
+    ],
+    "comma-dangle": [
+      "error",
+      "only-multiline"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "no-unused-expressions": "off",
+    "jsx-quotes": [
+      "error",
+      "prefer-double"
+    ],
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1,
+      },
+    ],
+    "space-infix-ops": [
+      "error",
+      {
+        "int32Hint": false,
+      },
+    ],
+    "semi-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true,
+      },
+    ],
+    "key-spacing": [
+      "error",
+      {
+        "afterColon": true,
+        "mode": "strict",
+      },
+    ],
+    "block-spacing": [
+      "error",
+      "always"
+    ],
+    "curly": [
+      "error",
+      "multi-line",
+      "consistent"
+    ],
+    "brace-style": [
+      "error",
+      "1tbs",
+      {
+        "allowSingleLine": false,
+      },
+    ],
+    "switch-colon-spacing": [
+      "error",
+      {
+        "after": true,
+        "before": false,
+      },
+    ],
+    "keyword-spacing": [
+      "error",
+      {
+        "before": true,
+      },
+    ],
+    "arrow-parens": [
+      "error",
+      "always"
+    ],
+    "object-property-newline": [
+      "error",
+      {
+        "allowAllPropertiesOnSameLine": false,
+      },
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": {
+          "consistent": true,
+        },
+        "ObjectPattern": {
+          "consistent": true,
+        },
+        "ImportDeclaration": {
+          "consistent": true,
+        },
+        "ExportDeclaration": {
+          "consistent": true,
+        },
+      },
+    ],
+    "space-in-parens": [
+      "error",
+      "never"
+    ],
+    "computed-property-spacing": [
+      "error",
+      "never"
+    ],
+    "rest-spread-spacing": [
+      "error",
+      "never"
+    ],
+    "arrow-spacing": "error",
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "array-bracket-spacing": [
+      "error",
+      "always",
+      {
+        "arraysInArrays": false,
+        "objectsInArrays": false,
+      },
+    ],
+    "array-element-newline": [
+      "error",
+      "consistent"
+    ],
+    "array-bracket-newline": [
+      "error",
+      {
+        "multiline": true,
+      },
+    ],
+    "function-paren-newline": [
+      "error",
+      "multiline"
+    ],
+    "function-call-argument-newline": [
+      "error",
+      "consistent"
+    ],
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": [
+          "const",
+          "let",
+          "var"
+        ],
+        "next": "*",
+      },
+      {
+        "blankLine": "any",
+        "prev": [
+          "const",
+          "let",
+          "var"
+        ],
+        "next": [
+          "const",
+          "let",
+          "var"
+        ],
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": [
+          "block-like",
+          "multiline-block-like",
+          "block"
+        ],
+      },
+      {
+        "blankLine": "always",
+        "prev": [
+          "block-like",
+          "multiline-block-like",
+          "block"
+        ],
+        "next": "*",
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": [
+          "return",
+          "break"
+        ],
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "export",
+      },
+      {
+        "blankLine": "any",
+        "prev": "export",
+        "next": "export",
+      },
+    ],
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          [
+            "^react",
+            "^\\w",
+            "^@(?!components|shared|store|data|modules|layouts)\\w+"
+          ],
+          [
+            "^@layouts"
+          ],
+          [
+            "^@modules"
+          ],
+          [
+            "^@components"
+          ],
+          [
+            "^@store",
+            "^\\./(\\w+).slice$"
+          ],
+          [
+            "^@shared/constants",
+            "^@shared/api",
+            "^@shared/helpers",
+            "^@shared/hocs",
+            "^@shared/hooks",
+            "@data"
+          ],
+          [
+            "^@assets/styles",
+            "^\\.\\./styles",
+            "^\\./(\\w+).module.scss$"
+          ],
+          [
+            "^@assets/images",
+            "^@assets/video"
+          ],
+          [
+            "^@types",
+            "^@shared/types",
+            "^\\./types$",
+            "^(\\w*|@components)(/\\w*)?/types$",
+          ],
+          [
+            "^\\.\\.(?!/?$)",
+            "^\\.\\./?$"
+          ],
+          [
+            "^\\.(\\/(?!types)\\w+)+$"
+          ],
+          [
+            "^\\u0000"
+          ],
+        ],
+      },
+    ],
+  },
+  "overrides": [
+    {
+      "files": "*.json",
+      "rules": {
+        "comma-dangle": "error"
+      }
+    }
+  ],
+  "settings": {
+    "react": {
+      "version": "detect",
+    },
+    "import/resolver": {
+      "alias": {
+        "map": [
+          [
+            "@modules",
+            "./src/modules"
+          ],
+          [
+            "@components",
+            "./src/components"
+          ],
+          [
+            "@assets",
+            "./src/assets"
+          ],
+          [
+            "@layouts",
+            "./src/layouts"
+          ],
+          [
+            "@shared",
+            "./src/shared"
+          ],
+          [
+            "@store",
+            "./src/store"
+          ]
+        ],
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx",
+          ".json"
+        ]
+      },
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    }
+  },
+}

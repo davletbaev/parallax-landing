@@ -1,13 +1,13 @@
-import React, { MouseEventHandler } from 'react';
+import React from 'react';
 
-import { SECTIONS } from '@shared/constants';
+import { ExternalUrl } from '@shared/constants';
 import { useSections } from '@shared/hocs/withSections';
 
 import * as styles from './Navigation.module.scss';
 
 const NAV_ITEMS = [
   {
-    path: '/whitepaper',
+    path: ExternalUrl.wiki,
     label: 'Whitepaper',
     target: '_blank'
   },
@@ -31,23 +31,12 @@ const NAV_ITEMS = [
 function Navigation() {
   const { currentSection } = useSections();
 
-  const section = SECTIONS[currentSection].id;
-
-  const handelNavClick = (path: string): MouseEventHandler<HTMLAnchorElement> => (e) => {
-    if (path.startsWith('#')) {
-      e.preventDefault();
-
-      document.querySelector(path)?.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const renderNav = () => NAV_ITEMS.map(({ path, label, target }) => (
     <li className={ styles.item } key={ path }>
       <a 
-        className={ styles[`#${section}` === path ? 'linkActive' : 'link'] }
+        className={ styles[`#${currentSection}` === path ? 'linkActive' : 'link'] }
         href={ path }
         target={ target || undefined }
-        onClick={ handelNavClick(path) }
       >
         { label }
       </a>

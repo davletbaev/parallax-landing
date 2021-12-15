@@ -1,4 +1,5 @@
-import React, { MouseEventHandler } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 import Button from '@components/Button';
 import Container from '@components/Container';

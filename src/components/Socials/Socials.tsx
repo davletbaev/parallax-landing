@@ -3,6 +3,8 @@ import classnames from 'classnames/bind';
 
 import Icon from '@components/Icon';
 
+import { SOCIALS } from '@shared/constants';
+
 import * as styles from './Socials.module.scss';
 
 const cn = classnames.bind(styles);
@@ -10,29 +12,6 @@ const cn = classnames.bind(styles);
 type SocialsProps = {
   transparent?: boolean
 }
-
-const SOCIALS = [
-  {
-    id: 'discord',
-    label: 'Discord',
-    url: '#'
-  },
-  {
-    id: 'twitter',
-    label: 'Twitter',
-    url: '#'
-  },
-  {
-    id: 'youtube',
-    label: 'YouTube',
-    url: '#'
-  },
-  {
-    id: 'mail',
-    label: 'Email',
-    url: '#'
-  }
-];
 
 function Socials({ transparent }: SocialsProps) {
   const socialsClasses = cn(

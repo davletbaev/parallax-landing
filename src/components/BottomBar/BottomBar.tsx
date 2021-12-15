@@ -23,7 +23,7 @@ function BottomBar() {
   }, []);
   
   return (
-    <Container as="footer" className={ styles.bottombar } name="layers" data-force={5} data-depth={-100} style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
+    <Container as="footer" className={ styles.bottombar }>
       <div className={ styles.pagination }>
         <Pagination />
       </div>
