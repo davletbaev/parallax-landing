@@ -1,0 +1,25 @@
+.navmodal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100%;
+  padding-top: 4rem;
+  padding-bottom: var(--gap-32);
+}
+
+.navigation {
+  flex: 1 0 auto;
+}
+
+.trailer {
+  flex: 0 0 auto;
+}
+
+.socials {
+  flex: 0 0 auto;
+
+  margin-top: var(--gap-24);
+
+  font-size: var(--gap-40);
+}

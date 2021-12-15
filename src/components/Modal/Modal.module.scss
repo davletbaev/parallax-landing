@@ -1,0 +1,51 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  z-index: 1000;
+  display: flex;
+  opacity: 0;
+  animation-fill-mode: both;
+}
+
+.content {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  color: var(--color-white);
+  background: var(--color-black);
+
+  transition: transform ease 0.15s;
+}
+
+.transitionFade {
+  opacity: 0;
+}
+
+.transitionFadeIn {
+  animation: fade ease-in 0.35s;
+}
+
+.transitionFadeExit {
+  animation: fade ease-out 0.35s reverse;
+}
+
+.open {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

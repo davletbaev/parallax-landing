@@ -1,0 +1,19 @@
+.carousel {
+  overflow: hidden;
+
+  padding: 0 var(--app-padding);
+  margin-left: calc(var(--app-padding) * -1);
+  margin-right: calc(var(--app-padding) * -1);
+}
+
+.container {
+  display: flex;
+}
+
+.slide {
+  flex: 0 0 16rem;
+
+  & + .slide {
+    margin-left: var(--gap-16);
+  }
+}

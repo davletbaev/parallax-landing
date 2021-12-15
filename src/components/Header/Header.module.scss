@@ -1,0 +1,41 @@
+.container {
+  perspective: 1800px;
+  transform-style: preserve-3d;
+  transition: 500ms ease-out;
+  position: fixed;
+  bottom: auto;
+  z-index: 1100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: var(--gap-16);
+  padding-bottom: var(--gap-16);
+}
+
+.navtoggle {
+  margin-right: -0.25rem;
+  padding: 0;
+
+  font-size: 2.5rem;
+
+  color: inherit;
+
+  background: none;
+  border: 0;
+  box-shadow: none;
+
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+  }
+
+  .trailer {
+    justify-self: end;
+  }
+}
