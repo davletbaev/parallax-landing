@@ -72,7 +72,7 @@ function BackgroundVideo() {
 
   useEffect(() => {
 
-    const cards = document.getElementsByName("cards");
+    const cards:any = document.getElementsByName("cards");
     const layers = document.getElementsByName("layers");
     const range = 40;
     
@@ -90,14 +90,14 @@ function BackgroundVideo() {
         var rotateForce = 20
       timeout = window.requestAnimationFrame(() => {
        
-        [].forEach.call(cards, (card) => {
+        [].forEach.call(cards, (card:any) => {
           const xValue = (x/window.innerWidth*rotateForce*2)-rotateForce;
           const yValue = (y/window.innerHeight*rotateForce*2)-rotateForce;
           card.style.transform = `rotateX(${yValue*0.5}deg) rotateY(${xValue}deg) translateZ(-100px)`;
           card.style.transition = "500ms ease-out"
         });
 
-        [].forEach.call(layers, (card) => {
+        [].forEach.call(layers, (card:any) => {
           var rotateIndForce = card.dataset.force
           var layerDepth = card.dataset.depth
           const xValue = (x/window.innerWidth*rotateIndForce*2)-rotateIndForce;
@@ -114,14 +114,14 @@ function BackgroundVideo() {
         var rotateForce = 20
         var x = currentX+100;
         var y = currentY+100;
-        [].forEach.call(cards, (card) => {
+        [].forEach.call(cards, (card:any) => {
           const xValue = (x/window.innerWidth*rotateForce*2)-rotateForce;
           const yValue = (y/window.innerHeight*rotateForce*2)-rotateForce;
           card.style.transform = `rotateX(${yValue*0.5}deg) rotateY(${xValue}deg) translateZ(-100px)`;
           card.style.transition = "2s ease-out"
         });
 
-        [].forEach.call(layers, (card) => {
+        [].forEach.call(layers, (card:any) => {
           var rotateIndForce = card.dataset.force
           var layerDepth = card.dataset.depth
           const xValue = (x/window.innerWidth*rotateIndForce*2)-rotateIndForce;
@@ -133,14 +133,14 @@ function BackgroundVideo() {
         setTimeout(() => {
       x = currentX-100;
       y = currentY-100;
-      [].forEach.call(cards, (card) => {
+      [].forEach.call(cards, (card:any) => {
         const xValue = (x/window.innerWidth*rotateForce*2)-rotateForce;
         const yValue = (y/window.innerHeight*rotateForce*2)-rotateForce;
         card.style.transform = `rotateX(${yValue*0.5}deg) rotateY(${xValue}deg) translateZ(-100px)`;
         card.style.transition = "2s ease-out"
       });
 
-      [].forEach.call(layers, (card) => {
+      [].forEach.call(layers, (card:any) => {
         var rotateIndForce = card.dataset.force
         var layerDepth = card.dataset.depth
         const xValue = (x/window.innerWidth*rotateIndForce*2)-rotateIndForce;
@@ -153,7 +153,17 @@ function BackgroundVideo() {
 
 
 class Dot {
-  constructor(id, x, y, context, scl) {
+
+  x: number;
+  y: number;
+  id: number;
+  radius: number;
+  context: any;
+  new: any;
+  scl: any;
+
+
+  constructor(id:number, x:number, y:number, context:any, scl:number) {
       this.id = id;
       this.x = x;
       this.y = y;
@@ -161,13 +171,11 @@ class Dot {
       this.radius = 3;
       this.context = context;
       this.scl = scl;
-      this.isHover = false;
-      this.isANimated = false;
   }
 
-  mousemove(event) {
-      const x = event.clientX+(window.innerWidth*0.05);
-      const y = event.clientY+(window.innerHeight*0.05);
+  mousemove(event:any) {
+      const x = event.clientX;
+      const y = event.clientY;
       var radiuses2 = 80
 
               if (check_a_point(x, y, this.x, this.y, radiuses2)) {
@@ -189,82 +197,73 @@ class Dot {
   }
 }
 
+var dots:any = [];
+var width:number;
+var height:number;
+var scl:number = 30;
+var cols:number = 40;
+var rows:number = 40;
 
-  class App {
-    constructor() {
-        this.canvas = document.getElementById('canvas');
-        this.context = this.canvas.getContext('2d');
-        this.canvas.width = this.width = window.innerWidth+(window.innerWidth*0.1);
-        this.canvas.height = this.height = window.innerHeight+(window.innerHeight*0.1);
+        var canvas:any = document.getElementById('canvas');
+        var context:any = canvas.getContext('2d');
+        canvas.width = width = window.innerWidth;
+        canvas.height = height = window.innerHeight;
+
   
-        this.setupDots();
-  
-        this.resize = this.resize.bind(this);
-        this.mousemoveHandler = this.mousemoveHandler.bind(this);
-        this.mouseleaveHandler = this.mouseleaveHandler.bind(this);
-    }
-  
-    setupDots() {
-        this.dots = [];
-        this.scl = 23;
-        this.cols = this.width / this.scl;
-        this.rows = this.height / this.scl;
+
+    setupDots();
+   function setupDots() {
+   
+    
+        cols = width / scl;
+        rows = height / scl;
   
         let id = 0;
-        for (let x = 0; x < this.cols; x += 1) {
-            for (let y = 0; y < this.rows; y += 1) {
-                this.dots.push(new Dot(id, x * this.scl, y * this.scl, this.context, this.scl));
+        for (let x = 0; x < cols; x += 1) {
+            for (let y = 0; y < rows; y += 1) {
+                dots.push(new Dot(id, x * scl, y * scl, context, scl));
                 id += 1;
             }
         }
     }
   
-    resize() {
-        this.canvas.width = this.width = window.innerWidth+(window.innerWidth*0.1);
-        this.canvas.height = this.height = window.innerHeight+(window.innerHeight*0.1);
-        this.setupDots();
+    function resize() {
+        canvas.width = width = window.innerWidth;
+        canvas.height = height = window.innerHeight;
+        setupDots();
     }
   
-    mousemoveHandler(event) {
-        this.dots.forEach(d => {
+    function mousemoveHandler(event:any) {
+        dots.forEach((d:any) => {
             d.mousemove(event);
         })
     }
   
-    mouseleaveHandler() {
-        this.dots.forEach(d => {
-            d.isHover = false;
-        })
-    }
-  
-    render() {
-        this.context.clearRect(0, 0, this.width, this.height);
-        this.dots.forEach(d => {
+    function render() {
+        context.clearRect(0, 0, width, height);
+        dots.forEach((d:any) => {
             d.render();
         })
     }
-  }
+  
 
 
-let APP:App;
 init()
 
 
 function init() {
-    APP = new App();
     events();
     loop();
 }
 
 function loop() {
-    APP.render();
+    render();
     requestAnimationFrame(loop);
 }
 
 function events() {
-    document.addEventListener('mousemove', APP.mousemoveHandler, false);
-    document.addEventListener('mouseleave', APP.mouseleaveHandler, false);
-    window.addEventListener('resize', APP.resize, false);
+    document.addEventListener('mousemove', mousemoveHandler, false);
+    window.addEventListener('resize', resize, false);
 }
 
 
@@ -282,11 +281,9 @@ function check_a_point(a:number, b:number, x:number, y:number, r:number) {
 }
 
 
-var cursor = document.querySelector('#cursor');
+var cursor:any = document.querySelector('#cursor');
 
 document.addEventListener('mousemove', function (e) {
-    var x = e.clientX;
-    var y = e.clientY;
     cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`
 });
 
