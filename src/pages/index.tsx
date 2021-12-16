@@ -27,6 +27,8 @@ const IndexPage = () => {
   const { currentSectionIndex, currentSectionId, moveTo } = useScrollJack();
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const id = window.location.hash.slice(1);
 
     const sections = isMobile ? MOBILE_SECTIONS : SECTIONS;
@@ -41,7 +43,7 @@ const IndexPage = () => {
     if (!window.location.hash) {
       moveTo(0);
     }
-  }, [ window.location.hash ]);
+  }, [ ...(typeof window !== 'undefined' ? [ window.location.hash ] : []) ]);
 
   useEffect(() => {
     window.location.hash = currentSectionId;

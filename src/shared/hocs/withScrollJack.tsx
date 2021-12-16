@@ -25,7 +25,9 @@ const ScrollJackContext = createContext<ScrollJackContextValue>({
 function withScrollJack(WrappedComponent: ComponentType) {
   function WithScrollJack(props: any) {
     const { isMobile } = useMedia();
+    const touchStart = useRef<{ clientX: number, clientY: number }>();
     const canScroll = useRef(true);
+    const scrollTimeout = useRef<ReturnType<typeof setTimeout>>();
     const canMoveNext = useRef(true);
     const canMovePrev = useRef(false);
     const maxSections = useRef(isMobile ? MOBILE_SECTIONS.length : SECTIONS.length);
@@ -41,6 +43,14 @@ function withScrollJack(WrappedComponent: ComponentType) {
 
       setCurrentSectionId(nextId);
     }, [ currentSectionIndex, isMobile ]);
+
+    useEffect(() => {
+      return () => {
+        if (scrollTimeout.current) {
+          clearTimeout(scrollTimeout.current);
+        }
+      };
+    }, []);
     
     const moveNext = useCallback(() => {
       if (!canMoveNext.current) return;
@@ -68,11 +78,9 @@ function withScrollJack(WrappedComponent: ComponentType) {
 
         canScroll.current = false;
 
-        console.log('scroll');
-
-        setTimeout(() => {
+        scrollTimeout.current = setTimeout(() => {
           canScroll.current = true;
-        }, 200);
+        }, 1000);
 
         if (e.deltaY >= 1) {
           moveNext();
@@ -84,10 +92,35 @@ function withScrollJack(WrappedComponent: ComponentType) {
         trailing: false
       });
 
+      const handleTouchStart = (e: TouchEvent) => {
+        touchStart.current = e.changedTouches[0];
+      };
+
+      const handleTouchEnd = (e: TouchEvent) => {
+        if (!touchStart.current) return;
+
+        const touchEnd = e.changedTouches[0];
+
+        const deltaY = touchStart.current.clientY - touchEnd.clientY;
+        const deltaX = touchStart.current.clientX - touchEnd.clientX;
+
+        if (Math.abs(deltaY) < Math.abs(deltaX)) return;
+
+        if (deltaY > 0) {
+          moveNext();
+        } else {
+          movePrev();
+        }
+      };
+
       window.addEventListener('wheel', handleScroll);
+      window.addEventListener('touchstart', handleTouchStart);
+      window.addEventListener('touchend', handleTouchEnd);
 
       return () => {
         window.removeEventListener('wheel', handleScroll);
+        window.removeEventListener('touchstart', handleTouchStart);
+        window.removeEventListener('touchend', handleTouchEnd);
       };
     }, [ moveNext, movePrev ]);
 

@@ -8,7 +8,7 @@ import * as styles from './RoadmapSection.module.scss';
 
 import { SectionProps } from '@shared/types/modules';
 
-import { SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
+import { SLIDE_LEFT_WITH_FADE } from '@shared/transitions';
 
 function RoadmapMobile({ 
   id,
@@ -20,8 +20,8 @@ function RoadmapMobile({
         initial="initial"
         animate="enter"
         exit="exit"
-        variants={ SLIDE_BOTTOM_WITH_FADE.variants }
-        transition={ SLIDE_BOTTOM_WITH_FADE.options }
+        variants={ SLIDE_LEFT_WITH_FADE.variants }
+        transition={ SLIDE_LEFT_WITH_FADE.options }
       >
         <Roadmap />
       </motion.div>
