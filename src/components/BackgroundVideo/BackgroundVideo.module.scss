@@ -1,3 +1,6 @@
+body{
+  cursor: none !important;
+}
 .container {
   position: fixed;
   top: 0;
@@ -19,6 +22,8 @@
   }
 }
 
+
+
 body{
   cursor: none !important;
 }
@@ -39,15 +44,25 @@ body{
 }
 
 .cursor {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   border-radius: 100%;
   border: 3px solid white;
   position: fixed;
   pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   left: 0;
   top: 0;
   transform: translate(calc(-50% + 15px), -50%);
+}
+
+.cursorInner{
+  width: 15px;
+  height: 15px;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 50%;
 }
 
 .background {

@@ -28,7 +28,7 @@ function Pagination() {
     data-force={10} data-depth={-100}
     style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
       <span className={ styles.item }>
-        { current }
+        { currentIndex }
       </span>
       <span className={ styles.divider }>
         /

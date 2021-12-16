@@ -49,7 +49,7 @@ function FaqSection({
       <div className={ styles.questions } name="layers"
     data-force={15} data-depth={200}
     style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
-        <Accordion items={ QUESTIONS } />
+        <Accordion items={ FAQ_QUESTIONS } />
       </div>
     </Container>
   );

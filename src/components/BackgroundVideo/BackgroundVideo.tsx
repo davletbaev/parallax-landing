@@ -11,7 +11,7 @@ import backgroundImageSrc from '@assets/images/background.jpg';
 import backgroundImageSrcWebp from '@assets/images/background.webp';
 import bgVideoMP4 from '@assets/video/bg-video.mp4';
 import bgVideoWEBM from '@assets/video/bg-video.webm';
-import {TweenMax} from "gsap"
+import gsap from "gsap"
 
 const fadeVariants = {
   initial: {
@@ -168,39 +168,14 @@ class Dot {
   mousemove(event) {
       const x = event.clientX+(window.innerWidth*0.05);
       const y = event.clientY+(window.innerHeight*0.05);
-      var radiuses = 50
       var radiuses2 = 80
-      var radiuses3 = 100
-      var radiuses4 = 120
 
-      if (check_a_point(x, y, this.x, this.y, radiuses4)) {
-   
-          TweenMax.to(this.new, 0.4, {
-              radius: 6
-          });
-          if (check_a_point(x, y, this.x, this.y, radiuses3)) {
-              TweenMax.to(this.new, 0.4, {
-                  radius: 8
-              });
               if (check_a_point(x, y, this.x, this.y, radiuses2)) {
-                  TweenMax.to(this.new, 0.4, {
-                      radius: 10
-                  });
-                  if (check_a_point(x, y, this.x, this.y, radiuses)) {
-                      TweenMax.to(this.new, 0.4, {
-                          radius: 12
-                      });
-                  }
-              }
-          }
-
+                this.new.color = 'rgba(239, 239, 240, 0.4)'
       }
 
       else {
-  
-          TweenMax.to(this.new, 0.4, {
-              radius: 3
-          });
+        this.new.color = 'rgba(239, 239, 240, 0.15)'
       }
 
   }
@@ -231,7 +206,7 @@ class Dot {
   
     setupDots() {
         this.dots = [];
-        this.scl = 30;
+        this.scl = 23;
         this.cols = this.width / this.scl;
         this.rows = this.height / this.scl;
   
@@ -387,7 +362,8 @@ document.addEventListener('mousemove', function (e) {
     <div className={ styles.container }>
       <AnimatePresence>
         {
-          (status === 'fallback' || status === 'loading')
+          (true)
+          // (status === 'fallback' || status === 'loading')
             ? (
               <div className={ styles.background } name="cards">
                 <picture>
@@ -423,10 +399,9 @@ document.addEventListener('mousemove', function (e) {
         }
         
       </AnimatePresence>
-      <div id="cursor" className={styles.cursor}></div>
-      <canvas id="canvas" className={styles.canvas}  name="layers"
-    data-force={20} data-depth={-100}
-    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}} ></canvas>
+      <div id="cursor" className={styles.cursor}><div className={styles.cursorInner}>
+        </div></div>
+      <canvas id="canvas" className={styles.canvas}></canvas>
     </div>
   );
 }

@@ -57,7 +57,8 @@ function TeamSection({
           Team & Partners
         </Heading>
           
-        <div className={ styles.content }>
+        <div className={ styles.content }  name="layers"  data-force={15} data-depth={50}
+    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
           <Paragraph marginTop="24">
             Based in LA and all around the world, our team consists of passionate developers and artists who have worked on various AAA studio titles.
           </Paragraph>
@@ -75,7 +76,8 @@ function TeamSection({
           </motion.div>
         </div>
 
-        <div className={ styles.partners }>
+        <div className={ styles.partners }  name="layers"  data-force={15} data-depth={150}
+    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
           { renderPartners() }
         </div>
       </motion.div>
