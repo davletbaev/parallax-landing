@@ -47,11 +47,11 @@
   }
 
   &:focus-visible svg {
-    stroke-dasharray: 0;
+    stroke-dasharray: 1200;
   }
 
   &:hover svg {
-    stroke-dasharray: 0;
+    stroke-dasharray: 1200;
   }
 }
 

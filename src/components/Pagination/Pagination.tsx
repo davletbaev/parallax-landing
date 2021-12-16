@@ -1,23 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { useSections } from '@shared/hocs/withSections';
+import { useScrollJack } from '@shared/hocs/withScrollJack';
 
 import * as styles from './Pagination.module.scss';
 
 function Pagination() {
   const featuresCount = useRef('04');
   const [ currentIndex, setCurrentIndex ] = useState<string | null>(null);
-  const { currentSection } = useSections();
+  const { currentSectionId } = useScrollJack();
 
   useEffect(() => {
-    if (!currentSection.startsWith('feature')) {
+    if (!currentSectionId.startsWith('feature')) {
       setCurrentIndex(null);
   
       return;
     }
 
-    setCurrentIndex(currentSection.slice(-1).padStart(2, '0'));
-  }, [ currentSection ]);
+    setCurrentIndex(currentSectionId.slice(-1).padStart(2, '0'));
+  }, [ currentSectionId ]);
 
   if (!currentIndex) {
     return null;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ExternalUrl } from '@shared/constants';
-import { useSections } from '@shared/hocs/withSections';
+import { useScrollJack } from '@shared/hocs/withScrollJack';
 
 import * as styles from './Navigation.module.scss';
 
@@ -29,12 +29,12 @@ const NAV_ITEMS = [
 ];
 
 function Navigation() {
-  const { currentSection } = useSections();
+  const { currentSectionId } = useScrollJack();
 
   const renderNav = () => NAV_ITEMS.map(({ path, label, target }) => (
     <li className={ styles.item } key={ path }>
       <a 
-        className={ styles[`#${currentSection}` === path ? 'linkActive' : 'link'] }
+        className={ styles[`#${currentSectionId}` === path ? 'linkActive' : 'link'] }
         href={ path }
         target={ target || undefined }
       >
