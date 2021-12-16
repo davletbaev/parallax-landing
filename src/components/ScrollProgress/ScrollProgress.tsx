@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useSpring, useTransform } from 'framer-motion';
 
 import { MOBILE_SECTIONS, SECTIONS } from '@shared/constants';
 import { useMedia } from '@shared/hocs/withMedia';
