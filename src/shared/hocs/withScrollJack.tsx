@@ -116,9 +116,9 @@ function withScrollJack(WrappedComponent: ComponentType) {
 
         if (Math.abs(deltaY) < Math.abs(deltaX)) return;
 
-        if (deltaY > 0) {
+        if (deltaY > 30) {
           moveNext();
-        } else {
+        } else if (deltaY < -30) {
           movePrev();
         }
       };

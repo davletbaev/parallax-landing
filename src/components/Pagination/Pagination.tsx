@@ -10,7 +10,7 @@ function Pagination() {
   const { currentSectionId } = useScrollJack();
 
   useEffect(() => {
-    if (!currentSectionId.startsWith('feature')) {
+    if (!currentSectionId?.startsWith('feature')) {
       setCurrentIndex(null);
   
       return;

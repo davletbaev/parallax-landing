@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { AnimatePresence } from 'framer-motion';
+import { PageProps } from 'gatsby';
 
 import { Meta, MOBILE_SECTIONS, SECTIONS } from '@shared/constants';
 import { useMedia } from '@shared/hocs/withMedia';
@@ -22,7 +23,8 @@ const mobileSections = MOBILE_SECTIONS.map(({ id, component }) => React.createEl
   }
 ));
 
-const IndexPage = () => {
+const IndexPage = ({ location, navigate }: PageProps) => {
+  const firstMount = useRef(true);
   const { isMobile } = useMedia();
   const { currentSectionIndex, currentSectionId, moveTo } = useScrollJack();
 
@@ -40,14 +42,20 @@ const IndexPage = () => {
       return;
     }
 
-    if (!window.location.hash) {
+    if (!location.hash) {
       moveTo(0);
     }
-  }, [ ...(typeof window !== 'undefined' ? [ window.location.hash ] : []) ]);
+  }, [ location.hash ]);
 
   useEffect(() => {
-    window.location.hash = currentSectionId;
-  }, [ currentSectionId ]);
+    if (currentSectionId !== location.hash.slice(1)) {
+      navigate(`#${currentSectionId}`, { replace: firstMount.current }); 
+    }
+
+    if (firstMount.current) {
+      firstMount.current = false;
+    }
+  }, [ currentSectionId, location.hash ]);
  
   return (
     <>

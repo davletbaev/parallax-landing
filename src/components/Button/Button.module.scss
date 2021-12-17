@@ -31,6 +31,7 @@
   text-align: center;
 
   color: var(--color-white);
+  background: rgba(#fff, .1);
 
   svg {
     position: absolute;
@@ -67,6 +68,7 @@
   text-align: center;
 
   color: var(--color-white);
+  background: rgba(#fff, .1);
 
   border: 2px solid var(--color-white);
 
@@ -87,7 +89,7 @@
 
   &:disabled {
     color: rgba(#fff, .5);
-    background: none;
+    background: rgba(#fff, .1);
   }
 }
 
