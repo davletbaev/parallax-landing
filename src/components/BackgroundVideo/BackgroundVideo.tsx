@@ -11,7 +11,7 @@ import backgroundImageSrc from '@assets/images/background.jpg';
 import backgroundImageSrcWebp from '@assets/images/background.webp';
 import bgVideoMP4 from '@assets/video/bg-video.mp4';
 import bgVideoWEBM from '@assets/video/bg-video.webm';
-import gsap from "gsap"
+import {TweenMax} from "gsap"
 
 const fadeVariants = {
   initial: {
@@ -161,6 +161,9 @@ class Dot {
   context: any;
   new: any;
   scl: any;
+  isHover:boolean;
+  isCenter:boolean;
+  isClosest:boolean;
 
 
   constructor(id:number, x:number, y:number, context:any, scl:number) {
@@ -171,22 +174,20 @@ class Dot {
       this.radius = 3;
       this.context = context;
       this.scl = scl;
+      this.isHover = false
+      this.isCenter = false
+      this.isClosest = false
   }
 
-  mousemove(event:any) {
-      const x = event.clientX;
-      const y = event.clientY;
-      var radiuses2 = 80
+  // mousemove(event:any) {
 
-              if (check_a_point(x, y, this.x, this.y, radiuses2)) {
-                this.new.color = 'rgba(239, 239, 240, 0.4)'
-      }
+  //     const x = event.clientX;
+  //     const y = event.clientY;
+  //     var radiuses2 = 80
 
-      else {
-        this.new.color = 'rgba(239, 239, 240, 0.15)'
-      }
+       
 
-  }
+  // }
 
 
   render() {
@@ -200,7 +201,7 @@ class Dot {
 var dots:any = [];
 var width:number;
 var height:number;
-var scl:number = 30;
+var scl:number = 25;
 var cols:number = 40;
 var rows:number = 40;
 
@@ -217,7 +218,7 @@ var rows:number = 40;
     
         cols = width / scl;
         rows = height / scl;
-  
+      dots = []
         let id = 0;
         for (let x = 0; x < cols; x += 1) {
             for (let y = 0; y < rows; y += 1) {
@@ -235,15 +236,24 @@ var rows:number = 40;
   
     function mousemoveHandler(event:any) {
         dots.forEach((d:any) => {
-            d.mousemove(event);
+          if (check_a_point(event.clientX, event.clientY+window.innerHeight*0.005, d.x, d.y, 70)) {
+            if( d.new.color !=='rgba(239, 239, 240, 0.4)'){
+            d.new.color = 'rgba(239, 239, 240, 0.4)'
+            }
+          }
+  else {
+    if( d.new.color !=='rgba(239, 239, 240, 0.15)'){
+    d.new.color = 'rgba(239, 239, 240, 0.15)'
+  }
+  }
         })
     }
   
     function render() {
-        context.clearRect(0, 0, width, height);
-        dots.forEach((d:any) => {
-            d.render();
-        })
+      context.clearRect(0, 0, width, height);
+      dots.forEach((d:any) => {
+          d.render();
+      })
     }
   
 
@@ -272,6 +282,7 @@ function events() {
 
 
 function check_a_point(a:number, b:number, x:number, y:number, r:number) {
+
     var dist_points = (a - x) * (a - x) + (b - y) * (b - y);
     r *= r;
     if (dist_points < r) {
