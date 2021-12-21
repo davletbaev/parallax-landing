@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { StaticImage } from 'gatsby-plugin-image';
 
 import Button from '@components/Button';
 import Container from '@components/Container';
@@ -7,12 +8,11 @@ import Roadmap from '@components/Roadmap';
 import { Heading, Paragraph } from '@components/Typography';
 
 import { useMedia } from '@shared/hocs/withMedia';
+import { FADE, SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
 
 import * as styles from './RoadmapSection.module.scss';
 
 import { SectionProps } from '@shared/types/modules';
-
-import { SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
 
 function RoadmapSection({ 
   id,
@@ -61,6 +61,21 @@ function RoadmapSection({
             </motion.div>
           )
         }
+      </motion.div>
+
+      <motion.div key="roadmap"
+        className={ styles.background }
+        variants={ FADE.variants }
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        transition={ FADE.options }
+      >
+        <StaticImage
+          className={ styles.backgroundImage }
+          src="./roadmap.jpeg"
+          alt=""
+        />
       </motion.div>
     </Container>
   );

@@ -27,10 +27,11 @@ function withScrollJack(WrappedComponent: ComponentType) {
     const { isMobile } = useMedia();
     const touchStart = useRef<{ clientX: number, clientY: number }>();
     const canScroll = useRef(true);
+    const prevTarget = useRef<EventTarget>();
     const scrollTimeout = useRef<ReturnType<typeof setTimeout>>();
     const lastScrollWheelTimestamp = useRef<number>(0);
     const lastScrollWheelDelta = useRef<number>(0);
-    const minScrollWheelInterval = useRef<number>(100);
+    const minScrollWheelInterval = useRef<number>(200);
     const canMoveNext = useRef(true);
     const canMovePrev = useRef(false);
     const maxSections = useRef(isMobile ? MOBILE_SECTIONS.length : SECTIONS.length);
@@ -57,6 +58,8 @@ function withScrollJack(WrappedComponent: ComponentType) {
     
     const moveNext = useCallback(() => {
       if (!canMoveNext.current) return;
+
+      console.log('next');
 
       const nextIndex = currentSectionIndex + 1;
       
@@ -93,13 +96,14 @@ function withScrollJack(WrappedComponent: ComponentType) {
 
         scrollTimeout.current = setTimeout(() => {
           canScroll.current = true;
-        }, 1500);
+        }, 2000);
 
         if (e.deltaY >= 1) {
           moveNext();
         } else {
           movePrev();
         }
+
       };
 
       const handleTouchStart = (e: TouchEvent) => {
@@ -107,7 +111,13 @@ function withScrollJack(WrappedComponent: ComponentType) {
       };
 
       const handleTouchEnd = (e: TouchEvent) => {
-        if (!touchStart.current) return;
+        if (!touchStart.current || !canScroll.current) return;
+
+        canScroll.current = false;
+
+        scrollTimeout.current = setTimeout(() => {
+          canScroll.current = true;
+        }, 2000);
 
         const touchEnd = e.changedTouches[0];
 

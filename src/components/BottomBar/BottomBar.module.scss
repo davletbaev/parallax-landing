@@ -1,6 +1,8 @@
 .bottombar {
   position: fixed;
+  height: auto;
   top: auto;
+  bottom: 0;
 
   display: grid;
   grid-template-columns: 1fr auto 1fr;

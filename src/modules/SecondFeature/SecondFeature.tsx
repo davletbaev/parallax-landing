@@ -1,12 +1,16 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { StaticImage } from 'gatsby-plugin-image';
 
 import TextSection from '@modules/TextSection';
 
 import { Heading, Paragraph } from '@components/Typography';
 
+import { FADE, SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
+
 import { SectionProps } from '@shared/types/modules';
 
-import { SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
+import * as styles from '../TextSection/TextSection.module.scss';
 
 function SecondFeature({ 
   id,
@@ -32,6 +36,20 @@ function SecondFeature({
       <Paragraph>
         Onced purchased, an item is yours forever.
       </Paragraph>
+
+      <motion.div className={ styles.background }
+        variants={ FADE.variants }
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        transition={ FADE.options }
+      >
+        <StaticImage
+          className={ styles.backgroundImage }
+          src="./feature-2.jpeg"
+          alt=""
+        />
+      </motion.div>
     </TextSection>
   );
 }

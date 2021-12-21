@@ -7,18 +7,15 @@ import Socials from '@components/Socials';
 import SubscriptionForm from '@components/SubscriptionForm';
 import { Heading, Paragraph } from '@components/Typography';
 
-import { useMedia } from '@shared/hocs/withMedia';
 import { FADE, SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
 
 import * as styles from './ContactsSection.module.scss';
 
 import { SectionProps } from '@shared/types/modules';
 
-function ContactsSection({ 
+function ContactsMobile({ 
   id,
 }: SectionProps) {
-  const { isTabletOrBigger } = useMedia();
-
   return (
     <Container id={ id } as="section">
       <motion.div 
@@ -35,47 +32,21 @@ function ContactsSection({
           transition={ SLIDE_BOTTOM_WITH_FADE.options }
         >
           <Heading type="h3" className={ styles.heading } align="center">
-            SUBSCRIBE ON UPDATES
+            JOIN THE COMMUNITY
           </Heading>
         
           <Paragraph className={ styles.paragraph } align="center">
-            Subscribe your email to receive most recent news and updates
+            Join our community for game development updates, announcements, and more.
           </Paragraph>
 
           <motion.div 
-            className={ styles.form } 
+            className={ styles.socials }
             variants={ SLIDE_BOTTOM_WITH_FADE.variants }
             transition={ SLIDE_BOTTOM_WITH_FADE.options }
           >
-            <SubscriptionForm />
+            <Socials />
           </motion.div>
         </motion.div>
-
-        {
-          isTabletOrBigger && (
-            <motion.div 
-              className={ styles.content } 
-              variants={ SLIDE_BOTTOM_WITH_FADE.variants }
-              transition={ SLIDE_BOTTOM_WITH_FADE.options }
-            >
-              <Heading type="h3" className={ styles.heading } align="center">
-                JOIN THE COMMUNITY
-              </Heading>
-        
-              <Paragraph className={ styles.paragraph } align="center">
-                Join our community for game development updates, announcements, and more.
-              </Paragraph>
-
-              <motion.div 
-                className={ styles.socials }
-                variants={ SLIDE_BOTTOM_WITH_FADE.variants }
-                transition={ SLIDE_BOTTOM_WITH_FADE.options }
-              >
-                <Socials />
-              </motion.div>
-            </motion.div>
-          )
-        }
       </motion.div>
 
       <motion.div className={ styles.background }
@@ -95,4 +66,4 @@ function ContactsSection({
   );
 }
 
-export default ContactsSection;
+export default ContactsMobile;

@@ -1,17 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { StaticImage } from 'gatsby-plugin-image';
 
 import Container from '@components/Container';
 import { Heading, Paragraph } from '@components/Typography';
 import VideoPlayer from '@components/VideoPlayer';
+
+import { FADE, SLIDE_BOTTOM_WITH_FADE, SLIDE_LEFT_WITH_FADE } from '@shared/transitions';
 
 import * as styles from './TrailerSection.module.scss';
 
 import cover from '@assets/images/cover.jpg';
 
 import { SectionProps } from '@shared/types/modules';
-
-import { SLIDE_BOTTOM_WITH_FADE, SLIDE_LEFT_WITH_FADE } from '@shared/transitions';
 
 function TrailerSection({ 
   id, 
@@ -46,6 +47,20 @@ function TrailerSection({
         <Paragraph>
           Every item can be bought, sold, or exchanged for real money.
         </Paragraph>
+      </motion.div>
+
+      <motion.div className={ styles.background }
+        variants={ FADE.variants }
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        transition={ FADE.options }
+      >
+        <StaticImage
+          className={ styles.backgroundImage }
+          src="./trailer.jpeg"
+          alt=""
+        />
       </motion.div>
     </Container>
   );

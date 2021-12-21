@@ -1,9 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { StaticImage } from 'gatsby-plugin-image';
 
 import Button from '@components/Button';
 import Container from '@components/Container';
 import { Heading, Paragraph } from '@components/Typography';
+
+import { FADE, SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
 
 import * as styles from './TeamSection.module.scss';
 
@@ -12,7 +15,6 @@ import { SectionProps } from '@shared/types/modules';
 import hypersonicLaboratoriesLogo from './hypersonic-laboratories.svg';
 import mardonpolGamesLogo from './mardonpol-games.svg';
 import thirdKindVentureCapitalLogo from './third-kind-venture-capital.svg';
-import { SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
 
 const PARTNERS = [
   {
@@ -78,6 +80,20 @@ function TeamSection({
         <div className={ styles.partners }>
           { renderPartners() }
         </div>
+      </motion.div>
+
+      <motion.div className={ styles.background }
+        variants={ FADE.variants }
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        transition={ FADE.options }
+      >
+        <StaticImage
+          className={ styles.backgroundImage }
+          src="./team.jpeg"
+          alt=""
+        />
       </motion.div>
     </Container>
   );

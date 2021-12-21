@@ -1,14 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { StaticImage } from 'gatsby-plugin-image';
 
 import Container from '@components/Container';
 import Roadmap from '@components/Roadmap';
 
+import { FADE, SLIDE_LEFT_WITH_FADE } from '@shared/transitions';
+
 import * as styles from './RoadmapSection.module.scss';
 
 import { SectionProps } from '@shared/types/modules';
-
-import { SLIDE_LEFT_WITH_FADE } from '@shared/transitions';
 
 function RoadmapMobile({ 
   id,
@@ -24,6 +25,21 @@ function RoadmapMobile({
         transition={ SLIDE_LEFT_WITH_FADE.options }
       >
         <Roadmap />
+      </motion.div>
+
+      <motion.div key="roadmap"
+        className={ styles.background }
+        variants={ FADE.variants }
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        transition={ FADE.options }
+      >
+        <StaticImage
+          className={ styles.backgroundImage }
+          src="./roadmap.jpeg"
+          alt=""
+        />
       </motion.div>
     </Container>
   );

@@ -36,7 +36,7 @@ const IndexPage = ({ location, navigate }: PageProps) => {
     const sections = isMobile ? MOBILE_SECTIONS : SECTIONS;
     const sectionIndex = sections.findIndex((section) => section.id === id);
 
-    if (sectionIndex > 0 && sectionIndex !== currentSectionIndex) {
+    if (sectionIndex > 0) {
       moveTo(sectionIndex);
 
       return;
@@ -48,14 +48,12 @@ const IndexPage = ({ location, navigate }: PageProps) => {
   }, [ location.hash ]);
 
   useEffect(() => {
-    if (currentSectionId !== location.hash.slice(1)) {
-      navigate(`#${currentSectionId}`, { replace: firstMount.current }); 
-    }
+    navigate(`#${currentSectionId}`, { replace: firstMount.current }); 
 
     if (firstMount.current) {
       firstMount.current = false;
     }
-  }, [ currentSectionId, location.hash ]);
+  }, [ currentSectionId ]);
  
   return (
     <>

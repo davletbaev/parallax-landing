@@ -1,9 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { StaticImage } from 'gatsby-plugin-image';
 
 import Container from '@components/Container';
 import Gallery from '@components/Gallery';
 import { Heading, Paragraph } from '@components/Typography';
+
+import { FADE } from '@shared/transitions';
 
 import * as styles from './GallerySection.module.scss';
 
@@ -58,6 +61,20 @@ function GallerySection({
             Individual traits airdropped as separate NFTs and much more
           </Paragraph>
         </div>
+      </motion.div>
+
+      <motion.div className={ styles.background }
+        variants={ FADE.variants }
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        transition={ FADE.options }
+      >
+        <StaticImage
+          className={ styles.backgroundImage }
+          src="./gallery.jpeg"
+          alt=""
+        />
       </motion.div>
     </Container>
   );

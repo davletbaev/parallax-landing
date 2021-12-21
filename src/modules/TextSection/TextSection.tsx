@@ -1,7 +1,10 @@
-import React, { isValidElement } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
+import { StaticImage } from 'gatsby-plugin-image';
 
 import Container from '@components/Container';
+
+import { FADE } from '@shared/transitions';
 
 import * as styles from './TextSection.module.scss';
 
@@ -9,7 +12,7 @@ import { SectionProps } from '@shared/types/modules';
 
 type TextSectionProps = {
   align?: 'left' | 'right',
-  children: React.ReactNode
+  children: React.ReactNode,
 } & SectionProps
 
 function TextSection({ 

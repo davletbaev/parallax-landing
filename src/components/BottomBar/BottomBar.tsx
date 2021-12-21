@@ -28,7 +28,7 @@ function BottomBar() {
         <Pagination />
       </div>
 
-      <motion.div animate={ { opacity: Number(isScrollAvailable) } } className={ styles.scroll }>
+      <motion.div animate={ { opacity: Number(isScrollAvailable) / 2 } } className={ styles.scroll }>
         <span>Scroll</span>
         <Icon icon="arrow-down" />
       </motion.div>

@@ -1,4 +1,5 @@
 import ContactsSection from '@modules/ContactsSection';
+import ContactsMobile from '@modules/ContactsSection/ContactsMobile';
 import FaqSection from '@modules/FaqSection';
 import FaqMobile from '@modules/FaqSection/FaqMobile';
 import FirstFeature from '@modules/FirstFeature';
@@ -105,6 +106,10 @@ export const MOBILE_SECTIONS = [
   {
     id: 'contacts',
     component: ContactsSection
+  },
+  {
+    id: 'contacts-mobile',
+    component: ContactsMobile
   },
 ];
 

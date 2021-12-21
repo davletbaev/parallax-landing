@@ -1,13 +1,39 @@
 .section {
   width: 100%;
-  height: 100vh;
+  height: 100%;
 
-  padding-top: var(--gap-80);
+  padding-top: var(--gap-56);
   padding-bottom: var(--gap-24);
 
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background: rgba(#000, .2);
+  }
+}
+
+.backgroundImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @media (min-width: 1024px) {
@@ -21,7 +47,7 @@
   .left {
     grid-column: 3 / 7;
   }
-  
+
   .right {
     grid-column: 7 / 13;
     padding: 0 var(--gap-40);
