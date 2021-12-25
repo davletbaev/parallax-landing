@@ -22,11 +22,15 @@ const ParallaxLayer = ({ className, force, depth, children, ...restProps }: Para
 
   const xValue = useTransform(
     x,
-    (value) => (value / window.innerWidth * force * 2) - force
+    (value) => typeof window !== 'undefined'
+      ? (value / window.innerWidth * force * 2) - force
+      : value
   );
   const yValue = useTransform(
     y,
-    (value) => ((value / window.innerHeight * force * 2) - force) * 0.5
+    (value) => typeof window !== 'undefined'
+      ? ((value / window.innerHeight * force * 2) - force) * 0.5
+      : value
   );
 
   const transform = useMotionTemplate`rotateX(${yValue}deg) rotateY(${xValue}deg) translateZ(${ z }px)`;

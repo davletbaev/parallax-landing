@@ -20,11 +20,15 @@ const ParallaxCard = ({ className, children, ...restProps }: ParallaxCardProps) 
 
   const xValue = useTransform(
     x,
-    (value) => (value / window.innerWidth * ROTATE_FORCE * 2) - ROTATE_FORCE
+    (value) => typeof window !== 'undefined'
+      ? (value / window.innerWidth * ROTATE_FORCE * 2) - ROTATE_FORCE
+      : value
   );
   const yValue = useTransform(
     y,
-    (value) => ((value / window.innerHeight * ROTATE_FORCE * 2) - ROTATE_FORCE) * 0.5
+    (value) => typeof window !== 'undefined'
+      ? ((value / window.innerHeight * ROTATE_FORCE * 2) - ROTATE_FORCE) * 0.5
+      : value
   );
 
   const transform = useMotionTemplate`rotateX(${yValue}deg) rotateY(${xValue}deg) translateZ(-100px)`;
