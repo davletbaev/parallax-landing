@@ -1,9 +1,9 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { StaticImage } from 'gatsby-plugin-image';
 
 import TextSection from '@modules/TextSection';
 
+import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
 import { Heading, Paragraph } from '@components/Typography';
 
 import { FADE, SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
@@ -25,19 +25,25 @@ function FirstFeature({
       exit="exit"
       transition={ SLIDE_BOTTOM_WITH_FADE.options }
     >
-      <Heading
-        type="h2"
-        align="left">
-        CUTTING-EDGE<br /> GRAPHICS
-      </Heading>
-      <Paragraph marginTop="24">
-        True immersion starts with life-like visual quality and clarity.
-      </Paragraph>
-      <Paragraph>
-        HELIX features thousands of incredibly detailed, custom modeled environments, vehicles and items, from billboards down to strands of hair on your avatar.
-      </Paragraph>
+      <ParallaxLayer force={ 15 } depth={ 150 }>
+        <Heading
+          type="h2"
+          align="left">
+          CUTTING-EDGE<br /> GRAPHICS
+        </Heading>
+      </ParallaxLayer>
 
-      <motion.div className={ styles.background }
+      <ParallaxLayer force={ 15 } depth={ 50 }>
+        <Paragraph marginTop="24">
+          True immersion starts with life-like visual quality and clarity.
+        </Paragraph>
+        <Paragraph>
+          HELIX features thousands of incredibly detailed, custom modeled environments, vehicles and items, from billboards down to strands of hair on your avatar.
+        </Paragraph>
+      </ParallaxLayer>
+
+      <ParallaxCard
+        className={ styles.background }
         variants={ FADE.variants }
         initial="initial"
         animate="enter"
@@ -49,7 +55,7 @@ function FirstFeature({
           src="./feature-1.jpeg"
           alt=""
         />
-      </motion.div>
+      </ParallaxCard>
     </TextSection>
   );
 }

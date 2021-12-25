@@ -4,6 +4,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 
 import Button from '@components/Button';
 import Container from '@components/Container';
+import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
 import Roadmap from '@components/Roadmap';
 import { Heading, Paragraph } from '@components/Typography';
 
@@ -29,41 +30,49 @@ function RoadmapSection({
         exit="exit"
         transition={ { staggerChildren: 0.15 } }
       >
-        <Heading type="h2" className={ styles.heading }>
-          Roadmap
-        </Heading>
+        <ParallaxLayer force={ 15 } depth={ 150 } className={ styles.heading }>
+          <Heading type="h2">
+            Roadmap
+          </Heading>
+        </ParallaxLayer>
           
         <div className={ styles.content }>
-          <Paragraph marginTop="24">
+          <ParallaxLayer force={ 15 } depth={ 50 }>
+            <Paragraph marginTop="24">
             HELIX is currently in development, with an early access pre-alpha release aiming for Q2 2022. We’ll be actively updating our development progress on Discord, Twitter, and YouTube.
-          </Paragraph>
-          <Paragraph marginBottom="24">
+            </Paragraph>
+            <Paragraph marginBottom="24">
             Read our interactive whitepaper / wiki for more details about game development and the game itself.
-          </Paragraph>
+            </Paragraph>
+          </ParallaxLayer>
 
-          <motion.div
+          <ParallaxLayer 
+            force={ 15 }
+            depth={ 75 }
             variants={ SLIDE_BOTTOM_WITH_FADE.variants }
             transition={ SLIDE_BOTTOM_WITH_FADE.options }
           >
             <Button href="#">
               READ WHITEPAPER
             </Button>
-          </motion.div>
+          </ParallaxLayer>
         </div>
 
         {
           isTabletOrBigger && (
-            <motion.div 
+            <ParallaxLayer 
+              force={ 15 }
+              depth={ 150 }
               className={ styles.roadmap }
               variants={ SLIDE_BOTTOM_WITH_FADE.variants }
               transition={ SLIDE_BOTTOM_WITH_FADE.options }>
               <Roadmap />
-            </motion.div>
+            </ParallaxLayer>
           )
         }
       </motion.div>
 
-      <motion.div key="roadmap"
+      <ParallaxCard
         className={ styles.background }
         variants={ FADE.variants }
         initial="initial"
@@ -76,7 +85,7 @@ function RoadmapSection({
           src="./roadmap.jpeg"
           alt=""
         />
-      </motion.div>
+      </ParallaxCard>
     </Container>
   );
 }

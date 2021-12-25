@@ -5,6 +5,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 import Accordion from '@components/Accordion';
 import Button from '@components/Button';
 import Container from '@components/Container';
+import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
 import { Heading, Paragraph } from '@components/Typography';
 
 import { ExternalUrl, FAQ_QUESTIONS } from '@shared/constants';
@@ -30,39 +31,50 @@ function FaqSection({
         exit="exit"
         transition={ { staggerChildren: 0.15 } }
       >
-        <Heading type="h2" className={ styles.heading }>
-        FREQUENTLY ASKED QUESTIONS
-        </Heading>
+        <ParallaxLayer force={ 15 } depth={ 50 } className={ styles.heading }>
+          <Heading type="h2">
+          FREQUENTLY ASKED QUESTIONS
+          </Heading>
+        </ParallaxLayer>
           
         <div className={ styles.content }>
-          <Paragraph marginTop="24" marginBottom="24">
-            We’ve answered our most asked questions here. Read our whitepaper/wiki for more details and message us on Discord if you have more questions.
-          </Paragraph>
+          <ParallaxLayer force={ 15 } depth={ 100 }>
+            <Paragraph marginTop="24" marginBottom="24">
+              We’ve answered our most asked questions here. Read our whitepaper/wiki for more details and message us on Discord if you have more questions.
+            </Paragraph>
+          </ParallaxLayer>
 
-          <motion.div
-            variants={ SLIDE_BOTTOM_WITH_FADE.variants }
-            transition={ SLIDE_BOTTOM_WITH_FADE.options }
+          <ParallaxLayer 
+            force={ 15 }
+            depth={ 150 }
           >
-            <Button href={ ExternalUrl.wiki } target="_blank">
+            <motion.div
+              variants={ SLIDE_BOTTOM_WITH_FADE.variants }
+              transition={ SLIDE_BOTTOM_WITH_FADE.options }
+            >
+              <Button href={ ExternalUrl.wiki } target="_blank">
               VISIT WHITEPAPER / WIKI
-            </Button>
-          </motion.div>
+              </Button>
+            </motion.div>
+          </ParallaxLayer>
         </div>
 
         {
           isTabletOrBigger && (
-            <motion.div 
+            <ParallaxLayer 
+              force={ 15 }
+              depth={ 200 } 
               className={ styles.questions }
               variants={ FADE.variants }
               transition={ FADE.options }
             >
               <Accordion items={ FAQ_QUESTIONS } />
-            </motion.div>
+            </ParallaxLayer>
           )
         }
       </motion.div>
 
-      <motion.div key="faq"
+      <ParallaxCard
         className={ styles.background }
         variants={ FADE.variants }
         initial="initial"
@@ -75,7 +87,7 @@ function FaqSection({
           src="./faq.jpeg"
           alt=""
         />
-      </motion.div>
+      </ParallaxCard>
     </Container>
   );
 }

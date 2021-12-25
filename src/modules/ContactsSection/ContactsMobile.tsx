@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { StaticImage } from 'gatsby-plugin-image';
 
 import Container from '@components/Container';
+import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
 import Socials from '@components/Socials';
-import SubscriptionForm from '@components/SubscriptionForm';
 import { Heading, Paragraph } from '@components/Typography';
 
 import { FADE, SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
@@ -31,25 +31,32 @@ function ContactsMobile({
           variants={ SLIDE_BOTTOM_WITH_FADE.variants }
           transition={ SLIDE_BOTTOM_WITH_FADE.options }
         >
-          <Heading type="h3" className={ styles.heading } align="center">
+          <ParallaxLayer force={ 5 } depth={ 125 }>
+            <Heading type="h3" className={ styles.heading } align="center">
             JOIN THE COMMUNITY
-          </Heading>
+            </Heading>
+          </ParallaxLayer>
         
-          <Paragraph className={ styles.paragraph } align="center">
+          <ParallaxLayer force={ 5 } depth={ 100 }>
+            <Paragraph className={ styles.paragraph } align="center">
             Join our community for game development updates, announcements, and more.
-          </Paragraph>
+            </Paragraph>
+          </ParallaxLayer>
 
-          <motion.div 
+          <ParallaxLayer 
+            force={ 5 }
+            depth={ 50 }
             className={ styles.socials }
             variants={ SLIDE_BOTTOM_WITH_FADE.variants }
             transition={ SLIDE_BOTTOM_WITH_FADE.options }
           >
             <Socials />
-          </motion.div>
+          </ParallaxLayer>
         </motion.div>
       </motion.div>
 
-      <motion.div className={ styles.background }
+      <ParallaxCard
+        className={ styles.background }
         variants={ FADE.variants }
         initial="initial"
         animate="enter"
@@ -61,7 +68,7 @@ function ContactsMobile({
           src="./contacts.jpeg"
           alt=""
         />
-      </motion.div>
+      </ParallaxCard>
     </Container>
   );
 }

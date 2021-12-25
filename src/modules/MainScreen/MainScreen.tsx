@@ -4,6 +4,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 
 import Button from '@components/Button';
 import Container from '@components/Container';
+import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
 import { Heading } from '@components/Typography';
 
 import { FADE, SLIDE_BOTTOM_WITH_FADE, SLIDE_TOP_WITH_FADE } from '@shared/transitions';
@@ -22,34 +23,40 @@ function MainScreen({ id }: SectionProps) {
         exit="exit"
         transition={ { staggerChildren: 0.3 } }
       >
-        <motion.p 
-          className={ styles.subheading }
-          variants={ SLIDE_TOP_WITH_FADE.variants }
-          transition={ SLIDE_TOP_WITH_FADE.options }
-        >Welcome to</motion.p>
+        <ParallaxLayer force={ 15 } depth={ 50 }>
+          <motion.p 
+            className={ styles.subheading }
+            variants={ SLIDE_TOP_WITH_FADE.variants }
+            transition={ SLIDE_TOP_WITH_FADE.options }
+          >Welcome to</motion.p>
+        </ParallaxLayer>
 
-        <Heading 
-          type="h1"
-          className={ styles.heading }
-        >
-          THE
-          {' '}
-          <br className={ styles.onlyMobile } />
-          WORLD’S
-          {' '}
-          <br className={ styles.onlyMobile } />
-          FIRST
-          {' '}
-          <br className={ styles.onlyMobile } />
-          TRULY
-          <br />
-          IMMERSIVE
-          {' '}
-          <br className={ styles.onlyMobile } />
-          METAVERSE
-        </Heading>
+        <ParallaxLayer force={ 15 } depth={ 75 }>
+          <Heading 
+            type="h1"
+            className={ styles.heading }
+          >
+            THE
+            {' '}
+            <br className={ styles.onlyMobile } />
+            WORLD’S
+            {' '}
+            <br className={ styles.onlyMobile } />
+            FIRST
+            {' '}
+            <br className={ styles.onlyMobile } />
+            TRULY
+            <br />
+            IMMERSIVE
+            {' '}
+            <br className={ styles.onlyMobile } />
+            METAVERSE
+          </Heading>
+        </ParallaxLayer>
 
-        <motion.div
+        <ParallaxLayer 
+          force={ 15 }
+          depth={ 50 }
           className={ styles.button }
           variants={ SLIDE_BOTTOM_WITH_FADE.variants }
           transition={ SLIDE_BOTTOM_WITH_FADE.options }
@@ -57,12 +64,13 @@ function MainScreen({ id }: SectionProps) {
           <Button 
             href="#trailer"
           >
-          Watch Trailer
+              Watch Trailer
           </Button>
-        </motion.div>
+        </ParallaxLayer>
       </motion.div>
 
-      <motion.div className={ styles.background }
+      <ParallaxCard 
+        className={ styles.background }
         variants={ FADE.variants }
         initial="initial"
         animate="enter"
@@ -74,7 +82,7 @@ function MainScreen({ id }: SectionProps) {
           src="./main.jpeg"
           alt=""
         />
-      </motion.div>
+      </ParallaxCard>
     </Container>
   );
 }

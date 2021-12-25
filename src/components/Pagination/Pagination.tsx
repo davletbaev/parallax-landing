@@ -29,7 +29,7 @@ function Pagination() {
         { currentIndex }
       </span>
       <span className={ styles.divider }>
-        /
+          /
       </span>
       <span className={ styles.item }>
         { featuresCount.current }

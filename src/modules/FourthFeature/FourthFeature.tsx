@@ -1,9 +1,9 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { StaticImage } from 'gatsby-plugin-image';
 
 import TextSection from '@modules/TextSection';
 
+import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
 import { Heading, Paragraph } from '@components/Typography';
 
 import { FADE, SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
@@ -24,17 +24,23 @@ function FourthFeature({
       exit="exit"
       transition={ SLIDE_BOTTOM_WITH_FADE.options }
     >
-      <Heading type="h2" align="left">
-        COMMUNITY<br /> FIRST
-      </Heading>
-      <Paragraph marginTop="24">
-        HELIX aims to lead the way for an open, fair metaverse with..
-      </Paragraph>
-      <Paragraph>
-        Community Treasury will be responsible for..
-      </Paragraph>
+      <ParallaxLayer force={ 15 } depth={ 150 }>
+        <Heading type="h2" align="left">
+          COMMUNITY<br /> FIRST
+        </Heading>
+      </ParallaxLayer>
 
-      <motion.div className={ styles.background }
+      <ParallaxLayer force={ 15 } depth={ 150 }>
+        <Paragraph marginTop="24">
+          HELIX aims to lead the way for an open, fair metaverse with..
+        </Paragraph>
+        <Paragraph>
+          Community Treasury will be responsible for..
+        </Paragraph>
+      </ParallaxLayer>
+
+      <ParallaxCard 
+        className={ styles.background }
         variants={ FADE.variants }
         initial="initial"
         animate="enter"
@@ -46,7 +52,7 @@ function FourthFeature({
           src="./feature-4.jpeg"
           alt=""
         />
-      </motion.div>
+      </ParallaxCard>
     </TextSection>
   );
 }

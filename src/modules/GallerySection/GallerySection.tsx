@@ -4,6 +4,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 
 import Container from '@components/Container';
 import Gallery from '@components/Gallery';
+import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
 import { Heading, Paragraph } from '@components/Typography';
 
 import { FADE } from '@shared/transitions';
@@ -41,29 +42,34 @@ function GallerySection({
         exit="exit"
         transition={ { staggerChildren: 0.15 } }
       >
-        <div className={ styles.gallery }>
+        <ParallaxLayer force={ 15 } depth={ 100 } className={ styles.gallery }>
           <Gallery>
             { renderImages() }
           </Gallery>
-        </div>
+        </ParallaxLayer>
         
         <div className={ styles.content }>
-          <Heading type="h2" align="left">
+          <ParallaxLayer force={ 15 } depth={ 150 }>
+            <Heading type="h2" align="left">
           FOUNDERS NFT COLLECTION
-          </Heading>
-          <Paragraph marginTop="24">
-            10,000 unique generative artworks with exclusive benefits
-          </Paragraph>
-          <Paragraph>
-            Fully playable character within HELIX
-          </Paragraph>
-          <Paragraph>
-            Individual traits airdropped as separate NFTs and much more
-          </Paragraph>
+            </Heading>
+          </ParallaxLayer>
+
+          <ParallaxLayer force={ 15 } depth={ 50 }>
+            <Paragraph marginTop="24">
+              10,000 unique generative artworks with exclusive benefits
+            </Paragraph>
+            <Paragraph>
+              Fully playable character within HELIX
+            </Paragraph>
+            <Paragraph>
+              Individual traits airdropped as separate NFTs and much more
+            </Paragraph>
+          </ParallaxLayer>
         </div>
       </motion.div>
 
-      <motion.div className={ styles.background }
+      <ParallaxCard className={ styles.background }
         variants={ FADE.variants }
         initial="initial"
         animate="enter"
@@ -75,7 +81,7 @@ function GallerySection({
           src="./gallery.jpeg"
           alt=""
         />
-      </motion.div>
+      </ParallaxCard>
     </Container>
   );
 }

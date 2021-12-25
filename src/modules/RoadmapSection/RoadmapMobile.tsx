@@ -1,8 +1,8 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { StaticImage } from 'gatsby-plugin-image';
 
 import Container from '@components/Container';
+import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
 import Roadmap from '@components/Roadmap';
 
 import { FADE, SLIDE_LEFT_WITH_FADE } from '@shared/transitions';
@@ -16,7 +16,9 @@ function RoadmapMobile({
 }: SectionProps) {
   return (
     <Container id={ id } as="section">
-      <motion.div 
+      <ParallaxLayer 
+        force={ 15 }
+        depth={ 150 }
         className={ styles.section }
         initial="initial"
         animate="enter"
@@ -25,9 +27,9 @@ function RoadmapMobile({
         transition={ SLIDE_LEFT_WITH_FADE.options }
       >
         <Roadmap />
-      </motion.div>
+      </ParallaxLayer>
 
-      <motion.div key="roadmap"
+      <ParallaxCard
         className={ styles.background }
         variants={ FADE.variants }
         initial="initial"
@@ -40,7 +42,7 @@ function RoadmapMobile({
           src="./roadmap.jpeg"
           alt=""
         />
-      </motion.div>
+      </ParallaxCard>
     </Container>
   );
 }

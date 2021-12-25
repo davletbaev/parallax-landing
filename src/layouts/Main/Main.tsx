@@ -2,10 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { compose } from 'recompose';
 
-import BackgroundVideo from '@components/BackgroundVideo';
 import BottomBar from '@components/BottomBar';
 import Header from '@components/Header';
 import Loader from '@components/Loader';
+import DotGrid from '@components/Parallax';
 import ScrollProgress from '@components/ScrollProgress';
 
 import withLoader, { useLoader } from '@shared/hocs/withLoader';
@@ -81,7 +81,7 @@ function Main({ children }: MainProps) {
         }
       </AnimatePresence>
 
-      {/* <BackgroundVideo /> */}
+      <DotGrid />
     </div>
   );
 }

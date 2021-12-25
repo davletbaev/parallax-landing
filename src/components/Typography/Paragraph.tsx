@@ -2,9 +2,9 @@ import React from 'react';
 import classnames from 'classnames/bind';
 import { HTMLMotionProps, motion } from 'framer-motion';
 
-import * as styles from './Typography.module.scss';
-
 import { SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
+
+import * as styles from './Typography.module.scss';
 
 const cn = classnames.bind(styles);
 
@@ -24,6 +24,7 @@ function Paragraph({
   align,
   className,
   children,
+  ...restProps
 }: ParagraphProps) {
   const classes = cn(
     'paragraph',
@@ -39,6 +40,7 @@ function Paragraph({
       className={ classes }
       variants={ SLIDE_BOTTOM_WITH_FADE.variants }
       transition={ SLIDE_BOTTOM_WITH_FADE.options }
+      { ...restProps }
     >
       { children }
     </motion.p>

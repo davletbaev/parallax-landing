@@ -15,14 +15,17 @@
     bottom: 0;
     right: 0;
     z-index: 1;
-    background: rgba(#000, 0.2);
+    background: rgba(#000, .2);
   }
 }
 
-.video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.canvas {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
 }
 
 .background {
@@ -31,8 +34,10 @@
   left: 0;
   bottom: 0;
   right: 0;
-  z-index: 1;
-
+  z-index: -1;
+  perspective: 1800px;
+  transform-style: preserve-3d;
+  transition: 500ms ease-out;
   background-color: var(--color-black);
 
   picture {
@@ -59,6 +64,12 @@
 
     animation: fly linear 30s infinite;
   }
+}
+
+.wrapper {
+  perspective: 1800px;
+  transform-style: preserve-3d;
+  transition: 500ms ease-out;
 }
 
 @keyframes fly {

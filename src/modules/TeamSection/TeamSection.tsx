@@ -4,6 +4,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 
 import Button from '@components/Button';
 import Container from '@components/Container';
+import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
 import { Heading, Paragraph } from '@components/Typography';
 
 import { FADE, SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
@@ -55,34 +56,43 @@ function TeamSection({
         exit="exit"
         transition={ { staggerChildren: 0.15 } }
       >
-        <Heading type="h2" className={ styles.heading }>
-          Team & Partners
-        </Heading>
+        <ParallaxLayer force={ 15 } depth={ 150 } className={ styles.heading }>
+          <Heading type="h2">
+            Team & Partners
+          </Heading>
+        </ParallaxLayer>
           
         <div className={ styles.content }>
-          <Paragraph marginTop="24">
+          <ParallaxLayer force={ 15 } depth={ 50 }>
+            <Paragraph marginTop="24">
             Based in LA and all around the world, our team consists of passionate developers and artists who have worked on various AAA studio titles.
-          </Paragraph>
-          <Paragraph marginBottom="24">
+            </Paragraph>
+            <Paragraph marginBottom="24">
             We’re currently hiring. Come help us bring the future faster.
-          </Paragraph>
+            </Paragraph>
 
-          <motion.div
-            variants={ SLIDE_BOTTOM_WITH_FADE.variants }
-            transition={ SLIDE_BOTTOM_WITH_FADE.options }
-          >
-            <Button href="#">
+            <motion.div
+              variants={ SLIDE_BOTTOM_WITH_FADE.variants }
+              transition={ SLIDE_BOTTOM_WITH_FADE.options }
+            >
+              <Button href="#">
               SEE OPEN POSITIONS
-            </Button>
-          </motion.div>
+              </Button>
+            </motion.div>
+          </ParallaxLayer>
         </div>
 
-        <div className={ styles.partners }>
+        <ParallaxLayer 
+          force={ 15 }
+          depth={ 150 }
+          className={ styles.partners }
+        >
           { renderPartners() }
-        </div>
+        </ParallaxLayer>
       </motion.div>
 
-      <motion.div className={ styles.background }
+      <ParallaxCard 
+        className={ styles.background }
         variants={ FADE.variants }
         initial="initial"
         animate="enter"
@@ -94,7 +104,7 @@ function TeamSection({
           src="./team.jpeg"
           alt=""
         />
-      </motion.div>
+      </ParallaxCard>
     </Container>
   );
 }
