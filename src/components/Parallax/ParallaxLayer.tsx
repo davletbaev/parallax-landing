@@ -58,7 +58,7 @@ const ParallaxLayer = ({ className, force, depth, children, ...restProps }: Para
 
       parallaxTimeout.current = setTimeout(() => {
         duration.set(2);
-        x.set(x.get() + 100);
+        x.set(x.get() - 100);
         y.set(y.get() - 100);
       }, 2000);
     }, 4000);
