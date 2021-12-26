@@ -49,12 +49,15 @@ function RoadmapSection({
           <ParallaxLayer 
             force={ 15 }
             depth={ 75 }
-            variants={ SLIDE_BOTTOM_WITH_FADE.variants }
-            transition={ SLIDE_BOTTOM_WITH_FADE.options }
           >
-            <Button href="#">
-              READ WHITEPAPER
-            </Button>
+            <motion.div
+              variants={ SLIDE_BOTTOM_WITH_FADE.variants }
+              transition={ SLIDE_BOTTOM_WITH_FADE.options }
+            >
+              <Button href="#">
+                READ WHITEPAPER
+              </Button>
+            </motion.div>
           </ParallaxLayer>
         </div>
 

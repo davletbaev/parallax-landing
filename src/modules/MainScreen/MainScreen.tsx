@@ -58,14 +58,17 @@ function MainScreen({ id }: SectionProps) {
           force={ 15 }
           depth={ 50 }
           className={ styles.button }
-          variants={ SLIDE_BOTTOM_WITH_FADE.variants }
-          transition={ SLIDE_BOTTOM_WITH_FADE.options }
         >
-          <Button 
-            href="#trailer"
+          <motion.div
+            variants={ SLIDE_BOTTOM_WITH_FADE.variants }
+            transition={ SLIDE_BOTTOM_WITH_FADE.options }
           >
-              Watch Trailer
-          </Button>
+            <Button 
+              href="#trailer"
+            >
+                Watch Trailer
+            </Button>
+          </motion.div>
         </ParallaxLayer>
       </motion.div>
 

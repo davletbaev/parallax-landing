@@ -59,10 +59,13 @@ function ContactsSection({
             force={ 5 }
             depth={ 150 }
             className={ styles.form } 
-            variants={ SLIDE_BOTTOM_WITH_FADE.variants }
-            transition={ SLIDE_BOTTOM_WITH_FADE.options }
           >
-            <SubscriptionForm />
+            <motion.div
+              variants={ SLIDE_BOTTOM_WITH_FADE.variants }
+              transition={ SLIDE_BOTTOM_WITH_FADE.options }
+            >
+              <SubscriptionForm />
+            </motion.div>
           </ParallaxLayer>
         </motion.div>
 
@@ -97,10 +100,13 @@ function ContactsSection({
                 force={ 5 }
                 depth={ 50 }
                 className={ styles.socials }
-                variants={ SLIDE_BOTTOM_WITH_FADE.variants }
-                transition={ SLIDE_BOTTOM_WITH_FADE.options }
               >
-                <Socials />
+                <motion.div
+                  variants={ SLIDE_BOTTOM_WITH_FADE.variants }
+                  transition={ SLIDE_BOTTOM_WITH_FADE.options }
+                >
+                  <Socials />
+                </motion.div>
               </ParallaxLayer>
             </motion.div>
           )
