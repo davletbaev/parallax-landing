@@ -7,6 +7,7 @@ import * as styles from './Parallax.module.scss';
 const cn = classnames.bind(styles);
 
 const ROTATE_FORCE = 10;
+const OFFSET = 300;
 
 type ParallaxCardProps = HTMLMotionProps<'div'>;
 
@@ -35,9 +36,12 @@ const ParallaxCard = ({ className, children, ...restProps }: ParallaxCardProps) 
   const transition = useMotionTemplate`${ duration }s ease-out`;
 
   useEffect(() => {
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
     const mouseMoveHandler = (event: MouseEvent) => {
-      x.set(event.x);
-      y.set(event.y);
+      x.set(Math.max(0, Math.min(screenWidth, event.x)));
+      y.set(Math.max(0, Math.min(screenHeight, event.y)));
       duration.set(.5);
     };
 
@@ -49,25 +53,46 @@ const ParallaxCard = ({ className, children, ...restProps }: ParallaxCardProps) 
   }, []);
 
   useEffect(() => {
+    duration.set(0);
+    x.set(window.innerWidth / 2);
+    y.set(window.innerHeight / 2);
+
     parallaxInterval.current = setInterval(() => {
-      x.set(x.get() + 300);
+
+      const screenWidth = window.innerWidth;
+      const leftThreshold = screenWidth / 5;
+      const rightThreshold = screenWidth / 5 * 4;
+
+      const screenHeight = window.innerHeight;
+      const topThreshold = screenHeight / 5;
+      const bottomThreshold = screenHeight / 5 * 4;
+
+      const currentX = x.get();
+      const currentY = y.get();
+
+      let newX = Math.random() < 0.5 ? OFFSET : -OFFSET;
+      let newY = Math.random() < 0.5 ? OFFSET : -OFFSET;
+
+      if (currentX < leftThreshold) {
+        newX = OFFSET;
+      }
+
+      if (currentX > rightThreshold) {
+        newX = -OFFSET;
+      }
+
+      if (currentY < topThreshold) {
+        newY = OFFSET;
+      }
+
+      if (currentY > bottomThreshold) {
+        newY = -OFFSET;
+      }
+
       duration.set(5);
-
-      parallaxTimeout.current = setTimeout(() => {
-        y.set(y.get() + 300);
-        duration.set(5);
-      }, 5000);
-
-      parallaxTimeout.current = setTimeout(() => {
-        x.set(x.get() - 300);
-        duration.set(5);
-      }, 5000);
-
-      parallaxTimeout.current = setTimeout(() => {
-        y.set(y.get() - 300);
-        duration.set(5);
-      }, 5000);
-    }, 20000);
+      x.set(currentX + newX);
+      y.set(currentY + newY);
+    }, 5000);
 
     return () => {
       if (parallaxInterval.current) {

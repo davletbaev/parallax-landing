@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import classnames from 'classnames/bind';
-import { HTMLMotionProps, motion, useMotionTemplate, useMotionValue, useTransform } from 'framer-motion';
+import { HTMLMotionProps, motion, useMotionTemplate, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 import * as styles from './Parallax.module.scss';
 
 const cn = classnames.bind(styles);
+
+const OFFSET = 100;
 
 type ParallaxLayerProps = HTMLMotionProps<'div'> & {
   force: number,
@@ -51,17 +53,46 @@ const ParallaxLayer = ({ className, force, depth, children, ...restProps }: Para
   }, []);
 
   useEffect(() => {
-    parallaxInterval.current = setInterval(() => {
-      duration.set(2);
-      x.set(x.get() + 100);
-      y.set(y.get() + 100);
+    duration.set(0);
+    x.set(window.innerWidth / 2);
+    y.set(window.innerHeight / 2);
 
-      parallaxTimeout.current = setTimeout(() => {
-        duration.set(2);
-        x.set(x.get() - 100);
-        y.set(y.get() - 100);
-      }, 2000);
-    }, 4000);
+    parallaxInterval.current = setInterval(() => {
+
+      const screenWidth = window.innerWidth;
+      const leftThreshold = screenWidth / 5;
+      const rightThreshold = screenWidth / 5 * 4;
+
+      const screenHeight = window.innerHeight;
+      const topThreshold = screenHeight / 5;
+      const bottomThreshold = screenHeight / 5 * 4;
+
+      const currentX = x.get();
+      const currentY = y.get();
+
+      let newX = Math.random() < 0.5 ? OFFSET : -OFFSET;
+      let newY = Math.random() < 0.5 ? OFFSET : -OFFSET;
+
+      if (currentX < leftThreshold) {
+        newX = OFFSET;
+      }
+
+      if (currentX > rightThreshold) {
+        newX = -OFFSET;
+      }
+
+      if (currentY < topThreshold) {
+        newY = OFFSET;
+      }
+
+      if (currentY > bottomThreshold) {
+        newY = -OFFSET;
+      }
+
+      duration.set(5);
+      x.set(currentX + newX);
+      y.set(currentY + newY);
+    }, 5000);
 
     return () => {
       if (parallaxInterval.current) {
