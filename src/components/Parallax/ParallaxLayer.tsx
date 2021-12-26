@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import classnames from 'classnames/bind';
-import { HTMLMotionProps, motion, useMotionTemplate, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { HTMLMotionProps, motion, useMotionTemplate, useMotionValue, useTransform } from 'framer-motion';
 
 import * as styles from './Parallax.module.scss';
 
@@ -17,6 +17,12 @@ const ParallaxLayer = ({ className, force, depth, children, ...restProps }: Para
   const parallaxInterval = useRef<ReturnType<typeof setInterval>>();
   const parallaxTimeout = useRef<ReturnType<typeof setTimeout>>();
 
+  const initialWidth = typeof window !== 'undefined' ? window.innerWidth : 1440;
+  const [ screenWidth, setScreenWidth ] = useState(initialWidth);
+  
+  const initialHeight = typeof window !== 'undefined' ? window.innerHeight : 768;
+  const [ screenHeight, setScreenHeight ] = useState(initialHeight);
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const z = useMotionValue(depth);
@@ -25,7 +31,7 @@ const ParallaxLayer = ({ className, force, depth, children, ...restProps }: Para
   const xValue = useTransform(
     x,
     (value) => typeof window !== 'undefined'
-      ? (value / window.innerWidth * force * 2) - force
+      ? (value / screenWidth * force * 2) - force
       : value
   );
   const yValue = useTransform(
@@ -40,8 +46,8 @@ const ParallaxLayer = ({ className, force, depth, children, ...restProps }: Para
 
   useEffect(() => {
     const mouseMoveHandler = (event: MouseEvent) => {
-      x.set(event.x);
-      y.set(event.y);
+      x.set(Math.max(0, Math.min(screenWidth, event.x)));
+      y.set(Math.max(0, Math.min(screenHeight, event.y)));
       duration.set(0.5);
     };
 
@@ -50,22 +56,20 @@ const ParallaxLayer = ({ className, force, depth, children, ...restProps }: Para
     return () => {
       document.removeEventListener('mousemove', mouseMoveHandler);
     };
-  }, []);
+  }, [ screenWidth, screenHeight ]);
 
   useEffect(() => {
     duration.set(0);
-    x.set(window.innerWidth / 2);
-    y.set(window.innerHeight / 2);
+    x.set(screenWidth / 2);
+    y.set(screenHeight / 2);
+
+    const leftThreshold = screenWidth / 5;
+    const rightThreshold = screenWidth / 5 * 4;
+
+    const topThreshold = screenHeight / 5;
+    const bottomThreshold = screenHeight / 5 * 4;
 
     parallaxInterval.current = setInterval(() => {
-
-      const screenWidth = window.innerWidth;
-      const leftThreshold = screenWidth / 5;
-      const rightThreshold = screenWidth / 5 * 4;
-
-      const screenHeight = window.innerHeight;
-      const topThreshold = screenHeight / 5;
-      const bottomThreshold = screenHeight / 5 * 4;
 
       const currentX = x.get();
       const currentY = y.get();
@@ -102,6 +106,21 @@ const ParallaxLayer = ({ className, force, depth, children, ...restProps }: Para
       if (parallaxTimeout.current) {
         clearTimeout(parallaxTimeout.current);
       }
+    };
+  }, [ screenWidth, screenHeight ]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+      setScreenHeight(window.innerHeight);
+    };
+
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
     };
   }, []);
 
