@@ -81,7 +81,8 @@ function Main({ children }: MainProps) {
         }
       </AnimatePresence>
 
-      <DotGrid />
+      <div className={ styles.overlay } />
+      {/* <DotGrid /> */}
     </div>
   );
 }

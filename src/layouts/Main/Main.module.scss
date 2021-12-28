@@ -11,6 +11,15 @@
   overflow: hidden;
 }
 
-.main {
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
 
+  background-image: radial-gradient(rgba(#000, .3) 1px, transparent 100%);
+  background-size: 5px 5px;
+  background-repeat: repeat;
 }
