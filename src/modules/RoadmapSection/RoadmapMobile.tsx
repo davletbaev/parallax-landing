@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { StaticImage } from 'gatsby-plugin-image';
 
 import Container from '@components/Container';
@@ -20,13 +21,16 @@ function RoadmapMobile({
         force={ 15 }
         depth={ 150 }
         className={ styles.section }
-        initial="initial"
-        animate="enter"
-        exit="exit"
-        variants={ SLIDE_LEFT_WITH_FADE.variants }
-        transition={ SLIDE_LEFT_WITH_FADE.options }
       >
-        <Roadmap />
+        <motion.div
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          variants={ SLIDE_LEFT_WITH_FADE.variants }
+          transition={ SLIDE_LEFT_WITH_FADE.options }
+        >
+          <Roadmap />
+        </motion.div>
       </ParallaxLayer>
 
       <ParallaxCard

@@ -67,9 +67,12 @@ function RoadmapSection({
               force={ 15 }
               depth={ 150 }
               className={ styles.roadmap }
-              variants={ SLIDE_BOTTOM_WITH_FADE.variants }
-              transition={ SLIDE_BOTTOM_WITH_FADE.options }>
-              <Roadmap />
+            >
+              <motion.div
+                variants={ SLIDE_BOTTOM_WITH_FADE.variants }
+                transition={ SLIDE_BOTTOM_WITH_FADE.options }>
+                <Roadmap />
+              </motion.div>
             </ParallaxLayer>
           )
         }
