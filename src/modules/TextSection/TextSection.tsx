@@ -22,7 +22,7 @@ function TextSection({
   ...props
 }: TextSectionProps) {  
   return (
-    <Container id={ id } as="section" className={ styles.section }>
+    <Container id={ id } as="section" className={ styles.section } data-force={20} data-depth={100}>
       <motion.div
         className={ styles[align] }
         { ...props }

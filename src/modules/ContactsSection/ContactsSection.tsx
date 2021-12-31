@@ -41,7 +41,7 @@ function ContactsSection({
             className={ styles.heading }
           >
             <Heading type="h3" align="center">
-            SUBSCRIBE ON UPDATES
+              SUBSCRIBE ON UPDATES
             </Heading>
           </ParallaxLayer>
         
@@ -51,7 +51,7 @@ function ContactsSection({
             className={ styles.paragraph }
           >
             <Paragraph align="center">
-            Subscribe your email to receive most recent news and updates
+              Subscribe your email to receive most recent news and updates
             </Paragraph>
           </ParallaxLayer>
 
@@ -82,7 +82,7 @@ function ContactsSection({
                 className={ styles.heading }
               >
                 <Heading type="h3" align="center">
-            JOIN THE COMMUNITY
+                  JOIN THE COMMUNITY
                 </Heading>
               </ParallaxLayer>
         
@@ -92,7 +92,7 @@ function ContactsSection({
                 className={ styles.paragraph }
               >
                 <Paragraph align="center">
-            Join our community for game development updates, announcements, and more.
+                  Join our community for game development updates, announcements, and more.
                 </Paragraph>
               </ParallaxLayer>
 

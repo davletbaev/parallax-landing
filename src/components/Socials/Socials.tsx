@@ -34,7 +34,7 @@ function Socials({ transparent }: SocialsProps) {
   ));
 
   return (
-    <ul className={ socialsClasses }>
+    <ul className={ socialsClasses } name="layers" data-force={5} data-depth={-100} style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
       { renderSocials() }
     </ul>
   );

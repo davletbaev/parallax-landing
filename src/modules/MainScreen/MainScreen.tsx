@@ -16,7 +16,7 @@ import { SectionProps } from '@shared/types/modules';
 function MainScreen({ id }: SectionProps) {
   return (
     <Container id={ id } as="section" className={ styles.section }>
-      <motion.div 
+      <motion.div
         variants={ {} }
         initial="initial"
         animate="enter"

@@ -1,4 +1,7 @@
 .container {
+  perspective: 1800px;
+  transform-style: preserve-3d;
+  transition: 500ms ease-out;
   position: fixed;
   height: auto;
   z-index: 1100;
