@@ -1,9 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { StaticImage } from 'gatsby-plugin-image';
 
 import Container from '@components/Container';
 import Gallery from '@components/Gallery';
+import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
 import { Heading, Paragraph } from '@components/Typography';
+
+import { FADE } from '@shared/transitions';
 
 import * as styles from './GallerySection.module.scss';
 
@@ -29,40 +33,55 @@ function GallerySection({
   ));
 
   return (
-    <Container id={ id } as="section" className={ styles.section }>
-      <div className={ styles.gallery } name="layers"
-    data-force={15} data-depth={100}
-    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
-        <Gallery>
-          { renderImages() }
-        </Gallery>
-      </div>
-      <div className={ styles.content }>
-      <div name="layers"
-    data-force={15} data-depth={150}
-    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
-        <Heading type="h2" align="left">
+    <Container id={ id } as="section">
+      <motion.div 
+        className={ styles.section }
+        variants={ {} }
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        transition={ { staggerChildren: 0.15 } }
+      >
+        <ParallaxLayer force={ 15 } depth={ 100 } className={ styles.gallery }>
+          <Gallery>
+            { renderImages() }
+          </Gallery>
+        </ParallaxLayer>
+        
+        <div className={ styles.content }>
+          <ParallaxLayer force={ 15 } depth={ 150 }>
+            <Heading type="h2" align="left">
           FOUNDERS NFT COLLECTION
-        </Heading>
-        </div>
+            </Heading>
+          </ParallaxLayer>
 
-        <div name="layers"
-    data-force={15} data-depth={50}
-    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
-        <Paragraph marginTop="24">
-          10,000 unique generative artworks with exclusive benefits.
-        </Paragraph>
-        <Paragraph>
-          Fully playable avatars within HELIX.
-        </Paragraph>
-        <Paragraph>
-          Individual traits airdropped as in-game items.
-        </Paragraph>
-        <Paragraph>
-          And much more!
-        </Paragraph>
+          <ParallaxLayer force={ 15 } depth={ 50 }>
+            <Paragraph marginTop="24">
+              10,000 unique generative artworks with exclusive benefits
+            </Paragraph>
+            <Paragraph>
+              Fully playable character within HELIX
+            </Paragraph>
+            <Paragraph>
+              Individual traits airdropped as separate NFTs and much more
+            </Paragraph>
+          </ParallaxLayer>
         </div>
-      </div>
+      </motion.div>
+
+      <ParallaxCard className={ styles.background }
+        variants={ FADE.variants }
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        transition={ FADE.options }
+      >
+        <StaticImage
+          className={ styles.backgroundImage }
+          src="./gallery.jpeg"
+          alt=""
+        />
+      </ParallaxCard>
     </Container>
   );
 }

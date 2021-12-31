@@ -1,8 +1,8 @@
 .section {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
 
-  padding-top: var(--gap-80);
+  padding-top: var(--gap-56);
   padding-bottom: var(--gap-24);
 
   display: flex;
@@ -24,6 +24,14 @@
 
   margin-left: calc(var(--app-padding) * -1);
   margin-right: calc(var(--app-padding) * -1);
+}
+
+.background {
+  composes: background from '../MainScreen/MainScreen.module.scss'
+}
+
+.backgroundImage {
+  composes: backgroundImage from '../MainScreen/MainScreen.module.scss'
 }
 
 @media (min-width: 768px) {

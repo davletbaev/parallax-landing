@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { motion, useTransform, useViewportScroll } from 'framer-motion';
+import { motion, useViewportScroll } from 'framer-motion';
 
 import Container from '@components/Container';
 import Icon from '@components/Icon';
 import Pagination from '@components/Pagination';
+import { ParallaxLayer } from '@components/Parallax';
 import Socials from '@components/Socials';
 
 import { useMedia } from '@shared/hocs/withMedia';
@@ -24,20 +25,25 @@ function BottomBar() {
   
   return (
     <Container as="footer" className={ styles.bottombar }>
-      <div className={ styles.pagination }>
+      <ParallaxLayer force={ 5 } depth={ -100 } className={ styles.pagination }>
         <Pagination />
-      </div>
+      </ParallaxLayer>
 
-      <motion.div animate={ { opacity: Number(isScrollAvailable) } } className={ styles.scroll }>
+      <ParallaxLayer 
+        force={ 5 }
+        depth={ -100 }
+        animate={ { opacity: Number(isScrollAvailable) / 2 } }
+        className={ styles.scroll }
+      >
         <span>Scroll</span>
         <Icon icon="arrow-down" />
-      </motion.div>
+      </ParallaxLayer>
 
       {
         !isMobile && (
-          <div className={ styles.socials }>
+          <ParallaxLayer force={ 5 } depth={ -100 } className={ styles.socials }>
             <Socials transparent />
-          </div>
+          </ParallaxLayer>
         ) 
       }
     </Container>

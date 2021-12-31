@@ -1,6 +1,6 @@
 .section {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
 
   padding-top: var(--gap-120);
   padding-bottom: var(--gap-24);
@@ -10,8 +10,6 @@
 }
 
 .content {
-  height: 100%;
-
   display: grid;
   grid-auto-flow: row;
   grid-gap: var(--gap-24);
@@ -23,6 +21,14 @@
 
 .socials {
   font-size: 3rem;
+}
+
+.background {
+  composes: background from '../MainScreen/MainScreen.module.scss'
+}
+
+.backgroundImage {
+  composes: backgroundImage from '../MainScreen/MainScreen.module.scss'
 }
 
 @media (min-width: 1024px) {

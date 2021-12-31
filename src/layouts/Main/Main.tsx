@@ -1,30 +1,48 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { compose } from 'recompose';
 
-import BackgroundVideo from '@components/BackgroundVideo';
 import BottomBar from '@components/BottomBar';
 import Header from '@components/Header';
 import Loader from '@components/Loader';
+import DotGrid from '@components/Parallax';
 import ScrollProgress from '@components/ScrollProgress';
 
-import { SCROLL_HEIGHT } from '@shared/constants';
 import withLoader, { useLoader } from '@shared/hocs/withLoader';
 import withMedia from '@shared/hocs/withMedia';
-import withSections from '@shared/hocs/withSections';
+import withScrollJack from '@shared/hocs/withScrollJack';
+import { FADE } from '@shared/transitions';
 
 import * as styles from './Main.module.scss';
 
 import '@assets/styles/global.scss';
-
-import { FADE } from '@shared/transitions';
 
 type MainProps = {
   children?: React.ReactNode
 }
 
 function Main({ children }: MainProps) {
-  const { loading } = useLoader();
+  const loadingInterval = useRef<ReturnType<typeof setInterval>>();
+  const { loading, progress, setLoading } = useLoader();
+
+  useEffect(() => {
+    loadingInterval.current = setInterval(() => {
+      const currentProgress = progress.get();
+
+      if (currentProgress <= 0.9) {
+        progress.set(currentProgress + 0.1);
+      } else {
+        progress.set(1);
+        setLoading(false);
+        clearInterval(loadingInterval.current as unknown as number);
+      }
+      
+    }, 50);
+
+    return () => {
+      clearInterval(loadingInterval.current as unknown as number);
+    };
+  }, []);
 
   return (
     <div className={ styles.layout }>
@@ -45,7 +63,7 @@ function Main({ children }: MainProps) {
                 <Header />
               </motion.div>
 
-              <main className={ styles.main } style={ { height: `${SCROLL_HEIGHT}px` } }>
+              <main className={ styles.main }>
                 { children }
               </main>
 
@@ -63,7 +81,8 @@ function Main({ children }: MainProps) {
         }
       </AnimatePresence>
 
-      <BackgroundVideo />
+      <div className={ styles.overlay } />
+      {/* <DotGrid /> */}
     </div>
   );
 }
@@ -71,5 +90,5 @@ function Main({ children }: MainProps) {
 export default compose(
   withMedia,
   withLoader,
-  withSections,
+  withScrollJack
 )(React.memo(Main));

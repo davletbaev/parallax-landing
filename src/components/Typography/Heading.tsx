@@ -27,7 +27,8 @@ function Heading({
   className,
   children,
   variants,
-  transition
+  transition,
+  ...restProps
 }: HeadingProps) {
   const classes = cn(
     'heading',
@@ -44,6 +45,7 @@ function Heading({
       variants: variants || SLIDE_TOP_WITH_FADE.variants,
       className: classes,
       transition: transition || SLIDE_TOP_WITH_FADE.options,
+      ...restProps
     },
     children
   );

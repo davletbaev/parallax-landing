@@ -1,62 +1,91 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { StaticImage } from 'gatsby-plugin-image';
 
 import Button from '@components/Button';
 import Container from '@components/Container';
+import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
 import { Heading } from '@components/Typography';
+
+import { FADE, SLIDE_BOTTOM_WITH_FADE, SLIDE_TOP_WITH_FADE } from '@shared/transitions';
 
 import * as styles from './MainScreen.module.scss';
 
 import { SectionProps } from '@shared/types/modules';
 
 function MainScreen({ id }: SectionProps) {
-  const handleTrailerButtonClick: MouseEventHandler<HTMLAnchorElement> = (e) => {
-    e.preventDefault();
-
-    document.querySelector('#trailer')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <Container id={ id } as="section" className={ styles.section }>
-      <p className={ styles.subheading } name="layers"
-    data-force={15} data-depth={50}
-    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>Welcome to</p>
-<div name="layers"
-    data-force={15} data-depth={75}
-    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
-      <Heading 
-        type="h1"
-        className={ styles.heading }
+      <motion.div
+        variants={ {} }
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        transition={ { staggerChildren: 0.3 } }
       >
-        THE
-        {' '}
-        <br className={ styles.onlyMobile } />
-        WORLD’S
-        {' '}
-        <br className={ styles.onlyMobile } />
-        FIRST
-        {' '}
-        <br className={ styles.onlyMobile } />
-        TRULY
-        <br />
-        IMMERSIVE
-        {' '}
-        <br className={ styles.onlyMobile } />
-        METAVERSE
-      </Heading>
-      </div>
+        <ParallaxLayer force={ 15 } depth={ 50 }>
+          <motion.p 
+            className={ styles.subheading }
+            variants={ SLIDE_TOP_WITH_FADE.variants }
+            transition={ SLIDE_TOP_WITH_FADE.options }
+          >Welcome to</motion.p>
+        </ParallaxLayer>
 
-      <div name="layers"
-    data-force={15} data-depth={50}
-    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
-      <Button 
-        href="#trailer"
-        className={ styles.button }
-        onClick={ handleTrailerButtonClick }
+        <ParallaxLayer force={ 15 } depth={ 75 }>
+          <Heading 
+            type="h1"
+            className={ styles.heading }
+          >
+            THE
+            {' '}
+            <br className={ styles.onlyMobile } />
+            WORLD’S
+            {' '}
+            <br className={ styles.onlyMobile } />
+            FIRST
+            {' '}
+            <br className={ styles.onlyMobile } />
+            TRULY
+            <br />
+            IMMERSIVE
+            {' '}
+            <br className={ styles.onlyMobile } />
+            METAVERSE
+          </Heading>
+        </ParallaxLayer>
+
+        <ParallaxLayer 
+          force={ 15 }
+          depth={ 50 }
+          className={ styles.button }
+        >
+          <motion.div
+            variants={ SLIDE_BOTTOM_WITH_FADE.variants }
+            transition={ SLIDE_BOTTOM_WITH_FADE.options }
+          >
+            <Button 
+              href="#trailer"
+            >
+                Watch Trailer
+            </Button>
+          </motion.div>
+        </ParallaxLayer>
+      </motion.div>
+
+      <ParallaxCard 
+        className={ styles.background }
+        variants={ FADE.variants }
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        transition={ FADE.options }
       >
-        Watch Trailer
-      </Button>
-      </div>
+        <StaticImage
+          className={ styles.backgroundImage }
+          src="./main.jpeg"
+          alt=""
+        />
+      </ParallaxCard>
     </Container>
   );
 }

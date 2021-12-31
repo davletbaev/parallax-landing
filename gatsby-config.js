@@ -19,7 +19,19 @@ module.exports = {
     'gatsby-plugin-postcss',
     'gatsby-plugin-image',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        defaults: {
+          layout: 'constrained',
+          formats: [ 'auto', 'webp', 'avif' ],
+          placeholder: 'blurred',
+          quality: 70,
+          breakpoints: [ 1024, 1440, 1920 ],
+          backgroundColor: '#000',
+        },
+      },
+    },
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-typescript',

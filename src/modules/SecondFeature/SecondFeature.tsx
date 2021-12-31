@@ -1,12 +1,16 @@
 import React from 'react';
+import { StaticImage } from 'gatsby-plugin-image';
 
 import TextSection from '@modules/TextSection';
 
+import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
 import { Heading, Paragraph } from '@components/Typography';
+
+import { FADE, SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
 
 import { SectionProps } from '@shared/types/modules';
 
-import { SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
+import * as styles from '../TextSection/TextSection.module.scss';
 
 function SecondFeature({ 
   id,
@@ -20,35 +24,38 @@ function SecondFeature({
       exit="exit"
       transition={ SLIDE_BOTTOM_WITH_FADE.options }
     >
+      <ParallaxLayer force={ 15 } depth={ 150 }>
+        <Heading type="h2" align="left">
+            TRUE ITEM<br /> OWNERSHIP
+        </Heading>
+      </ParallaxLayer>
 
-<div name="layers"
-    data-force={15} data-depth={150}
-    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
-      <Heading type="h2" align="left">
-          TRUE ITEM<br /> OWNERSHIP
-      </Heading>
-    </div>
+      <ParallaxLayer force={ 15 } depth={ 50 }>
+        <Paragraph marginTop="24">
+        Collect hundreds of customizable NFT items such as clothes, accessories, skins, vehicles, homes, and more.
+        </Paragraph>
+        <Paragraph>
+        Every item holds real-world value and can be freely traded on a decentralized open market.
+        </Paragraph>
+        <Paragraph>
+        Onced purchased, an item is yours forever.
+        </Paragraph>
+      </ParallaxLayer>
 
-    <div name="layers"
-    data-force={15} data-depth={50}
-    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
-      <Paragraph marginTop="24">
-          With traditional games, you buy an item and.. when you stop playing..
-      </Paragraph>
-      <Paragraph>
-          In HELIX, every item holds real-world value and can be exchanged for money and.. 
-      </Paragraph>
-      <Paragraph>
-          every item is a non-fungible token (NFT) stored on the blockchain for everyone to verify.
-      </Paragraph>
-      <Paragraph>
-          Every item written to the blockchain, where..
-      </Paragraph>
-      <Paragraph>
-          Show off your collection, resell them for profit, or do whatever you want..
-      </Paragraph>
-      </div>
-
+      <ParallaxCard 
+        className={ styles.background }
+        variants={ FADE.variants }
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        transition={ FADE.options }
+      >
+        <StaticImage
+          className={ styles.backgroundImage }
+          src="./feature-2.jpeg"
+          alt=""
+        />
+      </ParallaxCard>
     </TextSection>
   );
 }

@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 
 import { Heading, Paragraph } from '@components/Typography';
 
-import * as styles from './Roadmap.module.scss';
-
 import { SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
+
+import * as styles from './Roadmap.module.scss';
 
 const cn = classnames.bind(styles);
 

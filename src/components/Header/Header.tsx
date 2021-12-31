@@ -7,6 +7,7 @@ import Logo from '@components/Logo';
 import { ModalRef } from '@components/Modal/Modal';
 import Navigation from '@components/Navigation';
 import NavModal from '@components/NavModal';
+import { ParallaxLayer } from '@components/Parallax';
 
 import { useMedia } from '@shared/hocs/withMedia';
 
@@ -24,24 +25,28 @@ function Header() {
     setNavOpen(!isNavOpen);
   };
 
-  const handleTrailerButtonClick: MouseEventHandler<HTMLAnchorElement> = (e) => {
-    e.preventDefault();
-
-    document.querySelector('#trailer')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <Container as="header" className={ styles.container } name="layers" data-force={5} data-depth={-100}>
-      { isDesktop && <Navigation /> }
+    <Container as="header" className={ styles.container }>
+      {
+        isDesktop && (
+          <ParallaxLayer force={ 5 } depth={ -100 }>
+            <Navigation />
+          </ParallaxLayer>
+        ) 
+      }
       
-      <Logo to="/" />
+      <ParallaxLayer force={ 5 } depth={ -100 }>
+        <Logo to="/" />
+      </ParallaxLayer>
 
       {
         !isDesktop && (
           <>
-            <button className={ styles.navtoggle } onClick={ handleToggleClick }>
-              <Icon icon={ isNavOpen ? 'cross' : 'menu' } animate />
-            </button>
+            <ParallaxLayer force={ 5 } depth={ -100 }>
+              <button className={ styles.navtoggle } onClick={ handleToggleClick }>
+                <Icon icon={ isNavOpen ? 'cross' : 'menu' } animate />
+              </button>
+            </ParallaxLayer>
 
             <NavModal ref={ navModalRef } />
           </>
@@ -50,16 +55,15 @@ function Header() {
 
       {
         isDesktop && (
-          <div className={ styles.trailer }>
-
+          <ParallaxLayer force={ 5 } depth={ -100 } className={ styles.trailer }>
             <Button 
               href="#trailer"
               variant="ghost"
               block
             >
-            Watch trailer
+                Watch trailer
             </Button>
-          </div>
+          </ParallaxLayer>
         )
       }
     </Container>

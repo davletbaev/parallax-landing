@@ -1,0 +1,13 @@
+.canvas {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+}
+
+.wrapper {
+  perspective: 1800px;
+  transform-style: preserve-3d;
+}

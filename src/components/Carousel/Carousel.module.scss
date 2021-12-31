@@ -11,8 +11,8 @@
 }
 
 .slide {
-  flex: 0 0 16rem;
-  height: 16rem;
+  flex: 0 0 12rem;
+  height: 12rem;
 
   & + .slide {
     margin-left: var(--gap-16);

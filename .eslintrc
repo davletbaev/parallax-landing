@@ -293,6 +293,7 @@
             "^@shared/helpers",
             "^@shared/hocs",
             "^@shared/hooks",
+            "^@shared/transitions",
             "@data"
           ],
           [

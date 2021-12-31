@@ -6,10 +6,9 @@ import Logo from '@components/Logo';
 import ProgressBar from '@components/ProgressBar';
 
 import { useLoader } from '@shared/hocs/withLoader';
+import { FADE } from '@shared/transitions';
 
 import * as styles from './Loader.module.scss';
-
-import { FADE } from '@shared/transitions';
 
 function Loader() {
   const { progress } = useLoader();

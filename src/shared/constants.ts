@@ -1,4 +1,5 @@
 import ContactsSection from '@modules/ContactsSection';
+import ContactsMobile from '@modules/ContactsSection/ContactsMobile';
 import FaqSection from '@modules/FaqSection';
 import FaqMobile from '@modules/FaqSection/FaqMobile';
 import FirstFeature from '@modules/FirstFeature';
@@ -53,7 +54,64 @@ export const SOCIALS = [
   }
 ];
 
-export const SCROLL_HEIGHT = 10000;
+export const MOBILE_SECTIONS = [
+  {
+    id: 'main',
+    component: MainScreen,
+  },
+  {
+    id: 'trailer',
+    component: TrailerSection,
+  },
+  {
+    id: 'feature-1',
+    component: FirstFeature
+  },
+  {
+    id: 'feature-2',
+    component: SecondFeature
+  },
+  {
+    id: 'feature-3',
+    component: ThirdFeature
+  },
+  {
+    id: 'feature-4',
+    component: FourthFeature
+  },
+  {
+    id: 'roadmap',
+    component: RoadmapSection
+  },
+  {
+    id: 'roadmap-mobile',
+    component: RoadmapMobile
+  },
+  {
+    id: 'founders-nft',
+    component: GallerySection
+  },
+  {
+    id: 'team',
+    component: TeamSection
+  },
+  {
+    id: 'faq',
+    component: FaqSection
+  },
+  {
+    id: 'faq-mobile',
+    component: FaqMobile
+  },
+  {
+    id: 'contacts',
+    component: ContactsSection
+  },
+  {
+    id: 'contacts-mobile',
+    component: ContactsMobile
+  },
+];
 
 export const SECTIONS = [
   {
@@ -100,15 +158,8 @@ export const SECTIONS = [
     id: 'contacts',
     component: ContactsSection
   },
-  {
-    id: 'roadmap-mobile',
-    component: RoadmapMobile
-  },
-  {
-    id: 'faq-mobile',
-    component: FaqMobile
-  },
 ];
+
 
 export const FAQ_QUESTIONS: FaqQuestion[] = [
   {

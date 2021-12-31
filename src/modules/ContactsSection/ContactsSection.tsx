@@ -1,59 +1,132 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { StaticImage } from 'gatsby-plugin-image';
 
 import Container from '@components/Container';
+import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
 import Socials from '@components/Socials';
 import SubscriptionForm from '@components/SubscriptionForm';
 import { Heading, Paragraph } from '@components/Typography';
+
+import { useMedia } from '@shared/hocs/withMedia';
+import { FADE, SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
 
 import * as styles from './ContactsSection.module.scss';
 
 import { SectionProps } from '@shared/types/modules';
 
-import { SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
-
 function ContactsSection({ 
   id,
 }: SectionProps) {
+  const { isTabletOrBigger } = useMedia();
+
   return (
-    <Container id={ id } as="section" className={ styles.section }   name="layers"
-    data-force={20} data-depth={100}
-    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
-      <div className={ styles.content }>
-        <Heading type="h3" className={ styles.heading } align="center"  name="layers"  data-force={5} data-depth={50}
-    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
-          SUBSCRIBE ON UPDATES
-        </Heading>
+    <Container id={ id } as="section">
+      <motion.div 
+        className={ styles.section }
+        variants={ {} }
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        transition={ { staggerChildren: 0.15 } }
+      >
+        <motion.div 
+          className={ styles.content } 
+          variants={ SLIDE_BOTTOM_WITH_FADE.variants }
+          transition={ SLIDE_BOTTOM_WITH_FADE.options }
+        >
+          <ParallaxLayer
+            force={ 5 }
+            depth={ 50 }
+            className={ styles.heading }
+          >
+            <Heading type="h3" align="center">
+              SUBSCRIBE ON UPDATES
+            </Heading>
+          </ParallaxLayer>
         
+          <ParallaxLayer
+            force={ 5 }
+            depth={ 100 }
+            className={ styles.paragraph }
+          >
+            <Paragraph align="center">
+              Subscribe your email to receive most recent news and updates
+            </Paragraph>
+          </ParallaxLayer>
 
-        <Paragraph className={ styles.paragraph } align="center" name="layers"
-    data-force={5} data-depth={100}
-    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
-          Subscribe your email to receive most recent news and updates
-        </Paragraph>
+          <ParallaxLayer
+            force={ 5 }
+            depth={ 150 }
+            className={ styles.form } 
+          >
+            <motion.div
+              variants={ SLIDE_BOTTOM_WITH_FADE.variants }
+              transition={ SLIDE_BOTTOM_WITH_FADE.options }
+            >
+              <SubscriptionForm />
+            </motion.div>
+          </ParallaxLayer>
+        </motion.div>
 
-
-        <div className={ styles.form } name="layers"  data-force={5} data-depth={150}
-    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
-          <SubscriptionForm />
-        </div>
+        {
+          isTabletOrBigger && (
+            <motion.div 
+              className={ styles.content } 
+              variants={ SLIDE_BOTTOM_WITH_FADE.variants }
+              transition={ SLIDE_BOTTOM_WITH_FADE.options }
+            >
+              <ParallaxLayer 
+                force={ 5 }
+                depth={ 125 }
+                className={ styles.heading }
+              >
+                <Heading type="h3" align="center">
+                  JOIN THE COMMUNITY
+                </Heading>
+              </ParallaxLayer>
         
-      </div>
+              <ParallaxLayer 
+                force={ 5 }
+                depth={ 100 }
+                className={ styles.paragraph }
+              >
+                <Paragraph align="center">
+                  Join our community for game development updates, announcements, and more.
+                </Paragraph>
+              </ParallaxLayer>
 
-        <Heading type="h3" className={ styles.heading } align="center" name="layers"  data-force={5} data-depth={125}
-    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
-          JOIN THE COMMUNITY
-        </Heading>
-        
-        <Paragraph className={ styles.paragraph } align="center" name="layers"  data-force={5} data-depth={100}
-    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
-          Join our community for game development updates, announcements, and more.
-        </Paragraph>
+              <ParallaxLayer
+                force={ 5 }
+                depth={ 50 }
+                className={ styles.socials }
+              >
+                <motion.div
+                  variants={ SLIDE_BOTTOM_WITH_FADE.variants }
+                  transition={ SLIDE_BOTTOM_WITH_FADE.options }
+                >
+                  <Socials />
+                </motion.div>
+              </ParallaxLayer>
+            </motion.div>
+          )
+        }
+      </motion.div>
 
-        <div className={ styles.socials } name="layers"  data-force={5} data-depth={50}
-    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
-          <Socials />
-        </div>
+      <ParallaxCard
+        className={ styles.background }
+        variants={ FADE.variants }
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        transition={ FADE.options }
+      >
+        <StaticImage
+          className={ styles.backgroundImage }
+          src="./contacts.jpeg"
+          alt=""
+        />
+      </ParallaxCard>
     </Container>
   );
 }
