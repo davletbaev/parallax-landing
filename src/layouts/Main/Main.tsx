@@ -5,7 +5,7 @@ import { compose } from 'recompose';
 import BottomBar from '@components/BottomBar';
 import Header from '@components/Header';
 import Loader from '@components/Loader';
-import DotGrid from '@components/Parallax';
+import withParallax from '@components/Parallax/withParallax';
 import ScrollProgress from '@components/ScrollProgress';
 
 import withLoader, { useLoader } from '@shared/hocs/withLoader';
@@ -24,6 +24,10 @@ type MainProps = {
 function Main({ children }: MainProps) {
   const loadingInterval = useRef<ReturnType<typeof setInterval>>();
   const { loading, progress, setLoading } = useLoader();
+
+  useEffect(() => {
+    document.body.classList.toggle('body--loading', loading);
+  }, [ loading ]);
 
   useEffect(() => {
     loadingInterval.current = setInterval(() => {
@@ -90,5 +94,6 @@ function Main({ children }: MainProps) {
 export default compose(
   withMedia,
   withLoader,
+  withParallax,
   withScrollJack
 )(React.memo(Main));

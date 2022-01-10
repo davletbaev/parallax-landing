@@ -10,4 +10,5 @@
 .wrapper {
   perspective: 1800px;
   transform-style: preserve-3d;
+  will-change: transform;
 }
