@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { StaticImage } from 'gatsby-plugin-image';
+import { graphql, useStaticQuery } from 'gatsby';
+import { getImage, StaticImage } from 'gatsby-plugin-image';
 
 import Container from '@components/Container';
 import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
@@ -11,13 +12,21 @@ import { FADE, SLIDE_BOTTOM_WITH_FADE, SLIDE_LEFT_WITH_FADE } from '@shared/tran
 
 import * as styles from './TrailerSection.module.scss';
 
-import cover from '@assets/images/cover.jpg';
-
 import { SectionProps } from '@shared/types/modules';
 
 function TrailerSection({ 
   id, 
 }: SectionProps) {
+  const data = useStaticQuery(graphql`
+    query TrailerCoverQuery {
+      cover: file(relativePath: {eq: "cover.jpg"}) {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
+    }
+  `);
+
   return (
     <Container id={ id } as="section" className={ styles.section }>
       <ParallaxLayer
@@ -32,7 +41,7 @@ function TrailerSection({
           exit="exit"
           transition={ SLIDE_LEFT_WITH_FADE.options }
         >
-          <VideoPlayer videoId="RYdCuw7L1qk" cover={ cover } />
+          <VideoPlayer videoId="RYdCuw7L1qk" cover={ getImage(data.cover.childImageSharp) } />
         </motion.div>
       </ParallaxLayer>
       

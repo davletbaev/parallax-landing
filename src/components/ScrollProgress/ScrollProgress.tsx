@@ -3,7 +3,7 @@ import { motion, useSpring, useTransform } from 'framer-motion';
 
 import { MOBILE_SECTIONS, SECTIONS } from '@shared/constants';
 import { useMedia } from '@shared/hocs/withMedia';
-import { useScrollJack } from '@shared/hocs/withScrollJack';
+import { useScrollJack } from '@components/ScrollJack/withScrollJack';
 
 import * as styles from './ScrollProgress.module.scss';
 

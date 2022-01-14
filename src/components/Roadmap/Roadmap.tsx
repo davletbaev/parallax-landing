@@ -8,37 +8,16 @@ import { SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
 
 import * as styles from './Roadmap.module.scss';
 
+import { RoadmapItem } from '@shared/types/components';
+
 const cn = classnames.bind(styles);
 
-const ROADMAP_ITEMS = [
-  {
-    id: 1,
-    heading: 'Q4 2021',
-    items: [ 'Announcement + Trailer', 'Founders NFT Collection' ],
-    active: true
-  },
-  {
-    id: 2,
-    heading: 'Q2 2022',
-    items: [ 'Native Token Release', 'Land Sale' ],
-    active: false
-  },
-  {
-    id: 3,
-    heading: 'Q3 2022',
-    items: [ 'HELIX Market Release', 'Early Access' ],
-    active: false
-  },
-  {
-    id: 4,
-    heading: 'HELIX Market Release',
-    description: null,
-    active: false
-  }
-];
+type RoadmapProps = {
+  items: RoadmapItem[]
+}
 
-function Roadmap() {
-  const renderItems = () => ROADMAP_ITEMS.map(({ id, heading, description, items, active }) => {
+function Roadmap({ items }: RoadmapProps) {
+  const renderItems = () => items.map(({ id, heading, description, items, active }) => {
     const itemContentClassname = cn(
       'itemContent',
       { itemContentActive: active }

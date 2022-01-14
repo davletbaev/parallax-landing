@@ -8,6 +8,7 @@ const cn = classnames.bind(styles);
 
 type ModalProps = {
   label: string,
+  variant?: 'center' | 'fluid',
   className?: string,
   onOpen?: () => void,
   onClose?: () => void,
@@ -26,6 +27,7 @@ ReactModal.setAppElement('#___gatsby');
 
 const Modal = React.forwardRef<ModalRef, ModalProps>(({
   className,
+  variant = 'center',
   label,
   onOpen,
   onClose,
@@ -44,6 +46,7 @@ const Modal = React.forwardRef<ModalRef, ModalProps>(({
 
   const overlayClassName = cn(
     'overlay',
+    variant,
     isOpen && 'open',
     opening && 'opening',
     closing && 'closing',

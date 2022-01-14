@@ -10,7 +10,7 @@ import * as styles from './NavModal.module.scss';
 
 const NavModal = React.forwardRef<ModalRef>((props, ref) => {
   return (
-    <Modal ref={ ref } label="Navigation">
+    <Modal ref={ ref } label="Navigation" variant="fluid">
       <Container className={ styles.navmodal }>
         <div className={ styles.navigation }>
           <Navigation />
@@ -18,11 +18,11 @@ const NavModal = React.forwardRef<ModalRef>((props, ref) => {
 
         <div className={ styles.trailer }>
           <Button 
-            href="#trailer"
+            href="#utility"
             variant="ghost"
             block
           >
-            Watch trailer
+            Watch NFT Video
           </Button>
         </div>
 

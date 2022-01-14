@@ -8,6 +8,7 @@ import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
 import Roadmap from '@components/Roadmap';
 import { Heading, Paragraph } from '@components/Typography';
 
+import { ROADMAP_ITEMS } from '@shared/constants';
 import { useMedia } from '@shared/hocs/withMedia';
 import { FADE, SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
 
@@ -71,7 +72,7 @@ function RoadmapSection({
               <motion.div
                 variants={ SLIDE_BOTTOM_WITH_FADE.variants }
                 transition={ SLIDE_BOTTOM_WITH_FADE.options }>
-                <Roadmap />
+                <Roadmap items={ ROADMAP_ITEMS } />
               </motion.div>
             </ParallaxLayer>
           )

@@ -8,17 +8,23 @@ import Container from '@components/Container';
 import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
 import { Heading, Paragraph } from '@components/Typography';
 
-import { ExternalUrl, FAQ_QUESTIONS } from '@shared/constants';
+import { ExternalUrl } from '@shared/constants';
 import { useMedia } from '@shared/hocs/withMedia';
 import { FADE, SLIDE_BOTTOM_WITH_FADE } from '@shared/transitions';
 
 import * as styles from './FaqSection.module.scss';
 
+import { FaqQuestion } from '@shared/types/components';
 import { SectionProps } from '@shared/types/modules';
 
+type FAQSectionProps = SectionProps & {
+  questions: FaqQuestion[]
+}
+
 function FaqSection({ 
-  id
-}: SectionProps) {
+  id,
+  questions
+}: FAQSectionProps) {
   const { isTabletOrBigger } = useMedia();
   
   return (
@@ -33,7 +39,7 @@ function FaqSection({
       >
         <ParallaxLayer force={ 15 } depth={ 50 } className={ styles.heading }>
           <Heading type="h2">
-          FREQUENTLY ASKED QUESTIONS
+            FREQUENTLY ASKED QUESTIONS
           </Heading>
         </ParallaxLayer>
           
@@ -53,7 +59,7 @@ function FaqSection({
               transition={ SLIDE_BOTTOM_WITH_FADE.options }
             >
               <Button href={ ExternalUrl.wiki } target="_blank">
-              VISIT WHITEPAPER / WIKI
+                VISIT WHITEPAPER / WIKI
               </Button>
             </motion.div>
           </ParallaxLayer>
@@ -68,7 +74,7 @@ function FaqSection({
               variants={ FADE.variants }
               transition={ FADE.options }
             >
-              <Accordion items={ FAQ_QUESTIONS } />
+              <Accordion items={ questions } />
             </ParallaxLayer>
           )
         }

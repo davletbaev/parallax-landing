@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import YouTube, { Options } from 'react-youtube';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 import Icon from '@components/Icon';
 
@@ -7,7 +8,7 @@ import * as styles from './VideoPlayer.module.scss';
 
 type VideoPlayerProps = {
   videoId: string,
-  cover?: string
+  cover?: IGatsbyImageData
 }
 
 function VideoPlayer({ videoId, cover }: VideoPlayerProps) {
@@ -46,10 +47,7 @@ function VideoPlayer({ videoId, cover }: VideoPlayerProps) {
           <div
             className={ styles.wrapper }
           >
-            <img
-              src={ cover }
-              className={ styles.media }
-            />
+            <GatsbyImage className={ styles.media } image={ cover } alt="" />
           </div>
         )
       }
@@ -57,7 +55,7 @@ function VideoPlayer({ videoId, cover }: VideoPlayerProps) {
       <YouTube
         videoId={ videoId }
         className={ styles.media }
-        containerClassName={ playing && cover ? styles.wrapper : styles.hidden }
+        containerClassName={ playing && cover || !cover ? styles.wrapper : styles.hidden }
         opts={ options }   
         onReady={ handleVideoReady }
       />

@@ -5,16 +5,21 @@ import Accordion from '@components/Accordion';
 import Container from '@components/Container';
 import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
 
-import { FAQ_QUESTIONS } from '@shared/constants';
 import { FADE } from '@shared/transitions';
 
 import * as styles from './FaqSection.module.scss';
 
+import { FaqQuestion } from '@shared/types/components';
 import { SectionProps } from '@shared/types/modules';
 
+type FAQSectionProps = SectionProps & {
+  questions: FaqQuestion[]
+}
+
 function FaqMobile({ 
-  id
-}: SectionProps) {
+  id,
+  questions
+}: FAQSectionProps) {
   return (
     <Container id={ id } as="section">
       <ParallaxLayer
@@ -27,7 +32,7 @@ function FaqMobile({
         exit="exit"
         transition={ FADE.options }
       >
-        <Accordion items={ FAQ_QUESTIONS } />
+        <Accordion items={ questions } />
       </ParallaxLayer>
 
       <ParallaxCard 

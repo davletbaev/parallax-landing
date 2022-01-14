@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-import { useScrollJack } from '@shared/hocs/withScrollJack';
+import { useScrollJack } from '@components/ScrollJack/withScrollJack';
 
 import * as styles from './Pagination.module.scss';
 

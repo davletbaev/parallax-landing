@@ -11,6 +11,7 @@ export const FADE = {
     },
   },
   options: {
+    type: 'spring',
     when: 'beforeChildren',
     staggerChildren: .05
   }

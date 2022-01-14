@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet';
 import { AnimatePresence, motion } from 'framer-motion';
 import { compose } from 'recompose';
 
@@ -8,9 +9,10 @@ import Loader from '@components/Loader';
 import withParallax from '@components/Parallax/withParallax';
 import ScrollProgress from '@components/ScrollProgress';
 
+import { Meta } from '@shared/constants';
 import withLoader, { useLoader } from '@shared/hocs/withLoader';
 import withMedia from '@shared/hocs/withMedia';
-import withScrollJack from '@shared/hocs/withScrollJack';
+import withScrollJack from '@components/ScrollJack/withScrollJack';
 import { FADE } from '@shared/transitions';
 
 import * as styles from './Main.module.scss';
@@ -50,6 +52,67 @@ function Main({ children }: MainProps) {
 
   return (
     <div className={ styles.layout }>
+      <Helmet 
+        title={ Meta.Index.title }
+        defer={ false }
+      >
+        <meta
+          name="description"
+          content={ Meta.Index.description }
+        />
+        <meta
+          property="og:type"
+          content="website"
+        />
+        <meta
+          property="og:title"
+          content={ Meta.Index.title }
+        />
+        <meta
+          property="og:description"
+          content={ Meta.Index.description }
+        />
+        <meta
+          property="og:url"
+          content={ Meta.Index.url }
+        />
+        <meta
+          property="og:image"
+          content={ Meta.Index.preview }
+        />
+        <meta
+          property="og:image:width"
+          content="1200"
+        />
+        <meta
+          property="og:image:height"
+          content="600"
+        />
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+        />
+        <meta
+          name="twitter:site"
+          content="@helix"
+        />
+        <meta
+          name="twitter:creator"
+          content="@helix"
+        />
+        <meta
+          name="twitter:title"
+          content={ Meta.Index.title }
+        />
+        <meta
+          name="twitter:description"
+          content={ Meta.Index.description }
+        />
+        <meta
+          name="twitter:image"
+          content={ Meta.Index.preview }
+        />
+      </Helmet>
       <AnimatePresence>
         {
           loading ? (

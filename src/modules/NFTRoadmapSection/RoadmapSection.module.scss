@@ -1,0 +1,79 @@
+.section {
+  width: 100%;
+  min-height: 100%;
+
+  padding-top: var(--gap-56);
+  padding-bottom: var(--gap-24);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.roadmap {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: var(--gap-80);
+
+  margin-left: calc(var(--app-padding) * -1);
+  margin-right: calc(var(--app-padding) * -1);
+}
+
+.button + .button {
+  margin-top: var(--gap-16);
+}
+
+.background {
+  composes: background from '../MainScreen/MainScreen.module.scss'
+}
+
+.backgroundImage {
+  composes: backgroundImage from '../MainScreen/MainScreen.module.scss'
+}
+
+@media (min-width: 768px) {
+  .roadmap {
+    margin-top: var(--gap-120);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding-top: var(--gap-120);
+
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: min-content min-content 1fr;
+    grid-gap: var(--gap-16);
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .heading {
+    grid-column: 3 / 11;
+    text-align: center;
+  }
+
+  .content {
+    grid-column: 4 / 10;
+    text-align: center;
+    align-items: center;
+  }
+
+  .button + .button {
+    margin-top: 0;
+    margin-left: var(--gap-16);
+  }
+
+  .roadmap {  
+    margin-top: 0;
+    grid-column: 1 / 13;
+  }
+}

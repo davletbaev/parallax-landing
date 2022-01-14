@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { motion, useViewportScroll } from 'framer-motion';
+import { useViewportScroll } from 'framer-motion';
+import { useMatch } from '@reach/router';
 
 import Container from '@components/Container';
 import Icon from '@components/Icon';
@@ -17,6 +18,8 @@ function BottomBar() {
   const { isMobile } = useMedia();
   const { scrollYProgress } = useViewportScroll();
 
+  const isNFTPage = useMatch('/nft-foundation');
+
   useEffect(() => {
     scrollYProgress.onChange((value) => {
       setScrollAvailable(value < 1);
@@ -25,9 +28,13 @@ function BottomBar() {
   
   return (
     <Container as="footer" className={ styles.bottombar }>
-      <ParallaxLayer force={ 5 } depth={ -100 } className={ styles.pagination }>
-        <Pagination />
-      </ParallaxLayer>
+      {
+        !isNFTPage && (
+          <ParallaxLayer force={ 5 } depth={ -100 } className={ styles.pagination }>
+            <Pagination />
+          </ParallaxLayer>
+        )
+      }
 
       <ParallaxLayer 
         force={ 5 }

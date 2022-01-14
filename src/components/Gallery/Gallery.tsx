@@ -4,10 +4,9 @@ import { motion } from 'framer-motion';
 import Carousel from '@components/Carousel';
 
 import { useMedia } from '@shared/hocs/withMedia';
+import { FADE } from '@shared/transitions';
 
 import * as styles from './Gallery.module.scss';
-
-import { FADE } from '@shared/transitions';
 
 type GalleryProps = {
   children: React.ReactNode

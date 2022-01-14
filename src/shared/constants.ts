@@ -1,3 +1,5 @@
+import ArtworkSection from '@modules/ArtworkSection';
+import CarouselSection from '@modules/CarouselSection';
 import ContactsSection from '@modules/ContactsSection';
 import ContactsMobile from '@modules/ContactsSection/ContactsMobile';
 import FaqSection from '@modules/FaqSection';
@@ -6,6 +8,7 @@ import FirstFeature from '@modules/FirstFeature';
 import FourthFeature from '@modules/FourthFeature';
 import GallerySection from '@modules/GallerySection';
 import MainScreen from '@modules/MainScreen';
+import NFTFeature from '@modules/NFTFeature';
 import RoadmapSection from '@modules/RoadmapSection';
 import RoadmapMobile from '@modules/RoadmapSection/RoadmapMobile';
 import SecondFeature from '@modules/SecondFeature';
@@ -13,14 +16,24 @@ import TeamSection from '@modules/TeamSection';
 import ThirdFeature from '@modules/ThirdFeature';
 import TrailerSection from '@modules/TrailerSection';
 
-import { FaqQuestion } from './types/components';
+import { FaqQuestion, RoadmapItem } from './types/components';
 
-export enum Meta {
+enum IndexMeta {
   title = 'HELIX',
   description = 'HELIX is an open-world NFT metaverse built on the foundation of persistent virtual worlds and true digital ownership.',
   url = 'https://helixmetaverse.com',
   preview = './preview.jpg'
 }
+
+enum NFTMeta {
+  title = 'HELIX',
+  description = 'HELIX is an open-world NFT metaverse built on the foundation of persistent virtual worlds and true digital ownership.',
+}
+
+export const Meta = {
+  Index: IndexMeta,
+  NFT: NFTMeta
+};
 
 export enum ExternalUrl {
   wiki = 'https://wiki.helixmetaverse.com/',
@@ -54,111 +67,179 @@ export const SOCIALS = [
   }
 ];
 
-export const MOBILE_SECTIONS = [
-  {
-    id: 'main',
-    component: MainScreen,
-  },
-  {
-    id: 'trailer',
-    component: TrailerSection,
-  },
-  {
-    id: 'feature-1',
-    component: FirstFeature
-  },
-  {
-    id: 'feature-2',
-    component: SecondFeature
-  },
-  {
-    id: 'feature-3',
-    component: ThirdFeature
-  },
-  {
-    id: 'feature-4',
-    component: FourthFeature
-  },
-  {
-    id: 'roadmap',
-    component: RoadmapSection
-  },
-  {
-    id: 'roadmap-mobile',
-    component: RoadmapMobile
-  },
-  {
-    id: 'founders-nft',
-    component: GallerySection
-  },
-  {
-    id: 'team',
-    component: TeamSection
-  },
-  {
-    id: 'faq',
-    component: FaqSection
-  },
-  {
-    id: 'faq-mobile',
-    component: FaqMobile
-  },
-  {
-    id: 'contacts',
-    component: ContactsSection
-  },
-  {
-    id: 'contacts-mobile',
-    component: ContactsMobile
-  },
-];
+export const MOBILE_SECTIONS = {
+  Index: [
+    {
+      id: 'main',
+      component: MainScreen,
+    },
+    {
+      id: 'trailer',
+      component: TrailerSection,
+    },
+    {
+      id: 'feature-1',
+      component: FirstFeature
+    },
+    {
+      id: 'feature-2',
+      component: SecondFeature
+    },
+    {
+      id: 'feature-3',
+      component: ThirdFeature
+    },
+    {
+      id: 'feature-4',
+      component: FourthFeature
+    },
+    {
+      id: 'roadmap',
+      component: RoadmapSection
+    },
+    {
+      id: 'roadmap-mobile',
+      component: RoadmapMobile
+    },
+    {
+      id: 'founders-nft',
+      component: GallerySection
+    },
+    {
+      id: 'team',
+      component: TeamSection
+    },
+    {
+      id: 'faq',
+      component: FaqSection
+    },
+    {
+      id: 'faq-mobile',
+      component: FaqMobile
+    },
+    {
+      id: 'contacts',
+      component: ContactsSection
+    },
+    {
+      id: 'contacts-mobile',
+      component: ContactsMobile
+    },
+  ],
+  NFT: [
+    {
+      id: 'main',
+      component: MainScreen,
+    },
+    {
+      id: 'utility',
+      component: TrailerSection,
+    },
+    {
+      id: 'feature',
+      component: NFTFeature
+    },
+    {
+      id: 'carousel',
+      component: CarouselSection
+    },
+    {
+      id: 'artwork',
+      component: ArtworkSection
+    },
+    {
+      id: 'roadmap',
+      component: RoadmapSection
+    },
+    {
+      id: 'roadmap-mobile',
+      component: RoadmapMobile
+    },
+    {
+      id: 'faq',
+      component: FaqSection
+    },
+  ]
+};
 
-export const SECTIONS = [
-  {
-    id: 'main',
-    component: MainScreen,
-  },
-  {
-    id: 'trailer',
-    component: TrailerSection,
-  },
-  {
-    id: 'feature-1',
-    component: FirstFeature
-  },
-  {
-    id: 'feature-2',
-    component: SecondFeature
-  },
-  {
-    id: 'feature-3',
-    component: ThirdFeature
-  },
-  {
-    id: 'feature-4',
-    component: FourthFeature
-  },
-  {
-    id: 'roadmap',
-    component: RoadmapSection
-  },
-  {
-    id: 'founders-nft',
-    component: GallerySection
-  },
-  {
-    id: 'team',
-    component: TeamSection
-  },
-  {
-    id: 'faq',
-    component: FaqSection
-  },
-  {
-    id: 'contacts',
-    component: ContactsSection
-  },
-];
+export const SECTIONS = {
+  Index: [
+    {
+      id: 'main',
+      component: MainScreen,
+    },
+    {
+      id: 'trailer',
+      component: TrailerSection,
+    },
+    {
+      id: 'feature-1',
+      component: FirstFeature
+    },
+    {
+      id: 'feature-2',
+      component: SecondFeature
+    },
+    {
+      id: 'feature-3',
+      component: ThirdFeature
+    },
+    {
+      id: 'feature-4',
+      component: FourthFeature
+    },
+    {
+      id: 'roadmap',
+      component: RoadmapSection
+    },
+    {
+      id: 'founders-nft',
+      component: GallerySection
+    },
+    {
+      id: 'team',
+      component: TeamSection
+    },
+    {
+      id: 'faq',
+      component: FaqSection
+    },
+    {
+      id: 'contacts',
+      component: ContactsSection
+    },
+  ],
+  NFT: [
+    {
+      id: 'main',
+      component: MainScreen,
+    },
+    {
+      id: 'utility',
+      component: TrailerSection,
+    },
+    {
+      id: 'feature',
+      component: NFTFeature
+    },
+    {
+      id: 'carousel',
+      component: CarouselSection
+    },
+    {
+      id: 'artwork',
+      component: ArtworkSection
+    },
+    {
+      id: 'roadmap',
+      component: RoadmapSection
+    },
+    {
+      id: 'faq',
+      component: FaqSection
+    },
+  ]
+};
 
 
 export const FAQ_QUESTIONS: FaqQuestion[] = [
@@ -194,4 +275,64 @@ export const FAQ_QUESTIONS: FaqQuestion[] = [
     heading: 'More FAQ',
     link: ExternalUrl.faq,
   },
+];
+
+export const NFT_FAQ_QUESTIONS: FaqQuestion[] = [
+  {
+    heading: 'How do I own a Founders Collection NFT?',
+    text: 'HELIX is an open-world multiplayer online game where you can meet new people, buy and sell virtual items, and play games. '
+  },
+  {
+    heading: 'How many NFTs are available?',
+    text: 'We plan to release an early access build by Q2-Q3 of 2022, exclusively to Founders NFT holders. After that, we’ll gradually roll out access to more users.'
+  },
+  {
+    heading: 'How much are the NFTs?',
+    text: 'HELIX is being developed by Hypersonic Laboratories, a venture-funded startup based in Los Angeles. Our investors have backed many successful startups such as Twitter, Tumblr,  and Pinterest.'
+  },
+];
+
+export const ROADMAP_ITEMS: RoadmapItem[] = [
+  {
+    id: 1,
+    heading: 'Q4 2021',
+    items: [ 'Announcement + Trailer', 'Founders NFT Collection' ],
+    active: true
+  },
+  {
+    id: 2,
+    heading: 'Q2 2022',
+    items: [ 'Native Token Release', 'Land Sale' ],
+  },
+  {
+    id: 3,
+    heading: 'Q3 2022',
+    items: [ 'HELIX Market Release', 'Early Access' ],
+  },
+  {
+    id: 4,
+    heading: 'HELIX Market Release',
+  }
+];
+
+export const NFT_ROADMAP_ITEMS: RoadmapItem[] = [
+  {
+    id: 1,
+    heading: 'DEC 30',
+    description: 'Private Sale',
+    active: true
+  },
+  {
+    id: 2,
+    heading: 'TBD',
+    description: 'Price & Date Announcement',
+  },
+  {
+    id: 3,
+    heading: 'Artwork Reveal',
+  },
+  {
+    id: 4,
+    heading: 'Bonus Items Minting',
+  }
 ];

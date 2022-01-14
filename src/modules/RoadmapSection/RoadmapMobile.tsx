@@ -6,6 +6,7 @@ import Container from '@components/Container';
 import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
 import Roadmap from '@components/Roadmap';
 
+import { ROADMAP_ITEMS } from '@shared/constants';
 import { FADE, SLIDE_LEFT_WITH_FADE } from '@shared/transitions';
 
 import * as styles from './RoadmapSection.module.scss';
@@ -29,7 +30,7 @@ function RoadmapMobile({
           variants={ SLIDE_LEFT_WITH_FADE.variants }
           transition={ SLIDE_LEFT_WITH_FADE.options }
         >
-          <Roadmap />
+          <Roadmap items={ ROADMAP_ITEMS } />
         </motion.div>
       </ParallaxLayer>
 
