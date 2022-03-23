@@ -12,11 +12,11 @@ import { SectionProps } from '@shared/types/modules';
 
 import * as styles from '../TextSection/TextSection.module.scss';
 
-function FirstFeature({ 
+function FirstFeature({
   id,
 }: SectionProps) {
   return (
-    <TextSection 
+    <TextSection
       id={ id }
       align="right"
       variants={ {} }
@@ -35,10 +35,10 @@ function FirstFeature({
 
       <ParallaxLayer force={ 15 } depth={ 50 }>
         <Paragraph marginTop="24">
-          True immersion starts with life-like visual quality and clarity.
+          True immersion starts with life-like visual quality and fidelity.
         </Paragraph>
         <Paragraph>
-          HELIX features thousands of incredibly detailed, custom modeled environments, vehicles and items, from billboards down to strands of hair on your avatar.
+          HELIX features thousands of incredibly detailed environments, vehicles, items, and more with immaculate attention to detail.
         </Paragraph>
       </ParallaxLayer>
 

@@ -28,6 +28,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  zoom: 0.7;
+  position: relative;
+  bottom: -20px;
 }
 
 .progress {
@@ -66,5 +69,10 @@
 
   .description {
     margin-top: var(--gap-24);
+  }
+
+  .logo {
+      zoom: 0.4;
+      bottom: -130px;
   }
 }

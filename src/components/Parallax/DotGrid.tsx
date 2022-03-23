@@ -8,7 +8,8 @@ function DotGrid() {
   const { canvasRef } = useDotGrid();
 
   return (
-    <div className={ styles.container }>
+    // <div className={ styles.container }>
+    <div>
       <canvas ref={ canvasRef } className={ styles.canvas }></canvas>
     </div>
   );

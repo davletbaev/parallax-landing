@@ -12,11 +12,11 @@ import { SectionProps } from '@shared/types/modules';
 
 import * as styles from '../TextSection/TextSection.module.scss';
 
-function SecondFeature({ 
+function SecondFeature({
   id,
 }: SectionProps) {
   return (
-    <TextSection 
+    <TextSection
       id={ id }
       variants={ {} }
       initial="initial"
@@ -26,13 +26,13 @@ function SecondFeature({
     >
       <ParallaxLayer force={ 15 } depth={ 150 }>
         <Heading type="h2" align="left">
-            TRUE ITEM<br /> OWNERSHIP
+            TRUE DIGITAL<br /> OWNERSHIP
         </Heading>
       </ParallaxLayer>
 
       <ParallaxLayer force={ 15 } depth={ 50 }>
         <Paragraph marginTop="24">
-        Collect hundreds of customizable NFT items such as clothes, accessories, skins, vehicles, homes, and more.
+        Create, buy, or sell fully customizable virtual items such as clothes, accessories, vehicles, properties, and more. 
         </Paragraph>
         <Paragraph>
         Every item holds real-world value and can be freely traded on a decentralized open market.
@@ -42,7 +42,7 @@ function SecondFeature({
         </Paragraph>
       </ParallaxLayer>
 
-      <ParallaxCard 
+      <ParallaxCard
         className={ styles.background }
         variants={ FADE.variants }
         initial="initial"

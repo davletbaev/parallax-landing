@@ -75,7 +75,7 @@ function BackgroundVideo() {
     const cards:any = document.getElementsByName("cards");
     const layers = document.getElementsByName("layers");
     const range = 40;
-    
+
     let timeout:any;
     var currentX = window.innerWidth/2;
     var currentY = window.innerHeight/2;
@@ -89,7 +89,7 @@ function BackgroundVideo() {
       currentY = y
         var rotateForce = 20
       timeout = window.requestAnimationFrame(() => {
-       
+
         [].forEach.call(cards, (card:any) => {
           const xValue = (x/window.innerWidth*rotateForce*2)-rotateForce;
           const yValue = (y/window.innerHeight*rotateForce*2)-rotateForce;
@@ -108,7 +108,7 @@ function BackgroundVideo() {
       })
     }, false);
 
-    
+
 
    setInterval(() => {
         var rotateForce = 20
@@ -185,7 +185,7 @@ class Dot {
   //     const y = event.clientY;
   //     var radiuses2 = 80
 
-       
+
 
   // }
 
@@ -210,12 +210,12 @@ var rows:number = 40;
         canvas.width = width = window.innerWidth;
         canvas.height = height = window.innerHeight;
 
-  
+
 
     setupDots();
    function setupDots() {
-   
-    
+
+
         cols = width / scl;
         rows = height / scl;
       dots = []
@@ -227,13 +227,13 @@ var rows:number = 40;
             }
         }
     }
-  
+
     function resize() {
         canvas.width = width = window.innerWidth;
         canvas.height = height = window.innerHeight;
         setupDots();
     }
-  
+
     function mousemoveHandler(event:any) {
         dots.forEach((d:any) => {
           if (check_a_point(event.clientX, event.clientY+window.innerHeight*0.005, d.x, d.y, 70)) {
@@ -248,14 +248,14 @@ var rows:number = 40;
   }
         })
     }
-  
+
     function render() {
       context.clearRect(0, 0, width, height);
       dots.forEach((d:any) => {
           d.render();
       })
     }
-  
+
 
 
 init()
@@ -387,10 +387,10 @@ document.addEventListener('mousemove', function (e) {
                   />
                 </picture>
               </div>
-            ) 
+            )
             : (
-              
-              <motion.video 
+
+              <motion.video
                 variants={ fadeVariants }
                 initial="initial"
                 animate="enter"
@@ -402,10 +402,10 @@ document.addEventListener('mousemove', function (e) {
                 muted
               />
             )
-       
-           
+
+
         }
-        
+
       </AnimatePresence>
       <div id="cursor" className={styles.cursor}><div className={styles.cursorInner}>
         </div></div>

@@ -37,10 +37,8 @@
 
   img {
     display: block;
-
-    max-width: 100%;
-    width: auto;
-    height: auto;
+    height: 80px;
+    margin-left: 90px;
   }
 }
 
@@ -78,25 +76,25 @@
     grid-column: 1 / 13;
 
     margin-top: var(--gap-80);
-  
+
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     grid-gap: var(--gap-56);
-  
+
     margin-top: var(--gap-56);
-  
+
     opacity: 0.5;
   }
-  
+
   .partner {
     & + .partner {
       margin-top: 0;
     }
-  
+
     img {
       margin: 0 auto;
-  
+
       width: 80%;
     }
   }

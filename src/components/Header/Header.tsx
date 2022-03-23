@@ -20,16 +20,16 @@ import { NavItem } from '@shared/types/components';
 const NAV_ITEMS: NavItem[] = [
   {
     path: ExternalUrl.wiki,
-    label: 'Whitepaper',
+    label: 'DOCS',
     target: '_blank'
   },
-  {
-    path: '#roadmap',
-    label: 'Roadmap',
-  },
+  // {
+  //   path: '#roadmap',
+  //   label: 'Roadmap',
+  // },
   {
     path: '#founders-nft',
-    label: 'Founders NFT',
+    label: 'FOUNDERS NFT',
   },
   {
     path: '#faq',
@@ -69,7 +69,7 @@ function Header() {
 
   const handleToggleClick = () => {
     if (!navModalRef.current) return;
-      
+
     navModalRef.current.toggleModal();
     setNavOpen(!isNavOpen);
   };
@@ -81,9 +81,9 @@ function Header() {
           <ParallaxLayer force={ 5 } depth={ -100 }>
             <Navigation items={ isNFTPage ? NFT_NAV_ITEMS : NAV_ITEMS } />
           </ParallaxLayer>
-        ) 
+        )
       }
-      
+
       <ParallaxLayer force={ 5 } depth={ -100 }>
         <Logo to="/" />
       </ParallaxLayer>
@@ -105,7 +105,7 @@ function Header() {
       {
         isDesktop && (
           <ParallaxLayer force={ 5 } depth={ -100 } className={ styles.trailer }>
-            <Button 
+            <Button
               href={ isNFTPage ? '#utility' : '#trailer' }
               variant="ghost"
               block
