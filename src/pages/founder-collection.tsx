@@ -3,11 +3,10 @@ import { Helmet } from 'react-helmet';
 
 import ArtworkSection from '@modules/ArtworkSection';
 import CarouselSection from '@modules/CarouselSection';
-import FaqSection from '@modules/FaqSection';
+import FaqSection from '@modules/NFTFaqSection';
 import NFTFeature from '@modules/NFTFeature';
 import MainScreen from '@modules/NFTMainScreen';
-import RoadmapSection from '@modules/NFTRoadmapSection';
-import RoadmapMobile from '@modules/NFTRoadmapSection/RoadmapMobile';
+import RoadmapSection, { RoadmapMobile } from '@modules/NFTRoadmapSection';
 import TrailerSection from '@modules/NFTTrailerSection';
 
 import { ScrollJackWrapper } from '@components/ScrollJack';

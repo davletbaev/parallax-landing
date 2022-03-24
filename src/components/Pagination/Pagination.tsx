@@ -24,9 +24,7 @@ function Pagination() {
   }
 
   return (
-    <div className={ styles.pagination } name="layers"
-    data-force={10} data-depth={-100}
-    style={{perspective:"1800px",transformStyle:"preserve-3d",transition:"500ms ease-out"}}>
+    <div className={ styles.pagination }>
       <span className={ styles.item }>
         { currentIndex }
       </span>

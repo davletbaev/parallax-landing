@@ -2,6 +2,8 @@ import React from 'react';
 import classnames from 'classnames/bind';
 import { HTMLMotionProps, motion, useMotionTemplate, useMotionValue, useTransform } from 'framer-motion';
 
+import { IS_BROWSER } from '@shared/constants';
+
 import * as styles from './Parallax.module.scss';
 
 import { useParallax } from './withParallax';
@@ -20,13 +22,13 @@ const ParallaxLayer = ({ className, force, depth, children, ...restProps }: Para
 
   const xValue = useTransform(
     x,
-    (value) => typeof window !== 'undefined'
+    (value) => IS_BROWSER
       ? (value / screenWidth * force * 2) - force
       : value
   );
   const yValue = useTransform(
     y,
-    (value) => typeof window !== 'undefined'
+    (value) => IS_BROWSER
       ? ((value / screenHeight * force * 2) - force) * 0.5
       : value
   );

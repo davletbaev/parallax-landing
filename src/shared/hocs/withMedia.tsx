@@ -1,4 +1,6 @@
-import React, { ComponentType, createContext, useCallback, useContext, useEffect, useState } from 'react';
+import React, { ComponentType, createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+
+import { IS_BROWSER } from '@shared/constants';
 
 type MediaContext = {
   isMobile: boolean,
@@ -16,14 +18,14 @@ const MediaContext = createContext<MediaContext>({
 
 function withMedia(WrappedComponent: ComponentType) {
   function WithMedia(props: any) {
-    const [ width, setWidth ] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
+    const [ width, setWidth ] = useState(IS_BROWSER ? window.innerWidth : 0);
     const [ isMobile, setIsMobile ] = useState(width < 600);
     const [ isTabletOrLess, setIsTabletOrLess ] = useState(width < 1024);
     const [ isTabletOrBigger, setIsTabletOrBigger ] = useState(width >= 600);
     const [ isDesktop, setIsDesktop ] = useState(width >= 1024);
 
     const handleResize = useCallback(() => {
-      if (typeof window === 'undefined') return;
+      if (!IS_BROWSER) return;
 
       const windowWidth = window.innerWidth;
 
@@ -35,7 +37,7 @@ function withMedia(WrappedComponent: ComponentType) {
     }, []);
 
     useEffect(() => {
-      if (typeof window === 'undefined') return;
+      if (!IS_BROWSER) return;
       
       handleResize();
 
@@ -48,7 +50,7 @@ function withMedia(WrappedComponent: ComponentType) {
       };
     }, []);
 
-    const getMediaContext = useCallback(() => ({
+    const mediaContext = useMemo(() => ({
       isMobile,
       isTabletOrLess,
       isTabletOrBigger,
@@ -56,7 +58,7 @@ function withMedia(WrappedComponent: ComponentType) {
     }), [ isMobile, isTabletOrLess, isTabletOrBigger, isDesktop ]);
 
     return (
-      <MediaContext.Provider value={ getMediaContext() }>
+      <MediaContext.Provider value={ mediaContext }>
         {/* eslint-disable-next-line react/jsx-props-no-spreading */ }
         <WrappedComponent { ...props } />
       </MediaContext.Provider>

@@ -3,6 +3,9 @@ import { AnimatePresence } from 'framer-motion';
 import { navigate } from 'gatsby';
 import { useLocation } from '@reach/router';
 
+import ScrollProgress from '@components/ScrollProgress';
+
+import { IS_BROWSER } from '@shared/constants';
 import { useMedia } from '@shared/hocs/withMedia';
 
 import { useScrollJack } from './withScrollJack';
@@ -72,6 +75,8 @@ const ScrollJackWrapper = ({ children }: ScrollJackWrapperProps) => {
   }, []);
 
   useEffect(() => {
+    if (!IS_BROWSER) return;
+    
     const handleScroll = (e: WheelEvent) => {
       const now = Date.now();
 
@@ -161,9 +166,12 @@ const ScrollJackWrapper = ({ children }: ScrollJackWrapperProps) => {
   }, [ currentSectionId ]);
   
   return (
-    <AnimatePresence exitBeforeEnter>
-      { sections[currentSectionIndex] }
-    </AnimatePresence>
+    <>
+      <ScrollProgress progress={ currentSectionIndex / (sections.length - 1) } />
+      <AnimatePresence exitBeforeEnter>
+        { sections[currentSectionIndex] }
+      </AnimatePresence>
+    </>
   );
 };
 

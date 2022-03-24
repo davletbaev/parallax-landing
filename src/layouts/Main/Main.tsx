@@ -1,3 +1,4 @@
+// eslint-disable-next-line simple-import-sort/imports
 import React, { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -7,17 +8,17 @@ import BottomBar from '@components/BottomBar';
 import Header from '@components/Header';
 import Loader from '@components/Loader';
 import withParallax from '@components/Parallax/withParallax';
-import ScrollProgress from '@components/ScrollProgress';
+import withScrollJack from '@components/ScrollJack/withScrollJack';
 
-import { Meta } from '@shared/constants';
+import { IS_BROWSER, Meta } from '@shared/constants';
 import withLoader, { useLoader } from '@shared/hocs/withLoader';
 import withMedia from '@shared/hocs/withMedia';
-import withScrollJack from '@components/ScrollJack/withScrollJack';
 import { FADE } from '@shared/transitions';
+
+import '@assets/styles/global.scss';
 
 import * as styles from './Main.module.scss';
 
-import '@assets/styles/global.scss';
 
 type MainProps = {
   children?: React.ReactNode
@@ -28,10 +29,14 @@ function Main({ children }: MainProps) {
   const { loading, progress, setLoading } = useLoader();
 
   useEffect(() => {
+    if (!IS_BROWSER) return;
+    
     document.body.classList.toggle('body--loading', loading);
   }, [ loading ]);
 
   useEffect(() => {
+    if (!IS_BROWSER) return;
+
     loadingInterval.current = setInterval(() => {
       const currentProgress = progress.get();
 
@@ -51,7 +56,7 @@ function Main({ children }: MainProps) {
   }, []);
 
   return (
-    <div className={ styles.layout }>
+    <>
       <Helmet 
         title={ Meta.Index.title }
         defer={ false }
@@ -113,44 +118,44 @@ function Main({ children }: MainProps) {
           content={ Meta.Index.preview }
         />
       </Helmet>
-      <AnimatePresence>
-        {
-          loading ? (
-            <Loader />
-          ) : (
-            <>
-              <motion.div 
-                variants={ FADE.variants }
-                initial="initial"
-                animate="enter"
-                exit="exit"
-                transition={ { delay: 1 } }
-              >
-                <ScrollProgress />
-                <Header />
-              </motion.div>
+      <div className={ styles.layout }>
+        <AnimatePresence>
+          {
+            loading ? (
+              <Loader />
+            ) : (
+              <>
+                <motion.div 
+                  variants={ FADE.variants }
+                  initial="initial"
+                  animate="enter"
+                  exit="exit"
+                  transition={ { delay: 1 } }
+                >
+                  <Header />
+                </motion.div>
 
-              <main className={ styles.main }>
-                { children }
-              </main>
+                <main className={ styles.main }>
+                  { children }
+                </main>
 
-              <motion.div 
-                variants={ FADE.variants }
-                initial="initial"
-                animate="enter"
-                exit="exit"
-                transition={ { delay: 1 } }
-              >
-                <BottomBar />
-              </motion.div>
-            </>
-          )
-        }
-      </AnimatePresence>
+                <motion.div 
+                  variants={ FADE.variants }
+                  initial="initial"
+                  animate="enter"
+                  exit="exit"
+                  transition={ { delay: 1 } }
+                >
+                  <BottomBar />
+                </motion.div>
+              </>
+            )
+          }
+        </AnimatePresence>
 
-      <div className={ styles.overlay } />
-      {/* <DotGrid /> */}
-    </div>
+        <div className={ styles.overlay } />
+      </div>
+    </>
   );
 }
 

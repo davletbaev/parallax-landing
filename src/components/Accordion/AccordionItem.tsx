@@ -3,6 +3,8 @@ import React, { useCallback, useEffect, useRef } from 'react';
 import Icon from '@components/Icon';
 import { Heading, Paragraph } from '@components/Typography';
 
+import { IS_BROWSER } from '@shared/constants';
+
 import * as styles from './Accordion.module.scss';
 
 type AccordionItemProps = {
@@ -18,6 +20,7 @@ function AccordionItem({ active, heading, text, onToggle }: AccordionItemProps) 
   const contentRef = useRef<HTMLDivElement>(null);
 
   const resizeContainer = useCallback(() => {
+    if (!IS_BROWSER) return;
     if (!containerRef.current || !headlineRef.current || !contentRef.current) return;
 
     const container = containerRef.current;
@@ -32,7 +35,7 @@ function AccordionItem({ active, heading, text, onToggle }: AccordionItemProps) 
   }, [ active ]);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (!IS_BROWSER) return;
 
     resizeContainer();
 

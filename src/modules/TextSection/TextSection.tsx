@@ -1,10 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { StaticImage } from 'gatsby-plugin-image';
 
 import Container from '@components/Container';
-
-import { FADE } from '@shared/transitions';
 
 import * as styles from './TextSection.module.scss';
 

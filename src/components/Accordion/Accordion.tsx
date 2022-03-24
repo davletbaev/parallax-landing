@@ -46,7 +46,7 @@ function Accordion({ items }: AccordionProps) {
     </li>
   ));
 
-  if (isDesktop) {
+  if (isDesktop && items.length >= 8) {
     const items = renderItems();
 
     const middleIndex = Math.ceil(items.length / 2);

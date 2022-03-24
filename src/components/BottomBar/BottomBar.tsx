@@ -18,7 +18,7 @@ function BottomBar() {
   const { isMobile } = useMedia();
   const { scrollYProgress } = useViewportScroll();
 
-  const isNFTPage = useMatch('/nft-foundation');
+  const isNFTPage = useMatch('/founder-collection');
 
   useEffect(() => {
     scrollYProgress.onChange((value) => {

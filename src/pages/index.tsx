@@ -1,15 +1,12 @@
 import React from 'react';
 
-import ContactsSection from '@modules/ContactsSection';
-import ContactsMobile from '@modules/ContactsSection/ContactsMobile';
-import FaqSection from '@modules/FaqSection';
-import FaqMobile from '@modules/FaqSection/FaqMobile';
+import ContactsSection, { ContactsMobile } from '@modules/ContactsSection';
+import FaqSection, { FaqMobile } from '@modules/FaqSection';
 import FirstFeature from '@modules/FirstFeature';
 import FourthFeature from '@modules/FourthFeature';
 import GallerySection from '@modules/GallerySection';
 import MainScreen from '@modules/MainScreen';
-import RoadmapSection from '@modules/RoadmapSection';
-import RoadmapMobile from '@modules/RoadmapSection/RoadmapMobile';
+import RoadmapSection, { RoadmapMobile } from '@modules/RoadmapSection';
 import SecondFeature from '@modules/SecondFeature';
 import TeamSection from '@modules/TeamSection';
 import ThirdFeature from '@modules/ThirdFeature';

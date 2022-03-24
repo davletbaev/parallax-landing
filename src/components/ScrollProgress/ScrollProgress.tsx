@@ -1,24 +1,20 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { motion, useSpring, useTransform } from 'framer-motion';
-
-import { MOBILE_SECTIONS, SECTIONS } from '@shared/constants';
-import { useMedia } from '@shared/hocs/withMedia';
-import { useScrollJack } from '@components/ScrollJack/withScrollJack';
 
 import * as styles from './ScrollProgress.module.scss';
 
-function ScrollProgress() {
-  const { isMobile } = useMedia();
-  const sections = useRef(isMobile ? MOBILE_SECTIONS : SECTIONS);
-  const { currentSectionIndex } = useScrollJack();
+type ScrollProgressProps = {
+  progress: number
+}
 
+function ScrollProgress({ progress }: ScrollProgressProps) {
   const percentage = useSpring(0);
 
-  const width = useTransform(percentage, (value) => `${value}%`);
+  const width = useTransform(percentage, (value) => `${value * 100}%`);
 
   useEffect(() => {
-    percentage.set(Math.ceil(currentSectionIndex / (sections.current.length - 1) * 100));
-  }, [ currentSectionIndex ]);
+    percentage.set(progress);
+  }, [ progress ]);
 
   return (
     <div className={ styles.container }>

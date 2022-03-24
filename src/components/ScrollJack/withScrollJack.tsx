@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React, { ComponentType, createContext, useContext, useState } from 'react';
+import { useLocation } from '@reach/router';
 
 type ScrollJackContextValue = {
   currentSectionIndex: number,
@@ -17,8 +18,10 @@ const ScrollJackContext = createContext<ScrollJackContextValue>({
 
 function withScrollJack(WrappedComponent: ComponentType) {
   function WithScrollJack(props: any) {
+    const location = useLocation();
+
     const [ currentSectionIndex, setCurrentSectionIndex ] = useState(0);
-    const [ currentSectionId, setCurrentSectionId ] = useState(window.location.hash.slice(1));
+    const [ currentSectionId, setCurrentSectionId ] = useState(location.hash.slice(1));
 
     const contextValues = {
       currentSectionIndex,

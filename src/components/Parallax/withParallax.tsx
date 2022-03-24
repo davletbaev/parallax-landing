@@ -2,6 +2,8 @@ import React, { ComponentType, createContext, useContext, useEffect, useMemo, us
 import { MotionValue, motionValue, useMotionValue } from 'framer-motion';
 import { throttle } from 'lodash';
 
+import { IS_BROWSER } from '@shared/constants';
+
 type ParallaxContext = {
   x: MotionValue<number>,
   y: MotionValue<number>,
@@ -25,18 +27,25 @@ function withParallax(WrappedComponent: ComponentType) {
     const parallaxInterval = useRef<ReturnType<typeof setInterval>>();
     const parallaxTimeout = useRef<ReturnType<typeof setTimeout>>();
 
-    const initialWidth = typeof window !== 'undefined' ? window.innerWidth : 1440;
+    const [ isClient, setIsClient ] = useState(false);
+
+    const initialWidth = isClient ? window.innerWidth : 1440;
     const [ screenWidth, setScreenWidth ] = useState(initialWidth);
   
-    const initialHeight = typeof window !== 'undefined' ? window.innerHeight : 768;
+    const initialHeight = isClient ? window.innerHeight : 768;
     const [ screenHeight, setScreenHeight ] = useState(initialHeight);
 
     const x = useMotionValue(0);
     const y = useMotionValue(0);
     const duration = useMotionValue(0.5);
 
+    useEffect(() => {
+      setIsClient(typeof window !== 'undefined');
+    }, []);
 
     useEffect(() => {
+      if (!IS_BROWSER) return;
+
       const mouseMoveHandler = throttle((event: MouseEvent) => {
         x.set(Math.max(0, Math.min(screenWidth, event.x)));
         y.set(Math.max(0, Math.min(screenHeight, event.y)));
@@ -51,6 +60,8 @@ function withParallax(WrappedComponent: ComponentType) {
     }, [ screenWidth, screenHeight ]);
 
     useEffect(() => {
+      if (!IS_BROWSER) return;
+      
       duration.set(0);
       x.set(screenWidth / 2);
       y.set(screenHeight / 2);
@@ -102,6 +113,8 @@ function withParallax(WrappedComponent: ComponentType) {
     }, [ screenWidth, screenHeight ]);
 
     useEffect(() => {
+      if (!IS_BROWSER) return;
+
       const handleResize = () => {
         setScreenWidth(window.innerWidth);
         setScreenHeight(window.innerHeight);

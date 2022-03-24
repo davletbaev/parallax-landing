@@ -1,22 +1,6 @@
-import ArtworkSection from '@modules/ArtworkSection';
-import CarouselSection from '@modules/CarouselSection';
-import ContactsSection from '@modules/ContactsSection';
-import ContactsMobile from '@modules/ContactsSection/ContactsMobile';
-import FaqSection from '@modules/FaqSection';
-import FaqMobile from '@modules/FaqSection/FaqMobile';
-import FirstFeature from '@modules/FirstFeature';
-import FourthFeature from '@modules/FourthFeature';
-import GallerySection from '@modules/GallerySection';
-import MainScreen from '@modules/MainScreen';
-import NFTFeature from '@modules/NFTFeature';
-import RoadmapSection from '@modules/RoadmapSection';
-import RoadmapMobile from '@modules/RoadmapSection/RoadmapMobile';
-import SecondFeature from '@modules/SecondFeature';
-import TeamSection from '@modules/TeamSection';
-import ThirdFeature from '@modules/ThirdFeature';
-import TrailerSection from '@modules/TrailerSection';
+import { FaqQuestion, NavItem, RoadmapItem } from './types/components';
 
-import { FaqQuestion, RoadmapItem } from './types/components';
+export const IS_BROWSER = typeof window !== 'undefined';
 
 enum IndexMeta {
   title = 'HELIX',
@@ -66,181 +50,6 @@ export const SOCIALS = [
     url: `mailto:${ ExternalUrl.email }`
   }
 ];
-
-export const MOBILE_SECTIONS = {
-  Index: [
-    {
-      id: 'main',
-      component: MainScreen,
-    },
-    {
-      id: 'trailer',
-      component: TrailerSection,
-    },
-    {
-      id: 'feature-1',
-      component: FirstFeature
-    },
-    {
-      id: 'feature-2',
-      component: SecondFeature
-    },
-    {
-      id: 'feature-3',
-      component: ThirdFeature
-    },
-    {
-      id: 'feature-4',
-      component: FourthFeature
-    },
-    {
-      id: 'roadmap',
-      component: RoadmapSection
-    },
-    {
-      id: 'roadmap-mobile',
-      component: RoadmapMobile
-    },
-    {
-      id: 'founders-nft',
-      component: GallerySection
-    },
-    {
-      id: 'team',
-      component: TeamSection
-    },
-    {
-      id: 'faq',
-      component: FaqSection
-    },
-    {
-      id: 'faq-mobile',
-      component: FaqMobile
-    },
-    {
-      id: 'contacts',
-      component: ContactsSection
-    },
-    {
-      id: 'contacts-mobile',
-      component: ContactsMobile
-    },
-  ],
-  NFT: [
-    {
-      id: 'main',
-      component: MainScreen,
-    },
-    {
-      id: 'utility',
-      component: TrailerSection,
-    },
-    {
-      id: 'feature',
-      component: NFTFeature
-    },
-    {
-      id: 'carousel',
-      component: CarouselSection
-    },
-    {
-      id: 'artwork',
-      component: ArtworkSection
-    },
-    {
-      id: 'roadmap',
-      component: RoadmapSection
-    },
-    {
-      id: 'roadmap-mobile',
-      component: RoadmapMobile
-    },
-    {
-      id: 'faq',
-      component: FaqSection
-    },
-  ]
-};
-
-export const SECTIONS = {
-  Index: [
-    {
-      id: 'main',
-      component: MainScreen,
-    },
-    {
-      id: 'trailer',
-      component: TrailerSection,
-    },
-    {
-      id: 'feature-1',
-      component: FirstFeature
-    },
-    {
-      id: 'feature-2',
-      component: SecondFeature
-    },
-    {
-      id: 'feature-3',
-      component: ThirdFeature
-    },
-    {
-      id: 'feature-4',
-      component: FourthFeature
-    },
-    {
-      id: 'roadmap',
-      component: RoadmapSection
-    },
-    {
-      id: 'founders-nft',
-      component: GallerySection
-    },
-    {
-      id: 'team',
-      component: TeamSection
-    },
-    {
-      id: 'faq',
-      component: FaqSection
-    },
-    {
-      id: 'contacts',
-      component: ContactsSection
-    },
-  ],
-  NFT: [
-    {
-      id: 'main',
-      component: MainScreen,
-    },
-    {
-      id: 'utility',
-      component: TrailerSection,
-    },
-    {
-      id: 'feature',
-      component: NFTFeature
-    },
-    {
-      id: 'carousel',
-      component: CarouselSection
-    },
-    {
-      id: 'artwork',
-      component: ArtworkSection
-    },
-    {
-      id: 'roadmap',
-      component: RoadmapSection
-    },
-    {
-      id: 'faq',
-      component: FaqSection
-    },
-  ]
-};
-
 
 export const FAQ_QUESTIONS: FaqQuestion[] = [
   {
@@ -334,5 +143,48 @@ export const NFT_ROADMAP_ITEMS: RoadmapItem[] = [
   {
     id: 4,
     heading: 'Bonus Items Minting',
+  }
+];
+
+export const NAV_ITEMS: NavItem[] = [
+  {
+    path: ExternalUrl.wiki,
+    label: 'Whitepaper',
+    target: '_blank'
+  },
+  {
+    path: '#roadmap',
+    label: 'Roadmap',
+  },
+  {
+    path: '#founders-nft',
+    label: 'Founders NFT',
+  },
+  {
+    path: '#faq',
+    label: 'FAQ',
+  }
+];
+
+export const NFT_NAV_ITEMS: NavItem[] = [
+  {
+    path: '#utility',
+    label: 'Utility',
+  },
+  {
+    path: '#carousel',
+    label: 'Explore',
+  },
+  {
+    path: '#artwork',
+    label: 'Gallery',
+  },
+  {
+    path: '#roadmap',
+    label: 'Timeline'
+  },
+  {
+    path: '#faq',
+    label: 'FAQ',
   }
 ];

@@ -1,4 +1,4 @@
-import React, { ComponentType, createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { ComponentType, createContext, useCallback, useContext, useMemo, useState } from 'react';
 import { MotionValue, motionValue, useSpring } from 'framer-motion';
 
 type LoaderContext = {
@@ -22,8 +22,6 @@ function withLoader(WrappedComponent: ComponentType) {
     const [ loading, setLoading ] = useState(true);
 
     const updateLoading = useCallback((isLoading) => setLoading(isLoading), []);
-
-    
 
     const loaderContext = useMemo(() => ({
       progress,
