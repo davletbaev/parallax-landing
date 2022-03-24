@@ -1,1 +1,1 @@
-export { default } from './ThirdFeature';
+export { default } from './ThirdFeature'; 

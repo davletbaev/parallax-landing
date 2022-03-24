@@ -118,7 +118,7 @@ function BackgroundVideo() {
           const xValue = (x/window.innerWidth*rotateForce*2)-rotateForce;
           const yValue = (y/window.innerHeight*rotateForce*2)-rotateForce;
           card.style.transform = `rotateX(${yValue*0.5}deg) rotateY(${xValue}deg) translateZ(-100px)`;
-          card.style.transition = "2s ease-out"
+          card.style.transition = "1s ease-out"
         });
 
         [].forEach.call(layers, (card:any) => {
@@ -127,7 +127,7 @@ function BackgroundVideo() {
           const xValue = (x/window.innerWidth*rotateIndForce*2)-rotateIndForce;
           const yValue = (y/window.innerHeight*rotateIndForce*2)-rotateIndForce;
           card.style.transform = `rotateX(${yValue*0.5}deg) rotateY(${xValue}deg) translateZ(${layerDepth}px)`;
-          card.style.transition = "2s ease-out"
+          card.style.transition = "1s ease-out"
         });
 
         setTimeout(() => {
@@ -137,7 +137,7 @@ function BackgroundVideo() {
         const xValue = (x/window.innerWidth*rotateForce*2)-rotateForce;
         const yValue = (y/window.innerHeight*rotateForce*2)-rotateForce;
         card.style.transform = `rotateX(${yValue*0.5}deg) rotateY(${xValue}deg) translateZ(-100px)`;
-        card.style.transition = "2s ease-out"
+        card.style.transition = "1s ease-out"
       });
 
       [].forEach.call(layers, (card:any) => {
@@ -146,7 +146,7 @@ function BackgroundVideo() {
         const xValue = (x/window.innerWidth*rotateIndForce*2)-rotateIndForce;
         const yValue = (y/window.innerHeight*rotateIndForce*2)-rotateIndForce;
         card.style.transform = `rotateX(${yValue*0.5}deg) rotateY(${xValue}deg) translateZ(${layerDepth}px)`;
-        card.style.transition = "2s ease-out"
+        card.style.transition = "1s ease-out"
       });
     }, 2000);
   }, 4000);

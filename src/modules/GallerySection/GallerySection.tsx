@@ -58,13 +58,19 @@ function GallerySection({
 
           <ParallaxLayer force={ 15 } depth={ 50 }>
             <Paragraph marginTop="24">
-              10,000 unique generative artworks with exclusive benefits
+              - 10,000 unique generative artworks with exclusive membership benefits
             </Paragraph>
             <Paragraph>
-              Fully playable character within HELIX
+              - Individual traits airdropped as separate NFTs
             </Paragraph>
             <Paragraph>
-              Individual traits airdropped as separate NFTs and much more
+              - Land sale whitelist
+            </Paragraph>
+            <Paragraph>
+              - Fully playable character within HELIX
+            </Paragraph>
+            <Paragraph>
+              - And much more
             </Paragraph>
           </ParallaxLayer>
           <ParallaxLayer

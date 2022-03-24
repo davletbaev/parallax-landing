@@ -52,7 +52,7 @@ function TrailerSection({
         exit="exit"
         transition={ SLIDE_BOTTOM_WITH_FADE.options }
       >
-        <ParallaxLayer force={ 15 } depth={ 150 }>
+        <ParallaxLayer force={ 15 } depth={ 100 }>
           <Heading type="h2" align="left">
             ENTER H.E.L.I.X.
           </Heading>

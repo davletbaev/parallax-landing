@@ -295,24 +295,24 @@ export const NFT_FAQ_QUESTIONS: FaqQuestion[] = [
 export const ROADMAP_ITEMS: RoadmapItem[] = [
   {
     id: 1,
-    heading: '',
+    heading: 'Q2 2022',
     items: [ 'Announcement Trailer', 'Founders NFT Collection' ],
     active: true
   },
   {
     id: 2,
-    heading: '',
-    items: [ 'Native Token & Staking', 'Land Sale' ],
+    heading: 'Q3 2022',
+    items: [ 'Native Token & Staking Rewards', 'Land Sale' ],
   },
   {
     id: 3,
-    heading: '',
-    items: [ 'Early Access Preview', 'HELIX Exchange' ],
+    heading: 'Q4 2022',
+    items: [ 'Early Access Preview', 'HELIX Exchange Launch' ],
   },
   {
     id: 4,
-    heading: '',
-    items: [ 'Public Beta Access', 'Community Treasury' ]
+    heading: 'Q1 2023',
+    items: [ 'Public Beta Access', 'Community Treasury Launch' ]
   }
 ];
 

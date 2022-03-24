@@ -24,7 +24,8 @@
   bottom: 0;
   z-index: -1;
 
-  background-image: radial-gradient(rgba(#FFF, .1) 0.1px, transparent 100%);
-  background-size: 5px 5px;
+  // background-image: radial-gradient(rgba(#FFF, 0.1) 1px, transparent 100%);
+  background: radial-gradient(1.5px circle at center, rgba(255,255,255,0.1) 100%, transparent 100%);
+  background-size: 15px 15px;
   background-repeat: repeat;
 }

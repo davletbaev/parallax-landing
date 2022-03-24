@@ -41,7 +41,7 @@ function ContactsSection({
             className={ styles.heading }
           >
             <Heading type="h3" align="center">
-              SUBSCRIBE ON UPDATES
+              SUBSCRIBE FOR UPDATES
             </Heading>
           </ParallaxLayer>
 

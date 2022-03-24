@@ -27,7 +27,7 @@ function FourthFeature({
       <ParallaxLayer force={ 15 } depth={ 150 }>
         <div className="itch">COMING SOON</div>
         <Heading type="h2" align="left">
-          LAND OWNERSHIP
+          VIRTUAL LAND
         </Heading>
       </ParallaxLayer>
 

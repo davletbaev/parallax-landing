@@ -31,7 +31,7 @@ function MainScreen({ id }: SectionProps) {
           >WELCOME TO</motion.p>
         </ParallaxLayer>
 
-        <ParallaxLayer force={ 15 } depth={ 75 }>
+        <ParallaxLayer force={ 18 } depth={ 100 }>
           <Heading
             type="h1"
             className={ styles.heading }

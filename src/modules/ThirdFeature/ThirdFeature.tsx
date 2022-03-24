@@ -33,7 +33,7 @@ function ThirdFeature({
 
       <ParallaxLayer force={ 15 } depth={ 50 }>
         <Paragraph marginTop="24">
-          Choose from several competitive PvP game modes. Join matches and events and earn tokens for playing. Compete in higher ranks to earn bigger prizes.
+          Choose from several competitive PvP game modes such as Treasure Hunt or Battle Royale. Join matches and events and earn tokens for playing. Compete in higher ranks to earn bigger prizes.
         </Paragraph>
         <Paragraph>
           A fully autonomous Community Treasury will be responsible for establishing public prize pools and payouts.
