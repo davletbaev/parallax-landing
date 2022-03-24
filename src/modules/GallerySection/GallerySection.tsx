@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { StaticImage } from 'gatsby-plugin-image';
 
+import Button from '@components/Button';
 import Container from '@components/Container';
 import Gallery from '@components/Gallery';
 import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
@@ -25,8 +26,8 @@ const IMAGES = [
   image4,
 ];
 
-function GallerySection({ 
-  id, 
+function GallerySection({
+  id,
 }: SectionProps) {
   const renderImages = () => IMAGES.map((url, index) => (
     <img className={ styles.image } key={ index } src={ url } loading="lazy" />
@@ -34,7 +35,7 @@ function GallerySection({
 
   return (
     <Container id={ id } as="section">
-      <motion.div 
+      <motion.div
         className={ styles.section }
         variants={ {} }
         initial="initial"
@@ -47,7 +48,7 @@ function GallerySection({
             { renderImages() }
           </Gallery>
         </ParallaxLayer>
-        
+
         <div className={ styles.content }>
           <ParallaxLayer force={ 15 } depth={ 150 }>
             <Heading type="h2" align="left">
@@ -57,14 +58,28 @@ function GallerySection({
 
           <ParallaxLayer force={ 15 } depth={ 50 }>
             <Paragraph marginTop="24">
-              10,000 unique generative artworks with exclusive benefits
+              - 10,000 unique generative artworks with exclusive membership benefits
             </Paragraph>
             <Paragraph>
-              Fully playable character within HELIX
+              - Individual traits airdropped as separate NFTs
             </Paragraph>
             <Paragraph>
-              Individual traits airdropped as separate NFTs and much more
+              - Land sale whitelist
             </Paragraph>
+            <Paragraph>
+              - Fully playable character within HELIX
+            </Paragraph>
+            <Paragraph>
+              - And much more
+            </Paragraph>
+          </ParallaxLayer>
+          <ParallaxLayer
+            force={ 15 }
+            depth={ 75 }
+          >
+              <Button href="#" className="oof">
+                LEARN MORE
+              </Button>
           </ParallaxLayer>
         </div>
       </motion.div>

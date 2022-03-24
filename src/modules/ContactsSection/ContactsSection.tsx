@@ -15,14 +15,14 @@ import * as styles from './ContactsSection.module.scss';
 
 import { SectionProps } from '@shared/types/modules';
 
-function ContactsSection({ 
+function ContactsSection({
   id,
 }: SectionProps) {
   const { isTabletOrBigger } = useMedia();
 
   return (
     <Container id={ id } as="section">
-      <motion.div 
+      <motion.div
         className={ styles.section }
         variants={ {} }
         initial="initial"
@@ -30,8 +30,8 @@ function ContactsSection({
         exit="exit"
         transition={ { staggerChildren: 0.15 } }
       >
-        <motion.div 
-          className={ styles.content } 
+        <motion.div
+          className={ styles.content }
           variants={ SLIDE_BOTTOM_WITH_FADE.variants }
           transition={ SLIDE_BOTTOM_WITH_FADE.options }
         >
@@ -41,10 +41,10 @@ function ContactsSection({
             className={ styles.heading }
           >
             <Heading type="h3" align="center">
-              SUBSCRIBE ON UPDATES
+              SUBSCRIBE FOR UPDATES
             </Heading>
           </ParallaxLayer>
-        
+
           <ParallaxLayer
             force={ 5 }
             depth={ 100 }
@@ -58,7 +58,7 @@ function ContactsSection({
           <ParallaxLayer
             force={ 5 }
             depth={ 150 }
-            className={ styles.form } 
+            className={ styles.form }
           >
             <motion.div
               variants={ SLIDE_BOTTOM_WITH_FADE.variants }
@@ -71,12 +71,12 @@ function ContactsSection({
 
         {
           isTabletOrBigger && (
-            <motion.div 
-              className={ styles.content } 
+            <motion.div
+              className={ styles.content }
               variants={ SLIDE_BOTTOM_WITH_FADE.variants }
               transition={ SLIDE_BOTTOM_WITH_FADE.options }
             >
-              <ParallaxLayer 
+              <ParallaxLayer
                 force={ 5 }
                 depth={ 125 }
                 className={ styles.heading }
@@ -85,8 +85,8 @@ function ContactsSection({
                   JOIN THE COMMUNITY
                 </Heading>
               </ParallaxLayer>
-        
-              <ParallaxLayer 
+
+              <ParallaxLayer
                 force={ 5 }
                 depth={ 100 }
                 className={ styles.paragraph }

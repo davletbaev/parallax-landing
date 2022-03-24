@@ -13,9 +13,9 @@ import * as styles from './TeamSection.module.scss';
 
 import { SectionProps } from '@shared/types/modules';
 
-import hypersonicLaboratoriesLogo from './hypersonic-laboratories.svg';
-import mardonpolGamesLogo from './mardonpol-games.svg';
-import thirdKindVentureCapitalLogo from './third-kind-venture-capital.svg';
+import hypersonicLaboratoriesLogo from './hypersonic.png';
+import mardonpolGamesLogo from './mardonpol.png';
+import thirdKindVentureCapitalLogo from './thirdkind.png';
 
 const PARTNERS = [
   {
@@ -32,11 +32,11 @@ const PARTNERS = [
   }
 ];
 
-function TeamSection({ 
+function TeamSection({
   id,
 }: SectionProps) {
   const renderPartners = () => PARTNERS.map(({ label, url }) => (
-    <motion.div 
+    <motion.div
       variants={ SLIDE_BOTTOM_WITH_FADE.variants }
       key={ label }
       className={ styles.partner }
@@ -48,7 +48,7 @@ function TeamSection({
 
   return (
     <Container id={ id } as="section">
-      <motion.div 
+      <motion.div
         className={ styles.section }
         variants={ {} }
         initial="initial"
@@ -58,14 +58,14 @@ function TeamSection({
       >
         <ParallaxLayer force={ 15 } depth={ 150 } className={ styles.heading }>
           <Heading type="h2">
-            Team & Partners
+            Team & Investors
           </Heading>
         </ParallaxLayer>
-          
+
         <div className={ styles.content }>
           <ParallaxLayer force={ 15 } depth={ 50 }>
             <Paragraph marginTop="24">
-            Based in LA and all around the world, our team consists of passionate developers and artists who have worked on various AAA studio titles.
+            Based in LA and all around the world, our core team consists of passionate developers and artists with 50+ years of combined experience creating AAA quality games and products.
             </Paragraph>
             <Paragraph marginBottom="24">
             We’re currently hiring. Come help us bring the future faster.
@@ -82,7 +82,7 @@ function TeamSection({
           </ParallaxLayer>
         </div>
 
-        <ParallaxLayer 
+        <ParallaxLayer
           force={ 15 }
           depth={ 150 }
           className={ styles.partners }
@@ -91,7 +91,7 @@ function TeamSection({
         </ParallaxLayer>
       </motion.div>
 
-      <ParallaxCard 
+      <ParallaxCard
         className={ styles.background }
         variants={ FADE.variants }
         initial="initial"

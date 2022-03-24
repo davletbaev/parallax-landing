@@ -136,3 +136,9 @@
     stroke-dashoffset: 160;
   }
 }
+
+@media (max-width: 600px) {
+  .button {
+      zoom: 0.8;
+  }
+}

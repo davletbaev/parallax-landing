@@ -12,11 +12,11 @@ import { SectionProps } from '@shared/types/modules';
 
 import * as styles from '../TextSection/TextSection.module.scss';
 
-function FourthFeature({ 
+function FourthFeature({
   id,
 }: SectionProps) {
   return (
-    <TextSection 
+    <TextSection
       id={ id }
       variants={ {} }
       initial="initial"
@@ -25,21 +25,22 @@ function FourthFeature({
       transition={ SLIDE_BOTTOM_WITH_FADE.options }
     >
       <ParallaxLayer force={ 15 } depth={ 150 }>
+        <div className="itch">COMING SOON</div>
         <Heading type="h2" align="left">
-          COMMUNITY<br /> FIRST
+          VIRTUAL LAND
         </Heading>
       </ParallaxLayer>
 
       <ParallaxLayer force={ 15 } depth={ 150 }>
         <Paragraph marginTop="24">
-          HELIX aims to lead the way for an open, fair metaverse with..
+        Own your very own piece of Parallel City. Develop on your land, stake it for rewards, or lease it to other players for profit.
         </Paragraph>
         <Paragraph>
-          Community Treasury will be responsible for..
+        More details on the land sale will be announced soon.
         </Paragraph>
       </ParallaxLayer>
 
-      <ParallaxCard 
+      <ParallaxCard
         className={ styles.background }
         variants={ FADE.variants }
         initial="initial"

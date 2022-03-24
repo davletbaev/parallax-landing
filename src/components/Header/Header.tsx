@@ -24,7 +24,7 @@ function Header() {
 
   const handleToggleClick = () => {
     if (!navModalRef.current) return;
-      
+
     navModalRef.current.toggleModal();
     setNavOpen(!isNavOpen);
   };
@@ -36,9 +36,9 @@ function Header() {
           <ParallaxLayer force={ 5 } depth={ -100 }>
             <Navigation items={ isNFTPage ? NFT_NAV_ITEMS : NAV_ITEMS } />
           </ParallaxLayer>
-        ) 
+        )
       }
-      
+
       <ParallaxLayer force={ 5 } depth={ -100 }>
         <Logo to="/" />
       </ParallaxLayer>
@@ -60,7 +60,7 @@ function Header() {
       {
         isDesktop && (
           <ParallaxLayer force={ 5 } depth={ -100 } className={ styles.trailer }>
-            <Button 
+            <Button
               href={ isNFTPage ? '#utility' : '#trailer' }
               variant="ghost"
               block

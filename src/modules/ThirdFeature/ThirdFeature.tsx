@@ -12,11 +12,11 @@ import { SectionProps } from '@shared/types/modules';
 
 import * as styles from '../TextSection/TextSection.module.scss';
 
-function ThirdFeature({ 
+function ThirdFeature({
   id,
 }: SectionProps) {
   return (
-    <TextSection 
+    <TextSection
       id={ id }
       align="right"
       variants={ {} }
@@ -27,19 +27,16 @@ function ThirdFeature({
     >
       <ParallaxLayer force={ 15 } depth={ 150 }>
         <Heading type="h2" align="left">
-            PLAY TO EARN
+            PLAY AND EARN
         </Heading>
       </ParallaxLayer>
 
       <ParallaxLayer force={ 15 } depth={ 50 }>
         <Paragraph marginTop="24">
-          In addition to collecting items and meeting new people, HELIX features competitive PvP game modes and events where you can win tokens
+          Choose from several competitive PvP game modes such as Treasure Hunt or Battle Royale. Join matches and events and earn tokens for playing. Compete in higher ranks to earn bigger prizes.
         </Paragraph>
         <Paragraph>
-          Welcome to the era of earning money for playing games.
-        </Paragraph>
-        <Paragraph>
-          <b>HELIX</b>
+          A fully autonomous Community Treasury will be responsible for establishing public prize pools and payouts.
         </Paragraph>
       </ParallaxLayer>
 

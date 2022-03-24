@@ -24,15 +24,15 @@ function MainScreen({ id }: SectionProps) {
         transition={ { staggerChildren: 0.3 } }
       >
         <ParallaxLayer force={ 15 } depth={ 50 }>
-          <motion.p 
+          <motion.p
             className={ styles.subheading }
             variants={ SLIDE_TOP_WITH_FADE.variants }
             transition={ SLIDE_TOP_WITH_FADE.options }
-          >Welcome to</motion.p>
+          >WELCOME TO</motion.p>
         </ParallaxLayer>
 
-        <ParallaxLayer force={ 15 } depth={ 75 }>
-          <Heading 
+        <ParallaxLayer force={ 18 } depth={ 100 }>
+          <Heading
             type="h1"
             className={ styles.heading }
           >
@@ -54,7 +54,7 @@ function MainScreen({ id }: SectionProps) {
           </Heading>
         </ParallaxLayer>
 
-        <ParallaxLayer 
+        <ParallaxLayer
           force={ 15 }
           depth={ 50 }
           className={ styles.button }
@@ -63,7 +63,7 @@ function MainScreen({ id }: SectionProps) {
             variants={ SLIDE_BOTTOM_WITH_FADE.variants }
             transition={ SLIDE_BOTTOM_WITH_FADE.options }
           >
-            <Button 
+            <Button
               href="#trailer"
             >
                 Watch Trailer
@@ -72,7 +72,7 @@ function MainScreen({ id }: SectionProps) {
         </ParallaxLayer>
       </motion.div>
 
-      <ParallaxCard 
+      <ParallaxCard
         className={ styles.background }
         variants={ FADE.variants }
         initial="initial"

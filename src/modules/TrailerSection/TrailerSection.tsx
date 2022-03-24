@@ -14,12 +14,12 @@ import * as styles from './TrailerSection.module.scss';
 
 import { SectionProps } from '@shared/types/modules';
 
-function TrailerSection({ 
-  id, 
+function TrailerSection({
+  id,
 }: SectionProps) {
   const data = useStaticQuery(graphql`
     query TrailerCoverQuery {
-      cover: file(relativePath: {eq: "cover.jpg"}) {
+      cover: file(relativePath: {eq: "cover-new.jpeg"}) {
         childImageSharp {
           gatsbyImageData
         }
@@ -34,17 +34,17 @@ function TrailerSection({
         depth={ 75 }
         className={ styles.video }
       >
-        <motion.div
+        <motion.div className="videoplayer"
           variants={ SLIDE_LEFT_WITH_FADE.variants }
           initial="initial"
           animate="enter"
           exit="exit"
           transition={ SLIDE_LEFT_WITH_FADE.options }
         >
-          <VideoPlayer videoId="RYdCuw7L1qk" cover={ getImage(data.cover.childImageSharp) } />
+          <VideoPlayer videoId="" cover={ getImage(data.cover.childImageSharp) } />
         </motion.div>
       </ParallaxLayer>
-      
+
       <motion.div className={ styles.content }
         variants={ {} }
         initial="initial"
@@ -52,26 +52,23 @@ function TrailerSection({
         exit="exit"
         transition={ SLIDE_BOTTOM_WITH_FADE.options }
       >
-        <ParallaxLayer force={ 15 } depth={ 150 }>
+        <ParallaxLayer force={ 15 } depth={ 100 }>
           <Heading type="h2" align="left">
-            MEET H.E.L.I.X.
+            ENTER H.E.L.I.X.
           </Heading>
         </ParallaxLayer>
 
         <ParallaxLayer force={ 15 } depth={ 50 }>
           <Paragraph marginTop="24">
-            Hyper Expansive Lifelike Interoperable eXperience — is a massively multiplayer game built on the concepts of a persistent open world and true digital ownership.
+          HELIX (Hyper Expansive Lifelike Interoperable eXperience) is a high-fidelity metaverse platform centered around the concept of true digital ownership and independent player economies.
           </Paragraph>
           <Paragraph>
-            Immerse yourself in Parallel City, a meticulously detailed reimagination of New York where you can explore freely, meet new friends, play games, and earn money.
-          </Paragraph>
-          <Paragraph>
-            Every item can be bought, sold, or exchanged for real money.
+          Immerse yourself in Parallel City, a meticulously detailed reimagination of New York City where you can explore freely, meet new friends, play games, and earn money.
           </Paragraph>
         </ParallaxLayer>
       </motion.div>
 
-      <ParallaxCard 
+      <ParallaxCard
         className={ styles.background }
         variants={ FADE.variants }
         initial="initial"

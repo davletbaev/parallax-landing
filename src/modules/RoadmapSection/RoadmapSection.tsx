@@ -16,14 +16,14 @@ import * as styles from './RoadmapSection.module.scss';
 
 import { SectionProps } from '@shared/types/modules';
 
-function RoadmapSection({ 
+function RoadmapSection({
   id,
 }: SectionProps) {
   const { isTabletOrBigger } = useMedia();
-  
+
   return (
     <Container id={ id } as="section">
-      <motion.div 
+      <motion.div
         className={ styles.section }
         variants={ {} }
         initial="initial"
@@ -36,18 +36,18 @@ function RoadmapSection({
             Roadmap
           </Heading>
         </ParallaxLayer>
-          
+
         <div className={ styles.content }>
           <ParallaxLayer force={ 15 } depth={ 50 }>
             <Paragraph marginTop="24">
-            HELIX is currently in development, with an early access pre-alpha release aiming for Q2 2022. We’ll be actively updating our development progress on Discord, Twitter, and YouTube.
+            HELIX is currently in development, with an Early Access release targeted within 2022. We’ll be sharing development updates to our community via Twitter and YouTube.
             </Paragraph>
             <Paragraph marginBottom="24">
-            Read our interactive whitepaper / wiki for more details about game development and the game itself.
+            Read our docs for more in-depth information about HELIX.
             </Paragraph>
           </ParallaxLayer>
 
-          <ParallaxLayer 
+          <ParallaxLayer
             force={ 15 }
             depth={ 75 }
           >
@@ -55,8 +55,8 @@ function RoadmapSection({
               variants={ SLIDE_BOTTOM_WITH_FADE.variants }
               transition={ SLIDE_BOTTOM_WITH_FADE.options }
             >
-              <Button href="#">
-                READ WHITEPAPER
+              <Button href="https://docs.helixmetaverse.com/">
+                READ DOCS
               </Button>
             </motion.div>
           </ParallaxLayer>
@@ -64,7 +64,7 @@ function RoadmapSection({
 
         {
           isTabletOrBigger && (
-            <ParallaxLayer 
+            <ParallaxLayer
               force={ 15 }
               depth={ 150 }
               className={ styles.roadmap }

@@ -25,8 +25,8 @@ class Dot implements IDot {
     this.id = id;
     this.x = x;
     this.y = y;
-    this.radius = 3;
-    this.color = 'rgba(239, 239, 240, 0.15)';
+    // this.color = 'rgba(239, 239, 240, 0.15)';
+    this.color = 'rgba(255, 255, 255, 0.15)';
     this.radius = 3;
     this.context = context;
   }
@@ -61,7 +61,7 @@ const useDotGrid = () => {
 
     const render = () => {
       if (!contextRef.current) return;
-      
+
       contextRef.current.clearRect(0, 0, width, height);
       dots.current.forEach((d) => {
         d.render();
@@ -69,7 +69,7 @@ const useDotGrid = () => {
 
       return requestAnimationFrame(render);
     };
-    
+
     const handle = requestAnimationFrame(render);
 
     return () => {
@@ -87,7 +87,7 @@ const useDotGrid = () => {
 
     const cols = width / SCALE;
     const rows = height / SCALE;
-    
+
     let id = 0;
 
     dots.current = [];

@@ -20,7 +20,7 @@ export const Meta = {
 };
 
 export enum ExternalUrl {
-  wiki = 'https://wiki.helixmetaverse.com/',
+  wiki = 'https://docs.helixmetaverse.com/',
   youtube = 'https://www.youtube.com/channel/UC5mNY3v-d8-I2Yaks-7W1Mw',
   discord = 'https://discord.gg/xGJEH69sWK',
   twitter = 'https://twitter.com/HELIX_Metaverse',
@@ -58,11 +58,11 @@ export const FAQ_QUESTIONS: FaqQuestion[] = [
   },
   {
     heading: 'When can I play HELIX?',
-    text: 'We plan to release an early access build by Q2-Q3 of 2022, exclusively to Founders NFT holders. After that, we’ll gradually roll out access to more users.'
+    text: 'We are pushing to release an early access build within 2022, exclusively to Founders NFT holders. After that, we’ll gradually roll out access to more users.'
   },
   {
     heading: 'Who’s behind HELIX and how is development being funded?',
-    text: 'HELIX is being developed by Hypersonic Laboratories, a venture-funded startup based in Los Angeles. Our investors have backed many successful startups such as Twitter, Tumblr,  and Pinterest.'
+    text: 'HELIX is being developed by Hypersonic Laboratories, a venture-funded startup based in Los Angeles.'
   },
   {
     heading: 'How does the play to earn model work? Where does this money come from?',
@@ -70,7 +70,7 @@ export const FAQ_QUESTIONS: FaqQuestion[] = [
   },
   {
     heading: 'What blockchain does HELIX use?',
-    text: 'HELIX uses Ethereum and Immutable X, a layer2 solution for faster and lower cost transactions.'
+    text: 'HELIX uses Ethereum and Polygon, a layer2 solution for faster and lower cost transactions.'
   },
   {
     heading: 'Will I be able to own and trade virtual land?',
@@ -78,7 +78,7 @@ export const FAQ_QUESTIONS: FaqQuestion[] = [
   },
   {
     heading: 'Will there be a native token/currency?',
-    text: 'Yes, we’re currently in development and will announce details soon.'
+    text: 'Yes. We will announce details soon.'
   },
   {
     heading: 'More FAQ',
@@ -104,23 +104,24 @@ export const NFT_FAQ_QUESTIONS: FaqQuestion[] = [
 export const ROADMAP_ITEMS: RoadmapItem[] = [
   {
     id: 1,
-    heading: 'Q4 2021',
-    items: [ 'Announcement + Trailer', 'Founders NFT Collection' ],
+    heading: 'Q2 2022',
+    items: [ 'Announcement Trailer', 'Founders NFT Collection' ],
     active: true
   },
   {
     id: 2,
-    heading: 'Q2 2022',
-    items: [ 'Native Token Release', 'Land Sale' ],
+    heading: 'Q3 2022',
+    items: [ 'Native Token & Staking Rewards', 'Land Sale' ],
   },
   {
     id: 3,
-    heading: 'Q3 2022',
-    items: [ 'HELIX Market Release', 'Early Access' ],
+    heading: 'Q4 2022',
+    items: [ 'Early Access Preview', 'HELIX Exchange Launch' ],
   },
   {
     id: 4,
-    heading: 'HELIX Market Release',
+    heading: 'Q1 2023',
+    items: [ 'Public Beta Access', 'Community Treasury Launch' ]
   }
 ];
 
