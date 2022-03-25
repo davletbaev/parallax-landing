@@ -21,15 +21,15 @@ type FAQSectionProps = SectionProps & {
   questions: FaqQuestion[]
 }
 
-function FaqSection({ 
+function FaqSection({
   id,
   questions
 }: FAQSectionProps) {
   const { isTabletOrBigger } = useMedia();
-  
+
   return (
     <Container id={ id } as="section">
-      <motion.div 
+      <motion.div
         className={ styles.section }
         variants={ {} }
         initial="initial"
@@ -42,7 +42,7 @@ function FaqSection({
             FREQUENTLY ASKED QUESTIONS
           </Heading>
         </ParallaxLayer>
-          
+
         <div className={ styles.content }>
           <ParallaxLayer force={ 15 } depth={ 100 }>
             <Paragraph marginTop="24" marginBottom="24">
@@ -50,7 +50,7 @@ function FaqSection({
             </Paragraph>
           </ParallaxLayer>
 
-          <ParallaxLayer 
+          <ParallaxLayer
             force={ 15 }
             depth={ 150 }
           >
@@ -59,7 +59,7 @@ function FaqSection({
               transition={ SLIDE_BOTTOM_WITH_FADE.options }
             >
               <Button href={ ExternalUrl.wiki } target="_blank">
-                VISIT WHITEPAPER / WIKI
+                VISIT DOCS
               </Button>
             </motion.div>
           </ParallaxLayer>
@@ -67,9 +67,9 @@ function FaqSection({
 
         {
           isTabletOrBigger && (
-            <ParallaxLayer 
+            <ParallaxLayer
               force={ 15 }
-              depth={ 200 } 
+              depth={ 200 }
               className={ styles.questions }
               variants={ FADE.variants }
               transition={ FADE.options }

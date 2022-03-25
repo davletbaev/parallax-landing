@@ -55,7 +55,7 @@ function RoadmapSection({
               variants={ SLIDE_BOTTOM_WITH_FADE.variants }
               transition={ SLIDE_BOTTOM_WITH_FADE.options }
             >
-              <Button href="https://docs.helixmetaverse.com/">
+              <Button href="https://docs.helixmetaverse.com/" target="_blank">
                 READ DOCS
               </Button>
             </motion.div>

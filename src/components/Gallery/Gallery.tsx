@@ -16,7 +16,7 @@ const galleryVariants = {
   initial: (index: number) => ({
     opacity: 0,
     x: index % 2 === 0 ? '-10%' : '10%',
-    y: index < 2 ? '-10%' : '10%' 
+    y: index < 2 ? '-10%' : '10%'
   }),
   enter: {
     opacity: 1,
@@ -26,7 +26,7 @@ const galleryVariants = {
   exit: (index: number) => ({
     opacity: 0,
     x: index % 2 === 0 ? '-10%' : '10%',
-    y: index < 2 ? '-10%' : '10%' 
+    y: index < 2 ? '-10%' : '10%'
   })
 };
 
@@ -34,14 +34,14 @@ function Gallery({ children }: GalleryProps) {
   const { isDesktop } = useMedia();
 
   const renderChildren = () => React.Children.map(children, (child, index) => (
-    <motion.div 
+    <motion.div
       variants={ isDesktop ? galleryVariants : FADE.variants }
       custom={ index }
       className={ styles.item }
       transition={
-        isDesktop ? { 
+        isDesktop ? {
           type: 'spring',
-          bounce: 0.15 
+          bounce: 0.15
         } : FADE.options
       }
     >

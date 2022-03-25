@@ -45,7 +45,7 @@ function GallerySection({
       >
         <ParallaxLayer force={ 15 } depth={ 100 } className={ styles.gallery }>
           <Gallery>
-            { renderImages() }
+            { /*renderImages()*/ }
           </Gallery>
         </ParallaxLayer>
 

@@ -150,16 +150,16 @@ export const NFT_ROADMAP_ITEMS: RoadmapItem[] = [
 export const NAV_ITEMS: NavItem[] = [
   {
     path: ExternalUrl.wiki,
-    label: 'Whitepaper',
+    label: 'DOCS',
     target: '_blank'
   },
-  {
-    path: '#roadmap',
-    label: 'Roadmap',
-  },
+  // {
+  //   path: '#roadmap',
+  //   label: 'Roadmap',
+  // },
   {
     path: '#founders-nft',
-    label: 'Founders NFT',
+    label: 'FOUNDERS NFT',
   },
   {
     path: '#faq',
