@@ -54,30 +54,30 @@ export const SOCIALS = [
 export const FAQ_QUESTIONS: FaqQuestion[] = [
   {
     heading: 'What is HELIX?',
-    text: 'HELIX is an open-world multiplayer online game where you can meet new people, buy and sell virtual items, and play games. '
+    text: 'HELIX is a decentralized, high-fidelity metaverse platform where you can meet new people, buy and sell virtual items, play games, and earn money. '
   },
   {
     heading: 'When can I play HELIX?',
-    text: 'We are pushing to release an early access build within 2022, exclusively to Founders NFT holders. After that, we’ll gradually roll out access to more users.'
+    text: 'We are pushing to release an early access preview build to Founders Collection NFT holders within 2022. After that, we’ll gradually roll out access to everyone.'
   },
   {
     heading: 'Who’s behind HELIX and how is development being funded?',
     text: 'HELIX is being developed by Hypersonic Laboratories, a venture-funded startup based in Los Angeles.'
   },
   {
-    heading: 'How does the play to earn model work? Where does this money come from?',
-    text: 'When you buy virtual items in a traditional game such as Fortnite or Roblox, the company takes all the profit. In play to earn games like HELIX, the majority of the revenue goes to a nonprofit Community Treasury which distributes to players.. (NFT sales, item transaction fees)'
+    heading: 'How does the play and earn model work? Where does this money come from?',
+    text: 'When you buy virtual items in a traditional game such as Fortnite or Roblox, the companies take all the profit. In play and earn games like HELIX, the majority of the revenue (from NFT sales, item transaction fees, etc.) goes to a nonprofit Community Treasury which distributes it back to players in the form of play and earn rewards.'
   },
   {
     heading: 'What blockchain does HELIX use?',
-    text: 'HELIX uses Ethereum and Polygon, a layer2 solution for faster and lower cost transactions.'
+    text: 'HELIX uses Ethereum and Polygon, a layer 2 solution for faster and lower cost transactions.'
   },
   {
     heading: 'Will I be able to own and trade virtual land?',
-    text: 'Yes. Freedom Island is a large island within the map which will be entirely constructed and governed by the community. Land owners can construct roads, buildings, parks, museums, anything.. More details will be announced soon.'
+    text: 'Yes. Parts of Parallel City will sold and claimed via an upcoming auction and land owners will be able to develop on their land or lease it to other players/businesses for profit. More details will be announced soon.'
   },
   {
-    heading: 'Will there be a native token/currency?',
+    heading: 'Will there be a native token within HELIX?',
     text: 'Yes. We will announce details soon.'
   },
   {

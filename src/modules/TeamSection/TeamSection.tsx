@@ -19,14 +19,17 @@ import thirdKindVentureCapitalLogo from './thirdkind.png';
 
 const PARTNERS = [
   {
+    link: 'https://hypersoniclaboratories.com/',
     label: 'Hypersonic Laboratories',
     url: hypersonicLaboratoriesLogo
   },
   {
+    link: 'https://hypersoniclaboratories.com/',
     label: 'Mardonpol Games',
     url: mardonpolGamesLogo
   },
   {
+    link: 'https://www.crunchbase.com/organization/high-line-venture-partners',
     label: 'Third Kind Venture Capital',
     url: thirdKindVentureCapitalLogo
   }
@@ -35,14 +38,14 @@ const PARTNERS = [
 function TeamSection({
   id,
 }: SectionProps) {
-  const renderPartners = () => PARTNERS.map(({ label, url }) => (
+  const renderPartners = () => PARTNERS.map(({ link, label, url }) => (
     <motion.div
       variants={ SLIDE_BOTTOM_WITH_FADE.variants }
       key={ label }
       className={ styles.partner }
       transition={ SLIDE_BOTTOM_WITH_FADE.options }
     >
-      <img src={ url } alt={ label } />
+      <a href={ link } target='_blank'><img src={ url } alt={ label } /></a>
     </motion.div>
   ));
 
