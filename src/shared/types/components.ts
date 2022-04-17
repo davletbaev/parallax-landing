@@ -18,6 +18,7 @@ export type RoadmapItem = {
 
 export type NavItem = {
   path: string,
-  label: string, 
+  label: string,
+  badge?: string,
   target?: '_blank' | '_top'
 }

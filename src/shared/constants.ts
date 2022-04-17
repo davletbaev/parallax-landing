@@ -16,7 +16,7 @@ enum NFTMeta {
 
 export const Meta = {
   Index: IndexMeta,
-  NFT: NFTMeta
+  NFT: NFTMeta,
 };
 
 export enum ExternalUrl {
@@ -32,53 +32,53 @@ export const SOCIALS = [
   {
     id: 'discord',
     label: 'Discord',
-    url: ExternalUrl.discord
+    url: ExternalUrl.discord,
   },
   {
     id: 'twitter',
     label: 'Twitter',
-    url: ExternalUrl.twitter
+    url: ExternalUrl.twitter,
   },
   {
     id: 'youtube',
     label: 'YouTube',
-    url: ExternalUrl.youtube
+    url: ExternalUrl.youtube,
   },
   {
     id: 'mail',
     label: 'Email',
-    url: `mailto:${ ExternalUrl.email }`
-  }
+    url: `mailto:${ ExternalUrl.email }`,
+  },
 ];
 
 export const FAQ_QUESTIONS: FaqQuestion[] = [
   {
     heading: 'What is HELIX?',
-    text: 'HELIX is a decentralized, high-fidelity metaverse platform where you can meet new people, buy and sell virtual items, play games, and earn money. '
+    text: 'HELIX is a decentralized, high-fidelity metaverse platform where you can meet new people, buy and sell virtual items, play games, and earn money. ',
   },
   {
     heading: 'When can I play HELIX?',
-    text: 'We are pushing to release an early access preview build to Founders Collection NFT holders within 2022. After that, we’ll gradually roll out access to everyone.'
+    text: 'We are pushing to release an early access preview build to Founders Collection NFT holders within 2022. After that, we’ll gradually roll out access to everyone.',
   },
   {
     heading: 'Who’s behind HELIX and how is development being funded?',
-    text: 'HELIX is being developed by Hypersonic Laboratories, a venture-funded startup based in Los Angeles.'
+    text: 'HELIX is being developed by Hypersonic Laboratories, a venture-funded startup based in Los Angeles.',
   },
   {
     heading: 'How does the play and earn model work? Where does this money come from?',
-    text: 'When you buy virtual items in a traditional game such as Fortnite or Roblox, the companies take all the profit. In play and earn games like HELIX, the majority of the revenue (from NFT sales, item transaction fees, etc.) goes to a nonprofit Community Treasury which distributes it back to players in the form of play and earn rewards.'
+    text: 'When you buy virtual items in a traditional game such as Fortnite or Roblox, the companies take all the profit. In play and earn games like HELIX, the majority of the revenue (from NFT sales, item transaction fees, etc.) goes to a nonprofit Community Treasury which distributes it back to players in the form of play and earn rewards.',
   },
   {
     heading: 'What blockchain does HELIX use?',
-    text: 'HELIX uses Ethereum and Polygon, a layer 2 solution for faster and lower cost transactions.'
+    text: 'HELIX uses Ethereum and Polygon, a layer 2 solution for faster and lower cost transactions.',
   },
   {
     heading: 'Will I be able to own and trade virtual land?',
-    text: 'Yes. Parts of Parallel City will sold and claimed via an upcoming auction and land owners will be able to develop on their land or lease it to other players/businesses for profit. More details will be announced soon.'
+    text: 'Yes. Parts of Parallel City will sold and claimed via an upcoming auction and land owners will be able to develop on their land or lease it to other players/businesses for profit. More details will be announced soon.',
   },
   {
     heading: 'Will there be a native token within HELIX?',
-    text: 'Yes. We will announce details soon.'
+    text: 'Yes. We will announce details soon.',
   },
   {
     heading: 'More FAQ',
@@ -89,15 +89,15 @@ export const FAQ_QUESTIONS: FaqQuestion[] = [
 export const NFT_FAQ_QUESTIONS: FaqQuestion[] = [
   {
     heading: 'How do I own a Founders Collection NFT?',
-    text: 'HELIX is an open-world multiplayer online game where you can meet new people, buy and sell virtual items, and play games. '
+    text: 'HELIX is an open-world multiplayer online game where you can meet new people, buy and sell virtual items, and play games. ',
   },
   {
     heading: 'How many NFTs are available?',
-    text: 'We plan to release an early access build by Q2-Q3 of 2022, exclusively to Founders NFT holders. After that, we’ll gradually roll out access to more users.'
+    text: 'We plan to release an early access build by Q2-Q3 of 2022, exclusively to Founders NFT holders. After that, we’ll gradually roll out access to more users.',
   },
   {
     heading: 'How much are the NFTs?',
-    text: 'HELIX is being developed by Hypersonic Laboratories, a venture-funded startup based in Los Angeles. Our investors have backed many successful startups such as Twitter, Tumblr,  and Pinterest.'
+    text: 'HELIX is being developed by Hypersonic Laboratories, a venture-funded startup based in Los Angeles. Our investors have backed many successful startups such as Twitter, Tumblr,  and Pinterest.',
   },
 ];
 
@@ -106,7 +106,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     id: 1,
     heading: 'Q2 2022',
     items: [ 'Announcement Trailer', 'Founders NFT Collection' ],
-    active: true
+    active: true,
   },
   {
     id: 2,
@@ -121,8 +121,8 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
   {
     id: 4,
     heading: 'Q1 2023',
-    items: [ 'Public Beta Access', 'Community Treasury Launch' ]
-  }
+    items: [ 'Public Beta Access', 'Community Treasury Launch' ],
+  },
 ];
 
 export const NFT_ROADMAP_ITEMS: RoadmapItem[] = [
@@ -130,7 +130,7 @@ export const NFT_ROADMAP_ITEMS: RoadmapItem[] = [
     id: 1,
     heading: 'DEC 30',
     description: 'Private Sale',
-    active: true
+    active: true,
   },
   {
     id: 2,
@@ -144,14 +144,14 @@ export const NFT_ROADMAP_ITEMS: RoadmapItem[] = [
   {
     id: 4,
     heading: 'Bonus Items Minting',
-  }
+  },
 ];
 
 export const NAV_ITEMS: NavItem[] = [
   {
     path: ExternalUrl.wiki,
     label: 'DOCS',
-    target: '_blank'
+    target: '_blank',
   },
   // {
   //   path: '#roadmap',
@@ -160,11 +160,12 @@ export const NAV_ITEMS: NavItem[] = [
   {
     path: '#founders-nft',
     label: 'FOUNDERS NFT',
+    badge: 'new',
   },
   {
     path: '#faq',
     label: 'FAQ',
-  }
+  },
 ];
 
 export const NFT_NAV_ITEMS: NavItem[] = [
@@ -182,10 +183,10 @@ export const NFT_NAV_ITEMS: NavItem[] = [
   },
   {
     path: '#roadmap',
-    label: 'Timeline'
+    label: 'Timeline',
   },
   {
     path: '#faq',
     label: 'FAQ',
-  }
+  },
 ];
