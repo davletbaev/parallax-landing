@@ -34,13 +34,13 @@ function Header() {
       {
         isDesktop && (
           <ParallaxLayer force={ 5 } depth={ -100 }>
-            <Navigation items={ isNFTPage ? NFT_NAV_ITEMS : NAV_ITEMS } />
+            <Navigation items={ isNFTPage ? NFT_NAV_ITEMS : NAV_ITEMS }/>
           </ParallaxLayer>
         )
       }
 
       <ParallaxLayer force={ 5 } depth={ -100 }>
-        <Logo to="/" />
+        <Logo to="/"/>
       </ParallaxLayer>
 
       {
@@ -48,24 +48,28 @@ function Header() {
           <>
             <ParallaxLayer force={ 5 } depth={ -100 }>
               <button className={ styles.navtoggle } onClick={ handleToggleClick }>
-                <Icon icon={ isNavOpen ? 'cross' : 'menu' } animate />
+                <Icon icon={ isNavOpen ? 'cross' : 'menu' } animate/>
               </button>
             </ParallaxLayer>
 
-            <NavModal ref={ navModalRef } />
+            <NavModal ref={ navModalRef }/>
           </>
         )
       }
 
       {
         isDesktop && (
-          <ParallaxLayer force={ 5 } depth={ -100 } className={ styles.trailer }>
+          <ParallaxLayer force={ 5 } depth={ -100 } className={ styles.actions }>
             <Button
               href={ isNFTPage ? '#utility' : '#trailer' }
               variant="ghost"
-              block
             >
-              { isNFTPage ? 'Watch NFT Video' : 'Watch trailer' }
+              {isNFTPage ? 'Watch NFT Video' : 'Watch trailer'}
+            </Button>
+            <Button
+              variant="secondary"
+            >
+                    Free Airdrop
             </Button>
           </ParallaxLayer>
         )
