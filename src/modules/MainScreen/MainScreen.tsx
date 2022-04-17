@@ -75,17 +75,19 @@ function MainScreen({ id }: SectionProps) {
           force={ 15 }
           depth={ 50 }
           className={ styles.button }
+          variants={ SLIDE_BOTTOM_WITH_FADE.variants }
+          transition={ SLIDE_BOTTOM_WITH_FADE.options }
         >
-          <motion.div
-            variants={ SLIDE_BOTTOM_WITH_FADE.variants }
-            transition={ SLIDE_BOTTOM_WITH_FADE.options }
+          <Button>
+              Claim Free NFT
+          </Button>
+          <Button
+            className={ styles.secondaryButton }
+            variant="ghost"
+            href="#trailer"
           >
-            <Button
-              href="#trailer"
-            >
-                Watch Trailer
-            </Button>
-          </motion.div>
+              Watch Trailer
+          </Button>
         </ParallaxLayer>
       </motion.div>
 

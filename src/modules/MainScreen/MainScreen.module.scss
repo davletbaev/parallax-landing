@@ -26,9 +26,17 @@
 }
 
 .button {
-  display: flex;
+  display: grid;
+  grid-gap: var(--gap-16);
+  grid-auto-flow: row;
+  align-items: center;
   justify-content: center;
   margin-top: var(--gap-24);
+}
+
+.secondaryButton {
+  max-width: 80%;
+  margin: 0 auto;
 }
 
 .background {
