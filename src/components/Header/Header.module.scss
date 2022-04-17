@@ -26,6 +26,12 @@
   cursor: url("data:image/svg+xml,%3Csvg width='32' height='32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.178 15.822a8 8 0 1 1 16 0 8 8 0 0 1-16 0Z' fill='%23fff' fill-opacity='.5'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.2 16c0 7.07 5.73 12.8 12.8 12.8S28.8 23.07 28.8 16 23.07 3.2 16 3.2 3.2 8.93 3.2 16ZM16 0C7.163 0 0 7.163 0 16s7.163 16 16 16 16-7.163 16-16S24.837 0 16 0Z' fill='%23fff'/%3E%3C/svg%3E") 16 16, pointer;
 }
 
+@media (min-width: 600px) {
+  .container {
+    padding-top: var(--gap-24)
+  }
+}
+
 @media (min-width: 1024px) {
   .container {
     display: grid;

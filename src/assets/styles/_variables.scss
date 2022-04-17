@@ -42,7 +42,7 @@
   --color-danger: #D85454;
 
   @media (min-width: 600px) {
-    --app-padding: var(--gap-24);
+    --app-padding: var(--gap-32);
 
     --fs-h1: 3rem;
     --fs-h2: 2.5rem;
@@ -51,8 +51,6 @@
 
     --lh-h1: 3.5rem;
     --lh-h2: 3rem;
-    --lh-h3: 
-    --lh-h4:
   }
 
   @media (min-width: 1024px) {

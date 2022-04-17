@@ -18,6 +18,7 @@ import { FADE } from '@shared/transitions';
 import '@assets/styles/global.scss';
 
 import * as styles from './Main.module.scss';
+import { ParallaxLayer } from '@components/Parallax';
 
 
 type MainProps = {
@@ -30,7 +31,7 @@ function Main({ children }: MainProps) {
 
   useEffect(() => {
     if (!IS_BROWSER) return;
-    
+
     document.body.classList.toggle('body--loading', loading);
   }, [ loading ]);
 
@@ -47,7 +48,7 @@ function Main({ children }: MainProps) {
         setLoading(false);
         clearInterval(loadingInterval.current as unknown as number);
       }
-      
+
     }, 50);
 
     return () => {
@@ -57,7 +58,7 @@ function Main({ children }: MainProps) {
 
   return (
     <>
-      <Helmet 
+      <Helmet
         title={ Meta.Index.title }
         defer={ false }
       >
@@ -122,38 +123,48 @@ function Main({ children }: MainProps) {
         <AnimatePresence>
           {
             loading ? (
-              <Loader />
+              <Loader/>
             ) : (
               <>
-                <motion.div 
+                <motion.div
                   variants={ FADE.variants }
                   initial="initial"
                   animate="enter"
                   exit="exit"
                   transition={ { delay: 1 } }
                 >
-                  <Header />
+                  <Header/>
                 </motion.div>
 
+                <ParallaxLayer force={ 5 }
+                  depth={ 50 }
+                  className={ styles.frame }
+                  variants={ FADE.variants }
+                  initial="initial"
+                  animate="enter"
+                  exit="exit"
+                  transition={ { delay: 1 } }
+                />
+
                 <main className={ styles.main }>
-                  { children }
+                  {children}
                 </main>
 
-                <motion.div 
+                <motion.div
                   variants={ FADE.variants }
                   initial="initial"
                   animate="enter"
                   exit="exit"
                   transition={ { delay: 1 } }
                 >
-                  <BottomBar />
+                  <BottomBar/>
                 </motion.div>
               </>
             )
           }
         </AnimatePresence>
 
-        <div className={ styles.overlay } />
+        <div className={ styles.overlay }/>
       </div>
     </>
   );
