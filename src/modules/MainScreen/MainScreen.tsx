@@ -4,6 +4,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 
 import Button from '@components/Button';
 import Container from '@components/Container';
+import Icon from '@components/Icon';
 import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
 import { Heading } from '@components/Typography';
 
@@ -28,7 +29,8 @@ function MainScreen({ id }: SectionProps) {
             className={ styles.subheading }
             variants={ SLIDE_TOP_WITH_FADE.variants }
             transition={ SLIDE_TOP_WITH_FADE.options }
-          >WELCOME TO</motion.p>
+          >WELCOME TO
+          </motion.p>
         </ParallaxLayer>
 
         <ParallaxLayer force={ 18 } depth={ 100 }>
@@ -36,22 +38,37 @@ function MainScreen({ id }: SectionProps) {
             type="h1"
             className={ styles.heading }
           >
-            THE
+              THE
             {' '}
-            <br className={ styles.onlyMobile } />
-            WORLD’S
+            <br className={ styles.onlyMobile }/>
+              WORLD’S
             {' '}
-            <br className={ styles.onlyMobile } />
-            FIRST
+            <br className={ styles.onlyMobile }/>
+              FIRST
             {' '}
-            <br className={ styles.onlyMobile } />
-            TRULY
-            <br />
-            IMMERSIVE
+            <br className={ styles.onlyMobile }/>
+              TRULY
+            <br/>
+              IMMERSIVE
             {' '}
-            <br className={ styles.onlyMobile } />
-            METAVERSE
+            <br className={ styles.onlyMobile }/>
+              METAVERSE
           </Heading>
+        </ParallaxLayer>
+
+        <ParallaxLayer
+          force={ 30 }
+          depth={ 50 }
+          className={ styles.button }
+        >
+          <motion.a
+            href="#trailer"
+            className={ styles.playButton }
+            variants={ FADE.variants }
+            transition={ FADE.options }
+          >
+            <Icon icon="play"/>
+          </motion.a>
         </ParallaxLayer>
 
         <ParallaxLayer
