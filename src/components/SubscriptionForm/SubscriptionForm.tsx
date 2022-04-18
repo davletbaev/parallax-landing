@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, useState } from 'react';
+import React, {ChangeEventHandler, FormEvent, useState} from 'react';
 import debounce from 'lodash/debounce';
 
 import Button from '@components/Button';
@@ -7,7 +7,11 @@ import * as styles from './SubscriptionForm.module.scss';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-function SubscriptionForm() {
+type SubscriptionFormProps = {
+  onSubmit: () => void
+}
+
+function SubscriptionForm({ onSubmit }: SubscriptionFormProps) {
   const [ email, setEmail ] = useState('');
   const [ valid, setValid ] = useState(false);
   const [ touched, setTouched ] = useState(false);
@@ -21,10 +25,16 @@ function SubscriptionForm() {
     setValid(EMAIL_REGEX.test(value));
   }, 300);
 
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+
+    onSubmit();
+  };
+
   return (
-    <form className={ styles.form }>
+    <form className={ styles.form } onSubmit={ handleSubmit }>
       <div className={ styles.field }>
-        <input 
+        <input
           className={ styles.input }
           type="email"
           placeholder="Enter your email address"
@@ -38,7 +48,7 @@ function SubscriptionForm() {
       </div>
 
       <div className={ styles.field }>
-        <Button variant="secondary" disabled={ !valid } block>Subscribe</Button>
+        <Button type="submit" variant="secondary" disabled={ !valid } block>Submit</Button>
       </div>
     </form>
   );

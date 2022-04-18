@@ -8,6 +8,7 @@ import Icon from '@components/Icon';
 import { ParallaxCard, ParallaxLayer } from '@components/Parallax';
 import { Heading } from '@components/Typography';
 
+import { useNFTModal } from '@shared/hocs/withNFTModal';
 import { FADE, SLIDE_BOTTOM_WITH_FADE, SLIDE_TOP_WITH_FADE } from '@shared/transitions';
 
 import * as styles from './MainScreen.module.scss';
@@ -15,6 +16,8 @@ import * as styles from './MainScreen.module.scss';
 import { SectionProps } from '@shared/types/modules';
 
 function MainScreen({ id }: SectionProps) {
+  const { openModal } = useNFTModal();
+
   return (
     <Container id={ id } as="section" className={ styles.section }>
       <motion.div
@@ -78,7 +81,7 @@ function MainScreen({ id }: SectionProps) {
           variants={ SLIDE_BOTTOM_WITH_FADE.variants }
           transition={ SLIDE_BOTTOM_WITH_FADE.options }
         >
-          <Button>
+          <Button onClick={ openModal }>
               Claim Free NFT
           </Button>
           <Button

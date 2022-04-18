@@ -168,7 +168,7 @@ function ArtworkSection({
         />
       </ParallaxCard>
 
-      <Modal ref={ modalRef } label="Lightbox" onClose={ handleModalClose }>
+      <Modal variant="gallery" ref={ modalRef } label="Lightbox" onClose={ handleModalClose }>
         <div className={ styles.lightbox } onClick={ handleModalClose }>
           {
             lightboxTarget && (

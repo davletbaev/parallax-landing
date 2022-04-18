@@ -8,11 +8,12 @@ const cn = classnames.bind(styles);
 
 type ModalProps = {
   label: string,
-  variant?: 'center' | 'fluid',
+  variant?: 'center' | 'fluid' | 'gallery',
   className?: string,
   onOpen?: () => void,
   onClose?: () => void,
   closeOnOverlayClick?: boolean,
+  top?: boolean,
   children: ReactNode
 }
 
@@ -32,6 +33,7 @@ const Modal = React.forwardRef<ModalRef, ModalProps>(({
   onOpen,
   onClose,
   closeOnOverlayClick,
+  top,
   children,
 }, ref) => {
   const openingTimeout = useRef<ReturnType<typeof setTimeout>>();
@@ -52,6 +54,7 @@ const Modal = React.forwardRef<ModalRef, ModalProps>(({
     closing && 'closing',
     opening && 'transitionFadeIn',
     closing && 'transitionFadeExit',
+    top && 'top',
   );
 
   const contentClassName = cn(
@@ -112,7 +115,7 @@ const Modal = React.forwardRef<ModalRef, ModalProps>(({
       bodyOpenClassName="body--modal-open"
       htmlOpenClassName="html--modal-open"
     >
-      { children }
+      {children}
     </ReactModal>
   );
 });

@@ -19,6 +19,8 @@ import '@assets/styles/global.scss';
 
 import * as styles from './Main.module.scss';
 import { ParallaxLayer } from '@components/Parallax';
+import FreeNFTModal from '@modules/FreeNFTModal';
+import withNFTModal from '@shared/hocs/withNFTModal';
 
 
 type MainProps = {
@@ -174,5 +176,6 @@ export default compose(
   withMedia,
   withLoader,
   withParallax,
-  withScrollJack
+  withScrollJack,
+  withNFTModal
 )(React.memo(Main));

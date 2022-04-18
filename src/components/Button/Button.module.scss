@@ -63,7 +63,7 @@
   font-size: var(--fs-button-sm);
   font-family: var(--ff-base);
   font-weight: 900;
-  line-height: 3rem;
+  line-height: 2.8rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-align: center;
@@ -103,6 +103,7 @@
   font-weight: 900;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  text-align: center;
 
   border: 2px solid transparent;
 
@@ -138,7 +139,7 @@
 }
 
 @media (max-width: 600px) {
-  .button {
-      zoom: 0.8;
+  .primary {
+    zoom: 0.8;
   }
 }

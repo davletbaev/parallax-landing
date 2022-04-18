@@ -12,6 +12,7 @@ import { ParallaxLayer } from '@components/Parallax';
 
 import { NAV_ITEMS, NFT_NAV_ITEMS } from '@shared/constants';
 import { useMedia } from '@shared/hocs/withMedia';
+import { useNFTModal } from '@shared/hocs/withNFTModal';
 
 import * as styles from './Header.module.scss';
 
@@ -20,6 +21,7 @@ function Header() {
   const navModalRef = useRef<ModalRef>(null);
   const { isDesktop } = useMedia();
 
+  const { openModal } = useNFTModal();
   const isNFTPage = useMatch('/founder-collection');
 
   const handleToggleClick = () => {
@@ -68,8 +70,9 @@ function Header() {
             </Button>
             <Button
               variant="secondary"
+              onClick={ openModal }
             >
-                    Free Airdrop
+              Free Airdrop
             </Button>
           </ParallaxLayer>
         )

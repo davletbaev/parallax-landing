@@ -12,8 +12,13 @@
   flex: 1 0 auto;
 }
 
-.trailer {
+.actions {
   flex: 0 0 auto;
+
+  display: grid;
+  grid-auto-flow: row;
+  align-items: center;
+  grid-gap: 1rem;
 }
 
 .socials {
