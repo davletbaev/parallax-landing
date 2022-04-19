@@ -1,8 +1,10 @@
-import React, { ComponentType, createContext, useContext, useRef } from 'react';
+import React, { ComponentType, createContext, useContext, useEffect, useRef } from 'react';
 
 import FreeNFTModal from '@modules/FreeNFTModal';
 
 import { ModalRef } from '@components/Modal';
+
+import useQueryParams from '@shared/hooks/useQueryParams';
 
 type ModalContext = {
   openModal: () => void,
@@ -21,6 +23,7 @@ const ModalContext = createContext<ModalContext>({
 function withNFTModal(WrappedComponent: ComponentType) {
   function WithNFTModal(props: any) {
     const modalRef = useRef<ModalRef>(null);
+    const query = useQueryParams();
 
     const handleModalOpen = () => {
       if (!modalRef.current) return;
@@ -33,6 +36,14 @@ function withNFTModal(WrappedComponent: ComponentType) {
 
       modalRef.current.closeModal();
     };
+
+    useEffect(() => {
+      if (!query) return;
+
+      if (query.has('secret') && query.has('uuid')) {
+        handleModalOpen();
+      }
+    }, [ query ]);
 
     const contextValue = {
       openModal: handleModalOpen,

@@ -9,12 +9,28 @@ import { useMedia } from '@shared/hocs/withMedia';
 import * as styles from './ConnectWallet.module.scss';
 
 type ConnectWalletProps = {
-  onConnect: () => void
+  hasMetamask: boolean
 }
 
-const ConnectWallet = ({ onConnect }: ConnectWalletProps) => {
+const ConnectWallet = ({ hasMetamask }: ConnectWalletProps) => {
   const { isMobile } = useMedia();
-  
+
+  const connectMetamask = async () => {
+    try {
+      await window.ethereum.request({ method: 'eth_requestAccounts' });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const installMetamask = () => {
+    const win = window.open('https://metamask.io/', '_blank');
+
+    if (win != null) {
+      win.focus();
+    }
+  };
+
   return (
     <div className={ styles.container }>
       <div className={ styles.content }>
@@ -23,9 +39,23 @@ const ConnectWallet = ({ onConnect }: ConnectWalletProps) => {
             airdropped to you before HELIX early
             access.</Paragraph>
 
-        <Button variant="secondary" onClick={ onConnect } block={ isMobile }>Connect Wallet</Button>
+        {
+          hasMetamask ? (
+            <>
+              <Button variant="secondary" onClick={ connectMetamask } block={ isMobile }>Connect Wallet</Button>
 
-        <Paragraph className={ styles.caption } size="small" marginTop="8">45,103 left to claim</Paragraph>
+              <Paragraph className={ styles.caption } size="small" marginTop="8">45,103 left to claim</Paragraph>
+            </>
+          ) : (
+            <>
+              <Paragraph marginTop="16" marginBottom="24">It`s seems like you don`t have Metamask installed.
+                    Please
+                    install it and reload page.</Paragraph>
+
+              <Button variant="secondary" onClick={ installMetamask } block={ isMobile }>Install Metamask</Button>
+            </>
+          )
+        }
       </div>
 
       <StaticImage className={ styles.background } alt="NFT Lamborghini" src="background.jpg"/>

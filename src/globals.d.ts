@@ -37,3 +37,13 @@ declare module '*.svg' {
   const value: string;
   export default value;
 }
+
+interface Window {
+  ethereum: {
+    isMetaMask: boolean,
+    request: (config: {
+      method: string
+    }) => Promise<string[]>,
+    on: (event: string, callback: () => void) => void
+  },
+}
