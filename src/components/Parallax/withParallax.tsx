@@ -29,11 +29,8 @@ function withParallax(WrappedComponent: ComponentType) {
 
     const [ isClient, setIsClient ] = useState(false);
 
-    const initialWidth = isClient ? window.innerWidth : 1440;
-    const [ screenWidth, setScreenWidth ] = useState(initialWidth);
-  
-    const initialHeight = isClient ? window.innerHeight : 768;
-    const [ screenHeight, setScreenHeight ] = useState(initialHeight);
+    const [ screenWidth, setScreenWidth ] = useState(1440);
+    const [ screenHeight, setScreenHeight ] = useState(768);
 
     const x = useMotionValue(0);
     const y = useMotionValue(0);
@@ -42,6 +39,17 @@ function withParallax(WrappedComponent: ComponentType) {
     useEffect(() => {
       setIsClient(typeof window !== 'undefined');
     }, []);
+
+    useEffect(() => {
+      if (isClient) {
+        x.set(window.innerWidth / 2);
+        y.set(window.innerHeight / 2);
+
+        setScreenWidth(window.innerWidth);
+        setScreenHeight(window.innerHeight);
+      }
+    }, [ isClient ]);
+
 
     useEffect(() => {
       if (!IS_BROWSER) return;
@@ -61,7 +69,7 @@ function withParallax(WrappedComponent: ComponentType) {
 
     useEffect(() => {
       if (!IS_BROWSER) return;
-      
+
       duration.set(0);
       x.set(screenWidth / 2);
       y.set(screenHeight / 2);
@@ -129,7 +137,6 @@ function withParallax(WrappedComponent: ComponentType) {
       };
     }, []);
 
-    
 
     const contextValue = useMemo(() => ({
       x,
@@ -141,7 +148,7 @@ function withParallax(WrappedComponent: ComponentType) {
 
     return (
       <ParallaxContext.Provider value={ contextValue }>
-        {/* eslint-disable-next-line react/jsx-props-no-spreading */ }
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         <WrappedComponent { ...props } />
       </ParallaxContext.Provider>
     );
@@ -149,7 +156,7 @@ function withParallax(WrappedComponent: ComponentType) {
 
   const wrappedComponentName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
 
-  WithParallax.displayName = `withParallax(${ wrappedComponentName })`;
+  WithParallax.displayName = `withParallax(${wrappedComponentName})`;
 
   return WithParallax;
 }
