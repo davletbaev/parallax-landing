@@ -1,4 +1,4 @@
-import React, { ForwardedRef, forwardRef } from 'react';
+import React, { ForwardedRef, forwardRef, useEffect } from 'react';
 
 import ConnectWallet from '@components/ConnectWallet';
 import useMetamaskConnect from '@components/ConnectWallet/useMetamaskConnect';
@@ -8,6 +8,8 @@ import Reward from '@components/Reward';
 import VerifyHumanity from '@components/VerifyHumanity';
 
 import { useMedia } from '@shared/hocs/withMedia';
+import useApi from '@shared/hooks/useApi';
+import useQueryParams from '@shared/hooks/useQueryParams';
 
 import * as styles from './FreeNFTModal.module.scss';
 
@@ -26,8 +28,33 @@ const FreeNFTModal = ({ onClose }: NFTModalProps, ref: ForwardedRef<ModalRef>) =
     hasMetamask,
     isConnected,
   } = useMetamaskConnect();
+  const query = useQueryParams();
+
+  const { verifyUser } = useApi();
 
   const { isMobile } = useMedia();
+
+  useEffect(() => {
+    if (!query) return;
+
+    const secret = query.get('secret');
+    const id = query.get('uuid');
+
+    if (secret && id) {
+      setLoading(true);
+
+      verifyUser({
+        id,
+        secret
+      })
+        .catch((e) => {
+          console.error(e);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
+  }, []);
 
   return (
     <Modal ref={ ref } variant={ isMobile ? 'fluid' : 'center' } label="Free NFT Item" top>
@@ -45,16 +72,8 @@ const FreeNFTModal = ({ onClose }: NFTModalProps, ref: ForwardedRef<ModalRef>) =
           ) : (
             <>
               {!isConnected && <ConnectWallet hasMetamask={ hasMetamask }/>}
-              {
-                isConnected && !user?.verified &&
-                      <VerifyHumanity
-                        setLoading={ setLoading }
-                        user={ user }
-                        wallet={ wallet }
-                        onSuccess={ updateUser }
-                      />
-              }
-              {isConnected && user?.verified && <Reward user={ user }/>}
+              {isConnected && !user && <VerifyHumanity wallet={ wallet } onSuccess={ updateUser }/>}
+              {isConnected && user && <Reward user={ user }/>}
             </>
           )
         }
