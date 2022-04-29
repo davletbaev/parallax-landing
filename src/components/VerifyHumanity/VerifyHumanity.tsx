@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
 
 import SubscriptionForm from '@components/SubscriptionForm';
 import { Heading, Paragraph } from '@components/Typography';
 
 import useApi, { User } from '@shared/hooks/useApi';
+import useQueryParams from '@shared/hooks/useQueryParams';
 
-// import useQueryParams from '@shared/hooks/useQueryParams';
 import * as styles from './VerifyHumanity.module.scss';
 
 type VerifyHumanityProps = {
@@ -23,8 +23,10 @@ const VerifyHumanity = ({
   // setLoading,
   onSuccess
 }: VerifyHumanityProps) => {
+  const [ referrer, setReferrer ] = useState<string>('');
   const [ error, setError ] = useState<string | null>(null);
-  // const query = useQueryParams();
+  const query = useQueryParams();
+
   const {
     createUser,
     // verifyUser
@@ -36,7 +38,8 @@ const VerifyHumanity = ({
     try {
       const user = await createUser({
         email,
-        wallet
+        wallet,
+        referrer
       });
 
       localStorage.setItem('user', JSON.stringify(user));
@@ -47,6 +50,16 @@ const VerifyHumanity = ({
       console.error(e);
     }
   };
+
+  useEffect(() => {
+    if (!query) return;
+
+    const referrerId = query.get('r');
+
+    if (referrerId) {
+      setReferrer(referrerId);
+    }
+  }, [ query ]);
 
   // useEffect(() => {
   //   if (!query) return;

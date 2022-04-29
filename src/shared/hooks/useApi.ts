@@ -33,11 +33,11 @@ function useApi() {
     verified: !needs_activation,
   });
 
-  const createUser = ({ email, wallet, referrer }: CreateUserProps): Promise<User> => {
+  const createUser = ({ email, wallet, referrer = '' }: CreateUserProps): Promise<User> => {
     const data = {
       email,
       wallet,
-      r_id: referrer || 0,
+      r_id: referrer,
     };
 
     return fetch(baseUrl, {

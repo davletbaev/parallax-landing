@@ -71,7 +71,7 @@ const FreeNFTModal = ({ onClose }: NFTModalProps, ref: ForwardedRef<ModalRef>) =
             </div>
           ) : (
             <>
-              {!isConnected && <ConnectWallet hasMetamask={ hasMetamask }/>}
+              {!isConnected && <ConnectWallet hasMetamask={ hasMetamask } />}
               {isConnected && !user && <VerifyHumanity wallet={ wallet } onSuccess={ updateUser }/>}
               {isConnected && user && <Reward user={ user }/>}
             </>

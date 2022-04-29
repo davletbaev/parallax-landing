@@ -1,6 +1,5 @@
 import React, { isValidElement, ReactElement, ReactNode, useCallback, useEffect, useRef } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { navigate } from 'gatsby';
 import { useLocation } from '@reach/router';
 
 import ScrollProgress from '@components/ScrollProgress';
@@ -27,7 +26,7 @@ const ScrollJackWrapper = ({ children }: ScrollJackWrapperProps) => {
   const canMoveNext = useRef(true);
   const canMovePrev = useRef(false);
   const maxSections = useRef(sections.length);
-  
+
   const location = useLocation();
   const { isMobile } = useMedia();
   const {
@@ -53,12 +52,12 @@ const ScrollJackWrapper = ({ children }: ScrollJackWrapperProps) => {
       }
     };
   }, []);
-  
+
   const moveNext = useCallback(() => {
     if (!canMoveNext.current) return;
 
     const nextIndex = currentSectionIndex + 1;
-    
+
     setCurrentSectionIndex(nextIndex);
   }, [ currentSectionIndex ]);
 
@@ -76,7 +75,7 @@ const ScrollJackWrapper = ({ children }: ScrollJackWrapperProps) => {
 
   useEffect(() => {
     if (!IS_BROWSER) return;
-    
+
     const handleScroll = (e: WheelEvent) => {
       const now = Date.now();
 
@@ -158,18 +157,18 @@ const ScrollJackWrapper = ({ children }: ScrollJackWrapperProps) => {
   }, [ location.hash ]);
 
   useEffect(() => {
-    navigate(`#${currentSectionId}`, { replace: firstMount.current }); 
+    window.location.hash = `${currentSectionId}`;
 
     if (firstMount.current) {
       firstMount.current = false;
     }
   }, [ currentSectionId ]);
-  
+
   return (
     <>
-      <ScrollProgress progress={ currentSectionIndex / (sections.length - 1) } />
+      <ScrollProgress progress={ currentSectionIndex / (sections.length - 1) }/>
       <AnimatePresence exitBeforeEnter>
-        { sections[currentSectionIndex] }
+        {sections[currentSectionIndex]}
       </AnimatePresence>
     </>
   );
