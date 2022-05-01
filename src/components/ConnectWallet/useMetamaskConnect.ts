@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+import detectEthereumProvider from '@metamask/detect-provider';
 
 import useApi, { User } from '@shared/hooks/useApi';
 
 function useMetamaskConnect() {
+  const [ isConnectionSkipped, setSkipConnection ] = useState(false);
   const [ hasMetamask, setHasMetamask ] = useState(false);
   const [ isConnected, setIsConnected ] = useState(false);
   const [ wallet, setWallet ] = useState('');
@@ -11,16 +13,16 @@ function useMetamaskConnect() {
 
   const { getUser } = useApi();
 
-  const hasMetamaskInstalled = () => {
-    return Boolean(window.ethereum && window.ethereum.isMetaMask);
+  const skipMetamaskConnection = () => {
+    localStorage.setItem('connectionSkipped', 'true');
+    setSkipConnection(true);
   };
 
-  const isConnectedToMetamask = async () => {
-    const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-
-    setWallet(accounts[0] || '');
-
-    return Boolean(accounts[0]);
+  const getMetamaskProvider = () => {
+    return detectEthereumProvider({
+      mustBeMetaMask: true,
+      silent: true,
+    });
   };
 
   const checkUser = async () => {
@@ -50,34 +52,50 @@ function useMetamaskConnect() {
   const checkConnection = async () => {
     setLoading(true);
 
-    if (hasMetamaskInstalled()) {
+    const currentProvider: any = await getMetamaskProvider();
+
+    if (currentProvider) {
       setHasMetamask(true);
 
-      if (await isConnectedToMetamask()) {
-        setIsConnected(true);
+      localStorage.removeItem('connectionSkipped');
+      const accounts = await currentProvider.request({ method: 'eth_accounts' });
+      const currentWallet = accounts[0] || '';
 
+      setWallet(currentWallet);
+
+      if (currentWallet) {
+        setIsConnected(true);
         await checkUser();
       } else {
         localStorage.removeItem('user');
-        setUser(null);
-        setWallet('');
         setIsConnected(false);
+        setUser(null);
       }
-    } else {
-      setHasMetamask(false);
+
+      setLoading(false);
+
+      return currentProvider;
     }
 
+    setHasMetamask(false);
     setLoading(false);
+
+    return Promise.reject();
   };
 
-  // Listen to metamask changes
   useEffect(() => {
-    checkConnection();
+    const connectionStepSkipped = localStorage.getItem('connectionSkipped');
 
-    if (window.ethereum) {
-      window.ethereum.on('chainChanged', checkConnection);
-      window.ethereum.on('accountsChanged', checkConnection);
-    }
+    setSkipConnection(connectionStepSkipped === 'true');
+    
+    checkConnection()
+      .then((provider) => {
+        provider.on('chainChanged', checkConnection);
+        provider.on('accountsChanged', checkConnection);
+      })
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
+      .catch(() => {
+      });
   }, []);
 
   return {
@@ -88,6 +106,8 @@ function useMetamaskConnect() {
     wallet,
     hasMetamask,
     isConnected,
+    isConnectionSkipped: isConnectionSkipped && !hasMetamask,
+    skipMetamaskConnection,
   };
 }
 

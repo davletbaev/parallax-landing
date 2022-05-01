@@ -27,6 +27,8 @@ const FreeNFTModal = ({ onClose }: NFTModalProps, ref: ForwardedRef<ModalRef>) =
     wallet,
     hasMetamask,
     isConnected,
+    isConnectionSkipped,
+    skipMetamaskConnection
   } = useMetamaskConnect();
   const query = useQueryParams();
 
@@ -71,9 +73,15 @@ const FreeNFTModal = ({ onClose }: NFTModalProps, ref: ForwardedRef<ModalRef>) =
             </div>
           ) : (
             <>
-              {!isConnected && <ConnectWallet hasMetamask={ hasMetamask } />}
-              {isConnected && !user && <VerifyHumanity wallet={ wallet } onSuccess={ updateUser }/>}
-              {isConnected && user && <Reward user={ user }/>}
+              {
+                !isConnected && !isConnectionSkipped &&
+                      <ConnectWallet hasMetamask={ hasMetamask } onSignUpWithEmailClick={ skipMetamaskConnection }/>
+              }
+              {
+                (isConnected || isConnectionSkipped) && !user &&
+                      <VerifyHumanity wallet={ wallet } onSuccess={ updateUser }/>
+              }
+              {(isConnected || isConnectionSkipped) && user && <Reward user={ user }/>}
             </>
           )
         }

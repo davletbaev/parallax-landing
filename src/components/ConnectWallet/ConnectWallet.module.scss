@@ -24,6 +24,16 @@
   z-index: 0;
 }
 
+.actions {
+  display: grid;
+  grid-auto-flow: row;
+  grid-gap: var(--gap-16);
+}
+
+.secondaryButton {
+  justify-self: center;
+}
+
 @media (min-width: 600px) {
   .container {
     display: grid;

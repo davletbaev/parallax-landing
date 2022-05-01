@@ -10,9 +10,10 @@ import * as styles from './ConnectWallet.module.scss';
 
 type ConnectWalletProps = {
   hasMetamask: boolean
+  onSignUpWithEmailClick: () => void
 }
 
-const ConnectWallet = ({ hasMetamask }: ConnectWalletProps) => {
+const ConnectWallet = ({ hasMetamask, onSignUpWithEmailClick }: ConnectWalletProps) => {
   const { isMobile } = useMedia();
 
   const connectMetamask = async () => {
@@ -48,11 +49,16 @@ const ConnectWallet = ({ hasMetamask }: ConnectWalletProps) => {
             </>
           ) : (
             <>
-              <Paragraph marginTop="16" marginBottom="24">It`s seems like you don`t have Metamask installed.
-                    Please
-                    install it and reload page.</Paragraph>
+              <Paragraph marginTop="16" marginBottom="24">MetaMask not detected. Try opening browser via MetaMask
+                    app or sign up with email.</Paragraph>
 
-              <Button variant="secondary" onClick={ installMetamask } block={ isMobile }>Install Metamask</Button>
+              <div className={ styles.actions }>
+                <Button variant="secondary" onClick={ installMetamask } block={ isMobile }>Install MetaMask</Button>
+                <Button variant="ghost"
+                  className={ styles.secondaryButton }
+                  onClick={ onSignUpWithEmailClick }
+                  block={ isMobile }>Sign Up with Email</Button>
+              </div>
             </>
           )
         }
