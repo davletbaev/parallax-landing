@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ContactsSection, { ContactsMobile } from '@modules/ContactsSection';
+import ContactsSection from '@modules/ContactsSection';
 import FaqSection, { FaqMobile } from '@modules/FaqSection';
 import FirstFeature from '@modules/FirstFeature';
 import FourthFeature from '@modules/FourthFeature';
@@ -19,23 +19,22 @@ import { useMedia } from '@shared/hocs/withMedia';
 
 const IndexPage = () => {
   const { isMobile } = useMedia();
- 
+
   return (
     <ScrollJackWrapper>
-      <MainScreen id="main" />
-      <TrailerSection id="trailer" />
-      <FirstFeature id="feature-1" />
-      <SecondFeature id="feature-2" />
-      <ThirdFeature id="feature-3" />
-      <FourthFeature id="feature-4" />
-      <RoadmapSection id="roadmap" />
-      { isMobile && <RoadmapMobile id="roadmap-mobile" /> }
-      <GallerySection id="founders-nft" />
-      <TeamSection id="team" />
-      <FaqSection id="faq" questions={ FAQ_QUESTIONS } />
-      { isMobile && <FaqMobile id="faq-mobile" questions={ FAQ_QUESTIONS } /> }
-      <ContactsSection id="contacts" />
-      { isMobile && <ContactsMobile id="contacts-mobile" /> }
+      <MainScreen id="main"/>
+      <TrailerSection id="trailer"/>
+      <FirstFeature id="feature-1"/>
+      <SecondFeature id="feature-2"/>
+      <ThirdFeature id="feature-3"/>
+      <FourthFeature id="feature-4"/>
+      <RoadmapSection id="roadmap"/>
+      {isMobile && <RoadmapMobile id="roadmap-mobile"/>}
+      <GallerySection id="founders-nft"/>
+      <TeamSection id="team"/>
+      <FaqSection id="faq" questions={ FAQ_QUESTIONS }/>
+      {isMobile && <FaqMobile id="faq-mobile" questions={ FAQ_QUESTIONS }/>}
+      <ContactsSection id="contacts"/>
     </ScrollJackWrapper>
   );
 };

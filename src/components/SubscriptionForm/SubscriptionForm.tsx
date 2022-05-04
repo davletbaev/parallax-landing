@@ -9,10 +9,11 @@ const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z
 
 type SubscriptionFormProps = {
   error: string | null,
+  loading: boolean,
   onSubmit: (data: { email: string }) => void
 }
 
-function SubscriptionForm({ error, onSubmit }: SubscriptionFormProps) {
+function SubscriptionForm({ error, loading, onSubmit }: SubscriptionFormProps) {
   const [ email, setEmail ] = useState('');
   const [ valid, setValid ] = useState(false);
   const [ touched, setTouched ] = useState(false);
@@ -42,19 +43,19 @@ function SubscriptionForm({ error, onSubmit }: SubscriptionFormProps) {
           onChange={ handleChange }
         />
         {
-          touched && !valid && !error && (
+          touched && !valid && (
             <span className={ styles.error }>Incorrect email address</span>
           )
         }
         {
-          touched && error && (
+          !email && error && (
             <span className={ styles.error }>{error}</span>
           )
         }
       </div>
 
       <div className={ styles.field }>
-        <Button type="submit" variant="secondary" disabled={ !valid } block>Submit</Button>
+        <Button type="submit" variant="secondary" disabled={ !valid || loading } block>Submit</Button>
       </div>
     </form>
   );

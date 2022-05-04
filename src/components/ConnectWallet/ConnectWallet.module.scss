@@ -15,6 +15,11 @@
   opacity: 0.8;
 }
 
+.error {
+  composes: caption;
+  color: var(--color-danger);
+}
+
 .background {
   position: absolute !important;
   top: 0;

@@ -12,8 +12,8 @@ type UserResponse = {
 }
 
 export type User = {
-  id: string,
-  email: string,
+  id: string | null,
+  email: string | null,
   referrals: number,
   verified: boolean
 }
@@ -60,9 +60,23 @@ function useApi() {
     return fetch(baseUrl, {
       method: 'PUT',
       body: JSON.stringify(data),
-    }).then((res) => res.json())
+    }).then((res) => {
+      if (res.ok) return res.json();
+
+      if (res.status === 409) {
+        return {
+          status: 409,
+          message: 'Unable to verify account',
+        };
+      }
+
+      return {
+        status: 400,
+        message: 'Unable to connect to server',
+      };
+    })
       .then((res) => {
-        if (!res.uuid) return Promise.reject(res.message);
+        if (!res.uuid) return Promise.reject(res);
 
         return transformUserResponse(res);
       });

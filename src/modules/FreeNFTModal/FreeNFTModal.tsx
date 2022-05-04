@@ -8,7 +8,6 @@ import Reward from '@components/Reward';
 import VerifyHumanity from '@components/VerifyHumanity';
 
 import { useMedia } from '@shared/hocs/withMedia';
-import useApi from '@shared/hooks/useApi';
 import useQueryParams from '@shared/hooks/useQueryParams';
 
 import * as styles from './FreeNFTModal.module.scss';
@@ -21,18 +20,15 @@ type NFTModalProps = {
 const FreeNFTModal = ({ onClose }: NFTModalProps, ref: ForwardedRef<ModalRef>) => {
   const {
     isLoading,
-    setLoading,
     user,
+    error,
+    connectUser,
+    createUser,
     updateUser,
-    wallet,
-    hasMetamask,
-    isConnected,
-    isConnectionSkipped,
+    verifyUser,
     skipMetamaskConnection
   } = useMetamaskConnect();
   const query = useQueryParams();
-
-  const { verifyUser } = useApi();
 
   const { isMobile } = useMedia();
 
@@ -43,18 +39,18 @@ const FreeNFTModal = ({ onClose }: NFTModalProps, ref: ForwardedRef<ModalRef>) =
     const id = query.get('uuid');
 
     if (secret && id) {
-      setLoading(true);
-
       verifyUser({
         id,
         secret
       })
-        .catch((e) => {
-          console.error(e);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
+
+      return;
+    }
+
+    const referrerId = query.get('r');
+
+    if (referrerId) {
+      updateUser({ referrer: referrerId });
     }
   }, [ query ]);
 
@@ -74,14 +70,22 @@ const FreeNFTModal = ({ onClose }: NFTModalProps, ref: ForwardedRef<ModalRef>) =
           ) : (
             <>
               {
-                !isConnected && !isConnectionSkipped &&
-                      <ConnectWallet hasMetamask={ hasMetamask } onSignUpWithEmailClick={ skipMetamaskConnection }/>
+                !user.connected &&
+                      <ConnectWallet
+                        error={ error }
+                        hasMetamask={ user.hasMetamask }
+                        connectUser={ connectUser }
+                        onSignUpWithEmailClick={ skipMetamaskConnection }/>
               }
               {
-                (isConnected || isConnectionSkipped) && !user &&
-                      <VerifyHumanity wallet={ wallet } onSuccess={ updateUser }/>
+                user.connected && !user.id &&
+                      <VerifyHumanity
+                        error={ error }
+                        loading={ isLoading }
+                        createUser={ createUser }
+                      />
               }
-              {(isConnected || isConnectionSkipped) && user && <Reward user={ user }/>}
+              {user.connected && user.id && <Reward id={ user.id }/>}
             </>
           )
         }

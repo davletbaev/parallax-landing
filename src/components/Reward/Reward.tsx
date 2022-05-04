@@ -6,7 +6,6 @@ import Share from '@components/Share';
 import { Heading, Paragraph } from '@components/Typography';
 
 import { useMedia } from '@shared/hocs/withMedia';
-import { User } from '@shared/hooks/useApi';
 import { FADE } from '@shared/transitions';
 
 import * as styles from './Reward.module.scss';
@@ -34,19 +33,12 @@ const REWARDS = [
   }
 ];
 
-const getRewardFromReferrals = (referrals) => {
-  if (referrals < 10) return 0;
-  if (referrals < 100) return 1;
-
-  return 2;
-};
-
 type RewardProps = {
-  user: User
+  id: string,
 }
 
-const Reward = ({ user }: RewardProps) => {
-  const [ reward, setReward ] = useState(getRewardFromReferrals(user.referrals));
+const Reward = ({ id }: RewardProps) => {
+  const [ reward, setReward ] = useState(0);
 
   const { isMobile } = useMedia();
 
@@ -73,7 +65,7 @@ const Reward = ({ user }: RewardProps) => {
         <RewardsList items={ REWARDS } value={ reward } onChange={ setReward }/>
 
         <div className={ styles.share }>
-          <Share url={ `https://helixmetaverse.com?r=${user.id}` }/>
+          <Share url={ `https://helixmetaverse.com?r=${id}` }/>
         </div>
 
         <Paragraph marginTop="16" size="small" className={ styles.caption }> We’ll let you know by email when someone

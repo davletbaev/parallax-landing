@@ -9,20 +9,15 @@ import { useMedia } from '@shared/hocs/withMedia';
 import * as styles from './ConnectWallet.module.scss';
 
 type ConnectWalletProps = {
-  hasMetamask: boolean
+  error: string | null,
+  hasMetamask: boolean,
+  connectUser: () => Promise<void>,
   onSignUpWithEmailClick: () => void
 }
 
-const ConnectWallet = ({ hasMetamask, onSignUpWithEmailClick }: ConnectWalletProps) => {
+const ConnectWallet = ({ error, hasMetamask, connectUser, onSignUpWithEmailClick }: ConnectWalletProps) => {
   const { isMobile } = useMedia();
 
-  const connectMetamask = async () => {
-    try {
-      await window.ethereum.request({ method: 'eth_requestAccounts' });
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   const installMetamask = () => {
     const win = window.open('https://metamask.io/', '_blank');
@@ -43,9 +38,11 @@ const ConnectWallet = ({ hasMetamask, onSignUpWithEmailClick }: ConnectWalletPro
         {
           hasMetamask ? (
             <>
-              <Button variant="secondary" onClick={ connectMetamask } block={ isMobile }>Connect Wallet</Button>
+              <Button variant="secondary" onClick={ connectUser } block={ isMobile }>Connect Wallet</Button>
 
-              <Paragraph className={ styles.caption } size="small" marginTop="8">45,103 left to claim</Paragraph>
+              <Paragraph className={ error ? styles.error : styles.caption }
+                size="small"
+                marginTop="8">{error ? error : '45,103 left to claim'}</Paragraph>
             </>
           ) : (
             <>

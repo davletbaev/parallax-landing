@@ -1,21 +1,185 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useRef } from 'react';
 import detectEthereumProvider from '@metamask/detect-provider';
 
 import useApi, { User } from '@shared/hooks/useApi';
 
-function useMetamaskConnect() {
-  const [ isConnectionSkipped, setSkipConnection ] = useState(false);
-  const [ hasMetamask, setHasMetamask ] = useState(false);
-  const [ isConnected, setIsConnected ] = useState(false);
-  const [ wallet, setWallet ] = useState('');
-  const [ isLoading, setLoading ] = useState(false);
-  const [ user, setUser ] = useState<User | null>(null);
+type EthereumProvider = {
+  on: (event: string, callback: () => void) => void,
+  request: ({ method }: {method: string}) => Promise<any>
+}
 
-  const { getUser } = useApi();
+type MetamaskUser = User & {
+  connected: boolean,
+  wallet: string | null,
+  referrer: string,
+  hasMetamask: boolean,
+  skippedConnection: boolean
+}
+
+type MetamaskConnectState = {
+  user: MetamaskUser,
+  isLoading: boolean,
+  error: string | null,
+}
+
+const initialState: MetamaskConnectState = {
+  user: {
+    id: null,
+    email: null,
+    wallet: null,
+    referrer: '',
+    referrals: 0,
+    connected: false,
+    verified: false,
+    hasMetamask: false,
+    skippedConnection: false,
+  },
+  isLoading: false,
+  error: null,
+};
+
+type MetamaskConnectAction = {
+  type: 'createUser/start',
+} | {
+  type: 'createUser/success',
+  payload: User
+} | {
+  type: 'createUser/failed',
+  payload?: string
+} | {
+  type: 'verifyUser/start',
+} | {
+  type: 'verifyUser/success',
+  payload: string
+} | {
+  type: 'verifyUser/failed',
+  payload?: string
+} | {
+  type: 'setupConnection/start',
+} | {
+  type: 'setupConnection/success',
+  payload: string
+} | {
+  type: 'setupConnection/failed',
+  payload?: string
+} | {
+  type: 'connectUser/start',
+} | {
+  type: 'connectUser/success',
+} | {
+  type: 'connectUser/failed',
+  payload?: string
+} | {
+  type: 'getUser/start',
+} | {
+  type: 'getUser/success',
+  payload: User
+} | {
+  type: 'getUser/failed',
+  payload?: string
+} | {
+  type: 'skipConnection'
+} | {
+  type: 'updateUser',
+  payload: Partial<MetamaskUser>
+} | {
+  type: 'setError',
+  payload: string
+}
+
+const metamaskConnectReducer = (state: MetamaskConnectState, action: MetamaskConnectAction): MetamaskConnectState => {
+  switch (action.type) {
+    case 'createUser/start':
+    case 'verifyUser/start':
+    case 'setupConnection/start':
+    case 'connectUser/start':
+    case 'getUser/start':
+      return {
+        ...state,
+        error: null,
+        isLoading: true,
+      };
+    case 'verifyUser/success':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          connected: true,
+          verified: true,
+          id: action.payload,
+        },
+        isLoading: false,
+      };
+    case 'setupConnection/success':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          connected: true,
+          wallet: action.payload,
+        },
+        isLoading: false,
+      };
+    case 'createUser/success':
+    case 'getUser/success':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          ...action.payload,
+        },
+        isLoading: false,
+      };
+    case 'updateUser':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          ...action.payload,
+        },
+      };
+    case 'skipConnection':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          connected: true,
+        },
+      };
+    case 'connectUser/success':
+      return {
+        ...state,
+        isLoading: false,
+      };
+    case 'connectUser/failed':
+    case 'createUser/failed':
+    case 'verifyUser/failed':
+    case 'setupConnection/failed':
+    case 'getUser/failed':
+      return {
+        ...state,
+        error: action.payload || null,
+        isLoading: false,
+      };
+    case 'setError':
+      return {
+        ...state,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+function useMetamaskConnect() {
+  const providerRef = useRef<EthereumProvider>();
+  const [{ user, error, isLoading }, dispatch ] = useReducer(metamaskConnectReducer, initialState);
+
+  const endpoints = useApi();
 
   const skipMetamaskConnection = () => {
     localStorage.setItem('connectionSkipped', 'true');
-    setSkipConnection(true);
+    dispatch({ type: 'skipConnection' });
   };
 
   const getMetamaskProvider = () => {
@@ -25,8 +189,60 @@ function useMetamaskConnect() {
     });
   };
 
+  const createUser = async (email: string) => {
+    dispatch({ type: 'createUser/start' });
+
+    try {
+      const res = await endpoints.createUser({
+        email: email,
+        wallet: user.wallet || '',
+        referrer: user.referrer,
+      });
+
+      localStorage.setItem('user', JSON.stringify(res));
+      dispatch({
+        type: 'createUser/success',
+        payload: res,
+      });
+    } catch (e: any) {
+      dispatch({
+        type: 'createUser/failed',
+        payload: 'Sign up error',
+      });
+      console.error(e);
+    }
+  };
+
+  const updateUser = (user: Partial<MetamaskUser>) => {
+    dispatch({
+      type: 'updateUser',
+      payload: user,
+    });
+  };
+
+  const verifyUser = async ({ id, secret }: {id: string, secret: string}) => {
+    dispatch({ type: 'verifyUser/start' });
+
+    try {
+      await endpoints.verifyUser({
+        id,
+        secret,
+      });
+
+      dispatch({
+        type: 'verifyUser/success',
+        payload: id,
+      });
+    } catch (e: any) {
+      dispatch({
+        type: 'verifyUser/failed',
+        payload: e.message,
+      });
+    }
+  };
+
   const checkUser = async () => {
-    if (user) return;
+    if (user.id) return;
 
     const userData = localStorage.getItem('user');
 
@@ -36,77 +252,127 @@ function useMetamaskConnect() {
 
     if (!parsedData.id) return;
 
-    setUser(parsedData);
+    dispatch({
+      type: 'getUser/start',
+    });
 
     try {
-      const existsUser = await getUser(parsedData.id);
+      const existsUser = await endpoints.getUser(parsedData.id);
 
-      setUser(existsUser);
-    } catch (e) {
+      dispatch({
+        type: 'getUser/success',
+        payload: existsUser,
+      });
+    } catch (e: any) {
+      dispatch({
+        type: 'getUser/failed',
+      });
+      localStorage.removeItem('user');
       console.error(e);
     }
-
-    setLoading(false);
   };
 
-  const checkConnection = async () => {
-    setLoading(true);
+  const setupConnection = async () => {
+    dispatch({ type: 'setupConnection/start' });
 
     const currentProvider: any = await getMetamaskProvider();
 
-    if (currentProvider) {
-      setHasMetamask(true);
+    if (!currentProvider) {
+      dispatch({ type: 'setupConnection/failed' });
 
-      localStorage.removeItem('connectionSkipped');
-      const accounts = await currentProvider.request({ method: 'eth_accounts' });
-      const currentWallet = accounts[0] || '';
-
-      setWallet(currentWallet);
-
-      if (currentWallet) {
-        setIsConnected(true);
-        await checkUser();
-      } else {
-        localStorage.removeItem('user');
-        setIsConnected(false);
-        setUser(null);
-      }
-
-      setLoading(false);
-
-      return currentProvider;
+      return Promise.reject();
     }
 
-    setHasMetamask(false);
-    setLoading(false);
+    dispatch({
+      type: 'updateUser',
+      payload: { hasMetamask: true },
+    });
 
-    return Promise.reject();
+    providerRef.current = currentProvider;
+
+    try {
+      const accounts = await currentProvider.request({ method: 'eth_accounts' });
+
+      if (!accounts[0]) {
+        dispatch({ type: 'setupConnection/failed' });
+
+        return Promise.resolve();
+      }
+
+      dispatch({
+        type: 'setupConnection/success',
+        payload: accounts[0] || '',
+      });
+
+      return Promise.resolve();
+    } catch (e: any) {
+      dispatch({
+        type: 'setupConnection/failed',
+        payload: 'Error connecting wallet',
+      });
+
+      console.error(e);
+
+      return Promise.reject();
+    }
+
+  };
+
+  const connectUser = async () => {
+    if (!providerRef.current) return;
+
+    dispatch({ type: 'connectUser/start' });
+
+    try {
+      await providerRef.current.request({ method: 'eth_requestAccounts' });
+      dispatch({ type: 'connectUser/success' });
+    } catch (e) {
+      dispatch({
+        type: 'connectUser/failed',
+        payload: 'Error connecting wallet',
+      });
+      console.error('error');
+    }
+  };
+
+  const checkConnection = async () => {
+    const connectionStepSkipped = localStorage.getItem('connectionSkipped');
+
+    if (connectionStepSkipped) {
+      dispatch({ type: 'skipConnection' });
+    }
+
+    try {
+      await setupConnection();
+      await checkUser();
+    } catch (e) {
+      localStorage.removeItem('user');
+      console.error(e);
+    }
   };
 
   useEffect(() => {
-    const connectionStepSkipped = localStorage.getItem('connectionSkipped');
-
-    setSkipConnection(connectionStepSkipped === 'true');
-    
     checkConnection()
-      .then((provider) => {
-        provider.on('chainChanged', checkConnection);
-        provider.on('accountsChanged', checkConnection);
+      .then(() => {
+        if (providerRef.current) {
+          providerRef.current.on('chainChanged', checkConnection);
+          providerRef.current.on('accountsChanged', checkConnection);
+        }
       })
       // eslint-disable-next-line @typescript-eslint/no-empty-function
-      .catch(() => {
+      .catch((e) => {
+        console.error(e);
       });
   }, []);
 
   return {
     isLoading,
-    setLoading,
     user,
-    updateUser: setUser,
-    wallet,
-    hasMetamask,
-    isConnected,
-    isConnectionSkipped: isConnectionSkipped && !hasMetamask,
+    error,
+    connectUser,
+    updateUser,
+    createUser,
+    verifyUser,
     skipMetamaskConnection,
   };
 }
