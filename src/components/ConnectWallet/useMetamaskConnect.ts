@@ -347,7 +347,6 @@ function useMetamaskConnect() {
       await checkUser();
     } catch (e) {
       localStorage.removeItem('user');
-      console.error(e);
     }
   };
 
@@ -360,8 +359,7 @@ function useMetamaskConnect() {
         }
       })
       // eslint-disable-next-line @typescript-eslint/no-empty-function
-      .catch((e) => {
-        console.error(e);
+      .catch(() => {
       });
   }, []);
 
