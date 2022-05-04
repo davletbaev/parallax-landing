@@ -56,7 +56,7 @@ const FreeNFTModal = ({ onClose }: NFTModalProps, ref: ForwardedRef<ModalRef>) =
           setLoading(false);
         });
     }
-  }, []);
+  }, [ query ]);
 
   return (
     <Modal ref={ ref } variant={ isMobile ? 'fluid' : 'center' } label="Free NFT Item" top>
