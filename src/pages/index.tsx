@@ -19,7 +19,7 @@ import { useMedia } from '@shared/hocs/withMedia';
 
 const IndexPage = () => {
   const { isMobile } = useMedia();
- 
+
   return (
     <ScrollJackWrapper>
       <MainScreen id="main" />

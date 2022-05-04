@@ -44,7 +44,7 @@ const Share = ({ url }: ShareProps) => {
 
       <div className={ styles.socials }>
         <a className={ styles.twitter }
-          href={ `http://twitter.com/share?text=Helix Metaverse&url=${url}` }
+          href={ `http://twitter.com/share?text=Check this out!&url=${url}` }
           target="_blank"
           rel="noreferrer">
           <Icon icon="twitter"/>

@@ -25,7 +25,6 @@ function FourthFeature({
       transition={ SLIDE_BOTTOM_WITH_FADE.options }
     >
       <ParallaxLayer force={ 15 } depth={ 150 }>
-        <div className="itch">COMING SOON</div>
         <Heading type="h2" align="left">
           VIRTUAL LAND
         </Heading>

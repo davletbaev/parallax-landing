@@ -45,7 +45,7 @@ const ConnectWallet = ({ hasMetamask, onSignUpWithEmailClick }: ConnectWalletPro
             <>
               <Button variant="secondary" onClick={ connectMetamask } block={ isMobile }>Connect Wallet</Button>
 
-              <Paragraph className={ styles.caption } size="small" marginTop="8">45,103 left to claim</Paragraph>
+              <Paragraph className={ styles.caption } size="small" marginTop="8">20,000 available to claim</Paragraph>
             </>
           ) : (
             <>

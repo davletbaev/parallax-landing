@@ -61,16 +61,16 @@ function GallerySection({
               - 10,000 unique generative artworks with exclusive membership benefits
             </Paragraph>
             <Paragraph>
-              - Individual traits airdropped as separate NFTs
+              - 1 free land plot in Parallel City
             </Paragraph>
             <Paragraph>
-              - Land sale whitelist
+              - Early access to HELIX
             </Paragraph>
             <Paragraph>
-              - Fully playable character within HELIX
+              - Permanent P2E bonus
             </Paragraph>
             <Paragraph>
-              - And much more
+              Mint details will be annouced soon.
             </Paragraph>
           </ParallaxLayer>
           <ParallaxLayer
