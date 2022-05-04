@@ -1,5 +1,6 @@
 import { FaqQuestion, NavItem, RoadmapItem } from './types/components';
 
+export const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 export const IS_BROWSER = typeof window !== 'undefined';
 
 enum IndexMeta {

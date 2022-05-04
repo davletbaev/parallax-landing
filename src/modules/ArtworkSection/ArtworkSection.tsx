@@ -79,7 +79,6 @@ function ArtworkSection({
   }));
 
   const handleImageClick = (imageData: IGatsbyImageData) => () => {
-    console.log('click');
     setLightboxTarget(imageData);
   };
 

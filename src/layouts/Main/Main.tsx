@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { AnimatePresence, motion } from 'framer-motion';
 import { compose } from 'recompose';
+import TagManager from 'react-gtm-module';
 
 import BottomBar from '@components/BottomBar';
 import Header from '@components/Header';
@@ -10,7 +11,7 @@ import Loader from '@components/Loader';
 import withParallax from '@components/Parallax/withParallax';
 import withScrollJack from '@components/ScrollJack/withScrollJack';
 
-import { IS_BROWSER, Meta } from '@shared/constants';
+import { IS_BROWSER, IS_PRODUCTION, Meta } from '@shared/constants';
 import withLoader, { useLoader } from '@shared/hocs/withLoader';
 import withMedia from '@shared/hocs/withMedia';
 import { FADE } from '@shared/transitions';
@@ -19,9 +20,11 @@ import '@assets/styles/global.scss';
 
 import * as styles from './Main.module.scss';
 import { ParallaxLayer } from '@components/Parallax';
-import FreeNFTModal from '@modules/FreeNFTModal';
 import withNFTModal from '@shared/hocs/withNFTModal';
 
+const tagManagerArgs = {
+  gtmId: 'G-P1NCWMLSS1'
+};
 
 type MainProps = {
   children?: React.ReactNode
@@ -56,6 +59,14 @@ function Main({ children }: MainProps) {
     return () => {
       clearInterval(loadingInterval.current as unknown as number);
     };
+  }, []);
+
+  useEffect(() => {
+    if (!IS_BROWSER) return;
+
+    if (IS_PRODUCTION) {
+      TagManager.initialize(tagManagerArgs);
+    }
   }, []);
 
   return (

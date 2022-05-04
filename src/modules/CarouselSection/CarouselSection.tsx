@@ -105,8 +105,6 @@ function CarouselSection({
     }
   `);
 
-  console.log(data);
-
   const nodes: ImageData[] = data.images.edges.map(({ node }) => ({
     id: node.id,
     name: node.name,
