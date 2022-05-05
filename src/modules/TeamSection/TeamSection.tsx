@@ -78,7 +78,7 @@ function TeamSection({
               variants={ SLIDE_BOTTOM_WITH_FADE.variants }
               transition={ SLIDE_BOTTOM_WITH_FADE.options }
             >
-              <Button href="https://rose-taxi-801.notion.site/HELIX-Open-Positions-7a03a9376f1747b399a0990714b322ba" target="_blank">
+              <Button href="https://helixmetaverse.notion.site/HELIX-Open-Positions-7a03a9376f1747b399a0990714b322ba" target="_blank">
               SEE OPEN POSITIONS
               </Button>
             </motion.div>

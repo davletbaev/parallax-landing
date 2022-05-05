@@ -40,7 +40,7 @@ function RoadmapSection({
         <div className={ styles.content }>
           <ParallaxLayer force={ 15 } depth={ 50 }>
             <Paragraph marginTop="24">
-            HELIX is currently in development, with an Early Access release targeted within 2022. We’ll be sharing development updates to our community via Twitter and YouTube.
+            HELIX is currently in development, with an Early Access release targeted for 2022-2023. We’ll be sharing development updates to our community via Twitter and YouTube.
             </Paragraph>
             <Paragraph marginBottom="24">
             Read our docs for more in-depth information about HELIX.

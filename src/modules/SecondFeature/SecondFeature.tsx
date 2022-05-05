@@ -32,13 +32,13 @@ function SecondFeature({
 
       <ParallaxLayer force={ 15 } depth={ 50 }>
         <Paragraph marginTop="24">
-        Create, buy, or sell fully customizable virtual items such as clothes, accessories, vehicles, properties, and more. 
+        Create, buy, and sell fully customizable virtual items such as clothes, accessories, vehicles, properties, and more.
         </Paragraph>
         <Paragraph>
         Every item holds real-world value and can be freely traded on a decentralized open market.
         </Paragraph>
         <Paragraph>
-        Onced purchased, an item is yours forever.
+        Once purchased, an item is yours forever.
         </Paragraph>
       </ParallaxLayer>
 

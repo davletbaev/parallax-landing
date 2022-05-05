@@ -23,10 +23,10 @@ export const Meta = {
 export enum ExternalUrl {
   wiki = 'https://docs.helixmetaverse.com/',
   youtube = 'https://www.youtube.com/channel/UC5mNY3v-d8-I2Yaks-7W1Mw',
-  discord = 'https://discord.gg/xGJEH69sWK',
+  discord = 'https://helixmetaverse.notion.site/The-HELIX-Discord-is-currently-private-6b1fb832a43c422fba108e164366dc37',
   twitter = 'https://twitter.com/HELIX_Metaverse',
   email = 'contact@helixmetaverse.com',
-  faq = 'https://rose-taxi-801.notion.site/More-FAQs-3b729206ff1f4c56b0cfa725eff5de6d'
+  faq = 'https://helixmetaverse.notion.site/More-FAQs-3b729206ff1f4c56b0cfa725eff5de6d'
 }
 
 export const SOCIALS = [
@@ -122,7 +122,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
   {
     id: 4,
     heading: 'Q1 2023',
-    items: [ 'Public Beta Access', 'Community Treasury Launch' ],
+    items: [ 'Private Beta Access', 'Community Treasury Launch' ],
   },
 ];
 

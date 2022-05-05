@@ -14,8 +14,8 @@ import * as styles from './TrailerSection.module.scss';
 
 import { SectionProps } from '@shared/types/modules';
 
-function TrailerSection({ 
-  id, 
+function TrailerSection({
+  id,
 }: SectionProps) {
   const data = useStaticQuery(graphql`
     query NFTTrailerCoverQuery {
@@ -41,10 +41,10 @@ function TrailerSection({
           exit="exit"
           transition={ SLIDE_LEFT_WITH_FADE.options }
         >
-          <VideoPlayer videoId="RYdCuw7L1qk" cover={ getImage(data.cover.childImageSharp) } />
+          <VideoPlayer videoId="IPGtQlyBW-U" cover={ getImage(data.cover.childImageSharp) } />
         </motion.div>
       </ParallaxLayer>
-      
+
       <motion.div className={ styles.content }
         variants={ {} }
         initial="initial"
@@ -73,7 +73,7 @@ function TrailerSection({
         </ParallaxLayer>
       </motion.div>
 
-      <ParallaxCard 
+      <ParallaxCard
         className={ styles.background }
         variants={ FADE.variants }
         initial="initial"
