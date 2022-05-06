@@ -19,7 +19,7 @@ function TrailerSection({
 }: SectionProps) {
   const data = useStaticQuery(graphql`
     query TrailerCoverQuery {
-      cover: file(relativePath: {eq: "cover-new.jpeg"}) {
+      cover: file(relativePath: {eq: "cover-soon.jpeg"}) {
         childImageSharp {
           gatsbyImageData
         }

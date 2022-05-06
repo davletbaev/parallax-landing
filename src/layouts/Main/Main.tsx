@@ -113,11 +113,11 @@ function Main({ children }: MainProps) {
         />
         <meta
           name="twitter:site"
-          content="@helix"
+          content="@helix_metaverse"
         />
         <meta
           name="twitter:creator"
-          content="@helix"
+          content="@helix_metaverse"
         />
         <meta
           name="twitter:title"

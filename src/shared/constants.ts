@@ -7,7 +7,7 @@ enum IndexMeta {
   title = 'HELIX',
   description = 'HELIX is an open-world NFT metaverse built on the foundation of persistent virtual worlds and true digital ownership.',
   url = 'https://helixmetaverse.com',
-  preview = './preview.jpg'
+  preview = 'https://helixmetaverse.com/preview.jpg'
 }
 
 enum NFTMeta {
