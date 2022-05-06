@@ -3,7 +3,9 @@ import React, { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { AnimatePresence, motion } from 'framer-motion';
 import { compose } from 'recompose';
-import TagManager from 'react-gtm-module';
+// import TagManager from 'react-gtm-module';
+// import {config, set, event, action} from '@deptno/gtag'
+// import {GTag} from '@deptno/gtag-react'
 
 import BottomBar from '@components/BottomBar';
 import Header from '@components/Header';
@@ -22,9 +24,21 @@ import * as styles from './Main.module.scss';
 import { ParallaxLayer } from '@components/Parallax';
 import withNFTModal from '@shared/hocs/withNFTModal';
 
-const tagManagerArgs = {
-  gtmId: 'G-P1NCWMLSS1'
-};
+// const tagManagerArgs = {
+//   gtmId: 'G-P1NCWMLSS1'
+// };
+// const GA_ID = 'G-P1NCWMLSS1'
+const GTAG = `
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P1NCWMLSS1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P1NCWMLSS1');
+</script>
+`
 
 type MainProps = {
   children?: React.ReactNode
@@ -64,9 +78,9 @@ function Main({ children }: MainProps) {
   useEffect(() => {
     if (!IS_BROWSER) return;
 
-    if (IS_PRODUCTION) {
-      TagManager.initialize(tagManagerArgs);
-    }
+    // if (IS_PRODUCTION) {
+      // TagManager.initialize(tagManagerArgs);
+    // }
   }, []);
 
   return (
@@ -132,6 +146,7 @@ function Main({ children }: MainProps) {
           content={ Meta.Index.preview }
         />
       </Helmet>
+      <div dangerouslySetInnerHTML={{ __html: GTAG }} />
       <div className={ styles.layout }>
         <AnimatePresence>
           {

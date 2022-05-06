@@ -30,8 +30,8 @@ function SubscriptionForm({ error, loading, onSubmit }: SubscriptionFormProps) {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    // onSubmit({ email });
-    alert('Subscribed successfully!')
+    onSubmit({ email });
+    // alert('Subscribed successfully!')
   };
 
   return (
