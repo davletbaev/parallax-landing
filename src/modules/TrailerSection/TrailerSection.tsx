@@ -41,7 +41,7 @@ function TrailerSection({
           exit="exit"
           transition={ SLIDE_LEFT_WITH_FADE.options }
         >
-          <VideoPlayer videoId="IPGtQlyBW-U" cover={ getImage(data.cover.childImageSharp) } />
+          <VideoPlayer videoId="" cover={ getImage(data.cover.childImageSharp) } />
         </motion.div>
       </ParallaxLayer>
 
