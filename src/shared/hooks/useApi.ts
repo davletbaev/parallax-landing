@@ -1,7 +1,8 @@
 type CreateUserProps = {
   email: string,
   wallet: string,
-  referrer?: string
+  referrer?: string,
+  recaptcha: string
 }
 
 type UserResponse = {
@@ -33,11 +34,12 @@ function useApi() {
     verified: !needs_activation,
   });
 
-  const createUser = ({ email, wallet, referrer = '' }: CreateUserProps): Promise<User> => {
+  const createUser = ({ email, wallet, referrer = '', recaptcha }: CreateUserProps): Promise<User> => {
     const data = {
       email,
       wallet,
       r_id: referrer,
+      'g-recaptcha-response': recaptcha,
     };
 
     return fetch(baseUrl, {

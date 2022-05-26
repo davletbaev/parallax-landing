@@ -12,6 +12,11 @@
   align-items: flex-start;
 }
 
+.recaptcha {
+  width: 304px;
+  height: 78px;
+}
+
 .input {
   padding: var(--gap-8) var(--gap-16);
   width: 100%;
@@ -67,7 +72,8 @@
 
     grid-auto-flow: column;
     grid-template-columns: 1fr min-content;
-    grid-gap: 0;
+    grid-template-rows: auto auto;
+    grid-gap: var(--gap-32) 0;
   }
 
   .error {

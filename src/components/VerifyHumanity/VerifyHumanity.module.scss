@@ -2,12 +2,12 @@
   height: 100%;
   display: grid;
 
-  padding: var(--app-padding);
+  padding: var(--gap-24);
   align-items: center;
 }
 
 .content {
-  grid-column: 7 / 12;
+  grid-column: 0 / 12;
   z-index: 1;
 }
 
@@ -26,5 +26,10 @@
     grid-template-columns: repeat(12, 1fr);
     grid-gap: var(--gap-16);
     align-items: center;
+  }
+
+  .content {
+    grid-column: 7 / 12;
+    z-index: 1;
   }
 }

@@ -189,7 +189,7 @@ function useMetamaskConnect() {
     });
   };
 
-  const createUser = async (email: string) => {
+  const createUser = async (email: string, recaptcha: string) => {
     dispatch({ type: 'createUser/start' });
 
     try {
@@ -197,6 +197,7 @@ function useMetamaskConnect() {
         email: email,
         wallet: user.wallet || '',
         referrer: user.referrer,
+        recaptcha
       });
 
       localStorage.setItem('user', JSON.stringify(res));

@@ -1,4 +1,5 @@
 import React, { ChangeEventHandler, FormEvent, useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import debounce from 'lodash/debounce';
 
 import Button from '@components/Button';
@@ -10,11 +11,12 @@ const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z
 type SubscriptionFormProps = {
   error: string | null,
   loading: boolean,
-  onSubmit: (data: { email: string }) => void
+  onSubmit: (data: { email: string, recaptcha: string }) => void
 }
 
 function SubscriptionForm({ error, loading, onSubmit }: SubscriptionFormProps) {
   const [ email, setEmail ] = useState('');
+  const [ recaptcha, setRecaptcha ] = useState<string | null>(null);
   const [ valid, setValid ] = useState(false);
   const [ touched, setTouched ] = useState(false);
 
@@ -27,10 +29,19 @@ function SubscriptionForm({ error, loading, onSubmit }: SubscriptionFormProps) {
     setValid(EMAIL_REGEX.test(value));
   }, 300);
 
+  const handleRecaptchaChange = (value: string | null) => {
+    setRecaptcha(value);
+  };
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    onSubmit({ email });
+    if (!recaptcha) return;
+
+    onSubmit({
+      email,
+      recaptcha
+    });
     // alert('Subscribed successfully!')
   };
 
@@ -55,8 +66,14 @@ function SubscriptionForm({ error, loading, onSubmit }: SubscriptionFormProps) {
         }
       </div>
 
+      <ReCAPTCHA
+        className={ styles.recaptcha }
+        sitekey="6LeDrh0gAAAAAGeqVs6x1UCYwGELN6aQwV9ETN3Q"
+        onChange={ handleRecaptchaChange }
+      />
+
       <div className={ styles.field }>
-        <Button type="submit" variant="secondary" disabled={ !valid || loading } block>Submit</Button>
+        <Button type="submit" variant="secondary" disabled={ !valid || loading || !recaptcha } block>Submit</Button>
       </div>
     </form>
   );

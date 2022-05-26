@@ -9,7 +9,7 @@ import * as styles from './VerifyHumanity.module.scss';
 type VerifyHumanityProps = {
   error: string | null,
   loading: boolean,
-  createUser: (email: string) => Promise<void>
+  createUser: (email: string, recaptcha: string) => Promise<void>
 }
 
 /* Commented code is implementing user verification via email */
@@ -18,8 +18,8 @@ const VerifyHumanity = ({
   loading,
   createUser,
 }: VerifyHumanityProps) => {
-  const handleSubmit = ({ email }: { email: string }) => {
-    return createUser(email);
+  const handleSubmit = ({ email, recaptcha }: { email: string, recaptcha: string }) => {
+    return createUser(email, recaptcha);
   };
 
   return (
