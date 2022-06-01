@@ -19,7 +19,7 @@ function TrailerSection({
 }: SectionProps) {
   const data = useStaticQuery(graphql`
     query TrailerCoverQuery {
-      cover: file(relativePath: {eq: "cover-soon.jpeg"}) {
+      cover: file(relativePath: {eq: "cover-new.jpeg"}) {
         childImageSharp {
           gatsbyImageData
         }
@@ -41,7 +41,7 @@ function TrailerSection({
           exit="exit"
           transition={ SLIDE_LEFT_WITH_FADE.options }
         >
-          <VideoPlayer videoId="" cover={ getImage(data.cover.childImageSharp) } />
+          <VideoPlayer videoId="0ZMctoyu-P4" cover={ getImage(data.cover.childImageSharp) } />
         </motion.div>
       </ParallaxLayer>
 

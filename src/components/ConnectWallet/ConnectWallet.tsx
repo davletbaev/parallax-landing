@@ -42,7 +42,7 @@ const ConnectWallet = ({ error, hasMetamask, connectUser, onSignUpWithEmailClick
 
               <Paragraph className={ error ? styles.error : styles.caption }
                 size="small"
-                marginTop="8">{error ? error : '20,000 available to claim'}</Paragraph>
+                marginTop="8">{error ? error : ''}</Paragraph>
             </>
           ) : (
             <>

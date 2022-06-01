@@ -36,7 +36,7 @@ const NavModal = React.forwardRef<ModalRef>((props, ref) => {
             variant="ghost"
             block
           >
-            {isNFTPage ? 'Watch NFT Video' : 'Watch Trailer'}
+            {isNFTPage ? 'Watch NFT Video' : 'Watch Teaser'}
           </Button>
         </div>
 

@@ -27,8 +27,8 @@ function VideoPlayer({ videoId, cover }: VideoPlayerProps) {
   };
 
   const handlePlay = () => {
-    // setPlaying(true);
-    // videoRef.current.playVideo();
+    setPlaying(true);
+    videoRef.current.playVideo();
   };
 
   return (
@@ -52,13 +52,13 @@ function VideoPlayer({ videoId, cover }: VideoPlayerProps) {
         )
       }
 
-      /*<YouTube
+      <YouTube
         videoId={ videoId }
         className={ styles.media }
         containerClassName={ playing && cover || !cover ? styles.wrapper : styles.hidden }
         opts={ options }
         onReady={ handleVideoReady }
-      />*/
+      />
     </div>
   );
 }
