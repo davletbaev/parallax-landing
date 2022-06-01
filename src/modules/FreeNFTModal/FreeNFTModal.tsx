@@ -85,7 +85,7 @@ const FreeNFTModal = ({ onClose }: NFTModalProps, ref: ForwardedRef<ModalRef>) =
                         createUser={ createUser }
                       />
               }
-              {user.connected && user.id && <Reward id={ user.id }/>}
+              {user.connected && user.id && <Reward id={ user.id } verified={user.verified}/>}
             </>
           )
         }

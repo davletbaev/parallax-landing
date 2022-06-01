@@ -1,3 +1,19 @@
+.more a:link {
+  color: rgb(220, 220, 220);
+}
+
+.more a:visited {
+  color: rgb(220, 220, 220);
+}
+
+.more a:hover {
+  color: rgb(181, 181, 181);
+}
+
+.more a:active {
+  color: rgb(255, 255, 255);
+}
+
 .container {
   height: 100%;
   display: grid;
