@@ -6,6 +6,8 @@ import { Heading, Paragraph } from '@components/Typography';
 
 import * as styles from './VerifyHumanity.module.scss';
 
+
+
 type VerifyHumanityProps = {
   error: string | null,
   loading: boolean,

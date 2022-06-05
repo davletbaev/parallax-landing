@@ -46,4 +46,5 @@ interface Window {
     }) => Promise<string[]>,
     on: (event: string, callback: () => void) => void
   },
+  gtag: Function;
 }

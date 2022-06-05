@@ -45,6 +45,12 @@ function withNFTModal(WrappedComponent: ComponentType) {
       }
     }, [ query ]);
 
+    useEffect(() => {
+      if (typeof window.gtag !== 'undefined'){
+        window.gtag('event', 'Airdrop_PopUp_Open');
+      }
+    }, []);
+
     const contextValue = {
       openModal: handleModalOpen,
       closeModal: handleModalClose

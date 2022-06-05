@@ -205,6 +205,9 @@ function useMetamaskConnect() {
         type: 'createUser/success',
         payload: res,
       });
+      if (typeof window.gtag !== 'undefined'){
+        window.gtag('event', 'User_Created');
+      }
     } catch (e: any) {
       dispatch({
         type: 'createUser/failed',
@@ -234,6 +237,10 @@ function useMetamaskConnect() {
         type: 'verifyUser/success',
         payload: id,
       });
+      if (typeof window.gtag !== 'undefined'){
+        window.gtag('event', 'User_Verified');
+      }
+
     } catch (e: any) {
       dispatch({
         type: 'verifyUser/failed',
@@ -327,6 +334,10 @@ function useMetamaskConnect() {
     try {
       await providerRef.current.request({ method: 'eth_requestAccounts' });
       dispatch({ type: 'connectUser/success' });
+      if (typeof window.gtag !== 'undefined'){
+        window.gtag('event', 'Metamask_Conected');
+      }
+
     } catch (e) {
       dispatch({
         type: 'connectUser/failed',
