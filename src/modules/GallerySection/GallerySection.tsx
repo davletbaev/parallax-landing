@@ -14,24 +14,24 @@ import * as styles from './GallerySection.module.scss';
 
 import { SectionProps } from '@shared/types/modules';
 
-import image1 from './image1.jpg';
-import image2 from './image2.jpg';
-import image3 from './image3.jpg';
-import image4 from './image4.jpg';
-
-const IMAGES = [
-  image1,
-  image2,
-  image3,
-  image4,
-];
+// import image1 from './image1.jpg';
+// import image2 from './image2.jpg';
+// import image3 from './image3.jpg';
+// import image4 from './image4.jpg';
+//
+// const IMAGES = [
+//   image1,
+//   image2,
+//   image3,
+//   image4,
+// ];
 
 function GallerySection({
   id,
 }: SectionProps) {
-  const renderImages = () => IMAGES.map((url, index) => (
-    <img className={ styles.image } key={ index } src={ url } loading="lazy" />
-  ));
+  // const renderImages = () => IMAGES.map((url, index) => (
+  //   <img className={ styles.image } key={ index } src={ url } loading="lazy" />
+  // ));
 
   return (
     <Container id={ id } as="section">
@@ -52,25 +52,25 @@ function GallerySection({
         <div className={ styles.content }>
           <ParallaxLayer force={ 15 } depth={ 150 }>
             <Heading type="h2" align="left">
-          FOUNDERS NFT COLLECTION
+          LAND SALE
             </Heading>
           </ParallaxLayer>
 
           <ParallaxLayer force={ 15 } depth={ 50 }>
             <Paragraph marginTop="24">
-              - 10,000 unique generative artworks with exclusive membership benefits
+              - 25,000 land plots in Parallel City available to mint
             </Paragraph>
             <Paragraph>
-              - 1 free land plot in Parallel City
+              - Land ownership across every game instance
             </Paragraph>
             <Paragraph>
-              - Early access to HELIX
+              - Earn tokens by selling and leasing to players
             </Paragraph>
             <Paragraph>
-              - Permanent P2E bonus
+              - Staking rewards
             </Paragraph>
             <Paragraph>
-              Mint details will be annouced soon.
+              Join our <a href="https://discord.gg/helixmetaverse" target="_blank" className="white">Discord</a> for more info and WL opportunities.
             </Paragraph>
           </ParallaxLayer>
           <ParallaxLayer
@@ -93,7 +93,7 @@ function GallerySection({
       >
         <StaticImage
           className={ styles.backgroundImage }
-          src="./gallery.jpeg"
+          src="./landsale.jpeg"
           alt=""
         />
       </ParallaxCard>

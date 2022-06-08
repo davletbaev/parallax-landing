@@ -23,7 +23,7 @@ export const Meta = {
 export enum ExternalUrl {
   wiki = 'https://docs.helixmetaverse.com/',
   youtube = 'https://www.youtube.com/channel/UC5mNY3v-d8-I2Yaks-7W1Mw',
-  discord = 'https://helixmetaverse.notion.site/The-HELIX-Discord-is-currently-private-6b1fb832a43c422fba108e164366dc37',
+  discord = 'https://discord.gg/helixmetaverse',
   twitter = 'https://twitter.com/HELIX_Metaverse',
   email = 'contact@helixmetaverse.com',
   faq = 'https://helixmetaverse.notion.site/More-FAQs-3b729206ff1f4c56b0cfa725eff5de6d'
@@ -55,11 +55,11 @@ export const SOCIALS = [
 export const FAQ_QUESTIONS: FaqQuestion[] = [
   {
     heading: 'What is HELIX?',
-    text: 'HELIX is a decentralized, high-fidelity metaverse platform where you can meet new people, buy and sell virtual items, play games, and earn money. ',
+    text: 'HELIX is a decentralized, high-fidelity metaverse platform where you can meet new people, buy and sell virtual items, play games, and earn tokens. ',
   },
   {
     heading: 'When can I play HELIX?',
-    text: 'We are pushing to release an early access preview build to Founders Collection NFT holders within 2022. After that, we’ll gradually roll out access to everyone.',
+    text: 'We are pushing to release an early access preview build to our community by the end of 2022. After that, we’ll gradually roll out access to everyone.',
   },
   {
     heading: 'Who’s behind HELIX and how is development being funded?',
@@ -75,11 +75,11 @@ export const FAQ_QUESTIONS: FaqQuestion[] = [
   },
   {
     heading: 'Will I be able to own and trade virtual land?',
-    text: 'Yes. Parts of Parallel City will sold and claimed via an upcoming auction and land owners will be able to develop on their land or lease it to other players/businesses for profit. More details will be announced soon.',
+    text: 'Yes. Parts of Parallel City will sold and claimed via an upcoming auction and land owners will be able to develop on their land or lease it to other players/businesses for profit.',
   },
   {
     heading: 'Will there be a native token within HELIX?',
-    text: 'Yes. We will announce details soon.',
+    text: 'Yes. We will announce our native token soon.',
   },
   {
     heading: 'More FAQ',
@@ -106,13 +106,13 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
   {
     id: 1,
     heading: 'Q2 2022',
-    items: [ 'Announcement Trailer', 'Founders NFT Collection' ],
+    items: [ 'Announcement Trailer', 'Land Sale 1' ],
     active: true,
   },
   {
     id: 2,
     heading: 'Q3 2022',
-    items: [ 'Native Token & Staking Rewards', 'Land Sale' ],
+    items: [ 'Staking Rewards', 'Community Events' ],
   },
   {
     id: 3,
@@ -122,7 +122,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
   {
     id: 4,
     heading: 'Q1 2023',
-    items: [ 'Private Beta Access', 'Community Treasury Launch' ],
+    items: [ 'Public Alpha Access', 'Community Treasury Launch' ],
   },
 ];
 
@@ -159,8 +159,8 @@ export const NAV_ITEMS: NavItem[] = [
   //   label: 'Roadmap',
   // },
   {
-    path: '#founders-nft',
-    label: 'FOUNDERS NFT',
+    path: '#land-sale',
+    label: 'LAND SALE',
     badge: 'new',
   },
   {

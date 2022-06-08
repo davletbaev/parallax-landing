@@ -28,6 +28,10 @@
   composes: backgroundImage from '../MainScreen/MainScreen.module.scss'
 }
 
+.white {
+    color: white
+}
+
 @media (min-width: 1024px) {
   .section {
     display: grid;

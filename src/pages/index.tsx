@@ -30,7 +30,7 @@ const IndexPage = () => {
       <FourthFeature id="feature-4"/>
       <RoadmapSection id="roadmap"/>
       {isMobile && <RoadmapMobile id="roadmap-mobile"/>}
-      <GallerySection id="founders-nft"/>
+      <GallerySection id="land-sale"/>
       <TeamSection id="team"/>
       <FaqSection id="faq" questions={ FAQ_QUESTIONS }/>
       {isMobile && <FaqMobile id="faq-mobile" questions={ FAQ_QUESTIONS }/>}
