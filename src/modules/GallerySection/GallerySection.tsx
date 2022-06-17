@@ -52,16 +52,16 @@ function GallerySection({
         <div className={ styles.content }>
           <ParallaxLayer force={ 15 } depth={ 150 }>
             <Heading type="h2" align="left">
-          LAND SALE
+          LAND SALE PHASE 1
             </Heading>
           </ParallaxLayer>
 
           <ParallaxLayer force={ 15 } depth={ 50 }>
             <Paragraph marginTop="24">
-              - 25,000 land plots in Parallel City available to mint
+              - 25,000 / 45,000 land plots in Parallel City available to mint
             </Paragraph>
             <Paragraph>
-              - Land ownership across every game instance
+              - Land ownership across every game server instance
             </Paragraph>
             <Paragraph>
               - Earn tokens by selling and leasing to players
@@ -93,7 +93,7 @@ function GallerySection({
       >
         <StaticImage
           className={ styles.backgroundImage }
-          src="./landsale.jpeg"
+          src="./landsale2.jpeg"
           alt=""
         />
       </ParallaxCard>

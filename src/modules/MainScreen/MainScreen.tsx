@@ -89,7 +89,7 @@ function MainScreen({ id }: SectionProps) {
             variant="ghost"
             href="#trailer"
           >
-              Watch Teaser
+              Watch Trailer
           </Button>
         </ParallaxLayer>
       </motion.div>

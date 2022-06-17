@@ -14,7 +14,7 @@ import * as styles from './TeamSection.module.scss';
 import { SectionProps } from '@shared/types/modules';
 
 import hypersonicLaboratoriesLogo from './hypersonic.png';
-import mardonpolGamesLogo from './mardonpol.png';
+import pingleLogo from './pingle.png';
 import thirdKindVentureCapitalLogo from './thirdkind.png';
 
 const PARTNERS = [
@@ -24,9 +24,9 @@ const PARTNERS = [
     url: hypersonicLaboratoriesLogo
   },
   {
-    link: 'https://hypersoniclaboratories.com/',
-    label: 'Mardonpol Games',
-    url: mardonpolGamesLogo
+    link: 'https://pinglestudio.com/',
+    label: 'Pingle Studio',
+    url: pingleLogo
   },
   {
     link: 'https://www.crunchbase.com/organization/high-line-venture-partners',

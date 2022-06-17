@@ -60,10 +60,10 @@ function TrailerSection({
 
         <ParallaxLayer force={ 15 } depth={ 50 }>
           <Paragraph marginTop="24">
-          H.E.L.I.X. (Hyper Expansive Lifelike Interoperable eXperience) is a high-fidelity metaverse platform centered around the concept of true digital ownership and independent player economies.
+          H.E.L.I.X. (Hyper Expansive Lifelike Interoperable eXperience) is a high-fidelity metaverse platform centered around the concept of true digital ownership and independent player economy.
           </Paragraph>
           <Paragraph>
-          Immerse yourself in Parallel City, a meticulously detailed 1:1 scale recreation of New York City where you can explore freely, own land, meet new friends, play games, and earn money.
+          Immerse yourself in Parallel City, a meticulously detailed 1:1 scale recreation of New York City where you can explore freely, own land, meet new friends, play games, and earn tokens.
           </Paragraph>
         </ParallaxLayer>
       </motion.div>

@@ -66,7 +66,7 @@ function Header() {
               href={ isNFTPage ? '#utility' : '#trailer' }
               variant="ghost"
             >
-              {isNFTPage ? 'Watch NFT Video' : 'WATCH TEASER'}
+              {isNFTPage ? 'Watch NFT Video' : 'WATCH TRAILER'}
             </Button>
             <Button
               variant="secondary"
