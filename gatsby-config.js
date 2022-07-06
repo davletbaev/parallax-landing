@@ -3,8 +3,8 @@ const path = require('path');
 
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://www.yourdomain.tld',
-    title: 'HELIX',
+    siteUrl: 'https://helixmetaverse.com',
+    title: 'HELIX Metaverse',
     preview: './preview.jpg'
   },
   plugins: [
