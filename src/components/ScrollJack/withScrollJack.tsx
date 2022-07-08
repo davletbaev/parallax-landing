@@ -7,6 +7,8 @@ type ScrollJackContextValue = {
   currentSectionId: string,
   setCurrentSectionId: (id: string) => void,
   setCurrentSectionIndex: (index: number) => void,
+  isLastSection: boolean,
+  setLastSection: (isLastSection: boolean) => void,
 }
 
 const ScrollJackContext = createContext<ScrollJackContextValue>({
@@ -14,6 +16,8 @@ const ScrollJackContext = createContext<ScrollJackContextValue>({
   currentSectionId: 'main',
   setCurrentSectionId: () => {},
   setCurrentSectionIndex: () => {},
+  isLastSection: false,
+  setLastSection: () => {}
 });
 
 function withScrollJack(WrappedComponent: ComponentType) {
@@ -22,12 +26,15 @@ function withScrollJack(WrappedComponent: ComponentType) {
 
     const [ currentSectionIndex, setCurrentSectionIndex ] = useState(0);
     const [ currentSectionId, setCurrentSectionId ] = useState(location.hash.slice(1));
+    const [ isLastSection, setLastSection ] = useState(false);
 
     const contextValues = {
       currentSectionIndex,
       currentSectionId,
       setCurrentSectionIndex,
-      setCurrentSectionId
+      setCurrentSectionId,
+      isLastSection,
+      setLastSection
     };
 
     return (

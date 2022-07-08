@@ -53,7 +53,7 @@ function FirstFeature({
         <StaticImage
           className={ styles.backgroundImage }
           src="./feature-1.jpeg"
-          alt=""
+          alt="Person in sportswear going through the park"
         />
       </ParallaxCard>
     </TextSection>

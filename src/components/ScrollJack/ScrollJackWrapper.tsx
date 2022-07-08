@@ -33,12 +33,16 @@ const ScrollJackWrapper = ({ children }: ScrollJackWrapperProps) => {
     currentSectionId,
     currentSectionIndex,
     setCurrentSectionId,
-    setCurrentSectionIndex
+    setCurrentSectionIndex,
+    setLastSection,
   } = useScrollJack();
 
   useEffect(() => {
     canMoveNext.current = currentSectionIndex < maxSections.current - 1;
     canMovePrev.current = currentSectionIndex > 0;
+
+    setLastSection(currentSectionIndex === maxSections.current - 1);
+    console.log(currentSectionIndex === maxSections.current);
 
     const nextId = sections[currentSectionIndex]?.props.id;
 

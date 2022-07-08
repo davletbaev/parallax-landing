@@ -41,7 +41,7 @@ function TrailerSection({
           exit="exit"
           transition={ SLIDE_LEFT_WITH_FADE.options }
         >
-          <VideoPlayer videoId="0ZMctoyu-P4" cover={ getImage(data.cover.childImageSharp) } />
+          <VideoPlayer videoId="0ZMctoyu-P4" cover={ getImage(data.cover.childImageSharp) } label="Trailer cover: man in sportswear walking through the park" />
         </motion.div>
       </ParallaxLayer>
 
@@ -79,7 +79,7 @@ function TrailerSection({
         <StaticImage
           className={ styles.backgroundImage }
           src="./trailer.jpeg"
-          alt=""
+          alt="Person going to office window"
         />
       </ParallaxCard>
     </Container>

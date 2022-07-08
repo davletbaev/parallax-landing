@@ -41,7 +41,7 @@ function TrailerSection({
           exit="exit"
           transition={ SLIDE_LEFT_WITH_FADE.options }
         >
-          <VideoPlayer videoId="IPGtQlyBW-U" cover={ getImage(data.cover.childImageSharp) } />
+          <VideoPlayer videoId="IPGtQlyBW-U" cover={ getImage(data.cover.childImageSharp) }  label="Trailer cover: NFT car" />
         </motion.div>
       </ParallaxLayer>
 
@@ -84,7 +84,7 @@ function TrailerSection({
         <StaticImage
           className={ styles.backgroundImage }
           src="./trailer.jpg"
-          alt=""
+          alt="Man in front of a car"
         />
       </ParallaxCard>
     </Container>

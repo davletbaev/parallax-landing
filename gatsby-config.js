@@ -2,11 +2,6 @@
 const path = require('path');
 
 module.exports = {
-  siteMetadata: {
-    siteUrl: 'https://helixmetaverse.com',
-    title: 'HELIX Metaverse',
-    preview: './preview.jpg'
-  },
   plugins: [
     {
       resolve: 'gatsby-plugin-sass',

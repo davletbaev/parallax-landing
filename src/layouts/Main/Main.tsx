@@ -15,12 +15,14 @@ import { IS_BROWSER, IS_PRODUCTION, Meta } from '@shared/constants';
 import withLoader, { useLoader } from '@shared/hocs/withLoader';
 import withMedia from '@shared/hocs/withMedia';
 import { FADE } from '@shared/transitions';
+import { gameSchema, organizationSchema } from '@shared/seo-schema';
 
 import '@assets/styles/global.scss';
 
 import * as styles from './Main.module.scss';
 import { ParallaxLayer } from '@components/Parallax';
 import withNFTModal from '@shared/hocs/withNFTModal';
+import { useLocation } from '@reach/router';
 
 const gaID = 'G-P1NCWMLSS1';
 
@@ -31,6 +33,9 @@ type MainProps = {
 function Main({ children }: MainProps) {
   const loadingInterval = useRef<ReturnType<typeof setInterval>>();
   const { loading, progress, setLoading } = useLoader();
+  const location = useLocation();
+
+  const is404 = location.pathname !== '/' && location.pathname !== '/founder-collection/';
 
   useEffect(() => {
     if (!IS_BROWSER) return;
@@ -73,6 +78,7 @@ function Main({ children }: MainProps) {
         title={ Meta.Index.title }
         defer={ false }
       >
+        <html lang="en"/>
         <meta
           name="description"
           content={ Meta.Index.description }
@@ -129,49 +135,64 @@ function Main({ children }: MainProps) {
           name="twitter:image"
           content={ Meta.Index.preview }
         />
+        <meta name="google-site-verification" content="8_dVji5ZO30Qk6I9GT6tMOad15L0jnQQVlV6Fneh_0s" />
+        <script type="application/ld+json">
+          {JSON.stringify(organizationSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(gameSchema)}
+        </script>
       </Helmet>
       <div className={ styles.layout }>
         <AnimatePresence>
           {
-            loading ? (
-              <Loader/>
-            ) : (
-              <>
-                <motion.div
-                  variants={ FADE.variants }
-                  initial="initial"
-                  animate="enter"
-                  exit="exit"
-                  transition={ { delay: 1 } }
-                >
-                  <Header/>
-                </motion.div>
-
-                <ParallaxLayer force={ 5 }
-                  depth={ 50 }
-                  className={ styles.frame }
-                  variants={ FADE.variants }
-                  initial="initial"
-                  animate="enter"
-                  exit="exit"
-                  transition={ { delay: 1 } }
-                />
-
-                <main className={ styles.main }>
-                  {children}
-                </main>
-
-                <motion.div
-                  variants={ FADE.variants }
-                  initial="initial"
-                  animate="enter"
-                  exit="exit"
-                  transition={ { delay: 1 } }
-                >
-                  <BottomBar/>
-                </motion.div>
-              </>
+            loading && (
+              <Loader
+                key="loader"/>
             )
+          }
+
+          {
+            !is404 && <motion.div
+              key="header"
+              variants={ FADE.variants }
+              initial="initial"
+              animate="enter"
+              exit="exit"
+              transition={ { delay: 1 } }
+            >
+              <Header/>
+            </motion.div>
+          }
+
+          <ParallaxLayer force={ 5 }
+            key="frame"
+            depth={ 50 }
+            className={ styles.frame }
+            variants={ FADE.variants }
+            initial="initial"
+            animate="enter"
+            exit="exit"
+            transition={ { delay: 1 } }
+          />
+
+          <main
+            key="main"
+            className={ styles.main }>
+            {children}
+          </main>
+
+          {
+            !is404 && <motion.div
+              key="bottombar"
+              variants={ FADE.variants }
+              initial="initial"
+              animate="enter"
+              exit="exit"
+              transition={ { delay: 1 } }
+            >
+              <BottomBar/>
+            </motion.div>
           }
         </AnimatePresence>
 

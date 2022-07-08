@@ -14,12 +14,14 @@ import { ScrollJackWrapper } from '@components/ScrollJack';
 import { Meta, NFT_FAQ_QUESTIONS } from '@shared/constants';
 import { useMedia } from '@shared/hocs/withMedia';
 
+import { nftFaqSchema, nftTrailerSchema } from '@shared/seo-schema';
+
 const NFTFoundationPage = () => {
   const { isMobile } = useMedia();
- 
+
   return (
     <>
-      <Helmet 
+      <Helmet
         title={ Meta.NFT.title }
         defer={ false }
       >
@@ -43,16 +45,22 @@ const NFTFoundationPage = () => {
           name="twitter:description"
           content={ Meta.NFT.description }
         />
+        <script type="application/ld+json">
+          {JSON.stringify(nftTrailerSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(nftFaqSchema)}
+        </script>
       </Helmet>
       <ScrollJackWrapper>
-        <MainScreen id="main" />
-        <TrailerSection id="utility" />
-        <NFTFeature id="feature" />
-        <CarouselSection id="carousel" />
-        <ArtworkSection id="artwork" />
-        <RoadmapSection id="roadmap" />
-        { isMobile && <RoadmapMobile id="roadmap-mobile" /> }
-        <FaqSection id="faq" questions={ NFT_FAQ_QUESTIONS } />
+        <MainScreen id="main"/>
+        <TrailerSection id="utility"/>
+        <NFTFeature id="feature"/>
+        <CarouselSection id="carousel"/>
+        <ArtworkSection id="artwork"/>
+        <RoadmapSection id="roadmap"/>
+        {isMobile && <RoadmapMobile id="roadmap-mobile"/>}
+        <FaqSection id="faq" questions={ NFT_FAQ_QUESTIONS }/>
       </ScrollJackWrapper>
     </>
   );

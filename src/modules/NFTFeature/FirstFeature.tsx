@@ -56,7 +56,7 @@ function FirstFeature({
         <StaticImage
           className={ styles.backgroundImage }
           src="./feature-1.jpg"
-          alt=""
+          alt="NFT car"
         />
       </ParallaxCard>
     </TextSection>

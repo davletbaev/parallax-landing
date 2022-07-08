@@ -3,6 +3,11 @@ declare module '*.scss' {
   export = content;
 }
 
+declare module '*.jpeg' {
+  const value: string;
+  export default value;
+}
+
 declare module '*.jpg' {
   const value: string;
   export default value;

@@ -105,7 +105,7 @@ function MainScreen({ id }: SectionProps) {
         <StaticImage
           className={ styles.backgroundImage }
           src="./main.jpeg"
-          alt=""
+          alt="Driving sport car in the Metaverse"
         />
       </ParallaxCard>
     </Container>

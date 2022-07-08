@@ -177,7 +177,7 @@ function CarouselSection({
                 exit="exit"
                 transition={ SLIDE_LEFT_WITH_FADE.options }
               >
-                <VideoPlayer videoId="RYdCuw7L1qk" cover={ modifiedItems[currentItem].image } />
+                <VideoPlayer videoId="RYdCuw7L1qk" cover={ modifiedItems[currentItem].image } label={ modifiedItems[currentItem].label } />
               </motion.div>
             </ParallaxLayer>
 

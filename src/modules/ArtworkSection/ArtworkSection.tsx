@@ -163,7 +163,7 @@ function ArtworkSection({
         <StaticImage
           className={ styles.backgroundImage }
           src="./artwork.jpg"
-          alt=""
+          alt="NFT items"
         />
       </ParallaxCard>
 
@@ -174,7 +174,7 @@ function ArtworkSection({
               <GatsbyImage 
                 className={ styles.lightboxImage }
                 image={ lightboxTarget }
-                alt=""
+                alt="NFT item"
               />
             )
           }

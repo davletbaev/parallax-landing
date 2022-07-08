@@ -8,10 +8,11 @@ import * as styles from './VideoPlayer.module.scss';
 
 type VideoPlayerProps = {
   videoId: string,
+  label: string,
   cover?: IGatsbyImageData
 }
 
-function VideoPlayer({ videoId, cover }: VideoPlayerProps) {
+function VideoPlayer({ videoId, label, cover }: VideoPlayerProps) {
   const videoRef = useRef<any>(null);
   const [ playing, setPlaying ] = useState(false);
 
@@ -47,7 +48,7 @@ function VideoPlayer({ videoId, cover }: VideoPlayerProps) {
           <div
             className={ styles.wrapper }
           >
-            <GatsbyImage className={ styles.media } image={ cover } alt="" />
+            <GatsbyImage className={ styles.media } image={ cover } alt={ label } />
           </div>
         )
       }

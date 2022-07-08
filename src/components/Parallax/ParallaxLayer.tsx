@@ -15,7 +15,7 @@ type ParallaxLayerProps = HTMLMotionProps<'div'> & {
   depth: number
 };
 
-const ParallaxLayer = ({ className, force, depth, children, ...restProps }: ParallaxLayerProps) => {
+const ParallaxLayer = ({ className, force, depth, children, style, ...restProps }: ParallaxLayerProps) => {
   const z = useMotionValue(depth);
 
   const { x, y, screenWidth, screenHeight, duration } = useParallax();
@@ -41,10 +41,11 @@ const ParallaxLayer = ({ className, force, depth, children, ...restProps }: Para
       { ...restProps }
       className={ cn('wrapper', className) }
       style={
-        { 
+        {
           transform,
-          transition
-        } 
+          transition,
+          ...style
+        }
       }
     >
       { children }

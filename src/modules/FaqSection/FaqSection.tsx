@@ -91,7 +91,7 @@ function FaqSection({
         <StaticImage
           className={ styles.backgroundImage }
           src="./faq.jpeg"
-          alt=""
+          alt="Street view with subway"
         />
       </ParallaxCard>
     </Container>

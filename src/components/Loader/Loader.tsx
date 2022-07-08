@@ -17,7 +17,6 @@ function Loader() {
     <motion.div 
       variants={ FADE.variants }
       className={ styles.loader }
-      initial="initial"
       animate="enter"
       exit="exit"
     >

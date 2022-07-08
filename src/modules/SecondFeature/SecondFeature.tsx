@@ -53,7 +53,7 @@ function SecondFeature({
         <StaticImage
           className={ styles.backgroundImage }
           src="./feature-2.jpeg"
-          alt=""
+          alt="The car is in the garage of the mansion"
         />
       </ParallaxCard>
     </TextSection>

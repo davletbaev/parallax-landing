@@ -45,7 +45,7 @@ function RoadmapMobile({
         <StaticImage
           className={ styles.backgroundImage }
           src="./roadmap.jpeg"
-          alt=""
+          alt="Bridge with cars"
         />
       </ParallaxCard>
     </Container>

@@ -4,15 +4,15 @@ export const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 export const IS_BROWSER = typeof window !== 'undefined';
 
 enum IndexMeta {
-  title = 'HELIX',
-  description = 'HELIX is an open-world NFT metaverse built on the foundation of persistent virtual worlds and true digital ownership.',
+  title = 'HELIX Metaverse | Next Generation Open-World Experience',
+  description = 'HELIX is an open-world metaverse where you can buy & sell NFT items, meet new people, play games, and earn tokens. Immerse yourself in Parallel City, a massively detailed virtual recreation of NYC.',
   url = 'https://helixmetaverse.com',
   preview = 'https://helixmetaverse.com/preview.jpg'
 }
 
 enum NFTMeta {
-  title = 'HELIX',
-  description = 'HELIX is an open-world NFT metaverse built on the foundation of persistent virtual worlds and true digital ownership.',
+  title = 'HELIX Metaverse | Next Generation Open-World Experience',
+  description = 'HELIX is an open-world metaverse where you can buy & sell NFT items, meet new people, play games, and earn tokens. Immerse yourself in Parallel City, a massively detailed virtual recreation of NYC.',
 }
 
 export const Meta = {

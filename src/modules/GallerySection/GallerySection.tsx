@@ -45,41 +45,42 @@ function GallerySection({
       >
         <ParallaxLayer force={ 15 } depth={ 100 } className={ styles.gallery }>
           <Gallery>
-            { /*renderImages()*/ }
+            { /*renderImages()*/}
           </Gallery>
         </ParallaxLayer>
 
         <div className={ styles.content }>
           <ParallaxLayer force={ 15 } depth={ 150 }>
             <Heading type="h2" align="left">
-          LAND SALE PHASE 1
+                LAND SALE PHASE 1
             </Heading>
           </ParallaxLayer>
 
           <ParallaxLayer force={ 15 } depth={ 50 }>
             <Paragraph marginTop="24">
-              - 25,000 / 45,000 land plots in Parallel City available to mint
+                - 25,000 / 45,000 land plots in Parallel City available to mint
             </Paragraph>
             <Paragraph>
-              - Land ownership across every game server instance
+                - Land ownership across every game server instance
             </Paragraph>
             <Paragraph>
-              - Earn tokens by selling and leasing to players
+                - Earn tokens by selling and leasing to players
             </Paragraph>
             <Paragraph>
-              - Staking rewards
+                - Staking rewards
             </Paragraph>
             <Paragraph>
-              Join our <a href="https://discord.gg/helixmetaverse" target="_blank" className="white">Discord</a> for more info and WL opportunities.
+                Join our <a href="https://discord.gg/helixmetaverse" target="_blank" className="white" rel="noreferrer">Discord</a> for
+                more info and WL opportunities.
             </Paragraph>
           </ParallaxLayer>
           <ParallaxLayer
             force={ 15 }
             depth={ 75 }
           >
-              <Button href="#" className="oof">
+            <Button href="#" className="oof">
                 LEARN MORE
-              </Button>
+            </Button>
           </ParallaxLayer>
         </div>
       </motion.div>
@@ -94,7 +95,7 @@ function GallerySection({
         <StaticImage
           className={ styles.backgroundImage }
           src="./landsale2.jpeg"
-          alt=""
+          alt="Virtual city map"
         />
       </ParallaxCard>
     </Container>

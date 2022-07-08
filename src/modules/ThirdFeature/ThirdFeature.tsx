@@ -51,7 +51,7 @@ function ThirdFeature({
         <StaticImage
           className={ styles.backgroundImage }
           src="./feature-3.jpeg"
-          alt=""
+          alt="Man with girl walking through casino"
         />
       </ParallaxCard>
     </TextSection>

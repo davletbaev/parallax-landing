@@ -45,7 +45,7 @@ function TeamSection({
       className={ styles.partner }
       transition={ SLIDE_BOTTOM_WITH_FADE.options }
     >
-      <a href={ link } target='_blank'><img src={ url } alt={ label } /></a>
+      <a href={ link } target="_blank" rel="noreferrer"><img src={ url } alt={ label }/></a>
     </motion.div>
   ));
 
@@ -61,25 +61,27 @@ function TeamSection({
       >
         <ParallaxLayer force={ 15 } depth={ 150 } className={ styles.heading }>
           <Heading type="h2">
-            Team & Investors
+              Team & Investors
           </Heading>
         </ParallaxLayer>
 
         <div className={ styles.content }>
           <ParallaxLayer force={ 15 } depth={ 50 }>
             <Paragraph marginTop="24">
-            Based in LA and all around the world, our core team consists of passionate developers and artists with 50+ years of combined experience creating AAA quality games and products.
+                Based in LA and all around the world, our core team consists of passionate developers and artists with
+                50+ years of combined experience creating AAA quality games and products.
             </Paragraph>
             <Paragraph marginBottom="24">
-            We’re currently hiring. Come help us bring the future faster.
+                We’re currently hiring. Come help us bring the future faster.
             </Paragraph>
 
             <motion.div
               variants={ SLIDE_BOTTOM_WITH_FADE.variants }
               transition={ SLIDE_BOTTOM_WITH_FADE.options }
             >
-              <Button href="https://helixmetaverse.notion.site/HELIX-Open-Positions-7a03a9376f1747b399a0990714b322ba" target="_blank">
-              SEE OPEN POSITIONS
+              <Button href="https://helixmetaverse.notion.site/HELIX-Open-Positions-7a03a9376f1747b399a0990714b322ba"
+                target="_blank">
+                  SEE OPEN POSITIONS
               </Button>
             </motion.div>
           </ParallaxLayer>
@@ -90,7 +92,7 @@ function TeamSection({
           depth={ 150 }
           className={ styles.partners }
         >
-          { renderPartners() }
+          {renderPartners()}
         </ParallaxLayer>
       </motion.div>
 
@@ -105,7 +107,7 @@ function TeamSection({
         <StaticImage
           className={ styles.backgroundImage }
           src="./team.jpeg"
-          alt=""
+          alt="Street view with cars"
         />
       </ParallaxCard>
     </Container>

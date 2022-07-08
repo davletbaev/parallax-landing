@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+  <loc>https://helixmetaverse.com/</loc>
+  <lastmod>2022-06-28T19:45:48+00:00</lastmod>
+  <priority>1.00</priority>
+  <image:image>
+   <image:loc>https://helixmetaverse.com/preview.jpg</image:loc>
+  </image:image>
+</url>
+<url>
+  <loc>https://helixmetaverse.com/#trailer</loc>
+  <lastmod>2022-06-28T19:45:48+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://helixmetaverse.com/#feature-1</loc>
+  <lastmod>2022-06-28T19:45:48+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://helixmetaverse.com/#feature-2</loc>
+  <lastmod>2022-06-28T19:45:48+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://helixmetaverse.com/#feature-3</loc>
+  <lastmod>2022-06-28T19:45:48+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://helixmetaverse.com/#feature-4</loc>
+  <lastmod>2022-06-28T19:45:48+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://helixmetaverse.com/#roadmap</loc>
+  <lastmod>2022-06-28T19:45:48+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://helixmetaverse.com/#land-sale</loc>
+  <lastmod>2022-06-28T19:45:48+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://helixmetaverse.com/#team</loc>
+  <lastmod>2022-06-28T19:45:48+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://helixmetaverse.com/#faq</loc>
+  <lastmod>2022-06-28T19:45:48+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://helixmetaverse.com/#contacts</loc>
+  <lastmod>2022-06-28T19:45:48+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+</urlset>

@@ -50,7 +50,7 @@ function FourthFeature({
         <StaticImage
           className={ styles.backgroundImage }
           src="./feature-4.jpeg"
-          alt=""
+          alt="Сityscape from skyscraper height"
         />
       </ParallaxCard>
     </TextSection>

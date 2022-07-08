@@ -77,7 +77,7 @@ function ContactsSection({
         <StaticImage
           className={ styles.backgroundImage }
           src="./contacts.jpeg"
-          alt=""
+          alt="Driving SUV in Metaverse"
         />
       </ParallaxCard>
     </Container>

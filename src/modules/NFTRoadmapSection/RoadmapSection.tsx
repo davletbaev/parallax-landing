@@ -92,7 +92,7 @@ function RoadmapSection({
         <StaticImage
           className={ styles.backgroundImage }
           src="./roadmap.jpg"
-          alt=""
+          alt="Driving car on the bridge"
         />
       </ParallaxCard>
     </Container>

@@ -88,7 +88,7 @@ function MainScreen({ id }: SectionProps) {
         <StaticImage
           className={ styles.backgroundImage }
           src="./main.jpg"
-          alt=""
+          alt="NFT items"
         />
       </ParallaxCard>
     </Container>

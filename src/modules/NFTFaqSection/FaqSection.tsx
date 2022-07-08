@@ -68,7 +68,7 @@ function FaqSection({
         <StaticImage
           className={ styles.backgroundImage }
           src="./faq.jpg"
-          alt=""
+          alt="NFT items"
         />
       </ParallaxCard>
     </Container>
